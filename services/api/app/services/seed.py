@@ -4,11 +4,16 @@ Idempotent. Safe to run multiple times. Creates:
   - demo user + ORG_ADMIN membership
   - Swarm & Bee Demo organization
   - swarmbee.defendable.eth reservation (mock, RESERVED_NOT_ISSUED)
-  - RTX PRO 6000 Blackwell asset · DOV-COMPUTE-000001 · EVIDENCE_INTAKE
+  - RTX PRO 6000 Blackwell asset · DOV-COMPUTE-000001
   - Defendable Box 01 edge node + box-01.swarmbee.defendable.eth reservation
+  - A full proof chain: evidence item → manifest → AIOV draft →
+    validator review → published DRAFT deed
+  - So /verify/{slug} · /showcase/{slug} · /ledger lookup all resolve
+    against this asset out of the box on first deploy
 """
 from __future__ import annotations
 
+import json
 import uuid
 
 from sqlalchemy.orm import Session
@@ -16,6 +21,7 @@ from sqlalchemy.orm import Session
 from app.core.config import settings
 from app.core.security import hash_password
 from app.db.session import SessionLocal
+from app.models.ai import AIOVAnalysis, AIOVStatus
 from app.models.asset import (
     Asset,
     AssetClass,
@@ -24,12 +30,19 @@ from app.models.asset import (
     ConditionStatus,
     IntendedUse,
 )
+from app.models.deed import DefendableDeed
 from app.models.edge import EdgeNode, EnrollmentStatus
 from app.models.ens import (
     ENSIdentity,
     IdentityStatus,
     IdentityType,
     IssuanceMode,
+)
+from app.models.evidence import (
+    EvidenceItem,
+    EvidenceType,
+    IngestionStatus,
+    Visibility,
 )
 from app.models.organization import (
     ENSStatus,
@@ -38,10 +51,38 @@ from app.models.organization import (
     OrgRole,
 )
 from app.models.user import User
+from app.models.validator import ValidatorReview, ValidatorStatus
+from app.services.deed import create_deed, publish_public
+from app.services.hashing import sha256_bytes
+from app.services.manifest import regenerate_manifest
+from app.services.validator_checks import (
+    build_receipt,
+    run_deterministic_checks,
+    summarise,
+)
 
 
 DEMO_ORG_SLUG = "swarmbee"
 DEMO_ORG_NAME = "Swarm & Bee Demo"
+
+# Canonical illustrative benchmark payload · the same shape we ship in
+# data/sample-evidence/sample_benchmark.json so the demo evidence is
+# consistent across local dev and production seed.
+_SAMPLE_BENCHMARK = {
+    "evidence_type": "BENCHMARK_OUTPUT",
+    "asset_reference": "DOV-COMPUTE-000001",
+    "model": "RTX PRO 6000 Blackwell Workstation GPU",
+    "driver_version": "555.42.06",
+    "cuda_version": "12.5",
+    "benchmark": {
+        "name": "ILLUSTRATIVE_LLM_THROUGHPUT",
+        "workload": "Qwen-7B FP16 · batch 1 · 4096 ctx",
+        "tokens_per_second": "<illustrative>",
+        "peak_vram_gb": "<illustrative>",
+    },
+    "captured_at": "2026-05-22T12:00:00Z",
+    "captured_by": "defendable-box · box-01.swarmbee.defendable.eth",
+}
 
 
 def _get_or_create_user(db: Session) -> User:
@@ -176,6 +217,165 @@ def _ensure_demo_asset(db: Session, org: Organization, user: User) -> Asset:
     return asset
 
 
+def _ensure_demo_proof_chain(db: Session, asset: Asset, user: User) -> DefendableDeed | None:
+    """Build the full proof chain for the seeded asset · idempotent.
+
+    Produces · in order ·
+      1. an EvidenceItem with the canonical sample benchmark payload
+      2. an EvidenceManifest (regenerated from current evidence set)
+      3. an AIOVAnalysis · doctrine-correct draft narrative
+      4. a ValidatorReview · runs the same 12 deterministic checks the
+         live API does · should land PASSED_FOR_PACKAGING
+      5. a DefendableDeed v1 · DRAFT_REVIEW_RECORD
+      6. publish_public(deed) so /verify/{slug} resolves it
+
+    If a publicly-published deed already exists for the asset, returns
+    that deed without making any changes (so re-runs are no-ops).
+    """
+    existing = (
+        db.query(DefendableDeed)
+        .filter(DefendableDeed.asset_id == asset.id)
+        .filter(DefendableDeed.is_public == True)  # noqa: E712
+        .order_by(DefendableDeed.version.desc())
+        .first()
+    )
+    if existing:
+        return existing
+
+    # ── 1. Evidence item ──────────────────────────────────────────────
+    body = json.dumps(_SAMPLE_BENCHMARK, indent=2, sort_keys=True).encode("utf-8")
+    digest = sha256_bytes(body)
+    evidence = (
+        db.query(EvidenceItem)
+        .filter(EvidenceItem.asset_id == asset.id)
+        .filter(EvidenceItem.sha256_hash == digest)
+        .first()
+    )
+    if not evidence:
+        evidence = EvidenceItem(
+            id=uuid.uuid4(),
+            organization_id=asset.organization_id,
+            asset_id=asset.id,
+            filename="sample_benchmark.json",
+            storage_key=(
+                f"organizations/{asset.organization_id}/assets/{asset.id}"
+                f"/raw/seed_sample_benchmark.json"
+            ),
+            content_type="application/json",
+            byte_size=len(body),
+            evidence_type=EvidenceType.BENCHMARK_OUTPUT,
+            visibility=Visibility.PRIVATE,
+            ingestion_status=IngestionStatus.INDEXED,
+            sha256_hash=digest,
+            uploaded_by=user.id,
+            provenance="USER_UPLOAD",
+        )
+        db.add(evidence)
+        db.flush()
+
+    # ── 2. Evidence manifest ──────────────────────────────────────────
+    # regenerate_manifest writes the row · we don't need to hold a ref.
+    regenerate_manifest(db, asset)
+
+    # ── 3. AIOV draft · doctrine-correct narrative ────────────────────
+    narrative = (
+        "AI-assisted AIOV draft for the seeded demo asset. Asset identity "
+        "and configuration are supported by the supplied benchmark receipt. "
+        "Public market comparable analysis has not been attached to this "
+        "preview · the deed is generated for validator review only. "
+        "AI-assisted draft only. Not a licensed appraisal. Not a warranty, "
+        "certification, or authentication guarantee."
+    )
+    aiov_payload = {
+        "analysis_type": "AI_ASSISTED_OPINION_OF_VALUE",
+        "asset_reference": asset.public_asset_reference,
+        "asset_class": asset.asset_class.value,
+        "status": "GENERATED_FOR_VALIDATOR_REVIEW",
+        "identity_summary": {
+            "manufacturer": "NVIDIA",
+            "model": "RTX PRO 6000 Blackwell",
+            "configuration_confidence": "SUPPORTED_BY_SUBMITTED_EVIDENCE",
+        },
+        "evidence_basis": [
+            {
+                "source_id": str(evidence.id),
+                "source_type": "PRIVATE_EVIDENCE",
+                "evidence_type": "BENCHMARK_OUTPUT",
+                "supports": "ASSET_CONTEXT",
+                "sha256": digest,
+            }
+        ],
+        "market_evidence": [],
+        "value_opinion": {
+            "display_status": "WITHHELD_PENDING_VALIDATOR_REVIEW",
+            "currency": "USD",
+            "range_low": None,
+            "range_high": None,
+            "notes": (
+                "A public value range may be added only after evidence and "
+                "comparable review."
+            ),
+        },
+        "missing_evidence": ["PURCHASE_RECEIPT", "CONFIRMED_SALE_COMPARABLES"],
+        "limitations": [
+            "AI-assisted draft only",
+            "Not a licensed appraisal",
+            "Not a warranty, certification, or authentication guarantee",
+        ],
+    }
+    aiov = AIOVAnalysis(
+        id=uuid.uuid4(),
+        asset_id=asset.id,
+        version=1,
+        status=AIOVStatus.GENERATED_FOR_VALIDATOR_REVIEW,
+        analysis_json=aiov_payload,
+        narrative=narrative,
+        supporting_source_ids=[str(evidence.id)],
+        missing_evidence_json={
+            "missing_evidence_types": aiov_payload["missing_evidence"],
+        },
+    )
+    db.add(aiov)
+    db.flush()
+
+    # ── 4. Validator review · 12 deterministic checks ─────────────────
+    results = run_deterministic_checks(db, asset, aiov)
+    status_value = summarise(results)
+    receipt = build_receipt(asset, aiov.version, results, status_value)
+    review = ValidatorReview(
+        id=uuid.uuid4(),
+        asset_id=asset.id,
+        aiov_analysis_id=aiov.id,
+        version=1,
+        status=ValidatorStatus(status_value),
+        protocol="VALIDATE_THE_VALIDATOR",
+        findings_json=receipt.get("blocking_findings", []),
+        checks_json=receipt["checks"],
+        receipt_sha256=receipt["receipt_sha256"],
+        reviewed_by=user.id,
+    )
+    db.add(review)
+    db.flush()
+
+    if status_value != "PASSED_FOR_PACKAGING":
+        # Seed shouldn't ship a non-passing validator review · log and skip
+        # the deed creation. Local dev can still iterate manually.
+        print(
+            f"  [seed] validator returned {status_value} · skipping deed publication"
+        )
+        return None
+
+    # ── 5. Defendable deed v1 + 6. publish_public ─────────────────────
+    try:
+        deed = create_deed(db, asset, issued_by_user_id=user.id)
+    except Exception as exc:
+        print(f"  [seed] create_deed failed: {exc}")
+        return None
+    publish_public(deed)
+    db.flush()
+    return deed
+
+
 def _ensure_demo_edge_node(db: Session, org: Organization) -> EdgeNode:
     node = (
         db.query(EdgeNode)
@@ -238,12 +438,23 @@ def seed() -> None:
             edge_node_id=edge_node.id,
         )
 
+        # ── full proof chain · evidence → manifest → AIOV → validator → deed
+        deed = _ensure_demo_proof_chain(db, asset, user)
+
         db.commit()
         print("✓ Swarm & Bee Demo seed complete.")
         print(f"  user:   {user.email}  (password from DEMO_USER_PASSWORD)")
         print(f"  org:    {org.name}  ({org.ens_name})")
         print(f"  asset:  {asset.public_asset_reference}  ({asset.name})")
         print(f"  edge:   {edge_node.node_name}  (ENROLLED_DEMO)")
+        if deed:
+            print(
+                f"  deed:   {deed.deed_reference}  ({deed.status.value}"
+                f" · public_slug: {deed.public_slug})"
+            )
+            print(f"          record_hash:   {deed.record_hash}")
+        else:
+            print("  deed:   not seeded (validator did not pass)")
     except Exception:
         db.rollback()
         raise

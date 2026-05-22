@@ -1,0 +1,34 @@
+# Keep the build context tight · faster pushes to Fly's builder.
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Tests aren't needed at runtime · keep them for local dev
+# but skip in prod image.
+app/tests/
+
+# Migration version history MUST be included · alembic upgrade head
+# reads from alembic/versions/ at runtime.
+# (default behavior, but noted for the next dev who reads this)
+
+# Editor / OS junk
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local env files · NEVER ship to production
+.env
+.env.local
+.env.*
+
+# Local docker volumes (if mounted from this dir)
+postgres-data/
+minio-data/
+redis-data/
