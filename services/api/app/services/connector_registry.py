@@ -104,6 +104,68 @@ CONNECTOR_DEFINITIONS: list[dict] = [
         # any partners are seeded and no agreement is signed yet.
         "status_fn": lambda: ProviderStatus.OUTREACH_READY,
     },
+    # ── ProductRadar lane · demand intelligence (added 2026-05-22) ──
+    {
+        "provider_name": ProviderName.AHREFS_KEYWORDS_EXPLORER,
+        "connector_purpose": (
+            "Ahrefs Keywords Explorer · search-demand signal · NEVER a "
+            "confirmed sale · informs ProductRadar opportunity scoring"
+        ),
+        "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
+        "status_fn": lambda: ProviderStatus.NOT_CONFIGURED,
+    },
+    {
+        "provider_name": ProviderName.GOOGLE_MERCHANT_CENTER_BEST_SELLERS,
+        "connector_purpose": (
+            "Google Merchant Center Best Sellers · shopping popularity "
+            "signal · platform popularity, not confirmed units sold"
+        ),
+        "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
+        "status_fn": lambda: ProviderStatus.NOT_CONFIGURED,
+    },
+    {
+        "provider_name": ProviderName.TIKTOK_CREATIVE_CENTER,
+        "connector_purpose": (
+            "TikTok Creative Center Top Products · social-commerce trend "
+            "signal · creative momentum, not confirmed sales"
+        ),
+        "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
+        "status_fn": lambda: ProviderStatus.NOT_CONFIGURED,
+    },
+    {
+        "provider_name": ProviderName.EBAY_PRODUCT_RESEARCH,
+        "connector_purpose": (
+            "eBay Product Research (formerly Terapeak) · marketplace sold "
+            "research · analyst-reviewed · subject to seller tooling rights"
+        ),
+        "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
+        "status_fn": lambda: ProviderStatus.NOT_CONFIGURED,
+    },
+    {
+        "provider_name": ProviderName.SIMILARWEB_SHOPPER_INTELLIGENCE,
+        "connector_purpose": (
+            "Similarweb Shopper Intelligence · estimated retail/store "
+            "performance · estimate only · enterprise data partnership"
+        ),
+        "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
+        "status_fn": lambda: ProviderStatus.NOT_CONFIGURED,
+    },
+    {
+        "provider_name": ProviderName.CONNECTED_SHOPIFY_STORE,
+        "connector_purpose": (
+            "Connected client Shopify/eBay store · PERMISSIONED first-party "
+            "completed sales · the only ProductRadar signal that constitutes "
+            "confirmed sale evidence"
+        ),
+        "default_terms": TermsReviewStatus.REVIEWED_INTERNAL_RESEARCH_ONLY,
+        "status_fn": lambda: ProviderStatus.READY,
+    },
+    {
+        "provider_name": ProviderName.SUPPLIER_CATALOG_FUTURE,
+        "connector_purpose": "Future supplier-catalog integrations · sourcing feasibility",
+        "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
+        "status_fn": lambda: ProviderStatus.FUTURE_DISABLED,
+    },
 ]
 
 

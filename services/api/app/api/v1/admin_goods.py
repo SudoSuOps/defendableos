@@ -327,6 +327,74 @@ def list_itad_partners(
 
 
 # ───────────────────────────────────────────────────────────────────
+# ProductRadar · demand intelligence read endpoints
+# ───────────────────────────────────────────────────────────────────
+
+
+@router.get("/productradar/overview")
+def productradar_overview(
+    db: Session = Depends(get_db),
+    _admin=Depends(require_platform_admin),
+) -> dict:
+    """ProductRadar dashboard counts · all 0 until opportunities are added."""
+    from app.models.productradar import (
+        ConnectedStoreOutcome as CSO,
+        KeywordDemandSignal as KDS,
+        MarketplaceSalesResearch as MSR,
+        OpportunityScoreReceipt as OSR,
+        ProductOpportunity as PO,
+        ShoppingPopularitySignal as SPS,
+        SocialTrendSignal as STS,
+        StoreIntelligenceObservation as SIO,
+        SupplierCandidate as SC,
+    )
+    return {
+        "product_opportunities": db.query(PO).count(),
+        "watchlist": db.query(PO).filter(PO.status == "WATCHLIST").count(),
+        "research_candidates": db.query(PO).filter(PO.status == "RESEARCH_CANDIDATE").count(),
+        "marketready_candidates": db.query(PO).filter(PO.status == "MARKETREADY_CANDIDATE").count(),
+        "launched": db.query(PO).filter(PO.status == "LAUNCHED").count(),
+        "rejected": db.query(PO).filter(
+            PO.status.in_([
+                "REJECT_MARGIN_RISK", "REJECT_POLICY_RISK",
+                "REJECT_OVERSATURATED", "REJECT_LOW_SIGNAL",
+            ])
+        ).count(),
+        "keyword_demand_signals": db.query(KDS).count(),
+        "shopping_popularity_signals": db.query(SPS).count(),
+        "social_trend_signals": db.query(STS).count(),
+        "store_intelligence_observations": db.query(SIO).count(),
+        "marketplace_sales_researches": db.query(MSR).count(),
+        "supplier_candidates": db.query(SC).count(),
+        "connected_store_outcomes": db.query(CSO).count(),
+        "opportunity_score_receipts": db.query(OSR).count(),
+    }
+
+
+@router.get("/productradar/opportunities")
+def list_product_opportunities(
+    db: Session = Depends(get_db),
+    _admin=Depends(require_platform_admin),
+) -> list[dict]:
+    from app.models.productradar import ProductOpportunity as PO
+    rows = db.query(PO).order_by(PO.latest_score.desc().nullslast()).all()
+    return [
+        {
+            "id": str(o.id),
+            "opportunity_id": o.opportunity_id,
+            "product_name": o.product_name,
+            "canonical_search_query": o.canonical_search_query,
+            "category": o.category.value,
+            "status": o.status.value,
+            "recommendation": o.recommendation.value if o.recommendation else None,
+            "latest_score": o.latest_score,
+            "latest_score_at": o.latest_score_at.isoformat() if o.latest_score_at else None,
+        }
+        for o in rows
+    ]
+
+
+# ───────────────────────────────────────────────────────────────────
 # DISCOVERY POST endpoints · DOCUMENTED ONLY · not wired this turn
 # ───────────────────────────────────────────────────────────────────
 # POST /admin/goods/discover/brave

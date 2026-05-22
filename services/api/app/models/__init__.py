@@ -15,6 +15,18 @@ from app.models.deed import DefendableDeed
 from app.models.ens import ENSIdentity
 from app.models.edge import EdgeNode, EdgeUploadEvent, EdgeEnrollmentToken
 from app.models.audit import AuditEvent
+from app.models.productradar import (
+    ConnectedStoreOutcome,
+    KeywordDemandSignal,
+    MarginScenario,
+    MarketplaceSalesResearch,
+    OpportunityScoreReceipt,
+    ProductOpportunity,
+    ShoppingPopularitySignal,
+    SocialTrendSignal,
+    StoreIntelligenceObservation,
+    SupplierCandidate,
+)
 from app.models.goods import (
     ApprovedClaim,
     ArtifactRegistry,
@@ -77,4 +89,15 @@ __all__ = [
     "ItadFeedImportRun",
     "ItadPartner",
     "PartnerTransactionObservation",
+    # ProductRadar · demand intelligence
+    "ConnectedStoreOutcome",
+    "KeywordDemandSignal",
+    "MarginScenario",
+    "MarketplaceSalesResearch",
+    "OpportunityScoreReceipt",
+    "ProductOpportunity",
+    "ShoppingPopularitySignal",
+    "SocialTrendSignal",
+    "StoreIntelligenceObservation",
+    "SupplierCandidate",
 ]

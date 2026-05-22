@@ -281,9 +281,9 @@ def test_public_export_refuses_derived_datasets():
 # ════════════════════════════════════════════════════════════════════
 
 
-def test_connector_definitions_cover_eight_providers():
-    """8 connectors after the ITAD lane was added · 7 originals + 1 ITAD."""
-    assert len(CONNECTOR_DEFINITIONS) == 8
+def test_connector_definitions_include_core_providers():
+    """Core providers must always be registered · 8 originals (Goods + ITAD)."""
+    assert len(CONNECTOR_DEFINITIONS) >= 8
     names = {d["provider_name"] for d in CONNECTOR_DEFINITIONS}
     assert ProviderName.BRAVE_LLM_CONTEXT in names
     assert ProviderName.EBAY_BROWSE in names

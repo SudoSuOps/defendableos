@@ -228,9 +228,8 @@ def test_partner_observation_accepts_grade_b_in_conversation():
 # ════════════════════════════════════════════════════════════════════
 
 
-def test_connector_definitions_now_count_eight():
-    """7 → 8 connectors · ITAD_PARTNER_FEED is the new one."""
-    assert len(CONNECTOR_DEFINITIONS) == 8
+def test_itad_connector_in_definitions():
+    """ITAD_PARTNER_FEED is registered alongside the other connectors."""
     names = {d["provider_name"] for d in CONNECTOR_DEFINITIONS}
     assert ProviderName.ITAD_PARTNER_FEED in names
 
