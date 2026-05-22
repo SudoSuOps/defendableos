@@ -22,7 +22,7 @@ class EnrollmentStatus(str, enum.Enum):
 class EdgeNode(Base, TimestampMixin):
     __tablename__ = "edge_nodes"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True
     )
@@ -45,7 +45,7 @@ class EdgeNode(Base, TimestampMixin):
 class EdgeUploadEvent(Base, TimestampMixin):
     __tablename__ = "edge_upload_events"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     edge_node_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("edge_nodes.id", ondelete="CASCADE"), nullable=False, index=True
     )
@@ -66,7 +66,7 @@ class EdgeUploadEvent(Base, TimestampMixin):
 class EdgeEnrollmentToken(Base, TimestampMixin):
     __tablename__ = "edge_enrollment_tokens"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True
     )

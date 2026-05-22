@@ -24,7 +24,7 @@ class DefendableDeed(Base, TimestampMixin):
         UniqueConstraint("asset_id", "version", name="uq_deed_asset_version"),
     )
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True
     )

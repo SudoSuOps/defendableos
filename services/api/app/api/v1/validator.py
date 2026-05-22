@@ -79,7 +79,11 @@ def run_validator(
         action="validator.run",
         entity_type="ValidatorReview",
         entity_id=str(review.id),
-        metadata={"status": status_value, "receipt_sha256": receipt["receipt_sha256"]},
+        metadata={
+            "asset_id": str(asset.id),
+            "status": status_value,
+            "receipt_sha256": receipt["receipt_sha256"],
+        },
     )
     db.commit()
     db.refresh(review)

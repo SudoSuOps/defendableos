@@ -17,72 +17,76 @@ branch_labels = None
 depends_on = None
 
 
-# ── enums (created once, referenced everywhere) ─────────────────────────────
-def _enum(name: str, *values: str) -> sa.Enum:
-    return sa.Enum(*values, name=name, native_enum=True, create_type=False)
+# ── Enums are explicitly created via CREATE TYPE first, then referenced by
+#    `postgresql.ENUM(..., create_type=False)` so op.create_table never tries
+#    to recreate them.
+ENUMS: dict[str, tuple[str, ...]] = {
+    "org_role_enum": ("PLATFORM_ADMIN", "ORG_ADMIN", "ORG_ANALYST", "ORG_VIEWER"),
+    "ens_status_enum": (
+        "UNRESERVED", "RESERVED_NOT_ISSUED", "ISSUED_OFFCHAIN", "ISSUED_ONCHAIN", "REVOKED",
+    ),
+    "asset_class_enum": (
+        "COMPUTE_HARDWARE", "REAL_ESTATE", "EQUIPMENT", "LUXURY_GOODS",
+        "DATASET", "AI_ASSET", "OTHER",
+    ),
+    "asset_status_enum": (
+        "DRAFT", "EVIDENCE_INTAKE", "RESEARCH_IN_PROGRESS", "AIOV_DRAFTED",
+        "VALIDATOR_IN_REVIEW", "PASSED_FOR_PACKAGING", "DEED_DRAFTED",
+        "PUBLIC_VERIFICATION_PUBLISHED", "ARCHIVED",
+    ),
+    "condition_status_enum": ("NEW", "USED", "REFURBISHED", "UNKNOWN"),
+    "intended_use_enum": (
+        "INFERENCE", "TRAINING", "RENDERING", "RENTAL_COMPUTE",
+        "EDGE_INFERENCE", "GENERAL_AI_WORKLOAD",
+    ),
+    "evidence_type_enum": (
+        "PURCHASE_RECEIPT", "PRODUCT_SPECIFICATION", "SERIAL_OR_PHOTO",
+        "NVIDIA_SMI_CAPTURE", "BENCHMARK_OUTPUT", "THERMAL_POWER_OUTPUT",
+        "SYSTEM_SPECIFICATION", "MAINTENANCE_RECORD", "PRIOR_LISTING", "OTHER",
+    ),
+    "visibility_enum": ("PRIVATE", "PUBLIC_APPROVED"),
+    "ingestion_status_enum": (
+        "UPLOADED", "HASHING", "INDEXING", "INDEXED", "EXTRACTION_FAILED",
+    ),
+    "manifest_status_enum": ("CURRENT", "SUPERSEDED"),
+    "source_lane_enum": (
+        "PRIVATE_EVIDENCE", "PUBLIC_WEB", "INTERNAL_COMPARABLES", "MIXED",
+    ),
+    "research_status_enum": ("PENDING", "COMPLETED", "FAILED"),
+    "evidence_classification_enum": (
+        "MANUFACTURER_SPEC", "LISTING_PRICE", "CONFIRMED_SALE_PRICE",
+        "AUCTION_RESULT", "BENCHMARK_REFERENCE", "MARKET_COMMENTARY", "UNKNOWN",
+    ),
+    "workflow_type_enum": (
+        "EVIDENCE_SUMMARY", "RESEARCH_SYNTHESIS", "AIOV_DRAFT",
+        "VALIDATOR_ASSIST", "PUBLIC_DEED_SUMMARY", "EDGE_EVIDENCE_CLASSIFICATION",
+    ),
+    "ai_output_status_enum": ("GENERATED", "FAILED", "NOT_CONFIGURED"),
+    "aiov_status_enum": ("DRAFT", "GENERATED_FOR_VALIDATOR_REVIEW", "SUPERSEDED"),
+    "validator_status_enum": (
+        "NOT_STARTED", "IN_REVIEW", "FAILED_REQUIRES_REPAIR",
+        "PASSED_FOR_PACKAGING", "APPROVED_FOR_PUBLIC_VERIFICATION",
+    ),
+    "deed_status_enum": (
+        "DRAFT_REVIEW_RECORD", "PASSED_FOR_PACKAGING",
+        "APPROVED_FOR_PUBLIC", "SUPERSEDED", "REVOKED",
+    ),
+    "identity_type_enum": ("ORGANIZATION", "ASSET", "DEED", "EDGE_NODE"),
+    "issuance_mode_enum": ("RESERVED", "MOCK", "OFFCHAIN_CCIP", "ONCHAIN_WRAPPED"),
+    "identity_status_enum": ("RESERVED_NOT_ISSUED", "ISSUED", "REVOKED"),
+    "enrollment_status_enum": ("PENDING", "ENROLLED", "ENROLLED_DEMO", "STALE", "REVOKED"),
+}
+
+
+def _enum(name: str) -> postgresql.ENUM:
+    """Reference an already-created Postgres enum by name · no recreation."""
+    return postgresql.ENUM(*ENUMS[name], name=name, create_type=False)
 
 
 def upgrade() -> None:
     bind = op.get_bind()
-
-    enums = {
-        "org_role_enum": ("PLATFORM_ADMIN", "ORG_ADMIN", "ORG_ANALYST", "ORG_VIEWER"),
-        "ens_status_enum": (
-            "UNRESERVED", "RESERVED_NOT_ISSUED", "ISSUED_OFFCHAIN", "ISSUED_ONCHAIN", "REVOKED",
-        ),
-        "asset_class_enum": (
-            "COMPUTE_HARDWARE", "REAL_ESTATE", "EQUIPMENT", "LUXURY_GOODS",
-            "DATASET", "AI_ASSET", "OTHER",
-        ),
-        "asset_status_enum": (
-            "DRAFT", "EVIDENCE_INTAKE", "RESEARCH_IN_PROGRESS", "AIOV_DRAFTED",
-            "VALIDATOR_IN_REVIEW", "PASSED_FOR_PACKAGING", "DEED_DRAFTED",
-            "PUBLIC_VERIFICATION_PUBLISHED", "ARCHIVED",
-        ),
-        "condition_status_enum": ("NEW", "USED", "REFURBISHED", "UNKNOWN"),
-        "intended_use_enum": (
-            "INFERENCE", "TRAINING", "RENDERING", "RENTAL_COMPUTE",
-            "EDGE_INFERENCE", "GENERAL_AI_WORKLOAD",
-        ),
-        "evidence_type_enum": (
-            "PURCHASE_RECEIPT", "PRODUCT_SPECIFICATION", "SERIAL_OR_PHOTO",
-            "NVIDIA_SMI_CAPTURE", "BENCHMARK_OUTPUT", "THERMAL_POWER_OUTPUT",
-            "SYSTEM_SPECIFICATION", "MAINTENANCE_RECORD", "PRIOR_LISTING", "OTHER",
-        ),
-        "visibility_enum": ("PRIVATE", "PUBLIC_APPROVED"),
-        "ingestion_status_enum": (
-            "UPLOADED", "HASHING", "INDEXING", "INDEXED", "EXTRACTION_FAILED",
-        ),
-        "manifest_status_enum": ("CURRENT", "SUPERSEDED"),
-        "source_lane_enum": (
-            "PRIVATE_EVIDENCE", "PUBLIC_WEB", "INTERNAL_COMPARABLES", "MIXED",
-        ),
-        "research_status_enum": ("PENDING", "COMPLETED", "FAILED"),
-        "evidence_classification_enum": (
-            "MANUFACTURER_SPEC", "LISTING_PRICE", "CONFIRMED_SALE_PRICE",
-            "AUCTION_RESULT", "BENCHMARK_REFERENCE", "MARKET_COMMENTARY", "UNKNOWN",
-        ),
-        "workflow_type_enum": (
-            "EVIDENCE_SUMMARY", "RESEARCH_SYNTHESIS", "AIOV_DRAFT",
-            "VALIDATOR_ASSIST", "PUBLIC_DEED_SUMMARY", "EDGE_EVIDENCE_CLASSIFICATION",
-        ),
-        "ai_output_status_enum": ("GENERATED", "FAILED", "NOT_CONFIGURED"),
-        "aiov_status_enum": ("DRAFT", "GENERATED_FOR_VALIDATOR_REVIEW", "SUPERSEDED"),
-        "validator_status_enum": (
-            "NOT_STARTED", "IN_REVIEW", "FAILED_REQUIRES_REPAIR",
-            "PASSED_FOR_PACKAGING", "APPROVED_FOR_PUBLIC_VERIFICATION",
-        ),
-        "deed_status_enum": (
-            "DRAFT_REVIEW_RECORD", "PASSED_FOR_PACKAGING",
-            "APPROVED_FOR_PUBLIC", "SUPERSEDED", "REVOKED",
-        ),
-        "identity_type_enum": ("ORGANIZATION", "ASSET", "DEED", "EDGE_NODE"),
-        "issuance_mode_enum": ("RESERVED", "MOCK", "OFFCHAIN_CCIP", "ONCHAIN_WRAPPED"),
-        "identity_status_enum": ("RESERVED_NOT_ISSUED", "ISSUED", "REVOKED"),
-        "enrollment_status_enum": ("PENDING", "ENROLLED", "ENROLLED_DEMO", "STALE", "REVOKED"),
-    }
-    for name, values in enums.items():
-        sa.Enum(*values, name=name, native_enum=True).create(bind, checkfirst=True)
+    for name, values in ENUMS.items():
+        postgresql.ENUM(*values, name=name).create(bind, checkfirst=True)
 
     # ── users ──
     op.create_table(

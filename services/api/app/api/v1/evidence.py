@@ -133,7 +133,11 @@ async def upload_evidence(
         action="evidence.upload",
         entity_type="EvidenceItem",
         entity_id=str(evidence.id),
-        metadata={"sha256": digest, "evidence_type": ev_type.value},
+        metadata={
+            "asset_id": str(asset.id),
+            "sha256": digest,
+            "evidence_type": ev_type.value,
+        },
     )
     db.commit()
     db.refresh(evidence)
@@ -177,7 +181,10 @@ def regenerate(
         action="evidence.manifest.regenerate",
         entity_type="EvidenceManifest",
         entity_id=str(manifest.id),
-        metadata={"manifest_sha256": manifest.manifest_sha256},
+        metadata={
+            "asset_id": str(asset.id),
+            "manifest_sha256": manifest.manifest_sha256,
+        },
     )
     db.commit()
     return EvidenceManifestOut(

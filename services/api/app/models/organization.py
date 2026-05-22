@@ -28,7 +28,7 @@ class ENSStatus(str, enum.Enum):
 class Organization(Base, TimestampMixin):
     __tablename__ = "organizations"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     slug: Mapped[str] = mapped_column(String(64), unique=True, nullable=False, index=True)
     ens_label: Mapped[str | None] = mapped_column(String(64), unique=True, index=True)
@@ -53,7 +53,7 @@ class OrganizationMembership(Base, TimestampMixin):
         UniqueConstraint("organization_id", "user_id", name="uq_membership_org_user"),
     )
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False
     )

@@ -49,7 +49,7 @@ def generate(
         action="aiov.generate",
         entity_type="AIOVAnalysis",
         entity_id=str(analysis.id),
-        metadata={"version": analysis.version},
+        metadata={"asset_id": str(asset.id), "version": analysis.version},
     )
     db.commit()
     db.refresh(analysis)

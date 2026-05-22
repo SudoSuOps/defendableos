@@ -37,7 +37,7 @@ class EvidenceClassification(str, enum.Enum):
 class ResearchSession(Base, TimestampMixin):
     __tablename__ = "research_sessions"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True
     )
@@ -67,7 +67,7 @@ class ResearchSession(Base, TimestampMixin):
 class ResearchSource(Base, TimestampMixin):
     __tablename__ = "research_sources"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     research_session_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("research_sessions.id", ondelete="CASCADE"),

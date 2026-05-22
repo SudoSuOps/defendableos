@@ -90,6 +90,7 @@ def search_private(
         action="research.private",
         entity_type="ResearchSession",
         entity_id=str(session.id),
+        metadata={"asset_id": str(asset.id)},
     )
     db.commit()
     db.refresh(session)
@@ -166,7 +167,11 @@ def search_public(
         action="research.public",
         entity_type="ResearchSession",
         entity_id=str(session.id),
-        metadata={"status": result.status, "provider": result.provider},
+        metadata={
+            "asset_id": str(asset.id),
+            "status": result.status,
+            "provider": result.provider,
+        },
     )
     db.commit()
     db.refresh(session)

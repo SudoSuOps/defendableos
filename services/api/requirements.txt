@@ -13,6 +13,7 @@ psycopg[binary]==3.2.3
 # ── Auth / security ──
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
+bcrypt==4.2.1  # pin · passlib 1.7.4 is incompatible with bcrypt 5.x
 PyJWT==2.10.0
 
 # ── Object storage (S3 / MinIO) ──

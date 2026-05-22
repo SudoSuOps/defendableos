@@ -12,7 +12,7 @@ from app.db.base import Base, TimestampMixin, uuid_pk
 class AuditEvent(Base, TimestampMixin):
     __tablename__ = "audit_events"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="SET NULL"), index=True
     )

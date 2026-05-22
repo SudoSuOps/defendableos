@@ -51,7 +51,11 @@ def create(
         action="deed.create",
         entity_type="DefendableDeed",
         entity_id=str(deed.id),
-        metadata={"version": deed.version, "record_hash": deed.record_hash},
+        metadata={
+            "asset_id": str(asset.id),
+            "version": deed.version,
+            "record_hash": deed.record_hash,
+        },
     )
     db.commit()
     db.refresh(deed)
@@ -124,7 +128,7 @@ def publish(
         action="deed.publish",
         entity_type="DefendableDeed",
         entity_id=str(deed.id),
-        metadata={"public_slug": slug},
+        metadata={"asset_id": str(deed.asset_id), "public_slug": slug},
     )
     db.commit()
     db.refresh(deed)

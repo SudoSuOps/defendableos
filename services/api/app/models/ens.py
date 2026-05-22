@@ -33,7 +33,7 @@ class IdentityStatus(str, enum.Enum):
 class ENSIdentity(Base, TimestampMixin):
     __tablename__ = "ens_identities"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True
     )

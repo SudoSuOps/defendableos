@@ -274,16 +274,35 @@ def run_deterministic_checks(
         results.append(CheckResult(check="NO_LICENSED_APPRAISAL_CLAIM", status="PASS"))
 
     # 11 · no certification or authentication guarantee
-    if aiov and aiov.analysis_json:
-        disclosures = aiov.analysis_json.get("limitations", [])
-        text = " ".join(disclosures).lower() if isinstance(disclosures, list) else ""
-        bad = "guarantee" in text and "warrant" in text
+    # Look for AFFIRMATIVE claims in the narrative (not denials in limitations).
+    # The standard limitation text contains words like "warranty" and "guarantee"
+    # legitimately ("Not a warranty, certification, or authentication guarantee");
+    # those should not trigger the check.
+    if aiov and aiov.narrative:
+        narrative_lower = aiov.narrative.lower()
+        affirmative_patterns = [
+            "we guarantee",
+            "is guaranteed",
+            "this guarantees",
+            "we warrant",
+            "we certify",
+            "this certifies",
+            "is hereby authenticated",
+            "we authenticate",
+            "this constitutes a warranty",
+            "this constitutes certification",
+        ]
+        hits = [p for p in affirmative_patterns if p in narrative_lower]
         results.append(
             CheckResult(
                 check="NO_CERTIFICATION_OR_AUTHENTICATION_GUARANTEE",
-                status="FAIL" if bad else "PASS",
-                severity="BLOCKING" if bad else None,
-                finding="Disclaimers may not promise a guarantee or warranty." if bad else None,
+                status="FAIL" if hits else "PASS",
+                severity="BLOCKING" if hits else None,
+                finding=(
+                    f"AIOV narrative contains affirmative claim(s): {', '.join(hits)}"
+                    if hits
+                    else None
+                ),
             )
         )
     else:

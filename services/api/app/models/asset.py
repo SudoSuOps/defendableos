@@ -77,7 +77,7 @@ class Asset(Base, TimestampMixin):
         ),
     )
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True
     )
@@ -113,7 +113,7 @@ class Asset(Base, TimestampMixin):
 class ComputeAssetProfile(Base, TimestampMixin):
     __tablename__ = "compute_asset_profiles"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     asset_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("assets.id", ondelete="CASCADE"), unique=True, nullable=False
     )

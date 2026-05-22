@@ -44,7 +44,7 @@ class ManifestStatus(str, enum.Enum):
 class EvidenceItem(Base, TimestampMixin):
     __tablename__ = "evidence_items"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True
     )
@@ -83,7 +83,7 @@ class EvidenceItem(Base, TimestampMixin):
 class EvidenceManifest(Base, TimestampMixin):
     __tablename__ = "evidence_manifests"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     asset_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("assets.id", ondelete="CASCADE"), nullable=False, index=True
     )
@@ -100,7 +100,7 @@ class EvidenceManifest(Base, TimestampMixin):
 class ExtractedDocument(Base, TimestampMixin):
     __tablename__ = "extracted_documents"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     evidence_item_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("evidence_items.id", ondelete="CASCADE"),
@@ -116,7 +116,7 @@ class ExtractedDocument(Base, TimestampMixin):
 class EvidenceChunk(Base, TimestampMixin):
     __tablename__ = "evidence_chunks"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     evidence_item_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("evidence_items.id", ondelete="CASCADE"),

@@ -34,7 +34,7 @@ class AIOVStatus(str, enum.Enum):
 class AIOutput(Base, TimestampMixin):
     __tablename__ = "ai_outputs"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     organization_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("organizations.id", ondelete="CASCADE"), nullable=False, index=True
     )
@@ -63,7 +63,7 @@ class AIOutput(Base, TimestampMixin):
 class AIOVAnalysis(Base, TimestampMixin):
     __tablename__ = "aiov_analyses"
 
-    id: Mapped = uuid_pk()
+    id: Mapped[uuid.UUID] = uuid_pk()
     asset_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("assets.id", ondelete="CASCADE"), nullable=False, index=True
     )
