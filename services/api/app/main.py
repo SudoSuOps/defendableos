@@ -19,7 +19,21 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.web_base_url, "http://localhost:3000"],
+    allow_origins=[
+        # local dev
+        settings.web_base_url,
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:4173",
+        # production landing + subdomains (where ledger UI calls /public/lookup from)
+        "https://defendableos.com",
+        "https://www.defendableos.com",
+        "https://ledger.defendableos.com",
+        "https://verify.defendableos.com",
+        "https://app.defendableos.com",
+        "https://box.defendableos.com",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
