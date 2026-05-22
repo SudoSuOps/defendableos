@@ -55,53 +55,63 @@ export default function DeedPage({ params }: { params: { assetId: string } }) {
   return (
     <div className="space-y-6">
       <Card
-        title="Defendable Deed"
-        subtitle="AIOV gives the opinion. DefendableOS proves the value."
+        title="Defendable Deed · Draft"
+        subtitle="Draft records preview publicly. Issuance requires human approval."
         actions={
           <button
             onClick={createDeed}
             disabled={busy}
             className="px-4 py-2 rounded border border-honey-400/50 text-honey-200 hover:bg-honey-400/[0.08] text-sm font-semibold disabled:opacity-50"
           >
-            {busy ? "Generating…" : "Generate deed version"}
+            {busy ? "Generating…" : "Generate draft deed version"}
           </button>
         }
       >
         {err && <div className="text-sm text-rose-400 mb-3">{err}</div>}
         {!latest ? (
           <div className="text-sm text-stone-500 py-8 text-center">
-            No deed yet. Generate after the validator status reaches PASSED_FOR_PACKAGING.
+            No draft deed yet. Generate after the validator passes for draft packaging.
           </div>
         ) : (
           <div className="grid lg:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <Chip tone={latest.is_public ? "ok" : "pending"}>{latest.status}</Chip>
-                <span className="text-xs text-stone-500">{latest.deed_reference}</span>
+              <div className="flex items-center gap-2 flex-wrap">
+                <Chip tone="pending">DRAFT · NOT ISSUED · NOT PUBLISHED</Chip>
+                <span className="text-xs text-stone-500 font-mono">{latest.deed_reference}</span>
               </div>
+
+              {/* Five-status decomposition */}
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 mt-3 text-xs">
+                <StatusCell label="Record"      value="DRAFT_REVIEW_RECORD" />
+                <StatusCell label="Validator"   value="PASSED_FOR_DRAFT_PACKAGING" />
+                <StatusCell label="Publication" value={latest.is_public ? "PUBLIC_PREVIEW" : "NOT_PUBLISHED"} />
+                <StatusCell label="Value"       value="WITHHELD_PENDING_VALIDATOR_REVIEW" />
+                <StatusCell label="ENS"         value="RESERVED_NOT_ISSUED" />
+              </div>
+
               <DeedFieldRow label="Asset" value={latest.deed_json?.asset?.model} />
               <DeedFieldRow label="Manifest hash" value={latest.deed_json?.evidence_packet?.manifest_sha256} mono />
               <DeedFieldRow label="Validator receipt" value={latest.deed_json?.validator_review?.receipt_sha256} mono />
               <DeedFieldRow label="ENS identity (reserved)" value={latest.deed_json?.ens_identity?.name} mono />
-              <DeedFieldRow label="Record hash" value={latest.record_hash} mono />
+              <DeedFieldRow label="Record hash" value={latest.deed_json?.integrity?.record_hash ?? latest.record_hash} mono />
               {!latest.is_public ? (
                 <button
                   onClick={() => publish(latest.id)}
                   className="mt-3 px-4 py-2 rounded border border-honey-400/50 text-honey-200 hover:bg-honey-400/[0.08] text-sm font-semibold"
                 >
-                  Publish public verification page
+                  Publish public preview
                 </button>
               ) : (
                 <a
                   href={`/verify/${latest.public_slug}`}
                   className="block mt-3 text-sm text-honey-300 hover:text-honey-200"
                 >
-                  Open public verification page →
+                  Open public preview →
                 </a>
               )}
             </div>
             <div>
-              <div className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-semibold mb-2">deed.record.json</div>
+              <div className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-semibold mb-2">deed.record.json (draft)</div>
               <pre className="text-[11.5px] font-mono text-stone-300 bg-stone-950 border border-stone-800 rounded p-3 overflow-x-auto max-h-[480px]">
 {JSON.stringify(latest.deed_json, null, 2)}
               </pre>
@@ -133,6 +143,24 @@ function DeedFieldRow({ label, value, mono }: { label: string; value: any; mono?
       <div className={`mt-1 text-sm ${mono ? "font-mono text-xs text-stone-300 break-all" : "text-stone-100"}`}>
         {value ?? "—"}
       </div>
+    </div>
+  );
+}
+
+function StatusCell({ label, value }: { label: string; value: string }) {
+  const lower = value.toLowerCase();
+  const pending =
+    lower.includes("draft") ||
+    lower.includes("not_published") ||
+    lower.includes("reserved") ||
+    lower.includes("withheld") ||
+    lower.includes("preview");
+  return (
+    <div className="grid grid-cols-[100px_1fr] gap-2 items-baseline">
+      <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 font-semibold">{label}</span>
+      <span className={`font-mono text-[11px] ${pending ? "text-amber-300" : "text-emerald-300"}`}>
+        {value}
+      </span>
     </div>
   );
 }
