@@ -4,6 +4,7 @@ from __future__ import annotations
 from functools import lru_cache
 from typing import Literal
 
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -21,10 +22,33 @@ class Settings(BaseSettings):
     api_base_url: str = "http://localhost:8000"
     web_base_url: str = "http://localhost:3000"
 
-    # Database
+    # Database · normalised to SQLAlchemy 2.0 + psycopg3 dialect form regardless
+    # of what the host sets (Fly Managed Postgres hands out `postgresql://...`,
+    # Heroku-style providers use `postgres://...`, our local docker-compose
+    # specifies the dialect explicitly).
     database_url: str = (
         "postgresql+psycopg://defendable:defendable@localhost:5432/defendableos"
     )
+
+    @field_validator("database_url")
+    @classmethod
+    def _normalize_db_url(cls, v: str) -> str:
+        """Coerce postgres:// or postgresql:// into postgresql+psycopg:// so
+        SQLAlchemy 2.0 can pick the psycopg3 driver. Idempotent · skips when
+        an explicit `+driver` scheme is already specified."""
+        if not v:
+            return v
+        scheme, _, rest = v.partition("://")
+        if not rest:
+            return v
+        # Already specifies a driver · trust the operator.
+        if "+" in scheme:
+            return v
+        if scheme == "postgres":
+            return f"postgresql+psycopg://{rest}"
+        if scheme == "postgresql":
+            return f"postgresql+psycopg://{rest}"
+        return v
 
     # Redis
     redis_url: str = "redis://localhost:6379/0"
