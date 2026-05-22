@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-import os
 from logging.config import fileConfig
 
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
 # Import the metadata so 'alembic revision --autogenerate' can detect models.
+from app.core.config import settings  # noqa: E402 · routes DATABASE_URL through the canonical normalizer
 from app.db.base import Base  # noqa: F401
 from app.models import *  # noqa: F401,F403  ← register all models on Base
 
@@ -15,10 +15,13 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Honor DATABASE_URL env var (overrides alembic.ini).
-database_url = os.environ.get("DATABASE_URL")
-if database_url:
-    config.set_main_option("sqlalchemy.url", database_url)
+# Always use Settings.database_url · this routes through the pydantic
+# field_validator that normalises `postgres://` and `postgresql://` (Fly /
+# Heroku style) into the SQLAlchemy + psycopg3 dialect form
+# `postgresql+psycopg://...`. Without this, alembic falls back to the legacy
+# psycopg2 driver and crashes with ModuleNotFoundError on hosts where only
+# psycopg3 is installed (which is our prod container).
+config.set_main_option("sqlalchemy.url", settings.database_url)
 
 target_metadata = Base.metadata
 
