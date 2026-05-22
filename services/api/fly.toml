@@ -1,54 +1,45 @@
-# Fly.io app configuration · DefendableOS API
-# Deploy with:  flyctl deploy --remote-only
+# fly.toml app configuration file generated for defendableos-api on 2026-05-22T15:26:05-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-app = "defendableos-api"
-primary_region = "iad"           # IAD = Ashburn, VA · low-latency to most CRE/compute customers
-kill_signal = "SIGINT"
-kill_timeout = 30
+app = 'defendableos-api'
+primary_region = 'iad'
+kill_signal = 'SIGINT'
+kill_timeout = '30s'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
 
 [env]
-  APP_ENV = "production"
-  APP_NAME = "DefendableOS"
-  API_BASE_URL = "https://api.defendableos.com"
-  WEB_BASE_URL = "https://defendableos.com"
-  # ENS stays in mock mode in production until live issuance is explicitly
-  # wired and reviewed. Doctrine: ENS_LIVE_WRITES_ENABLED must NEVER be
-  # set via fly.toml · it has to be a deliberate secret set by an operator.
-  ENS_MODE = "mock"
-  ENS_LIVE_WRITES_ENABLED = "false"
-  ENS_PARENT_NAME = "defendable.eth"
-  # Run migrations + seed on every cold start · idempotent.
-  SEED_DEMO_DATA = "true"
-  # uvicorn worker count · 2 fits the smallest VM
-  UVICORN_WORKERS = "2"
+  API_BASE_URL = 'https://api.defendableos.com'
+  APP_ENV = 'production'
+  APP_NAME = 'DefendableOS'
+  ENS_LIVE_WRITES_ENABLED = 'false'
+  ENS_MODE = 'mock'
+  ENS_PARENT_NAME = 'defendable.eth'
+  SEED_DEMO_DATA = 'true'
+  UVICORN_WORKERS = '2'
+  WEB_BASE_URL = 'https://defendableos.com'
 
-# ─── HTTP service · auto-HTTPS at <app>.fly.dev plus custom domains ───
 [http_service]
   internal_port = 8000
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
-  min_machines_running = 1        # keep one always-on so /verify never cold-starts
-  processes = ["app"]
+  min_machines_running = 1
+  processes = ['app']
 
   [[http_service.checks]]
-    interval = "30s"
-    timeout = "5s"
-    grace_period = "10s"
-    method = "GET"
-    path = "/healthz"
+    interval = '30s'
+    timeout = '5s'
+    grace_period = '10s'
+    method = 'GET'
+    path = '/healthz'
 
-# ─── Machine size · smallest tier · ~$2-3/mo per machine ───
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = "512mb"
+  size = 'shared-cpu-1x'
+  memory = '512mb'
+  cpu_kind = 'shared'
   cpus = 1
-  cpu_kind = "shared"
-
-# Secrets live OUTSIDE this file · set with:
-#   fly secrets set JWT_SECRET=…  SESSION_SECRET=…  EDGE_ENROLLMENT_SECRET=…
-# Optional: BRAVE_API_KEY · MOONSHOT_API_KEY · OPENAI_API_KEY · EBAY_*
-# DATABASE_URL is auto-attached when you `fly postgres attach`.
+  memory_mb = 512

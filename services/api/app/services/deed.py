@@ -60,6 +60,44 @@ DRAFT_DISCLAIMER = (
 )
 
 
+_OPERATOR_ASK_DOCTRINE_NOTE = (
+    "Operator's stated asking price. This is the operator's claim only · "
+    "not a validator-issued value, professional appraisal, or "
+    "confirmed-sale comparable. The Defendable Deed is still in draft "
+    "and the value has not been certified."
+)
+
+
+def _build_public_aiov_block(aiov: AIOVAnalysis) -> dict:
+    """Compose the public-safe aiov_analysis block.
+
+    Surfaces value_display_status + valuation_issued always. When the
+    AIOV's value_opinion declares an OPERATOR_ASK_PRICE, also surfaces
+    the operator_ask block (currency + amount_usd + label + doctrine
+    disclaimer). Per doctrine the operator's ask travels with the deed
+    as an operator claim, never as a validated value.
+    """
+    vo = (aiov.analysis_json or {}).get("value_opinion", {}) or {}
+    display_status = vo.get("display_status", "WITHHELD_PENDING_VALIDATOR_REVIEW")
+    block: dict = {
+        "analysis_id": str(aiov.id),
+        "status": aiov.status.value,
+        "value_display_status": display_status,
+        "valuation_issued": False,
+    }
+    if display_status == "OPERATOR_ASK_PRICE":
+        ask_usd = vo.get("operator_ask_price_usd")
+        ask_currency = vo.get("operator_ask_currency", "USD")
+        if isinstance(ask_usd, (int, float)) and ask_usd > 0:
+            block["operator_ask"] = {
+                "label": "Operator asking",
+                "currency": ask_currency,
+                "amount_usd": int(ask_usd),
+                "doctrine_note": _OPERATOR_ASK_DOCTRINE_NOTE,
+            }
+    return block
+
+
 def build_deed_payload(
     asset: Asset,
     manifest: EvidenceManifest,
@@ -105,14 +143,7 @@ def build_deed_payload(
             "public_evidence_disclosure": "PRIVATE_EVIDENCE_REFERENCED_BY_HASH_ONLY",
         },
         "aiov_analysis": (
-            {
-                "analysis_id": str(aiov.id),
-                "status": aiov.status.value,
-                "value_display_status": (aiov.analysis_json or {})
-                .get("value_opinion", {})
-                .get("display_status", "WITHHELD_PENDING_VALIDATOR_REVIEW"),
-                "valuation_issued": False,
-            }
+            _build_public_aiov_block(aiov)
             if aiov
             else None
         ),
