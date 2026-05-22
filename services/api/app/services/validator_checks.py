@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 
 from app.models.ai import AIOVAnalysis
 from app.models.asset import Asset
-from app.models.evidence import EvidenceItem, EvidenceManifest, ManifestStatus, Visibility
+from app.models.evidence import EvidenceItem, EvidenceManifest, ManifestStatus
 from app.models.research import (
     EvidenceClassification,
     ResearchSession,
@@ -243,7 +243,7 @@ def run_deterministic_checks(
     # 9 · AI-assisted limitation disclosed
     if aiov:
         limitations = aiov.analysis_json.get("limitations", []) if aiov.analysis_json else []
-        if any("AI" in (l or "").upper() or "AI-ASSISTED" in (l or "").upper() for l in limitations):
+        if any("AI" in (lim or "").upper() or "AI-ASSISTED" in (lim or "").upper() for lim in limitations):
             results.append(CheckResult(check="AI_ASSISTED_LIMITATION_DISCLOSED", status="PASS"))
         else:
             results.append(

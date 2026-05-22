@@ -57,7 +57,9 @@ def heartbeat() -> None:
 def hash_file_cmd(path: Path) -> None:
     """Compute the SHA-256 of a local file without uploading."""
     digest, size = sha256_file(path)
-    console.print(f"{digest}  {size} bytes  {path}")
+    # Use plain print() not console.print(): Rich wraps long lines, which
+    # breaks `awk '{print $1}'` and similar pipelines used in scripts/CI.
+    print(f"{digest}  {size} bytes  {path}")
 
 
 @app.command("upload-evidence")

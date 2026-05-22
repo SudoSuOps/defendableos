@@ -23,6 +23,17 @@ def _load_public_deed(db: Session, slug: str) -> DefendableDeed:
     return deed
 
 
+# IMPORTANT: register the `.json` route FIRST so it wins over the catch-all
+# slug route. FastAPI/Starlette match path params non-greedily up to the next
+# `/`, so without ordering `/public/verify/{slug}` would gobble `{slug}.json`
+# into the slug itself, producing a 404.
+@router.get("/public/verify/{public_record_slug}.json")
+def public_record_json(public_record_slug: str, db: Session = Depends(get_db)) -> JSONResponse:
+    deed = _load_public_deed(db, public_record_slug)
+    payload = filter_public_payload(deed.deed_json)
+    return JSONResponse(payload)
+
+
 @router.get("/public/verify/{public_record_slug}")
 def public_record(public_record_slug: str, db: Session = Depends(get_db)) -> dict:
     deed = _load_public_deed(db, public_record_slug)
@@ -35,10 +46,3 @@ def public_record(public_record_slug: str, db: Session = Depends(get_db)) -> dic
         "issued_at": deed.deed_json.get("issued_at"),
         "deed_public": payload,
     }
-
-
-@router.get("/public/verify/{public_record_slug}.json")
-def public_record_json(public_record_slug: str, db: Session = Depends(get_db)) -> JSONResponse:
-    deed = _load_public_deed(db, public_record_slug)
-    payload = filter_public_payload(deed.deed_json)
-    return JSONResponse(payload)

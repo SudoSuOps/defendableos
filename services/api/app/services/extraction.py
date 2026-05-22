@@ -10,7 +10,6 @@ import csv
 import io
 import json
 import uuid
-from typing import Iterable
 
 from sqlalchemy.orm import Session
 

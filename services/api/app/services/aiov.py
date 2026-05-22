@@ -6,7 +6,6 @@ from typing import Iterable
 
 from sqlalchemy.orm import Session
 
-from app.core.config import settings
 from app.integrations.model_gateway import get_model_gateway
 from app.models.ai import (
     AIOutput,

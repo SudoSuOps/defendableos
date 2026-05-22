@@ -11,7 +11,6 @@ from fastapi import (
     Form,
     HTTPException,
     UploadFile,
-    status,
 )
 from sqlalchemy.orm import Session
 
@@ -140,6 +139,10 @@ def enroll(body: EdgeEnrollRequest, db: Session = Depends(get_db)) -> EdgeEnroll
         public_key_or_device_fingerprint=body.public_key_or_device_fingerprint,
     )
     db.add(node)
+    # Flush the INSERT first so `consumed_by_node_id` references a row that
+    # actually exists; otherwise the UPDATE to edge_enrollment_tokens hits the
+    # FK before the node insert lands.
+    db.flush()
     token_record.consumed_at = datetime.now(tz=timezone.utc)
     token_record.consumed_by_node_id = node.id
     db.flush()
@@ -239,6 +242,9 @@ async def edge_upload_evidence(
         edge_node_id=node.id,
     )
     db.add(evidence)
+    # Flush so EdgeUploadEvent's FK to evidence_item_id resolves to a real row
+    # before regenerate_manifest() does its own queries.
+    db.flush()
     db.add(
         EdgeUploadEvent(
             id=uuid.uuid4(),

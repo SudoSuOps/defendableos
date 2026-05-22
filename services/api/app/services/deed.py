@@ -9,7 +9,7 @@ from slugify import slugify
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
-from app.models.ai import AIOVAnalysis, AIOVStatus
+from app.models.ai import AIOVAnalysis
 from app.models.asset import Asset
 from app.models.deed import DeedStatus, DefendableDeed
 from app.models.evidence import EvidenceManifest, ManifestStatus
