@@ -90,6 +90,10 @@ def get_model_gateway() -> ModelGateway:
             from app.integrations.providers.kimi import KimiProvider
 
             provider: ModelProvider = KimiProvider()
+        elif provider_name == "openai":
+            from app.integrations.providers.openai import OpenAIProvider
+
+            provider = OpenAIProvider()
         else:
             provider = ModelProvider()  # type: ignore[abstract]
         _gateway = ModelGateway(provider)

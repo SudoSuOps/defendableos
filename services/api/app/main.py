@@ -33,8 +33,10 @@ def healthz() -> dict:
         "service": "defendableos-api",
         "version": "0.1.0",
         "integrations": {
+            "model_provider": settings.model_provider,
             "brave_configured": settings.brave_configured,
             "kimi_configured": settings.kimi_configured,
+            "openai_configured": settings.openai_configured,
             "ens_mode": settings.ens_mode,
             "ens_live_writes_enabled": settings.ens_live_writes_enabled,
         },

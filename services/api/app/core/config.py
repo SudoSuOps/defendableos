@@ -47,12 +47,20 @@ class Settings(BaseSettings):
     brave_api_key: str = ""
     brave_llm_context_url: str = "https://api.search.brave.com/res/v1/llm/context"
 
-    # Model gateway · Kimi K2.6
+    # Model gateway · provider-agnostic. Switch with MODEL_PROVIDER=kimi|openai.
     model_provider: str = "kimi"
+
+    # ── Kimi K2.6 (Moonshot · OpenAI-compatible) ──
     moonshot_api_key: str = ""
     moonshot_base_url: str = "https://api.moonshot.ai/v1"
     moonshot_model: str = "kimi-k2.6"
     kimi_thinking_default: Literal["enabled", "disabled"] = "disabled"
+
+    # ── OpenAI ──
+    openai_api_key: str = ""
+    openai_base_url: str = "https://api.openai.com/v1"
+    openai_model: str = "gpt-4o"
+    openai_organization: str = ""
 
     # ENS · defendable.eth
     ens_parent_name: str = "defendable.eth"
@@ -83,6 +91,10 @@ class Settings(BaseSettings):
     @property
     def kimi_configured(self) -> bool:
         return bool(self.moonshot_api_key)
+
+    @property
+    def openai_configured(self) -> bool:
+        return bool(self.openai_api_key)
 
 
 @lru_cache(maxsize=1)
