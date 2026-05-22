@@ -1,0 +1,49 @@
+{
+  "deed_type": "DEFENDABLE_DEED",
+  "deed_version": "0.1",
+  "record_status": "DRAFT_REVIEW_RECORD",
+  "proof_of_value": {
+    "framework": "DEFENDABLEOS",
+    "doctrine": "VALIDATE_THE_VALIDATOR",
+    "intelligence_engine": "AIOV",
+    "record_purpose": "Evidence-backed asset value package prepared for review"
+  },
+  "asset": {
+    "asset_reference": "DOV-COMPUTE-000001",
+    "asset_class": "COMPUTE_HARDWARE",
+    "category": "GPU_ACCELERATOR",
+    "manufacturer": "NVIDIA",
+    "model": "RTX PRO 6000 Blackwell Workstation GPU"
+  },
+  "evidence_packet": {
+    "manifest_id": "00000000-0000-0000-0000-000000000000",
+    "manifest_sha256": "<illustrative>",
+    "evidence_item_count": 14,
+    "public_evidence_disclosure": "PRIVATE_EVIDENCE_REFERENCED_BY_HASH_ONLY"
+  },
+  "aiov_analysis": {
+    "analysis_id": "<illustrative>",
+    "status": "GENERATED_FOR_REVIEW",
+    "value_display_status": "WITHHELD_OR_REVIEWED_ONLY"
+  },
+  "validator_review": {
+    "protocol": "VALIDATE_THE_VALIDATOR",
+    "receipt_id": "<illustrative>",
+    "status": "PASSED_FOR_PACKAGING",
+    "receipt_sha256": "<illustrative>"
+  },
+  "ens_identity": {
+    "name": "ddeed-dov-compute-000001.swarmbee.defendable.eth",
+    "status": "RESERVED_NOT_ISSUED",
+    "public_resolution_target": null,
+    "parent_organization_ens": "swarmbee.defendable.eth"
+  },
+  "disclosures": {
+    "ai_assisted_record": true,
+    "professional_appraisal": false,
+    "legal_certification": false,
+    "authentication_guarantee": false,
+    "disclaimer": "This record is an evidence and analysis package. Asset-specific professional, legal, regulatory, licensing, authentication, insurance, or appraisal requirements may still apply."
+  },
+  "record_hash": "<computed at issuance>"
+}

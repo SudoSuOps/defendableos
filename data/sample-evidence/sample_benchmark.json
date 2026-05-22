@@ -1,0 +1,15 @@
+{
+  "evidence_type": "BENCHMARK_OUTPUT",
+  "asset_reference": "DOV-COMPUTE-000001",
+  "model": "RTX PRO 6000 Blackwell Workstation GPU",
+  "driver_version": "555.42.06",
+  "cuda_version": "12.5",
+  "benchmark": {
+    "name": "ILLUSTRATIVE_LLM_THROUGHPUT",
+    "workload": "Qwen-7B FP16 · batch 1 · 4096 ctx",
+    "tokens_per_second": "<illustrative>",
+    "peak_vram_gb": "<illustrative>"
+  },
+  "captured_at": "2026-05-22T12:00:00Z",
+  "captured_by": "defendable-box · box-01.swarmbee.defendable.eth"
+}

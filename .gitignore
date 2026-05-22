@@ -1,0 +1,68 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.installed.cfg
+*.egg
+dist/
+build/
+.eggs/
+.venv/
+venv/
+.env
+.env.local
+.env.*.local
+.python-version
+
+# --- Node / Next.js ---
+node_modules/
+.next/
+out/
+.turbo/
+.vercel/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Tests / coverage ---
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+.cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Docker / runtime data ---
+infrastructure/postgres-data/
+infrastructure/minio-data/
+infrastructure/redis-data/
+
+# --- Secrets · NEVER commit these ---
+*.pem
+*.key
+*.crt
+secrets/
+
+# --- Edge agent local credentials ---
+~/.defendable-box/
+.defendable-box/
+
+# --- Generated artifacts ---
+*.tsbuildinfo
+.swc/
+.eslintcache

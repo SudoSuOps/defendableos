@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: #0a0a0a;
+  color: #e7e5e4;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: rgba(246, 198, 75, 0.30);
+  color: #fff8e1;
+}
+
+.deed-card {
+  background: linear-gradient(180deg, rgba(28,25,23,0.92) 0%, rgba(12,10,9,0.95) 100%);
+  border: 1px solid rgba(168, 162, 158, 0.18);
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.6);
+}
+
+.brand-grid {
+  background-image:
+    linear-gradient(rgba(212, 170, 40, 1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 170, 40, 1) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.04;
+}

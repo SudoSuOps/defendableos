@@ -1,0 +1,38 @@
+# ─── DefendableOS API · pinned dependencies ───
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+pydantic==2.9.2
+pydantic-settings==2.6.1
+python-multipart==0.0.17
+
+# ── Database ──
+sqlalchemy==2.0.36
+alembic==1.14.0
+psycopg[binary]==3.2.3
+
+# ── Auth / security ──
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+PyJWT==2.10.0
+
+# ── Object storage (S3 / MinIO) ──
+boto3==1.35.71
+
+# ── Background tasks ──
+dramatiq[redis]==1.17.1
+redis==5.2.0
+
+# ── HTTP ──
+httpx==0.28.0
+
+# ── PDF / document extraction ──
+pymupdf==1.24.14
+
+# ── Utility ──
+python-slugify==8.0.4
+email-validator==2.2.0
+
+# ── Dev ──
+pytest==8.3.3
+pytest-asyncio==0.24.0
+ruff==0.7.4
