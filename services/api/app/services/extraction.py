@@ -80,6 +80,46 @@ EXTRACTORS = {
     "text/markdown": _extract_text,
 }
 
+# Image content types that should route through the vision model (when configured).
+VISION_CONTENT_TYPES = {"image/png", "image/jpeg", "image/webp", "image/gif"}
+
+
+def _extract_image_via_vision(content_type: str, file_bytes: bytes) -> str:
+    """Ask the model gateway to describe an image · privacy-safe extraction.
+
+    The returned text is stored privately (ExtractedDocument.extracted_text_private)
+    and becomes searchable through the private evidence search lane. No image
+    bytes leave the server beyond the single model call; nothing is logged.
+    """
+    from app.integrations.model_gateway import VisionImage, get_model_gateway
+    from app.models.ai import WorkflowType
+
+    gateway = get_model_gateway()
+    if not gateway.provider.is_configured():
+        return ""
+
+    img = VisionImage(data=file_bytes, content_type=content_type)
+    result = gateway.generate_structured(
+        workflow_type=WorkflowType.EDGE_EVIDENCE_CLASSIFICATION,
+        prompt_version="evidence_image_v1",
+        input_reference={"content_type": content_type, "byte_size": len(file_bytes)},
+        prompt_payload={
+            "task": "evidence_image_description",
+            "instructions": (
+                "Describe the contents of the supplied image. Be factual. Capture "
+                "anything that would help identify a compute hardware asset · GPU "
+                "model labels, serial-number text, sticker text, nvidia-smi output "
+                "panels, benchmark numbers, condition (boxed/loose), packaging, "
+                "ports, fans, cabling. Do NOT speculate about value or authenticity. "
+                "Mark text you cannot fully read as [unclear]."
+            ),
+        },
+        images=[img],
+    )
+    if result.status != "GENERATED":
+        return ""
+    return result.output_text or ""
+
 
 def extract_evidence(
     db: Session,
@@ -87,8 +127,11 @@ def extract_evidence(
     file_bytes: bytes,
 ) -> ExtractedDocument:
     content_type = (evidence.content_type or "").lower()
-    extractor = EXTRACTORS.get(content_type, _extract_text)
-    text = extractor(file_bytes) if file_bytes else ""
+    if content_type in VISION_CONTENT_TYPES:
+        text = _extract_image_via_vision(content_type, file_bytes) if file_bytes else ""
+    else:
+        extractor = EXTRACTORS.get(content_type, _extract_text)
+        text = extractor(file_bytes) if file_bytes else ""
 
     chunks = _chunk_text(text)
     extracted = ExtractedDocument(

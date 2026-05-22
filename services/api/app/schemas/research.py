@@ -17,6 +17,16 @@ class PublicResearchRequest(BaseModel):
     context_threshold_mode: str = "balanced"
 
 
+class EbayResearchRequest(BaseModel):
+    query: str
+    limit: int = Field(default=10, ge=1, le=50)
+    include_sold_comps: bool = Field(
+        default=True,
+        description="Also call Marketplace Insights for sold comps · requires business approval.",
+    )
+    marketplace_id: str | None = None
+
+
 class ResearchSourceOut(BaseModel):
     id: uuid.UUID
     source_type: str

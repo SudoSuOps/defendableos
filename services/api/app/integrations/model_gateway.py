@@ -41,6 +41,17 @@ class ToolCall:
 
 
 @dataclass
+class VisionImage:
+    """One image to include in a multimodal prompt · bytes + mime type."""
+    data: bytes
+    content_type: str  # 'image/png', 'image/jpeg', 'image/webp', 'image/gif'
+
+    def to_data_url(self) -> str:
+        import base64
+        return f"data:{self.content_type};base64,{base64.b64encode(self.data).decode('ascii')}"
+
+
+@dataclass
 class ModelResult:
     provider: str
     model: str
@@ -67,6 +78,7 @@ class ModelProvider:
         prompt_payload: dict,
         thinking_enabled: bool,
         tools: list[ToolDefinition] | None = None,
+        images: list[VisionImage] | None = None,
     ) -> ModelResult:  # pragma: no cover · abstract
         raise NotImplementedError
 
@@ -83,6 +95,7 @@ class ModelGateway:
         prompt_payload: dict,
         thinking_enabled: bool = False,
         tools: list[ToolDefinition] | None = None,
+        images: list[VisionImage] | None = None,
     ) -> ModelResult:
         if not self.provider.is_configured():
             return ModelResult(
@@ -99,6 +112,7 @@ class ModelGateway:
                 prompt_payload=prompt_payload,
                 thinking_enabled=thinking_enabled,
                 tools=tools,
+                images=images,
             )
         except Exception as exc:
             return ModelResult(

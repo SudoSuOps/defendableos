@@ -16,6 +16,7 @@ from app.integrations.model_gateway import (
     ModelResult,
     ToolCall,
     ToolDefinition,
+    VisionImage,
 )
 from app.models.ai import WorkflowType
 
@@ -73,6 +74,7 @@ class OpenAIProvider(ModelProvider):
         prompt_payload: dict,
         thinking_enabled: bool,
         tools: list[ToolDefinition] | None = None,
+        images: list[VisionImage] | None = None,
     ) -> ModelResult:
         system_prompt = _SYSTEM_PROMPT_BY_WORKFLOW.get(
             workflow_type,
@@ -94,11 +96,20 @@ class OpenAIProvider(ModelProvider):
             )
         )
 
+        # GPT-4o accepts multimodal content as a list with image_url parts.
+        if images:
+            user_content: Any = [
+                {"type": "image_url", "image_url": {"url": img.to_data_url()}}
+                for img in images
+            ] + [{"type": "text", "text": user_prompt}]
+        else:
+            user_content = user_prompt
+
         body: dict[str, Any] = {
             "model": settings.openai_model,
             "messages": [
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
+                {"role": "user", "content": user_content},
             ],
             "temperature": 0.2,
         }

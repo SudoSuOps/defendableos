@@ -17,6 +17,7 @@ from app.integrations.model_gateway import (
     ModelResult,
     ToolCall,
     ToolDefinition,
+    VisionImage,
 )
 from app.models.ai import WorkflowType
 
@@ -74,12 +75,13 @@ class KimiProvider(ModelProvider):
         prompt_payload: dict,
         thinking_enabled: bool,
         tools: list[ToolDefinition] | None = None,
+        images: list[VisionImage] | None = None,
     ) -> ModelResult:
         system_prompt = _SYSTEM_PROMPT_BY_WORKFLOW.get(
             workflow_type,
             "You are an evidence-aware assistant for DefendableOS. Cite source_id for every claim.",
         )
-        user_prompt = (
+        user_text = (
             "Workflow: " + workflow_type.value + "\n\n"
             "Prompt version: " + prompt_version + "\n\n"
             "Input reference (sources are authoritative; do not invent facts beyond them):\n"
@@ -95,11 +97,20 @@ class KimiProvider(ModelProvider):
             )
         )
 
+        # Build user content · multimodal when images are attached.
+        if images:
+            user_content: Any = [
+                {"type": "image_url", "image_url": {"url": img.to_data_url()}}
+                for img in images
+            ] + [{"type": "text", "text": user_text}]
+        else:
+            user_content = user_text
+
         body: dict[str, Any] = {
             "model": settings.moonshot_model,
             "messages": [
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
+                {"role": "user", "content": user_content},
             ],
         }
         if tools:

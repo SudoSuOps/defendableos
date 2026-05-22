@@ -12,6 +12,7 @@ from app.schemas.evidence import (
     EvidenceManifestOut,
 )
 from app.schemas.research import (
+    EbayResearchRequest,
     PrivateResearchRequest,
     PublicResearchRequest,
     ResearchSessionOut,
@@ -38,6 +39,7 @@ __all__ = [
     "OrganizationOut",
     "AssetCreateRequest", "AssetOut", "AssetSummary", "ComputeProfileIn",
     "EvidenceItemOut", "EvidenceManifestOut",
+    "EbayResearchRequest",
     "PrivateResearchRequest", "PublicResearchRequest",
     "ResearchSessionOut", "ResearchSourceOut",
     "AIOVAnalysisOut", "AIOVGenerateRequest",

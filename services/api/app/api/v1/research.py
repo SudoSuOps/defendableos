@@ -7,7 +7,9 @@ from sqlalchemy.orm import Session
 
 from app.core.deps import get_current_membership, get_current_user
 from app.db.session import get_db
-from app.integrations import brave_llm_context
+from datetime import datetime, timezone
+
+from app.integrations import brave_llm_context, ebay_browse
 from app.integrations.model_gateway import get_model_gateway
 from app.models.ai import AIOutput, AIOutputStatus, WorkflowType
 from app.models.asset import Asset
@@ -21,6 +23,7 @@ from app.models.research import (
 )
 from app.models.user import User
 from app.schemas.research import (
+    EbayResearchRequest,
     PrivateResearchRequest,
     PublicResearchRequest,
     ResearchSessionOut,
@@ -271,6 +274,124 @@ def search_public(
             "asset_id": str(asset.id),
             "status": result.status,
             "provider": result.provider,
+        },
+    )
+    db.commit()
+    db.refresh(session)
+    return ResearchSessionOut(
+        id=session.id,
+        query=session.query,
+        source_lane=session.source_lane.value,
+        provider=session.provider,
+        model_used=session.model_used,
+        status=session.status.value,
+        created_at=session.created_at,
+        sources=[ResearchSourceOut.model_validate(s) for s in session.sources],
+    )
+
+
+@router.post("/assets/{asset_id}/research/ebay", response_model=ResearchSessionOut)
+def search_ebay(
+    asset_id: uuid.UUID,
+    body: EbayResearchRequest,
+    membership: OrganizationMembership = Depends(get_current_membership),
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> ResearchSessionOut:
+    """eBay public-comp research · active listings + sold comps where approved.
+
+    eBay is special: it's the ONE public source we have where listing and
+    confirmed-sale prices arrive PRE-CLASSIFIED. We do not need the model to
+    classify these · `active` becomes LISTING_PRICE, `sold` becomes
+    CONFIRMED_SALE_PRICE directly.
+    """
+    asset = _require_asset(db, asset_id, membership.organization_id)
+
+    active = ebay_browse.search_active_listings(query=body.query, limit=body.limit, marketplace_id=body.marketplace_id)
+    sold = (
+        ebay_browse.search_sold_comparables(query=body.query, limit=body.limit, marketplace_id=body.marketplace_id)
+        if body.include_sold_comps
+        else None
+    )
+
+    session_status = ResearchStatus.COMPLETED
+    if active.status != "COMPLETED" and (sold is None or sold.status != "COMPLETED"):
+        session_status = ResearchStatus.FAILED
+
+    session = ResearchSession(
+        id=uuid.uuid4(),
+        organization_id=asset.organization_id,
+        asset_id=asset.id,
+        initiated_by=user.id,
+        query=body.query,
+        source_lane=SourceLane.PUBLIC_WEB,
+        provider="EBAY",
+        status=session_status,
+    )
+    db.add(session)
+    db.flush()
+
+    retrieved_now = datetime.now(tz=timezone.utc)
+
+    def _persist(items, classification: EvidenceClassification):
+        for it in items:
+            excerpt_lines: list[str] = []
+            if it.price_value is not None:
+                excerpt_lines.append(f"Price: {it.price_value} {it.price_currency or 'USD'}")
+            if it.condition:
+                excerpt_lines.append(f"Condition: {it.condition}")
+            if it.seller_username:
+                excerpt_lines.append(f"Seller: {it.seller_username}")
+            if it.item_location_country:
+                excerpt_lines.append(f"Location: {it.item_location_country}")
+            if it.sold_at:
+                excerpt_lines.append(f"Sold at: {it.sold_at.isoformat()}")
+            excerpt = "\n".join(excerpt_lines)
+            src_hash = sha256_bytes(f"{it.item_id}|{it.title}|{it.price_value}".encode("utf-8"))
+            db.add(
+                ResearchSource(
+                    id=uuid.uuid4(),
+                    research_session_id=session.id,
+                    source_type="EBAY_LISTING" if it.listing_type == "active" else "EBAY_SOLD",
+                    title=it.title[:500] if it.title else None,
+                    source_url=it.url,
+                    publisher_domain="www.ebay.com",
+                    retrieved_at=retrieved_now,
+                    evidence_classification=classification,
+                    content_excerpt=excerpt,
+                    source_hash=src_hash,
+                    validator_status="EBAY_CLASSIFIED",
+                    extra_metadata={
+                        "item_id": it.item_id,
+                        "price_value": it.price_value,
+                        "price_currency": it.price_currency,
+                        "image_url": it.image_url,
+                        "condition": it.condition,
+                        "seller_username": it.seller_username,
+                        "sold_at": it.sold_at.isoformat() if it.sold_at else None,
+                    },
+                )
+            )
+
+    if active.status == "COMPLETED":
+        _persist(active.items, EvidenceClassification.LISTING_PRICE)
+    if sold and sold.status == "COMPLETED":
+        _persist(sold.items, EvidenceClassification.CONFIRMED_SALE_PRICE)
+
+    audit_record(
+        db,
+        organization_id=asset.organization_id,
+        actor_type="USER",
+        actor_id=str(user.id),
+        action="research.ebay",
+        entity_type="ResearchSession",
+        entity_id=str(session.id),
+        metadata={
+            "asset_id": str(asset.id),
+            "active_status": active.status,
+            "sold_status": sold.status if sold else "SKIPPED",
+            "active_count": len(active.items),
+            "sold_count": len(sold.items) if sold else 0,
         },
     )
     db.commit()

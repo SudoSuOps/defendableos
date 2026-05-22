@@ -47,6 +47,14 @@ class Settings(BaseSettings):
     brave_api_key: str = ""
     brave_llm_context_url: str = "https://api.search.brave.com/res/v1/llm/context"
 
+    # eBay · Browse API for active listings · Marketplace Insights for sold comps.
+    # Swarm & Bee business account · OAuth2 client_credentials flow (no user consent).
+    ebay_app_id: str = ""          # aka Client ID
+    ebay_cert_id: str = ""         # aka Client Secret
+    ebay_dev_id: str = ""          # Dev account ID
+    ebay_environment: str = "production"  # 'production' or 'sandbox'
+    ebay_marketplace_id: str = "EBAY_US"  # EBAY_US · EBAY_GB · EBAY_DE · etc.
+
     # Model gateway · provider-agnostic. Switch with MODEL_PROVIDER=kimi|openai.
     model_provider: str = "kimi"
 
@@ -95,6 +103,10 @@ class Settings(BaseSettings):
     @property
     def openai_configured(self) -> bool:
         return bool(self.openai_api_key)
+
+    @property
+    def ebay_configured(self) -> bool:
+        return bool(self.ebay_app_id and self.ebay_cert_id)
 
 
 @lru_cache(maxsize=1)
