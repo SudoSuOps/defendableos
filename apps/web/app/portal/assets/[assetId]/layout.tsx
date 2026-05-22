@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Chip } from "@/components/ui/Card";
 import { api } from "@/lib/api";
@@ -21,9 +21,9 @@ export default function AssetLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ assetId: string }>;
+  params: { assetId: string };
 }) {
-  const { assetId } = use(params);
+  const { assetId } = params;
   const pathname = usePathname();
   const [asset, setAsset] = useState<AssetOut | null>(null);
 

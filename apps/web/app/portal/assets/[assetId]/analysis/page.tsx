@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Card, Chip } from "@/components/ui/Card";
 import { api } from "@/lib/api";
@@ -15,8 +15,8 @@ interface Analysis {
   created_at: string;
 }
 
-export default function AnalysisPage({ params }: { params: Promise<{ assetId: string }> }) {
-  const { assetId } = use(params);
+export default function AnalysisPage({ params }: { params: { assetId: string } }) {
+  const { assetId } = params;
   const [analyses, setAnalyses] = useState<Analysis[]>([]);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);

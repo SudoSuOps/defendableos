@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Card, Chip, Stat } from "@/components/ui/Card";
 import { api } from "@/lib/api";
@@ -8,9 +8,9 @@ import { api } from "@/lib/api";
 export default function AssetOverview({
   params,
 }: {
-  params: Promise<{ assetId: string }>;
+  params: { assetId: string };
 }) {
-  const { assetId } = use(params);
+  const { assetId } = params;
   const [asset, setAsset] = useState<any>(null);
   const [manifest, setManifest] = useState<any>(null);
   const [evidenceCount, setEvidenceCount] = useState<number>(0);

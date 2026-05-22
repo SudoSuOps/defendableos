@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Card, Chip } from "@/components/ui/Card";
 import { api } from "@/lib/api";
@@ -29,8 +29,8 @@ const PASS_CHIP: Record<string, "ok" | "warn" | "pending" | "neutral"> = {
   SKIPPED: "neutral",
 };
 
-export default function ValidatorPage({ params }: { params: Promise<{ assetId: string }> }) {
-  const { assetId } = use(params);
+export default function ValidatorPage({ params }: { params: { assetId: string } }) {
+  const { assetId } = params;
   const [review, setReview] = useState<Review | null>(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);

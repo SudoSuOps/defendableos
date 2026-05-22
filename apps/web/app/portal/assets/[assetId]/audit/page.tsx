@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Card } from "@/components/ui/Card";
 import { api } from "@/lib/api";
@@ -16,8 +16,8 @@ interface AuditEvent {
   created_at: string;
 }
 
-export default function AuditPage({ params }: { params: Promise<{ assetId: string }> }) {
-  const { assetId } = use(params);
+export default function AuditPage({ params }: { params: { assetId: string } }) {
+  const { assetId } = params;
   const [events, setEvents] = useState<AuditEvent[]>([]);
 
   useEffect(() => {

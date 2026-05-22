@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Card, Chip } from "@/components/ui/Card";
 import { api } from "@/lib/api";
@@ -17,8 +17,8 @@ interface Deed {
   created_at: string;
 }
 
-export default function DeedPage({ params }: { params: Promise<{ assetId: string }> }) {
-  const { assetId } = use(params);
+export default function DeedPage({ params }: { params: { assetId: string } }) {
+  const { assetId } = params;
   const [deeds, setDeeds] = useState<Deed[]>([]);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);

@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Card, Chip } from "@/components/ui/Card";
 import { api } from "@/lib/api";
@@ -28,8 +28,8 @@ interface Session {
   sources: Source[];
 }
 
-export default function ResearchPage({ params }: { params: Promise<{ assetId: string }> }) {
-  const { assetId } = use(params);
+export default function ResearchPage({ params }: { params: { assetId: string } }) {
+  const { assetId } = params;
   const [lane, setLane] = useState<Lane>("PRIVATE_EVIDENCE");
   const [query, setQuery] = useState("");
   const [sessions, setSessions] = useState<Session[]>([]);

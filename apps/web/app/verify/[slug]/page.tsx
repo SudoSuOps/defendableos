@@ -22,8 +22,8 @@ async function getRecord(slug: string): Promise<PublicRecord | null> {
   }
 }
 
-export default async function VerifyPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function VerifyPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const record = await getRecord(slug);
 
   return (
