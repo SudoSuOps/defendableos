@@ -67,15 +67,33 @@ _OPERATOR_ASK_DOCTRINE_NOTE = (
     "and the value has not been certified."
 )
 
+_OPERATOR_STATED_STNL_DOCTRINE_NOTE = (
+    "Operator-stated single-tenant-net-lease terms. NOI is derived "
+    "from the operator's rent roll and market-rate basis. Cap rate, "
+    "term, lease structure, and tenant context are operator claims · "
+    "NOT a validator-issued underwriting conclusion, professional "
+    "appraisal, or confirmed-sale comparable. A real engagement "
+    "requires lease abstract review and rent roll verification before "
+    "any value claim is certified."
+)
+
 
 def _build_public_aiov_block(aiov: AIOVAnalysis) -> dict:
     """Compose the public-safe aiov_analysis block.
 
-    Surfaces value_display_status + valuation_issued always. When the
-    AIOV's value_opinion declares an OPERATOR_ASK_PRICE, also surfaces
-    the operator_ask block (currency + amount_usd + label + doctrine
-    disclaimer). Per doctrine the operator's ask travels with the deed
-    as an operator claim, never as a validated value.
+    Surfaces value_display_status + valuation_issued always. Additional
+    structured blocks surface based on the AIOV's display_status:
+
+      · OPERATOR_ASK_PRICE       → operator_ask block (compute pattern)
+      · OPERATOR_STATED_STNL_TERMS → operator_stated_stnl_terms block
+        carrying GLA, market rent, lease structure, term, NOI, cap
+        rate, and asking price · all labeled "Operator-stated · not a
+        validated underwriting conclusion"
+
+    Per doctrine these are operator claims that travel with the deed,
+    never validator-issued conclusions. Real engagement workflows
+    require lease abstract + rent roll review before any number gets
+    upgraded to a validated value.
     """
     vo = (aiov.analysis_json or {}).get("value_opinion", {}) or {}
     display_status = vo.get("display_status", "WITHHELD_PENDING_VALIDATOR_REVIEW")
@@ -94,6 +112,25 @@ def _build_public_aiov_block(aiov: AIOVAnalysis) -> dict:
                 "currency": ask_currency,
                 "amount_usd": int(ask_usd),
                 "doctrine_note": _OPERATOR_ASK_DOCTRINE_NOTE,
+            }
+    if display_status == "OPERATOR_STATED_STNL_TERMS":
+        stnl = vo.get("stnl_terms") or {}
+        if stnl:
+            block["operator_stated_stnl_terms"] = {
+                "label": "Operator-stated STNL terms",
+                "tenant_name": stnl.get("tenant_name"),
+                "tenant_credit_note": stnl.get("tenant_credit_note"),
+                "property_type": stnl.get("property_type"),
+                "gla_sf": stnl.get("gla_sf"),
+                "market_rent_per_sf_nnn_usd": stnl.get("market_rent_per_sf_nnn_usd"),
+                "lease_structure": stnl.get("lease_structure"),
+                "term_years": stnl.get("term_years"),
+                "options_summary": stnl.get("options_summary"),
+                "noi_usd": stnl.get("noi_usd"),
+                "cap_rate_pct": stnl.get("cap_rate_pct"),
+                "asking_price_usd": stnl.get("asking_price_usd"),
+                "currency": stnl.get("currency", "USD"),
+                "doctrine_note": _OPERATOR_STATED_STNL_DOCTRINE_NOTE,
             }
     return block
 
