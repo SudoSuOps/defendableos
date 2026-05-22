@@ -15,12 +15,39 @@ from app.models.ai import WorkflowType
 
 
 @dataclass
+class ToolDefinition:
+    """A typed tool the model may call. Mirrors the OpenAI/Kimi function spec."""
+    name: str
+    description: str
+    parameters: dict  # JSON Schema (Kimi calls this MFJS · compatible subset)
+
+    def to_provider_payload(self) -> dict:
+        return {
+            "type": "function",
+            "function": {
+                "name": self.name,
+                "description": self.description,
+                "parameters": self.parameters,
+            },
+        }
+
+
+@dataclass
+class ToolCall:
+    """A typed tool invocation returned by the model · arguments already parsed."""
+    name: str
+    arguments: dict
+    call_id: str | None = None
+
+
+@dataclass
 class ModelResult:
     provider: str
     model: str
     status: str  # GENERATED | NOT_CONFIGURED | FAILED
     output_text: str | None = None
     output_json: dict | None = None
+    tool_calls: list[ToolCall] = field(default_factory=list)
     error: str | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
 
@@ -39,6 +66,7 @@ class ModelProvider:
         input_reference: dict,
         prompt_payload: dict,
         thinking_enabled: bool,
+        tools: list[ToolDefinition] | None = None,
     ) -> ModelResult:  # pragma: no cover · abstract
         raise NotImplementedError
 
@@ -54,6 +82,7 @@ class ModelGateway:
         input_reference: dict,
         prompt_payload: dict,
         thinking_enabled: bool = False,
+        tools: list[ToolDefinition] | None = None,
     ) -> ModelResult:
         if not self.provider.is_configured():
             return ModelResult(
@@ -69,6 +98,7 @@ class ModelGateway:
                 input_reference=input_reference,
                 prompt_payload=prompt_payload,
                 thinking_enabled=thinking_enabled,
+                tools=tools,
             )
         except Exception as exc:
             return ModelResult(

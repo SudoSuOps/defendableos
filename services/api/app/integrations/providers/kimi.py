@@ -12,7 +12,12 @@ from typing import Any
 import httpx
 
 from app.core.config import settings
-from app.integrations.model_gateway import ModelProvider, ModelResult
+from app.integrations.model_gateway import (
+    ModelProvider,
+    ModelResult,
+    ToolCall,
+    ToolDefinition,
+)
 from app.models.ai import WorkflowType
 
 
@@ -68,6 +73,7 @@ class KimiProvider(ModelProvider):
         input_reference: dict,
         prompt_payload: dict,
         thinking_enabled: bool,
+        tools: list[ToolDefinition] | None = None,
     ) -> ModelResult:
         system_prompt = _SYSTEM_PROMPT_BY_WORKFLOW.get(
             workflow_type,
@@ -79,8 +85,14 @@ class KimiProvider(ModelProvider):
             "Input reference (sources are authoritative; do not invent facts beyond them):\n"
             + json.dumps(prompt_payload, indent=2, sort_keys=True)
             + "\n\n"
-            "Respond in JSON when a structured output is helpful. Otherwise respond "
-            "in prose, citing source_id values where applicable."
+            + (
+                "Call the supplied tool functions to record your findings. "
+                "Use multiple calls when more than one finding applies. "
+                "Do not respond in prose."
+                if tools
+                else "Respond in JSON when a structured output is helpful. "
+                "Otherwise respond in prose, citing source_id values where applicable."
+            )
         )
 
         body: dict[str, Any] = {
@@ -89,8 +101,10 @@ class KimiProvider(ModelProvider):
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
-            "temperature": 0.2,
         }
+        if tools:
+            body["tools"] = [t.to_provider_payload() for t in tools]
+            body["tool_choice"] = "auto"
         if thinking_enabled:
             body["enable_thinking"] = True
 
@@ -99,17 +113,23 @@ class KimiProvider(ModelProvider):
             "Content-Type": "application/json",
         }
 
-        with httpx.Client(timeout=60.0) as client:
+        with httpx.Client(timeout=120.0) as client:
             resp = client.post(
                 f"{self.base_url}/chat/completions",
                 headers=headers,
                 json=body,
             )
-            resp.raise_for_status()
+            if resp.status_code >= 400:
+                raise httpx.HTTPStatusError(
+                    f"Moonshot/Kimi error {resp.status_code}: {resp.text[:500]}",
+                    request=resp.request,
+                    response=resp,
+                )
             data = resp.json()
 
         choice = (data.get("choices") or [{}])[0]
-        content = (choice.get("message") or {}).get("content") or ""
+        message = choice.get("message") or {}
+        content = message.get("content") or ""
         output_json: dict | None = None
         try:
             output_json = json.loads(content)
@@ -118,11 +138,26 @@ class KimiProvider(ModelProvider):
         except Exception:
             output_json = None
 
+        tool_calls: list[ToolCall] = []
+        for tc in message.get("tool_calls") or []:
+            fn = tc.get("function") or {}
+            raw_args = fn.get("arguments") or "{}"
+            try:
+                args = json.loads(raw_args) if isinstance(raw_args, str) else raw_args
+                if not isinstance(args, dict):
+                    args = {"_raw": args}
+            except Exception:
+                args = {"_raw": raw_args}
+            tool_calls.append(
+                ToolCall(name=fn.get("name", ""), arguments=args, call_id=tc.get("id"))
+            )
+
         return ModelResult(
             provider=self.name,
             model=settings.moonshot_model,
             status="GENERATED",
             output_text=content,
             output_json=output_json,
+            tool_calls=tool_calls,
             metadata={"usage": data.get("usage")},
         )

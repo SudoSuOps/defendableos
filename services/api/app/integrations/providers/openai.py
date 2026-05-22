@@ -11,7 +11,12 @@ from typing import Any
 import httpx
 
 from app.core.config import settings
-from app.integrations.model_gateway import ModelProvider, ModelResult
+from app.integrations.model_gateway import (
+    ModelProvider,
+    ModelResult,
+    ToolCall,
+    ToolDefinition,
+)
 from app.models.ai import WorkflowType
 
 
@@ -67,6 +72,7 @@ class OpenAIProvider(ModelProvider):
         input_reference: dict,
         prompt_payload: dict,
         thinking_enabled: bool,
+        tools: list[ToolDefinition] | None = None,
     ) -> ModelResult:
         system_prompt = _SYSTEM_PROMPT_BY_WORKFLOW.get(
             workflow_type,
@@ -78,8 +84,14 @@ class OpenAIProvider(ModelProvider):
             "Input reference (sources are authoritative; do not invent facts beyond them):\n"
             + json.dumps(prompt_payload, indent=2, sort_keys=True)
             + "\n\n"
-            "Respond in JSON when a structured output is helpful. Otherwise respond "
-            "in prose, citing source_id values where applicable."
+            + (
+                "Call the supplied tool functions to record your findings. "
+                "Use multiple calls when more than one finding applies. "
+                "Do not respond in prose."
+                if tools
+                else "Respond in JSON when a structured output is helpful. "
+                "Otherwise respond in prose, citing source_id values where applicable."
+            )
         )
 
         body: dict[str, Any] = {
@@ -90,10 +102,10 @@ class OpenAIProvider(ModelProvider):
             ],
             "temperature": 0.2,
         }
-        # OpenAI's reasoning models (o1, o3 family) use the same API surface but
-        # ignore `temperature` and expose a `reasoning_effort` field. We pass it
-        # only when explicitly opted into "thinking" to stay backwards-compatible
-        # with regular gpt-4o-class models.
+        if tools:
+            body["tools"] = [t.to_provider_payload() for t in tools]
+            body["tool_choice"] = "auto"
+        # o1/o3 reasoning models ignore temperature and use reasoning_effort.
         if thinking_enabled:
             body["reasoning_effort"] = "medium"
 
@@ -110,11 +122,17 @@ class OpenAIProvider(ModelProvider):
                 headers=headers,
                 json=body,
             )
-            resp.raise_for_status()
+            if resp.status_code >= 400:
+                raise httpx.HTTPStatusError(
+                    f"OpenAI error {resp.status_code}: {resp.text[:500]}",
+                    request=resp.request,
+                    response=resp,
+                )
             data = resp.json()
 
         choice = (data.get("choices") or [{}])[0]
-        content = (choice.get("message") or {}).get("content") or ""
+        message = choice.get("message") or {}
+        content = message.get("content") or ""
         output_json: dict | None = None
         try:
             parsed = json.loads(content)
@@ -123,11 +141,26 @@ class OpenAIProvider(ModelProvider):
         except Exception:
             output_json = None
 
+        tool_calls: list[ToolCall] = []
+        for tc in message.get("tool_calls") or []:
+            fn = tc.get("function") or {}
+            raw_args = fn.get("arguments") or "{}"
+            try:
+                args = json.loads(raw_args) if isinstance(raw_args, str) else raw_args
+                if not isinstance(args, dict):
+                    args = {"_raw": args}
+            except Exception:
+                args = {"_raw": raw_args}
+            tool_calls.append(
+                ToolCall(name=fn.get("name", ""), arguments=args, call_id=tc.get("id"))
+            )
+
         return ModelResult(
             provider=self.name,
             model=settings.openai_model,
             status="GENERATED",
             output_text=content,
             output_json=output_json,
+            tool_calls=tool_calls,
             metadata={"usage": data.get("usage")},
         )

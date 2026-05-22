@@ -258,18 +258,37 @@ def run_deterministic_checks(
         results.append(CheckResult(check="AI_ASSISTED_LIMITATION_DISCLOSED", status="SKIPPED"))
 
     # 10 · no licensed appraisal claim
-    forbidden_terms = ["licensed appraisal", "certified appraisal", "authentication guarantee"]
-    aiov_text = (aiov.narrative or "").lower() if aiov else ""
-    hits = [t for t in forbidden_terms if t in aiov_text]
-    if hits:
-        results.append(
-            CheckResult(
-                check="NO_LICENSED_APPRAISAL_CLAIM",
-                status="FAIL",
-                severity="BLOCKING",
-                finding=f"Forbidden term(s) found in AIOV narrative: {', '.join(hits)}",
+    # Same false-positive trap as check 11: the model's standard disclaimer
+    # ("Not a licensed appraisal · authentication guarantee") contains the
+    # forbidden words in DENIAL form, which is correct. Match AFFIRMATIVE
+    # claim phrasing only.
+    if aiov and aiov.narrative:
+        narrative_lower = aiov.narrative.lower()
+        affirmative_claims = [
+            "this is a licensed appraisal",
+            "this constitutes a licensed appraisal",
+            "is hereby appraised at",
+            "we appraise this asset at",
+            "this is a certified appraisal",
+            "this is a certification",
+            "this constitutes certification",
+            "this authenticates",
+            "this is an authentication guarantee",
+            "we warrant",
+            "we guarantee authenticity",
+        ]
+        hits = [p for p in affirmative_claims if p in narrative_lower]
+        if hits:
+            results.append(
+                CheckResult(
+                    check="NO_LICENSED_APPRAISAL_CLAIM",
+                    status="FAIL",
+                    severity="BLOCKING",
+                    finding=f"AIOV narrative contains affirmative claim(s): {', '.join(hits)}",
+                )
             )
-        )
+        else:
+            results.append(CheckResult(check="NO_LICENSED_APPRAISAL_CLAIM", status="PASS"))
     else:
         results.append(CheckResult(check="NO_LICENSED_APPRAISAL_CLAIM", status="PASS"))
 

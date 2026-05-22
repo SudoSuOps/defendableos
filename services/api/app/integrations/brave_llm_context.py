@@ -68,8 +68,10 @@ def search(
         "X-Subscription-Token": settings.brave_api_key,
         "Accept": "application/json",
     }
+    # Brave's LLM Context API uses `q` (not `query`). Per-call params:
+    #   q, maximum_number_of_urls, maximum_number_of_tokens, context_threshold_mode
     payload = {
-        "query": query,
+        "q": query,
         "maximum_number_of_urls": maximum_number_of_urls,
         "maximum_number_of_tokens": maximum_number_of_tokens,
         "context_threshold_mode": context_threshold_mode,
@@ -82,7 +84,13 @@ def search(
                 headers=headers,
                 json=payload,
             )
-            resp.raise_for_status()
+            if resp.status_code >= 400:
+                return BraveResult(
+                    status="FAILED",
+                    provider="BRAVE_LLM_CONTEXT",
+                    sources=[],
+                    error=f"Brave error {resp.status_code}: {resp.text[:400]}",
+                )
             data = resp.json()
     except Exception as exc:
         return BraveResult(
@@ -92,19 +100,36 @@ def search(
             error=str(exc),
         )
 
-    sources: list[BraveSource] = []
+    # Brave response shape:
+    #   { "sources": { url: {title, hostname, age} },
+    #     "grounding": { "generic": [{url, title, snippets[]}], "map": [...] } }
+    # `grounding.generic` is the most useful structure · each entry already
+    # has the URL, title and a list of snippet strings (often JSON-flavoured).
     retrieved_at = datetime.now(tz=timezone.utc)
-    raw_sources = data.get("sources") or data.get("results") or []
-    for s in raw_sources:
-        if not isinstance(s, dict):
+    sources: list[BraveSource] = []
+    grounding = data.get("grounding") or {}
+    generic = grounding.get("generic") or []
+    for entry in generic:
+        if not isinstance(entry, dict):
             continue
-        url = s.get("url") or s.get("source_url") or s.get("link")
+        url = entry.get("url")
+        title = entry.get("title")
+        snippets = entry.get("snippets") or []
+        # Join the first few snippets into a single excerpt · capped for storage.
+        excerpt_parts: list[str] = []
+        for sn in snippets[:6]:
+            if isinstance(sn, str):
+                excerpt_parts.append(sn)
+            elif isinstance(sn, dict):
+                # Some snippets arrive as dict {title, table, …} · stringify.
+                excerpt_parts.append(__import__("json").dumps(sn, sort_keys=True)[:1200])
+        excerpt = "\n\n".join(excerpt_parts)[:4000]
         sources.append(
             BraveSource(
-                title=s.get("title") or s.get("name"),
+                title=title,
                 url=url,
                 domain=_domain(url),
-                excerpt=s.get("excerpt") or s.get("snippet") or s.get("content"),
+                excerpt=excerpt,
                 retrieved_at=retrieved_at,
             )
         )

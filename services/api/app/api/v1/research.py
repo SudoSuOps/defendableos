@@ -8,6 +8,8 @@ from sqlalchemy.orm import Session
 from app.core.deps import get_current_membership, get_current_user
 from app.db.session import get_db
 from app.integrations import brave_llm_context
+from app.integrations.model_gateway import get_model_gateway
+from app.models.ai import AIOutput, AIOutputStatus, WorkflowType
 from app.models.asset import Asset
 from app.models.organization import OrganizationMembership
 from app.models.research import (
@@ -26,7 +28,8 @@ from app.schemas.research import (
 )
 from app.services.audit import record as audit_record
 from app.services.extraction import private_search
-from app.services.hashing import sha256_bytes
+from app.services.hashing import sha256_bytes, sha256_json
+from app.services.tool_contracts import RESEARCH_CLASSIFY_TOOL
 
 router = APIRouter()
 
@@ -140,24 +143,121 @@ def search_public(
     )
     db.add(session)
 
+    # First create the source rows · classifications start UNKNOWN.
+    db_sources: list[ResearchSource] = []
     for s in result.sources:
         excerpt = (s.excerpt or "")[:4000]
         source_hash = sha256_bytes((s.url or "" + "|" + (s.title or "")).encode("utf-8"))
+        row = ResearchSource(
+            id=uuid.uuid4(),
+            research_session_id=session.id,
+            source_type="PUBLIC_WEB",
+            title=s.title,
+            source_url=s.url,
+            publisher_domain=s.domain,
+            retrieved_at=s.retrieved_at,
+            evidence_classification=EvidenceClassification.UNKNOWN,
+            content_excerpt=excerpt,
+            source_hash=source_hash,
+            validator_status="UNREVIEWED",
+        )
+        db.add(row)
+        db_sources.append(row)
+    db.flush()
+
+    # Model-assisted classification · enums in the tool schema make it
+    # impossible to relabel a listing as a confirmed sale, etc. Skipped
+    # cleanly when no provider is configured · UNKNOWN sources just stay
+    # UNKNOWN and the validator flags them.
+    gateway = get_model_gateway()
+    if db_sources and gateway.provider.is_configured():
+        prompt_payload = {
+            "asset_reference": asset.public_asset_reference,
+            "asset_name": asset.name,
+            "asset_class": asset.asset_class.value,
+            "sources_to_classify": [
+                {
+                    "id": str(row.id),
+                    "title": row.title,
+                    "url": row.source_url,
+                    "domain": row.publisher_domain,
+                    "excerpt": (row.content_excerpt or "")[:800],
+                }
+                for row in db_sources
+            ],
+        }
+        gw_result = gateway.generate_structured(
+            workflow_type=WorkflowType.RESEARCH_SYNTHESIS,
+            prompt_version="research_synthesis_v1",
+            input_reference={
+                "asset_id": str(asset.id),
+                "session_id": str(session.id),
+            },
+            prompt_payload=prompt_payload,
+            tools=[RESEARCH_CLASSIFY_TOOL],
+        )
         db.add(
-            ResearchSource(
+            AIOutput(
                 id=uuid.uuid4(),
-                research_session_id=session.id,
-                source_type="PUBLIC_WEB",
-                title=s.title,
-                source_url=s.url,
-                publisher_domain=s.domain,
-                retrieved_at=s.retrieved_at,
-                evidence_classification=EvidenceClassification.UNKNOWN,
-                content_excerpt=excerpt,
-                source_hash=source_hash,
-                validator_status="UNREVIEWED",
+                organization_id=asset.organization_id,
+                asset_id=asset.id,
+                workflow_type=WorkflowType.RESEARCH_SYNTHESIS,
+                model_provider=gw_result.provider,
+                model_name=gw_result.model,
+                prompt_version="research_synthesis_v1",
+                input_reference_json={
+                    "asset_id": str(asset.id),
+                    "session_id": str(session.id),
+                },
+                output_text=gw_result.output_text,
+                output_json={
+                    "tool_calls": [
+                        {"name": tc.name, "arguments": tc.arguments}
+                        for tc in gw_result.tool_calls
+                    ]
+                },
+                output_sha256=sha256_json(
+                    {
+                        "tool_calls": [
+                            {"name": tc.name, "arguments": tc.arguments}
+                            for tc in gw_result.tool_calls
+                        ]
+                    }
+                ),
+                status=(
+                    AIOutputStatus.GENERATED
+                    if gw_result.status == "GENERATED"
+                    else AIOutputStatus.FAILED
+                ),
+                error_message=gw_result.error,
             )
         )
+
+        # Apply classifications · only typed enum values land.
+        by_id: dict[str, ResearchSource] = {str(r.id): r for r in db_sources}
+        for tc in gw_result.tool_calls:
+            if tc.name != "classify_source":
+                continue
+            args = tc.arguments or {}
+            sid = args.get("source_id")
+            classification = args.get("classification")
+            rationale = args.get("rationale")
+            if not sid or sid not in by_id:
+                continue
+            try:
+                cls_enum = EvidenceClassification(classification)
+            except ValueError:
+                continue
+            # Server-side doctrine guard · NEVER let model relabel listing→sale.
+            if cls_enum == EvidenceClassification.CONFIRMED_SALE_PRICE:
+                # Refuse the call unless rationale explicitly cites a confirmed
+                # sale signal · until a stronger evidence link exists, downgrade.
+                text = (rationale or "").lower()
+                if "confirmed sale" not in text and "completed sale" not in text and "sold for" not in text:
+                    cls_enum = EvidenceClassification.MARKET_COMMENTARY
+            row = by_id[sid]
+            row.evidence_classification = cls_enum
+            row.validator_status = "MODEL_CLASSIFIED"
 
     audit_record(
         db,
