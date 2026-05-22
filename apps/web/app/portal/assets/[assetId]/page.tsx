@@ -15,12 +15,14 @@ export default function AssetOverview({
   const [manifest, setManifest] = useState<any>(null);
   const [evidenceCount, setEvidenceCount] = useState<number>(0);
   const [validator, setValidator] = useState<any>(null);
+  const [latestDeed, setLatestDeed] = useState<any>(null);
 
   useEffect(() => {
     api(`/api/v1/assets/${assetId}`).then(setAsset).catch(() => {});
     api(`/api/v1/assets/${assetId}/manifest`).then(setManifest).catch(() => setManifest(null));
     api(`/api/v1/assets/${assetId}/evidence`).then((r: any) => setEvidenceCount(r.length)).catch(() => {});
     api(`/api/v1/assets/${assetId}/validator/latest`).then(setValidator).catch(() => setValidator(null));
+    api(`/api/v1/assets/${assetId}/deeds`).then((r: any) => setLatestDeed(Array.isArray(r) && r.length ? r[0] : null)).catch(() => setLatestDeed(null));
   }, [assetId]);
 
   return (
@@ -50,7 +52,11 @@ export default function AssetOverview({
             <Stat label="Evidence items" value={evidenceCount} />
             <Stat label="Manifest" value={manifest ? `v${manifest.version}` : "—"} />
             <Stat label="Validator" value={validator?.status ?? "—"} />
-            <Stat label="Deed" value="—" />
+            <Stat
+              label="Deed"
+              value={latestDeed ? `v${latestDeed.version}` : "—"}
+              hint={latestDeed?.is_public ? "published" : latestDeed ? "draft" : undefined}
+            />
           </div>
         </Card>
 
