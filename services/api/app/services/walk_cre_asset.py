@@ -300,7 +300,7 @@ def walk(force_new_version: bool = False) -> dict:
         # Optional · pull sector-level Brave context (NOT property-specific,
         # since the property is illustrative). Stored on the deed as
         # market_commentary_sector for transparency.
-        print(f"  calling Brave for South Florida grocery-anchored retail context …")
+        print("  calling Brave for South Florida grocery-anchored retail context …")
         market_context = _live_brave_market_context(
             "South Florida grocery-anchored neighborhood retail center market 2026"
         )
