@@ -21,12 +21,20 @@ echo "[release] running alembic upgrade head"
 alembic upgrade head
 
 # Seed is best-effort · the seed script is idempotent (uses _ensure_*
-# helpers) so it's safe to run on every cold start. If the user's data
-# has diverged from the seed (e.g. they deleted the demo deed), the
-# seed will quietly recreate the canonical illustrative record.
+# helpers) so it's safe to run on every cold start. If it fails, we
+# explicitly dump the full traceback to logs (instead of swallowing it)
+# so prod-only failures are diagnosable from `fly logs`. The boot does
+# not abort · the API still comes up; the deed just won't resolve until
+# the issue is fixed.
 if [ "${SEED_DEMO_DATA:-true}" = "true" ]; then
   echo "[release] running idempotent demo seed"
-  python -m app.services.seed || echo "[release] seed failed · continuing"
+  if ! python -m app.services.seed; then
+    echo "[release] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "[release] ⚠ SEED FAILED · the API will boot without the demo deed."
+    echo "[release]   Re-run after the fix:"
+    echo "[release]     fly ssh console --app defendableos-api -C 'python -m app.services.seed'"
+    echo "[release] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  fi
 fi
 
 echo "[release] starting uvicorn"
