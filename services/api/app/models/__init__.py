@@ -15,6 +15,23 @@ from app.models.deed import DefendableDeed
 from app.models.ens import ENSIdentity
 from app.models.edge import EdgeNode, EdgeUploadEvent, EdgeEnrollmentToken
 from app.models.audit import AuditEvent
+from app.models.goods import (
+    ApprovedClaim,
+    ArtifactRegistry,
+    CanonicalGood,
+    CompSet,
+    CompSetMember,
+    DiscoveryRun,
+    GoodsIdentifier,
+    MarketObservation,
+    MarketReadyDataLink,
+    PairBatch,
+    SourceConnector,
+    SourceRightsRecord,
+    TrainingPair,
+    TransactionEvidence,
+    TrendSignal,
+)
 
 __all__ = [
     "User",
@@ -37,4 +54,20 @@ __all__ = [
     "EdgeUploadEvent",
     "EdgeEnrollmentToken",
     "AuditEvent",
+    # Goods Intelligence
+    "ApprovedClaim",
+    "ArtifactRegistry",
+    "CanonicalGood",
+    "CompSet",
+    "CompSetMember",
+    "DiscoveryRun",
+    "GoodsIdentifier",
+    "MarketObservation",
+    "MarketReadyDataLink",
+    "PairBatch",
+    "SourceConnector",
+    "SourceRightsRecord",
+    "TrainingPair",
+    "TransactionEvidence",
+    "TrendSignal",
 ]

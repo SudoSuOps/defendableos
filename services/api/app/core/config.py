@@ -53,13 +53,26 @@ class Settings(BaseSettings):
     # Redis
     redis_url: str = "redis://localhost:6379/0"
 
-    # Object storage (S3-compatible · MinIO local)
+    # Object storage (S3-compatible · MinIO local · Tigris production)
+    # OBJECT_STORAGE_PROVIDER toggles the adapter only · the wire protocol is
+    # identical (S3 v4 sigv4) so the same boto3 client speaks to both. The
+    # bucket names are split into 4 disclosure-boundary buckets per
+    # GOODS_INTELLIGENCE_ARCHITECTURE.md.
+    object_storage_provider: Literal["minio", "tigris", "s3"] = "minio"
+    object_storage_live_enabled: bool = False
     s3_endpoint_url: str = "http://localhost:9000"
     s3_access_key_id: str = "minioadmin"
     s3_secret_access_key: str = "minioadmin"
+    s3_region: str = "us-east-1"
+    s3_presigned_url_ttl_seconds: int = 900
+    # Legacy 2-bucket pair (kept for existing deed/evidence code paths)
     s3_private_bucket: str = "defendable-private"
     s3_public_bucket: str = "defendable-public"
-    s3_region: str = "us-east-1"
+    # New 4-bucket goods intelligence layout
+    s3_private_evidence_bucket: str = "defendable-private-evidence-prod"
+    s3_market_observations_bucket: str = "defendable-market-observations-prod"
+    s3_derived_datasets_bucket: str = "defendable-derived-datasets-prod"
+    s3_public_assets_bucket: str = "defendable-public-assets-prod"
 
     # Auth
     jwt_secret: str = "CHANGE_ME_IN_PRODUCTION"
@@ -109,6 +122,26 @@ class Settings(BaseSettings):
 
     # Public verification
     public_verification_enabled: bool = True
+
+    # Goods Intelligence · live ingestion kill switches.
+    # ALL default OFF · no third-party API gets called without the founder
+    # explicitly setting the env var locally AND the connector being in
+    # READY state.
+    live_ingestion_enabled: bool = False
+    live_provider_calls_enabled: bool = False
+    public_marketing_exports_enabled: bool = False
+    ens_publishing_enabled: bool = False
+    brave_live_calls_enabled: bool = False
+    brave_discovery_enabled: bool = False
+    brave_max_calls_per_run: int = 1
+    brave_max_context_tokens: int = 6000
+    brave_context_threshold_mode: str = "strict"
+    ebay_browse_live_calls_enabled: bool = False
+    ebay_max_calls_per_run: int = 1
+    ebay_production_access_confirmed: bool = False
+    ebay_outbound_listing_enabled: bool = False
+    pgvector_enabled: bool = False
+    postgis_enabled: bool = False
 
     # Demo affordances
     seed_demo_data: bool = True
