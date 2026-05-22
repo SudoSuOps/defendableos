@@ -51,8 +51,12 @@ from app.models.goods import (
     CompSetIntendedUse,
     CompSetMember,
     CompSetStatus,
+    ItadPartner,
+    ItadPartnershipStatus,
     MarketObservation,
+    PartnerTransactionObservation,
     PriceType,
+    RightsStatus,
     SourceType,
     TransactionEvidence,
     TransactionStatus,
@@ -235,6 +239,97 @@ def add_transaction_evidence(
         limitations=[
             "CONFIRMED_TRANSACTION",
             "REQUIRES_ATTRIBUTE_MATCH_REVIEW_FOR_GRADE_A",
+        ],
+        included_by=included_by,
+    )
+    db.add(member)
+    db.flush()
+    return member
+
+
+def add_partner_transaction_observation(
+    db: Session,
+    *,
+    comp_set_id: uuid.UUID,
+    partner_observation_id: uuid.UUID,
+    included_by: uuid.UUID | None = None,
+) -> CompSetMember:
+    """RULE 7 · ITAD partner transaction · grade ceiling B before validator.
+
+    A PartnerTransactionObservation is BETTER than a marketplace listing
+    (it carries configuration, condition, test status, transaction amount,
+    chain of custody) but it cannot reach Grade A automatically · only
+    the validator may elevate to A after attribute-match and rights review.
+
+    Refuses to add unless:
+      · partner is in IN_CONVERSATION / PILOT_AGREEMENT / PRODUCTION_PARTNER
+        (RESEARCH_VERIFIED / OUTREACH_READY / OUTREACH_PENDING partners
+        are still pre-relationship · no data should be in flight yet)
+      · rights_status is not AGREEMENT_REQUIRED (some agreement exists)
+      · amount_disclosure_type is documented (EXACT/RANGE/INDEXED/REDACTED)
+      · condition_class is set
+    """
+    obs = db.get(PartnerTransactionObservation, partner_observation_id)
+    if obs is None:
+        raise CompFoundryError(
+            f"PartnerTransactionObservation {partner_observation_id} not found"
+        )
+    partner = db.get(ItadPartner, obs.partner_id)
+    if partner is None:
+        raise CompFoundryError(
+            f"ItadPartner {obs.partner_id} not found · cannot include observation"
+        )
+
+    eligible_partner_states = {
+        ItadPartnershipStatus.IN_CONVERSATION,
+        ItadPartnershipStatus.PILOT_AGREEMENT,
+        ItadPartnershipStatus.PRODUCTION_PARTNER,
+    }
+    if partner.partnership_status not in eligible_partner_states:
+        raise CompFoundryError(
+            f"ItadPartner '{partner.slug}' partnership_status="
+            f"{partner.partnership_status.value} · no observation may be added "
+            f"to a comp set until at least IN_CONVERSATION"
+        )
+
+    if obs.rights_status == RightsStatus.AGREEMENT_REQUIRED:
+        raise CompFoundryError(
+            f"PartnerTransactionObservation {obs.partner_transaction_ref} "
+            f"has rights_status=AGREEMENT_REQUIRED · refuse comp inclusion"
+        )
+
+    # Grade ceiling B before validator review · service refuses A.
+    declared_grade = obs.comp_quality_grade or CompQualityGrade.B
+    if declared_grade == CompQualityGrade.A:
+        raise CompFoundryError(
+            "Partner transaction observations cannot enter a comp set "
+            "directly at Grade A · only validator review may elevate to A "
+            "after attribute-match + rights review"
+        )
+
+    member = CompSetMember(
+        id=uuid.uuid4(),
+        comp_set_id=comp_set_id,
+        # Reuse the transaction_evidence_id slot · partner transactions
+        # are a kind of transaction evidence. The actual partner-specific
+        # join is via PartnerTransactionObservation row.
+        transaction_evidence_id=None,
+        # Track the partner observation through inclusion_reason for now
+        # · a future migration can add partner_transaction_observation_id
+        # if usage warrants its own column.
+        quality_grade=declared_grade,
+        inclusion_reason=(
+            f"ITAD_PARTNER_TRANSACTION · partner={partner.slug} · "
+            f"obs={obs.partner_transaction_ref} · "
+            f"condition={obs.condition_class.value} · "
+            f"amount_disclosure={obs.amount_disclosure_type.value}"
+        ),
+        limitations=[
+            "ITAD_PARTNER_PERMISSIONED_TRANSACTION",
+            "GRADE_CEILING_B_UNTIL_VALIDATOR_REVIEW",
+            f"PARTNER_AGREEMENT_STATUS_{partner.agreement_status.value}",
+            f"RIGHTS_STATUS_{obs.rights_status.value}",
+            "NOT_PUBLIC_MARKETING_UNLESS_RIGHTS_PERMIT",
         ],
         included_by=included_by,
     )

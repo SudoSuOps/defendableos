@@ -281,9 +281,9 @@ def test_public_export_refuses_derived_datasets():
 # ════════════════════════════════════════════════════════════════════
 
 
-def test_connector_definitions_cover_seven_providers():
-    """Exactly 7 connectors are defined · adding more requires a new test."""
-    assert len(CONNECTOR_DEFINITIONS) == 7
+def test_connector_definitions_cover_eight_providers():
+    """8 connectors after the ITAD lane was added · 7 originals + 1 ITAD."""
+    assert len(CONNECTOR_DEFINITIONS) == 8
     names = {d["provider_name"] for d in CONNECTOR_DEFINITIONS}
     assert ProviderName.BRAVE_LLM_CONTEXT in names
     assert ProviderName.EBAY_BROWSE in names
@@ -292,6 +292,7 @@ def test_connector_definitions_cover_seven_providers():
     assert ProviderName.CLIENT_UPLOAD in names
     assert ProviderName.FIRST_PARTY_TRANSACTION in names
     assert ProviderName.LICENSED_TRANSACTION_DATA_FUTURE in names
+    assert ProviderName.ITAD_PARTNER_FEED in names
 
 
 def test_ebay_inventory_is_future_disabled():

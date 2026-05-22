@@ -90,6 +90,9 @@ class ProviderName(str, enum.Enum):
     CLIENT_UPLOAD = "CLIENT_UPLOAD"
     FIRST_PARTY_TRANSACTION = "FIRST_PARTY_TRANSACTION"
     LICENSED_TRANSACTION_DATA_FUTURE = "LICENSED_TRANSACTION_DATA_FUTURE"
+    # ITAD partner lane · permissioned enterprise compute transaction
+    # evidence under signed agreement · added 2026-05-22.
+    ITAD_PARTNER_FEED = "ITAD_PARTNER_FEED"
 
 
 class ProviderStatus(str, enum.Enum):
@@ -98,6 +101,12 @@ class ProviderStatus(str, enum.Enum):
     READY = "READY"
     ERROR = "ERROR"
     FUTURE_DISABLED = "FUTURE_DISABLED"
+    # ITAD lifecycle · pre-agreement states · added 2026-05-22.
+    RESEARCH_VERIFIED = "RESEARCH_VERIFIED"
+    OUTREACH_PENDING = "OUTREACH_PENDING"
+    OUTREACH_READY = "OUTREACH_READY"
+    IN_CONVERSATION = "IN_CONVERSATION"
+    AGREEMENT_REQUIRED = "AGREEMENT_REQUIRED"
 
 
 class TermsReviewStatus(str, enum.Enum):
@@ -138,6 +147,9 @@ class SourceType(str, enum.Enum):
     CLIENT_PROVIDED_SALE_RECEIPT = "CLIENT_PROVIDED_SALE_RECEIPT"
     FOUNDER_OWNED_VERIFIED_SALE = "FOUNDER_OWNED_VERIFIED_SALE"
     AUTHORIZED_MERCHANT_TRANSACTION = "AUTHORIZED_MERCHANT_TRANSACTION"
+    # ITAD partner-feed transaction · grade ceiling B before validator
+    # review · added 2026-05-22.
+    PERMISSIONED_PARTNER_TRANSACTION = "PERMISSIONED_PARTNER_TRANSACTION"
 
 
 class PriceType(str, enum.Enum):
@@ -202,6 +214,8 @@ class RightsStatus(str, enum.Enum):
     TRAINING_ALLOWED = "TRAINING_ALLOWED"
     PUBLIC_DISPLAY_ALLOWED = "PUBLIC_DISPLAY_ALLOWED"
     RESTRICTED_DO_NOT_EXPORT = "RESTRICTED_DO_NOT_EXPORT"
+    # Pre-agreement state for ITAD / licensed sources · added 2026-05-22.
+    AGREEMENT_REQUIRED = "AGREEMENT_REQUIRED"
 
 
 class PairBatchType(str, enum.Enum):
@@ -833,6 +847,269 @@ class ArtifactRegistry(Base, TimestampMixin):
     retention_policy: Mapped[str | None] = mapped_column(String(120))
 
 
+# ────────────────────────────────────────────────────────────────────
+#  ITAD PARTNER LANE · enums + 3 tables
+# ────────────────────────────────────────────────────────────────────
+#
+#  Defendable Compute Partner Feed Pilot · ITAD firms supply
+#  permissioned anonymized completed transactions under signed
+#  agreement. ITAD evidence is HIGHER quality than marketplace
+#  listings because it carries configuration, test status, condition,
+#  chain of custody and a real recovery amount.
+#
+#  Doctrine for this lane:
+#    · Partnership status is honest (OUTREACH_PENDING / OUTREACH_READY
+#      / IN_CONVERSATION / PILOT_AGREEMENT / PRODUCTION_PARTNER /
+#      DECLINED) · never claim partnerships that do not exist
+#    · Rights default to AGREEMENT_REQUIRED · training_eligible=False
+#      · public_display_eligible=False UNTIL a signed agreement
+#    · PartnerTransactionObservation comp_quality_grade ceiling is B
+#      before validator review · only the validator may elevate to A
+#    · No public buyback QUOTE ever becomes a transaction · the
+#      transaction_type field excludes any "quote" semantics
+# ────────────────────────────────────────────────────────────────────
+
+
+class ItadPartnershipStatus(str, enum.Enum):
+    RESEARCH_VERIFIED = "RESEARCH_VERIFIED"
+    OUTREACH_READY = "OUTREACH_READY"
+    OUTREACH_PENDING = "OUTREACH_PENDING"
+    IN_CONVERSATION = "IN_CONVERSATION"
+    PILOT_AGREEMENT = "PILOT_AGREEMENT"
+    PRODUCTION_PARTNER = "PRODUCTION_PARTNER"
+    DECLINED = "DECLINED"
+
+
+class ItadFeedFormat(str, enum.Enum):
+    UNKNOWN = "UNKNOWN"
+    CSV = "CSV"
+    JSON = "JSON"
+    API = "API"
+    MANUAL_EXPORT = "MANUAL_EXPORT"
+
+
+class ItadAgreementStatus(str, enum.Enum):
+    NONE = "NONE"
+    NDA_SIGNED = "NDA_SIGNED"
+    PILOT_AGREEMENT = "PILOT_AGREEMENT"
+    PRODUCTION_AGREEMENT = "PRODUCTION_AGREEMENT"
+
+
+class ItadContactStatus(str, enum.Enum):
+    NOT_CONTACTED = "NOT_CONTACTED"
+    EMAIL_SENT = "EMAIL_SENT"
+    RESPONSE_RECEIVED = "RESPONSE_RECEIVED"
+    IN_CONVERSATION = "IN_CONVERSATION"
+    NO_RESPONSE = "NO_RESPONSE"
+
+
+class ItadAssetType(str, enum.Enum):
+    GPU = "GPU"
+    GPU_SERVER = "GPU_SERVER"
+    DGX_HGX = "DGX_HGX"
+    WORKSTATION = "WORKSTATION"
+    COMPONENT = "COMPONENT"
+    NETWORKING = "NETWORKING"
+    STORAGE = "STORAGE"
+    OTHER = "OTHER"
+
+
+class ItadFormFactor(str, enum.Enum):
+    PCIE = "PCIE"
+    SXM = "SXM"
+    SYSTEM = "SYSTEM"
+    UNKNOWN = "UNKNOWN"
+
+
+class ItadConditionClass(str, enum.Enum):
+    TESTED = "TESTED"
+    REFURBISHED = "REFURBISHED"
+    AS_IS = "AS_IS"
+    PULL = "PULL"
+    UNKNOWN = "UNKNOWN"
+
+
+class ItadTransactionType(str, enum.Enum):
+    DIRECT_BUYBACK = "DIRECT_BUYBACK"
+    REMARKETING_SALE = "REMARKETING_SALE"
+    AUCTION_SALE = "AUCTION_SALE"
+    UNKNOWN = "UNKNOWN"
+
+
+class ItadAmountDisclosureType(str, enum.Enum):
+    EXACT = "EXACT"
+    RANGE = "RANGE"
+    INDEXED = "INDEXED"
+    REDACTED = "REDACTED"
+
+
+class ItadFeedImportStatus(str, enum.Enum):
+    PENDING = "PENDING"
+    IMPORTING = "IMPORTING"
+    IMPORTED = "IMPORTED"
+    FAILED = "FAILED"
+
+
+# ────────────────────────────────────────────────────────────────────
+#  16 · ItadPartner · one row per ITAD firm we are tracking
+# ────────────────────────────────────────────────────────────────────
+
+
+class ItadPartner(Base, TimestampMixin):
+    __tablename__ = "itad_partners"
+
+    id: Mapped[uuid.UUID] = uuid_pk()
+    slug: Mapped[str] = mapped_column(String(80), unique=True, nullable=False, index=True)
+    company_name: Mapped[str] = mapped_column(String(255), nullable=False)
+    company_url: Mapped[str | None] = mapped_column(String(500))
+    partnership_status: Mapped[ItadPartnershipStatus] = mapped_column(
+        Enum(ItadPartnershipStatus, name="itad_partnership_status_enum"),
+        nullable=False,
+        default=ItadPartnershipStatus.RESEARCH_VERIFIED,
+    )
+    compute_coverage_summary: Mapped[str | None] = mapped_column(Text)
+    feed_format: Mapped[ItadFeedFormat] = mapped_column(
+        Enum(ItadFeedFormat, name="itad_feed_format_enum"),
+        nullable=False,
+        default=ItadFeedFormat.UNKNOWN,
+    )
+    agreement_status: Mapped[ItadAgreementStatus] = mapped_column(
+        Enum(ItadAgreementStatus, name="itad_agreement_status_enum"),
+        nullable=False,
+        default=ItadAgreementStatus.NONE,
+    )
+    rights_scope: Mapped[RightsStatus] = mapped_column(
+        Enum(RightsStatus, name="rights_status_enum"),
+        nullable=False,
+        default=RightsStatus.AGREEMENT_REQUIRED,
+    )
+    contact_status: Mapped[ItadContactStatus] = mapped_column(
+        Enum(ItadContactStatus, name="itad_contact_status_enum"),
+        nullable=False,
+        default=ItadContactStatus.NOT_CONTACTED,
+    )
+    contact_notes: Mapped[str | None] = mapped_column(Text)
+
+
+# ────────────────────────────────────────────────────────────────────
+#  17 · ItadFeedImportRun · one row per CSV/feed import received
+# ────────────────────────────────────────────────────────────────────
+
+
+class ItadFeedImportRun(Base, TimestampMixin):
+    __tablename__ = "itad_feed_import_runs"
+
+    id: Mapped[uuid.UUID] = uuid_pk()
+    partner_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("itad_partners.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    received_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    raw_artifact_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("artifact_registry.id", ondelete="SET NULL")
+    )
+    manifest_sha256: Mapped[str | None] = mapped_column(String(64))
+    record_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    import_status: Mapped[ItadFeedImportStatus] = mapped_column(
+        Enum(ItadFeedImportStatus, name="itad_feed_import_status_enum"),
+        nullable=False,
+        default=ItadFeedImportStatus.PENDING,
+    )
+    validator_status: Mapped[str | None] = mapped_column(String(64))
+    error_message: Mapped[str | None] = mapped_column(Text)
+
+
+# ────────────────────────────────────────────────────────────────────
+#  18 · PartnerTransactionObservation · per-record ITAD transaction
+# ────────────────────────────────────────────────────────────────────
+
+
+class PartnerTransactionObservation(Base, TimestampMixin):
+    __tablename__ = "partner_transaction_observations"
+
+    id: Mapped[uuid.UUID] = uuid_pk()
+    partner_transaction_ref: Mapped[str] = mapped_column(String(120), unique=True, nullable=False, index=True)
+    partner_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("itad_partners.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    feed_import_run_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("itad_feed_import_runs.id", ondelete="SET NULL")
+    )
+    goods_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("canonical_goods.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+
+    # Asset descriptors (the ITAD-grade extras over a marketplace listing)
+    asset_type: Mapped[ItadAssetType] = mapped_column(
+        Enum(ItadAssetType, name="itad_asset_type_enum"),
+        nullable=False,
+        default=ItadAssetType.GPU,
+    )
+    manufacturer: Mapped[str | None] = mapped_column(String(120))
+    model: Mapped[str | None] = mapped_column(String(255))
+    form_factor: Mapped[ItadFormFactor] = mapped_column(
+        Enum(ItadFormFactor, name="itad_form_factor_enum"),
+        nullable=False,
+        default=ItadFormFactor.UNKNOWN,
+    )
+    memory_configuration: Mapped[str | None] = mapped_column(String(120))
+    quantity: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    condition_class: Mapped[ItadConditionClass] = mapped_column(
+        Enum(ItadConditionClass, name="itad_condition_class_enum"),
+        nullable=False,
+        default=ItadConditionClass.UNKNOWN,
+    )
+    test_status: Mapped[str | None] = mapped_column(String(120))
+    system_configuration_summary: Mapped[str | None] = mapped_column(Text)
+
+    # Transaction details
+    transaction_type: Mapped[ItadTransactionType] = mapped_column(
+        Enum(ItadTransactionType, name="itad_transaction_type_enum"),
+        nullable=False,
+        default=ItadTransactionType.UNKNOWN,
+    )
+    transaction_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    amount_usd: Mapped[float | None] = mapped_column(Numeric(14, 2))
+    amount_band: Mapped[str | None] = mapped_column(String(120))
+    amount_disclosure_type: Mapped[ItadAmountDisclosureType] = mapped_column(
+        Enum(ItadAmountDisclosureType, name="itad_amount_disclosure_type_enum"),
+        nullable=False,
+        default=ItadAmountDisclosureType.REDACTED,
+    )
+    geography_region: Mapped[str | None] = mapped_column(String(120))
+
+    # Defendable grading
+    configuration_match_score: Mapped[float | None] = mapped_column(Float)
+    rights_status: Mapped[RightsStatus] = mapped_column(
+        Enum(RightsStatus, name="rights_status_enum"),
+        nullable=False,
+        default=RightsStatus.AGREEMENT_REQUIRED,
+    )
+    comp_quality_grade: Mapped[CompQualityGrade | None] = mapped_column(
+        Enum(CompQualityGrade, name="comp_quality_grade_enum")
+    )
+    training_eligible: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    public_display_eligible: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False
+    )
+
+    # Provenance
+    raw_artifact_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("artifact_registry.id", ondelete="SET NULL")
+    )
+    normalized_sha256: Mapped[str | None] = mapped_column(String(64))
+
+
 __all__ = [
     # enums
     "GoodsClass",
@@ -860,6 +1137,16 @@ __all__ = [
     "MarketReadyPackageStatus",
     "ArtifactType",
     "ArtifactPrivacyClass",
+    "ItadPartnershipStatus",
+    "ItadFeedFormat",
+    "ItadAgreementStatus",
+    "ItadContactStatus",
+    "ItadAssetType",
+    "ItadFormFactor",
+    "ItadConditionClass",
+    "ItadTransactionType",
+    "ItadAmountDisclosureType",
+    "ItadFeedImportStatus",
     # models
     "SourceConnector",
     "DiscoveryRun",
@@ -876,4 +1163,7 @@ __all__ = [
     "ApprovedClaim",
     "MarketReadyDataLink",
     "ArtifactRegistry",
+    "ItadPartner",
+    "ItadFeedImportRun",
+    "PartnerTransactionObservation",
 ]

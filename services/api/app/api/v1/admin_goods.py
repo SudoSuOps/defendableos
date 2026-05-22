@@ -21,8 +21,10 @@ from app.models.goods import (
     CanonicalGood,
     CompSet,
     DiscoveryRun,
+    ItadPartner,
     MarketObservation,
     PairBatch,
+    PartnerTransactionObservation,
     SourceConnector,
     SourceRightsRecord,
     TrainingPair,
@@ -71,6 +73,15 @@ def overview(
         ),
         "discovery_runs": db.query(DiscoveryRun).count(),
         "artifacts_registered": db.query(ArtifactRegistry).count(),
+        "itad_partners": db.query(ItadPartner).count(),
+        "itad_partners_in_conversation_or_better": (
+            db.query(ItadPartner)
+            .filter(ItadPartner.partnership_status.in_([
+                "IN_CONVERSATION", "PILOT_AGREEMENT", "PRODUCTION_PARTNER",
+            ]))
+            .count()
+        ),
+        "partner_transaction_observations": db.query(PartnerTransactionObservation).count(),
     }
 
 
@@ -278,6 +289,40 @@ def list_approved_claims(
             "applicable_surfaces": c.applicable_surfaces,
         }
         for c in rows
+    ]
+
+
+# ───────────────────────────────────────────────────────────────────
+# ITAD partner-feed lane · the enterprise compute comp source
+# ───────────────────────────────────────────────────────────────────
+
+
+@router.get("/itad-partners")
+def list_itad_partners(
+    db: Session = Depends(get_db),
+    _admin=Depends(require_platform_admin),
+) -> list[dict]:
+    """8 ITAD partners · honest partnership + agreement + rights state."""
+    rows = db.query(ItadPartner).order_by(ItadPartner.slug).all()
+    return [
+        {
+            "id": str(p.id),
+            "slug": p.slug,
+            "company_name": p.company_name,
+            "company_url": p.company_url,
+            "partnership_status": p.partnership_status.value,
+            "compute_coverage_summary": p.compute_coverage_summary,
+            "feed_format": p.feed_format.value,
+            "agreement_status": p.agreement_status.value,
+            "rights_scope": p.rights_scope.value,
+            "contact_status": p.contact_status.value,
+            "transaction_observation_count": (
+                db.query(PartnerTransactionObservation)
+                .filter(PartnerTransactionObservation.partner_id == p.id)
+                .count()
+            ),
+        }
+        for p in rows
     ]
 
 

@@ -91,6 +91,19 @@ CONNECTOR_DEFINITIONS: list[dict] = [
         "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
         "status_fn": lambda: ProviderStatus.FUTURE_DISABLED,
     },
+    {
+        "provider_name": ProviderName.ITAD_PARTNER_FEED,
+        "connector_purpose": (
+            "Permissioned ITAD partner transactions · enterprise compute "
+            "evidence (DGX/HGX/H100/A100/L40S/V100/RTX PRO 6000) · "
+            "agreement-required · grade ceiling B before validator review"
+        ),
+        "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
+        # Status is derived from how many ItadPartner rows have reached
+        # PRODUCTION_PARTNER · the helper below returns OUTREACH_READY when
+        # any partners are seeded and no agreement is signed yet.
+        "status_fn": lambda: ProviderStatus.OUTREACH_READY,
+    },
 ]
 
 

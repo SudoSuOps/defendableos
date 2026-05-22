@@ -23,9 +23,12 @@ from app.models.goods import (
     CompSetMember,
     DiscoveryRun,
     GoodsIdentifier,
+    ItadFeedImportRun,
+    ItadPartner,
     MarketObservation,
     MarketReadyDataLink,
     PairBatch,
+    PartnerTransactionObservation,
     SourceConnector,
     SourceRightsRecord,
     TrainingPair,
@@ -70,4 +73,8 @@ __all__ = [
     "TrainingPair",
     "TransactionEvidence",
     "TrendSignal",
+    # ITAD partner lane
+    "ItadFeedImportRun",
+    "ItadPartner",
+    "PartnerTransactionObservation",
 ]

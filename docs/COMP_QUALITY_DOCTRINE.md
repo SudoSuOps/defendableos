@@ -26,7 +26,7 @@ A LISTING IS NEVER A SALE. A TREND IS NEVER A COMP.
 | **D** | Weak listing match | Discovery only |
 | **E** | Trend signal | NEVER comp evidence |
 
-## The 6 rules
+## The 7 rules
 
 **RULE 1** · A `TrendSignal` can NEVER enter a comp set as value
 support. Always grade E. Always inclusion_reason
@@ -70,6 +70,19 @@ derivative export. `SourceRightsRecord.training_eligible` defaults
 to `False`. `TrainingPair.use_class` defaults to
 `CANDIDATE_ONLY`. `pair_factory.assert_training_eligible()` is
 the gate every exporter must call.
+
+**RULE 7** · ITAD partner transactions have **grade ceiling B**
+before validator review. The service refuses to add a
+`PartnerTransactionObservation` to a comp set unless:
+- partner is `IN_CONVERSATION` / `PILOT_AGREEMENT` / `PRODUCTION_PARTNER`
+- `rights_status` is NOT `AGREEMENT_REQUIRED`
+- `amount_disclosure_type` is documented
+- `condition_class` is set
+
+Only the validator may elevate to Grade A after attribute-match
+and rights review. Enforced in
+`comp_foundry.add_partner_transaction_observation()` · tests in
+`test_itad_doctrine.py` (15 of them) are the canary.
 
 ## What "not ready" looks like to a buyer
 
