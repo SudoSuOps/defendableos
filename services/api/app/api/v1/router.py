@@ -19,6 +19,7 @@ from app.api.v1 import (
     claw_bakery,
     marketplace_ebay_notifications,
     admin_ebay,
+    compute_claw,
 )
 
 api_router = APIRouter(prefix="/api/v1")
@@ -41,3 +42,4 @@ api_router.include_router(claw_swarm.router)
 api_router.include_router(claw_bakery.router)
 api_router.include_router(marketplace_ebay_notifications.router)
 api_router.include_router(admin_ebay.router)
+api_router.include_router(compute_claw.router)
