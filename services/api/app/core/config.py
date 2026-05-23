@@ -102,6 +102,10 @@ class Settings(BaseSettings):
     ebay_account_deletion_verification_token: str = ""
     ebay_account_deletion_notifications_enabled: bool = False
 
+    # eBay · admin gate for /api/v1/admin/ebay/* routes (smoke + token-refresh).
+    # v1 simple shared-token · migrates to JWT admin pattern when wired.
+    ebay_admin_token: str = ""
+
     # Model gateway · provider-agnostic. Switch with MODEL_PROVIDER=kimi|openai.
     model_provider: str = "kimi"
 
