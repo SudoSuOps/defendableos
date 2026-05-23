@@ -1,0 +1,127 @@
+{
+  "aiov_analysis": {
+    "reason": "Phase A capture only \u00b7 AIOV draft pending Phase B/C workload-test inputs",
+    "status": "NOT_YET_RUN"
+  },
+  "asset": {
+    "asset_class": "COMPUTE_HARDWARE",
+    "asset_reference": "DOV-COMPUTE-000001",
+    "asset_tier": "E6",
+    "category": "GPU_ACCELERATOR",
+    "form_factor": "DISCRETE_CARD",
+    "host_summary": {
+      "cpu_model": "Intel(R) Xeon(R) w9-3475X",
+      "kernel": "6.8.0-110-generic",
+      "os": "Ubuntu 24.04.4 LTS",
+      "platform": "Linux"
+    },
+    "manufacturer": "NVIDIA",
+    "model": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "vram_gb": 95
+  },
+  "bench_attestation": {
+    "bundle_archive_reference": "data/compute-bench-receipts/swarmrails/cb-20260523T025801Z-2d4e/",
+    "bundle_artifact_count": 13,
+    "bundle_hash": "sha256:3a5717285f1de11d5adec2c77300e3505c3395f2074532d6b1d3b067e1075747",
+    "captured_at": "2026-05-23T02:58:01Z",
+    "captured_by": "swarm-and-bee",
+    "demonstrated_workloads": [],
+    "grades": {
+      "evidence": "C \u00b7 IDENTITY_AND_RUNTIME_ONLY (Phase A \u00b7 no workload receipts)",
+      "health": "PASS_WITH_OBSERVATIONS (idle snapshot \u00b7 Phase A)",
+      "identity_confidence": "C \u00b7 MODEL_SELF_REPORTED_ONLY",
+      "utility": "UTILITY_NOT_YET_MEASURED"
+    },
+    "limitations": [
+      "Phase A capture only \u00b7 no workload utility measured",
+      "No DCGM diag run \u00b7 install dcgmi for Health Grade A inputs",
+      "Buyer-side re-attestation required for transfer assurance"
+    ],
+    "manifest_hash": "sha256:3a5717285f1de11d5adec2c77300e3505c3395f2074532d6b1d3b067e1075747",
+    "not_tested": [
+      "All workloads \u00b7 Phase A is identity + system capture only"
+    ],
+    "re_attestation_trigger": "OWNERSHIP_TRANSFER \u00b7 HARDWARE_RELOCATION \u00b7 DRIVER_MAJOR_UPGRADE",
+    "run_id": "cb-20260523T025801Z-2d4e",
+    "runtime_summary": {
+      "cuda": "nvcc: NVIDIA (R) Cuda compiler driver",
+      "driver": "NVIDIA-SMI version  : 590.48.01",
+      "kernel": "6.8.0-110-generic",
+      "os": "Ubuntu 24.04.4 LTS"
+    },
+    "scope": "quick"
+  },
+  "deed_reference": "DDEED-DOV-COMPUTE-000001-BENCH-v1",
+  "deed_subtype": "BENCH_ATTESTATION_RECORD",
+  "deed_type": "DEFENDABLE_DEED",
+  "deed_version": "0.1",
+  "disclosures": {
+    "ai_assisted_record": false,
+    "authentication_guarantee": false,
+    "disclaimer": "This record is a Phase A benchmark-attestation capture \u00b7 identity + system + runtime + idle-health snapshot only. No workload utility was measured. The bundle hash anchors the captured state at the timestamp above. The bench does NOT prove what buyers will pay, future rental income, or that performance repeats in another rig. Upgrade to a Phase B/C bench-attested record requires diagnostic + workload tests in an approved maintenance window.",
+    "first_real_bench_attestation": true,
+    "legal_certification": false,
+    "phase": "A \u00b7 read-only identity + system + runtime + idle-health snapshot",
+    "professional_appraisal": false
+  },
+  "ens_identity": {
+    "name": "ddeed-dov-compute-000001-bench-v1.swarmbee.defendable.eth",
+    "parent_organization_ens": "swarmbee.defendable.eth",
+    "public_resolution_target": null,
+    "status": "RESERVED_NOT_ISSUED"
+  },
+  "evidence_packet": {
+    "evidence_item_count": 11,
+    "manifest_excludes": [
+      "manifest.sha256",
+      "public_safe_attestation.json"
+    ],
+    "manifest_sha256": "3a5717285f1de11d5adec2c77300e3505c3395f2074532d6b1d3b067e1075747",
+    "per_file_sha256_count": 11,
+    "public_evidence_disclosure": "PRIVATE_EVIDENCE_REFERENCED_BY_HASH_ONLY"
+  },
+  "issued_at": null,
+  "parent_deed_reference": "DDEED-DOV-COMPUTE-000001-v3",
+  "parent_deed_relationship": "FIRST_BENCHMARK_ATTESTATION_FOR_FLAGSHIP_DEED",
+  "proof_of_value": {
+    "doctrine": "VALIDATE_THE_VALIDATOR",
+    "framework": "DEFENDABLEOS",
+    "intelligence_engine": "DEFENDABLE_COMPUTE_BENCH",
+    "phase": "A",
+    "record_purpose": "First benchmark-attested capture for the flagship E6 RTX PRO 6000 Blackwell asset on swarmrails GPU 0. Phase A read-only identity + system + runtime + idle-health snapshot. Upgrades to BENCHMARK_ATTESTED when Phase B/C workload tests are scheduled in an approved maintenance window."
+  },
+  "publication_status": "NOT_PUBLISHED",
+  "record_hash": "sha256:a558da2b5060c06d09d2b3d3bca78ef1391b58804822c20e183724140645326b",
+  "record_status": "DRAFT_REVIEW_RECORD",
+  "safety_attestation": {
+    "co_resident_gpus_untouched": [
+      {
+        "index": 1,
+        "pci_bus_id": "00000000:CA:00.0",
+        "policy": "OFF_LIMITS_PRODUCTION_QWEN_WORKLOAD"
+      }
+    ],
+    "occupied_gpu_check": "PASS",
+    "occupied_gpus_at_capture": [],
+    "operator_approval": "founder_approved_2026-05-23_via_session",
+    "target_gpu_index": 0,
+    "target_gpu_pci_bus_id": "00000000:34:00.0"
+  },
+  "validator_flags": [
+    {
+      "detail": "dcgmi not installed \u00b7 Health Grade A diagnostic skipped",
+      "id": "DCGM_NOT_AVAILABLE",
+      "severity": "info"
+    },
+    {
+      "detail": "Multi-GPU host: 2 accelerators detected. Bench targets one GPU at a time.",
+      "id": "INFERENCE_NOTE",
+      "severity": "info"
+    }
+  ],
+  "validator_review": {
+    "phase_a_note": "Validator chain runs after Phase B/C workload tests upgrade Utility Grade from UTILITY_NOT_YET_MEASURED",
+    "protocol": "VALIDATE_THE_VALIDATOR",
+    "status": "VALIDATOR_REVIEW_REQUIRED"
+  }
+}

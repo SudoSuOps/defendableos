@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-05-23T02:58:01Z",
+  "phase": "A",
+  "phase_a_note": "Phase A executed no workloads. The profile listed here is the profile that would run in Phase B/C for this asset tier \u00b7 see docs/COMPUTE_BENCH_PROFILE_MATRIX.md",
+  "profile": "e6-auto",
+  "safety_acknowledgments": [
+    "not_on_rented_workload",
+    "operator_owned"
+  ],
+  "stress_intent": "none",
+  "test_scope": "quick",
+  "workloads_planned": []
+}

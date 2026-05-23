@@ -1,0 +1,21 @@
+{
+  "bundle_sha256": "3a5717285f1de11d5adec2c77300e3505c3395f2074532d6b1d3b067e1075747",
+  "hash_algorithm": "SHA-256",
+  "manifest_excludes": [
+    "manifest.sha256",
+    "public_safe_attestation.json"
+  ],
+  "per_file_sha256": {
+    "asset_identity.json": "3f03f84f16d8275b80a848d9061576a6bd22d78f5e583c9a429c8c4b5a06ddb3",
+    "benchmark_plan.json": "feb7636822f1fafa9cf4c6b2ecf8a5f163e3182b5d547199848e0ce00006a205",
+    "benchmark_results.json": "778163605dc41c72112c20e22d415a1aebe92c13c68b96c281034a20c00b1395",
+    "best_next_use_inputs.json": "3f55d0526fbf3bbfa052e99078f7d10f2a6493d34ab4b216cad2f21e6aa30a8f",
+    "evidence_classification.json": "23407dd851cf32f0743e8f3036e970090f431d6e95ebdf4a971a4ce53a0fbd53",
+    "health_diagnostic.json": "4b6824544e90fa7d5a99de923e51ea31d6d2a47e5f78d65e8cf284aa6cf39cd4",
+    "private_identity_reference.json": "b0a8aa27a37e38c6ab1e8a5cd4d16a4e2a3f606ac77a3366ef216ada2980e32a",
+    "runtime_environment.json": "94a135b9b98615cc6518d918f6298dbb2479f4c5d79ec35011253f557f4597fc",
+    "system_manifest.json": "5ed05f181db7aae17a6830009e31d5c08b1f89f32e6d231a722a51a603e9c8a8",
+    "validator_flags.json": "f9d81ab7e559154fcfa6b3091eb578ff741e89be8afe929ba2fb85cfbcdc6eb9",
+    "workload_compatibility.json": "a3677ec8c7b49f27c85a6d889cdb7b77c5b56615479ac88b035fe18cc5379359"
+  }
+}

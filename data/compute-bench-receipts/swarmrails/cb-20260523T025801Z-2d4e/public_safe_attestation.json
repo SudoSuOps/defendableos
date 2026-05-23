@@ -1,0 +1,35 @@
+{
+  "asset_class": "COMPUTE_HARDWARE",
+  "asset_tier": "E6",
+  "benchmark_plan_scope": "quick",
+  "bundle_hash": "sha256:3a5717285f1de11d5adec2c77300e3505c3395f2074532d6b1d3b067e1075747",
+  "captured_at": "2026-05-23T02:58:01Z",
+  "captured_by": "swarm-and-bee",
+  "demonstrated_workloads": [],
+  "form_factor": "DISCRETE_CARD",
+  "grades": {
+    "evidence": "C \u00b7 IDENTITY_AND_RUNTIME_ONLY (Phase A \u00b7 no workload receipts)",
+    "health": "PASS_WITH_OBSERVATIONS (idle snapshot \u00b7 Phase A)",
+    "identity_confidence": "C \u00b7 MODEL_SELF_REPORTED_ONLY",
+    "utility": "UTILITY_NOT_YET_MEASURED"
+  },
+  "limitations": [
+    "Phase A capture only \u00b7 no workload utility measured",
+    "No DCGM diag run \u00b7 install dcgmi for Health Grade A inputs",
+    "Buyer-side re-attestation required for transfer assurance"
+  ],
+  "manifest_hash": "sha256:3a5717285f1de11d5adec2c77300e3505c3395f2074532d6b1d3b067e1075747",
+  "model": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "not_tested": [
+    "All workloads \u00b7 Phase A is identity + system capture only"
+  ],
+  "re_attestation_trigger": "OWNERSHIP_TRANSFER \u00b7 HARDWARE_RELOCATION \u00b7 DRIVER_MAJOR_UPGRADE",
+  "run_id": "cb-20260523T025801Z-2d4e",
+  "runtime_summary": {
+    "cuda": "nvcc: NVIDIA (R) Cuda compiler driver",
+    "driver": "NVIDIA-SMI version  : 590.48.01",
+    "kernel": "6.8.0-110-generic",
+    "os": "Ubuntu 24.04.4 LTS"
+  },
+  "vram_gb": 95
+}

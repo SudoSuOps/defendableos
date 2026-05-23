@@ -1,0 +1,22 @@
+{
+  "captured_at": "2026-05-23T02:58:01Z",
+  "os_release": {
+    "id": "ubuntu",
+    "pretty_name": "Ubuntu 24.04.4 LTS",
+    "version_id": "24.04"
+  },
+  "platform": {
+    "machine": "x86_64",
+    "node": "swarmrails",
+    "release": "6.8.0-110-generic",
+    "system": "Linux"
+  },
+  "tool_versions": {
+    "dcgmi": null,
+    "docker": "Docker version 28.5.2, build ecc6942",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver",
+    "nvidia-smi": "NVIDIA-SMI version  : 590.48.01",
+    "python3": "Python 3.12.3",
+    "uname": "Linux 6.8.0-110-generic x86_64"
+  }
+}

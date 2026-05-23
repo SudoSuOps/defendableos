@@ -1,0 +1,35 @@
+# Evidence Vault doctrine · per docs/EVIDENCE_VAULT_OBJECT_STORAGE_DOCTRINE.md
+#
+# Compute Bench bundles contain PRIVATE_EVIDENCE + DERIVED_DATASETS
+# artifacts that MUST NOT be committed to a public repo. Only the
+# PUBLIC_ASSETS subset (asset_identity · runtime_environment · benchmark_plan
+# · workload_compatibility · public_safe_attestation · manifest.sha256) and
+# the issued deed JSON may be tracked.
+#
+# Local bundles live in the operator's Evidence Vault · paths in this
+# directory · NOT in the repo. The bundle hash anchored in the public-safe
+# attestation is the integrity reference · operators verify by recomputing
+# against their local bundle.
+
+# Exclude PRIVATE_EVIDENCE files from any bundle directory
+*/private_identity_reference.json
+*/thermal_power_trace.jsonl
+
+# Exclude DERIVED_DATASETS files (contain hostnames, raw serials, etc.)
+*/system_manifest.json
+*/health_diagnostic.json
+*/benchmark_results.json
+*/validator_flags.json
+*/best_next_use_inputs.json
+*/evidence_classification.json
+
+# Explicit allowlist (override any prior pattern):
+!*/asset_identity.json
+!*/runtime_environment.json
+!*/benchmark_plan.json
+!*/workload_compatibility.json
+!*/public_safe_attestation.json
+!*/manifest.sha256
+!*/ddeed-*.json
+!.gitignore
+!README.md

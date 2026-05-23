@@ -1,0 +1,8 @@
+{
+  "demonstrated": [],
+  "not_tested": [
+    "All workloads \u00b7 Phase A is identity + system capture only"
+  ],
+  "phase": "A",
+  "phase_a_note": "Workload compatibility requires Phase B/C tests. The grades below reflect capture-only status."
+}
