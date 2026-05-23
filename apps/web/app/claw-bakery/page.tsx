@@ -9,11 +9,26 @@ import { VaultTree } from "@/components/bakery/VaultTree";
 import { Guardrails } from "@/components/bakery/Guardrails";
 import { ProductLadder } from "@/components/bakery/ProductLadder";
 import { PublicMetrics } from "@/components/bakery/PublicMetrics";
+import { RoleStatusTable } from "@/components/bakery/RoleStatusTable";
 
 export const metadata: Metadata = {
   title: "Claw Bakery · DefendableOS",
   description:
-    "The DefendableOS 24/7 evidence, benchmark, pair, and receipt refinery for AI workers. Inspect the agent. Grade the risk. Bake the proof.",
+    "Receipt-backed AI agent inspection refinery · Honey/Jelly/Propolis Tribunal · pair candidates from real ClawCheck intakes. No agent approves its own Honey label. No deed issues without Validator review.",
+  alternates: { canonical: "https://defendableos.com/claw-bakery" },
+  openGraph: {
+    title: "Claw Bakery · DefendableOS",
+    description: "The 24/7 evidence + benchmark + pair + receipt refinery for AI workers. Inspect the agent. Grade the risk. Bake the proof.",
+    url: "https://defendableos.com/claw-bakery",
+    siteName: "DefendableOS",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Claw Bakery · DefendableOS",
+    description: "Receipt-backed AI agent inspection refinery. Honey · Jelly · Propolis. No agent approves its own label.",
+  },
+  robots: { index: true, follow: true },
 };
 
 const START_CLAWCHECK_URL =
@@ -248,6 +263,19 @@ export default function ClawBakeryPage() {
           </h2>
           <div className="mt-8">
             <ProductLadder />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Kimi swarm role status (truthful) ────────────────── */}
+      <section className="px-6 py-16 border-t border-stone-900/80 bg-stone-950/40">
+        <div className="max-w-6xl mx-auto w-full">
+          <SectionLabel>Role status · honest table</SectionLabel>
+          <h2 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight">
+            Six roles · one Kimi agent live · five scaffolded
+          </h2>
+          <div className="mt-8">
+            <RoleStatusTable />
           </div>
         </div>
       </section>
