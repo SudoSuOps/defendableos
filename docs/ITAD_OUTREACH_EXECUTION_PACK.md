@@ -4,6 +4,29 @@
 the seed data into a ready-to-send outbound campaign. Founder action
 tomorrow morning: send all 8.
 
+## Expanded inventory thesis · what we ingest from partners
+
+The pilot is NOT limited to flagship enterprise GPUs. Defendable
+Compute spans the full edge-to-rack ladder (E0-E7 ·
+see `COMPUTE_ASSET_TAXONOMY.md`). The partner-feed pilot covers
+seven inventory classes · sorted by partner familiarity:
+
+| Inventory class | Typical ITAD volume | Defendable lane |
+|---|---|---|
+| **Enterprise AI GPUs** · H100/H200/A100/L40S/V100 · DGX/HGX | High at exIT, Alta, GreenTek, Re-Teck | E6-E7 · institutional deeds |
+| **Consumer flagship GPUs** · RTX 3090/4090/5090 · refresh cycles | High at Jawa, SellGPU · medium at others | E4 · Workhorse Utility Records |
+| **Workstation GPUs** · A4000/A5000/A6000 · RTX 4500/PRO 6000 | Medium at all partners | E5-E6 · Premium deeds |
+| **CPU server inventory** · Xeon/EPYC nodes · storage controllers | High at ServerMonkey, Re-Teck, Iron Mountain | E0 · Utility node records |
+| **Storage** · NVMe arrays · RAID controllers · NAS appliances | Universal across partners | adjacent · supports Complete Node packages |
+| **Networking** · 10GbE/25GbE/100GbE switches · IB · ConnectX | Medium-high · enterprise lanes | adjacent · supports Complete Node packages |
+| **Edge / small accelerators** · T4 · Jetson · Coral | Specialty · GreenTek + Alta + Jawa | E1 · Edge Utility Records |
+| **Complete racks / nodes** · GPU server + storage + network bundled | Specialty · Alta + ServerMonkey + Iron Mountain | E5-E7 · Complete Node Packages |
+| **Parts / recycling-bound** · cards below useful threshold | Universal at end of refresh cycle | RECYCLE recommendation · honest end-of-life |
+
+The partner sees a richer offer because they have richer inventory
+than just H100s. The platform produces 5-6 record types from a
+single feed instead of one.
+
 ## Ranked target list
 
 Ranking factors: (1) compute-data fit · (2) partnership cycle length ·
@@ -110,9 +133,18 @@ opener but keep the pilot identical:
 Defendable Compute Partner Feed Pilot
 ─────────────────────────────────────────────────────────────────
 What we ask for:
-  · 50-250 anonymized completed transactions
-  · Categories: H100/H200, A100, L40S, V100, DGX/HGX, RTX
-    workstation GPUs, GPU servers
+  · 50-250 anonymized completed transactions across the
+    edge-to-rack ladder you handle:
+    – Enterprise AI GPUs (H100/H200, A100, L40S, V100,
+      DGX/HGX)
+    – Consumer flagship GPUs (RTX 3090/4090/5090)
+    – Workstation GPUs (A-series, RTX PRO 6000, RTX 4500)
+    – CPU server inventory (Xeon, EPYC nodes)
+    – Storage (NVMe, RAID, NAS) and networking (10/25/100GbE)
+      when paired with compute
+    – Edge / small accelerators (T4, Jetson, Coral)
+    – Complete-node bundles (GPU + CPU + RAM + storage + network)
+    – Parts / recycling-bound inventory (honest end-of-life)
   · Permissioned fields: model · form factor · memory · quantity ·
     condition class · test status · transaction type · amount
     (exact / band / indexed / redacted is fine) · geography region
@@ -120,8 +152,14 @@ What we ask for:
     no model training without separate explicit approval
 
 What you get:
-  · A Defendable MarketReady evidence-backed asset page for
+  · Defendable MarketReady evidence-backed asset pages for
     every piece of inventory you opt in (10 free during pilot)
+  · Per-asset recommendation matrix · HOLD/RENT/SELL/REDEPLOY/
+    PART_OUT/RECYCLE columns with evidence basis attached
+  · Workhorse Utility Records for second-life-eligible inventory
+    (3090/4090/A100/V100/T4/A-series)
+  · Edge Utility Records for edge/Jetson inventory
+  · Complete Node Packages for bundle-eligible inventory
   · A portfolio recovery dashboard scoped to your inventory
   · Public-safe proof records that travel with each asset to
     the buyer
@@ -133,6 +171,9 @@ What we'll never do:
   · Surface partner identity on public marketing pages without
     your approval
   · Imply partnership status before agreement is signed
+  · Recommend RECYCLE without honest end-of-life evidence
+  · Issue confirmed-sale claims from partner-feed data alone
+    (Grade B ceiling until validator review)
 ```
 
 ## Founder outreach email template
@@ -252,3 +293,13 @@ endpoint when wired (next session).
 > observation from a partner that hasn't reached IN_CONVERSATION.
 >
 > Everything is ready. The emails just need to leave the outbox.
+
+## Related docs
+
+- `COMPUTE_BEACHHEAD_30_DAY_PLAN.md` · the revenue beachhead this feeds
+- `COMPUTE_ASSET_TAXONOMY.md` · the E0-E7 ladder partner feeds cover
+- `SECOND_LIFE_COMPUTE_STRATEGY.md` · why second-life inventory matters
+- `COMPUTE_TRADE_UP_AND_REDEPLOYMENT_LANE.md` · how refresh-cycle batches get processed
+- `VAST_AI_UTILIZATION_SIGNAL_RAIL.md` · rental-signal source for partner-side analysis
+- `EDGE_AI_COMPUTE_LANE.md` · how edge inventory (T4 · Jetson · Coral) gets processed
+- `COMPUTE_UTILITY_SCORE_STANDARD.md` · score families partners' inventory maps to
