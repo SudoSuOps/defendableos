@@ -2,6 +2,7 @@ from fastapi import APIRouter
 
 from app.api.v1 import (
     admin_goods,
+    admin_summary,
     auth,
     organizations,
     assets,
@@ -31,3 +32,4 @@ api_router.include_router(edge.router, tags=["edge"])
 api_router.include_router(public.router, tags=["public"])
 api_router.include_router(audit.router, tags=["audit"])
 api_router.include_router(admin_goods.router, tags=["admin-goods"])
+api_router.include_router(admin_summary.router, tags=["admin-summary"])
