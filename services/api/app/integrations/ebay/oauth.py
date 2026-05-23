@@ -35,8 +35,10 @@ _log = logging.getLogger("integrations.ebay.oauth")
 SANDBOX_TOKEN_URL = "https://api.sandbox.ebay.com/identity/v1/oauth2/token"
 PRODUCTION_TOKEN_URL = "https://api.ebay.com/identity/v1/oauth2/token"
 
-# Default scope for public-data access (Browse API + most read APIs)
+# Scope constants · eBay groups APIs into scope strings
+# See: https://developer.ebay.com/api-docs/static/oauth-scopes.html
 DEFAULT_SCOPE = "https://api.ebay.com/oauth/api_scope"
+SCOPE_MARKETPLACE_INSIGHTS = "https://api.ebay.com/oauth/api_scope/buy.marketplace.insights"
 
 # Refresh the token this many seconds BEFORE eBay-reported expiry
 _REFRESH_SAFETY_MARGIN_SECONDS = 100
@@ -73,16 +75,17 @@ class CachedToken:
         }
 
 
-# Process-local cache · protected by a lock for parallel-request safety
-_cache: CachedToken | None = None
+# Process-local cache · per-scope · protected by a lock for parallel-request safety.
+# Keyed by scope-string so Browse + Marketplace Insights tokens are independent
+# (one rejection / expiry / scope-denial doesn't poison the other).
+_cache: dict[str, CachedToken] = {}
 _cache_lock = threading.Lock()
 
 
 def reset_cache_for_tests() -> None:
-    """Clear the token cache · tests only."""
-    global _cache
+    """Clear the entire token cache · tests only."""
     with _cache_lock:
-        _cache = None
+        _cache.clear()
 
 
 def _token_url() -> str:
@@ -162,20 +165,32 @@ def _fetch_new_token(scope: str = DEFAULT_SCOPE, timeout: float = 30.0) -> Cache
 
 
 def get_application_token(scope: str = DEFAULT_SCOPE) -> CachedToken:
-    """Return a fresh CachedToken · using cache when fresh."""
-    global _cache
+    """Return a fresh CachedToken for the given scope · using cache when fresh.
+
+    Scope is the cache key · Browse and Marketplace Insights get
+    independent token slots so one scope's expiry/refusal doesn't
+    impact the other.
+    """
     with _cache_lock:
-        if _cache is not None and _cache.scope == scope and _cache.is_fresh():
-            return _cache
-        _cache = _fetch_new_token(scope=scope)
-        return _cache
+        cached = _cache.get(scope)
+        if cached is not None and cached.is_fresh():
+            return cached
+        fresh = _fetch_new_token(scope=scope)
+        _cache[scope] = fresh
+        return fresh
 
 
-def invalidate_cache() -> None:
-    """Drop the cached token (e.g. after a 401 response from a downstream API)."""
-    global _cache
+def invalidate_cache(scope: str | None = None) -> None:
+    """Drop a cached token. When `scope` is None · drops ALL cached tokens.
+
+    Callers typically pass the scope they were using when they got a 401
+    so other scopes' tokens stay valid.
+    """
     with _cache_lock:
-        _cache = None
+        if scope is None:
+            _cache.clear()
+        else:
+            _cache.pop(scope, None)
 
 
 def readiness_status() -> dict[str, Any]:
@@ -186,17 +201,18 @@ def readiness_status() -> dict[str, Any]:
     dev_id_present = bool(s.ebay_dev_id)
     env = (s.ebay_environment or "sandbox").lower()
     # Token cache state (safe metadata · no token value)
-    cache_state: dict[str, Any] = {"cached_token_present": False}
     with _cache_lock:
-        if _cache is not None:
-            cache_state = {
-                "cached_token_present": True,
-                "cached_token_fresh": _cache.is_fresh(),
-                "cached_token_expires_in_seconds": max(
-                    0, int(_cache.expires_at_epoch - time.time())
-                ),
-                "cached_token_scope": _cache.scope,
-            }
+        cached_scopes = []
+        for sc, tok in _cache.items():
+            cached_scopes.append({
+                "scope": sc,
+                "fresh": tok.is_fresh(),
+                "expires_in_seconds": max(0, int(tok.expires_at_epoch - time.time())),
+            })
+    cache_state = {
+        "cached_token_count": len(cached_scopes),
+        "cached_scopes": cached_scopes,
+    }
     return {
         "integration": "ebay_oauth_client_credentials",
         "environment": env,

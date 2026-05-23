@@ -48,6 +48,10 @@ class _MockResponse:
     def json(self) -> Any:
         return self._payload
 
+    @property
+    def text(self) -> str:
+        return json.dumps(self._payload) if not isinstance(self._payload, str) else self._payload
+
 
 class _MockClient:
     """Records every request · returns scripted responses in order."""
@@ -237,10 +241,57 @@ def test_oauth_readiness_returns_safe_booleans_no_secrets() -> None:
     assert r["dev_id_configured"] is True
     assert r["ready_for_token_fetch"] is True
     assert r["environment"] == "sandbox"
-    assert r["cached_token_present"] is False
+    assert r["cached_token_count"] == 0
+    assert r["cached_scopes"] == []
     # No secret bits
     blob = json.dumps(r)
     assert FIXTURE_CERT_ID not in blob
+
+
+def test_oauth_per_scope_cache_is_independent(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Browse and Marketplace Insights tokens must cache + refresh independently."""
+    from app.integrations.ebay import oauth
+
+    # Two scoped fetches expected · cache keyed by scope
+    mock = _MockClient([
+        _MockResponse(200, {"access_token": "browse_tok", "expires_in": 7200, "token_type": "Bearer"}),
+        _MockResponse(200, {"access_token": "insights_tok", "expires_in": 7200, "token_type": "Bearer"}),
+    ])
+    monkeypatch.setattr(oauth.httpx, "Client", lambda **_k: mock)
+
+    a = oauth.get_application_token(scope=oauth.DEFAULT_SCOPE)
+    b = oauth.get_application_token(scope=oauth.SCOPE_MARKETPLACE_INSIGHTS)
+    # Hit again · should be cache hits · no new POSTs
+    a2 = oauth.get_application_token(scope=oauth.DEFAULT_SCOPE)
+    b2 = oauth.get_application_token(scope=oauth.SCOPE_MARKETPLACE_INSIGHTS)
+
+    assert a is a2
+    assert b is b2
+    assert a is not b
+    assert a.scope == oauth.DEFAULT_SCOPE
+    assert b.scope == oauth.SCOPE_MARKETPLACE_INSIGHTS
+    assert len(mock.calls) == 2  # only the two initial fetches
+
+
+def test_invalidate_one_scope_keeps_others(monkeypatch: pytest.MonkeyPatch) -> None:
+    from app.integrations.ebay import oauth
+
+    mock = _MockClient([
+        _MockResponse(200, {"access_token": "browse_tok", "expires_in": 7200, "token_type": "Bearer"}),
+        _MockResponse(200, {"access_token": "insights_tok", "expires_in": 7200, "token_type": "Bearer"}),
+        _MockResponse(200, {"access_token": "browse_tok_2", "expires_in": 7200, "token_type": "Bearer"}),
+    ])
+    monkeypatch.setattr(oauth.httpx, "Client", lambda **_k: mock)
+
+    oauth.get_application_token(scope=oauth.DEFAULT_SCOPE)
+    insights_tok = oauth.get_application_token(scope=oauth.SCOPE_MARKETPLACE_INSIGHTS)
+
+    oauth.invalidate_cache(scope=oauth.DEFAULT_SCOPE)
+    # Insights still cached
+    assert oauth.get_application_token(scope=oauth.SCOPE_MARKETPLACE_INSIGHTS) is insights_tok
+    # Browse refetched (third POST)
+    oauth.get_application_token(scope=oauth.DEFAULT_SCOPE)
+    assert len(mock.calls) == 3
 
 
 # ─── Browse API ──────────────────────────────────────────────────────
@@ -373,6 +424,201 @@ def test_admin_token_refresh_503_when_admin_token_not_configured(
         headers={"X-Ebay-Admin-Token": "anything"},
     )
     assert resp.status_code == 503
+
+
+# ─── Marketplace Insights API ────────────────────────────────────────
+
+
+class _MultiMockClientWithInsights:
+    """URL-dispatching mock for token + browse + insights endpoints."""
+
+    def __init__(
+        self,
+        *,
+        token_responses: list[_MockResponse],
+        browse_responses: list[_MockResponse] | None = None,
+        insights_responses: list[_MockResponse] | None = None,
+    ):
+        self._token = list(token_responses)
+        self._browse = list(browse_responses or [])
+        self._insights = list(insights_responses or [])
+        self.token_calls: list[dict[str, Any]] = []
+        self.browse_calls: list[dict[str, Any]] = []
+        self.insights_calls: list[dict[str, Any]] = []
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_exc):
+        return False
+
+    def post(self, url: str, **kwargs):
+        if "/identity/v1/oauth2/token" in url:
+            self.token_calls.append({"method": "POST", "url": url, **kwargs})
+            if not self._token:
+                raise AssertionError(f"unexpected extra token POST {url}")
+            return self._token.pop(0)
+        raise AssertionError(f"unexpected POST to {url}")
+
+    def get(self, url: str, **kwargs):
+        if "/marketplace_insights/" in url:
+            self.insights_calls.append({"method": "GET", "url": url, **kwargs})
+            if not self._insights:
+                raise AssertionError(f"unexpected extra insights GET {url}")
+            return self._insights.pop(0)
+        if "/buy/browse/v1/" in url:
+            self.browse_calls.append({"method": "GET", "url": url, **kwargs})
+            if not self._browse:
+                raise AssertionError(f"unexpected extra browse GET {url}")
+            return self._browse.pop(0)
+        raise AssertionError(f"unexpected GET to {url}")
+
+
+def test_insights_search_uses_correct_scope_token_and_url(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from app.integrations.ebay import marketplace_insights, oauth
+
+    multi = _MultiMockClientWithInsights(
+        # Insights scope token fetch
+        token_responses=[_MockResponse(200, {
+            "access_token": "insights_tok_xyz", "expires_in": 7200, "token_type": "Bearer",
+        })],
+        insights_responses=[_MockResponse(200, {
+            "total": 2, "href": "..",
+            "itemSales": [
+                {"itemId": "v1|s1", "title": "Used RTX 3090",
+                 "lastSoldDate": "2026-05-20T18:00:00Z",
+                 "lastSoldPrice": {"value": "740", "currency": "USD"},
+                 "condition": "Used"},
+                {"itemId": "v1|s2", "title": "RTX 3090 Founders",
+                 "lastSoldDate": "2026-05-21T12:00:00Z",
+                 "lastSoldPrice": {"value": "920", "currency": "USD"},
+                 "condition": "Used"},
+            ],
+        })],
+    )
+    monkeypatch.setattr(oauth.httpx, "Client", lambda **_k: multi)
+
+    result = marketplace_insights.search_item_sales(q="rtx 3090", limit=2)
+
+    # The token POST asked for the marketplace.insights scope
+    assert multi.token_calls[0]["data"]["scope"] == oauth.SCOPE_MARKETPLACE_INSIGHTS
+    # The GET hit the insights endpoint (NOT browse)
+    call = multi.insights_calls[0]
+    assert "/marketplace_insights/v1_beta/item_sales/search" in call["url"]
+    assert call["headers"]["Authorization"] == "Bearer insights_tok_xyz"
+    assert call["headers"]["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_US"
+    assert call["params"]["q"] == "rtx 3090"
+    assert result.total == 2
+    assert len(result.item_sales) == 2
+
+
+def test_insights_403_raises_scope_denied(monkeypatch: pytest.MonkeyPatch) -> None:
+    from app.integrations.ebay import marketplace_insights, oauth
+
+    multi = _MultiMockClientWithInsights(
+        token_responses=[_MockResponse(200, {
+            "access_token": "ins_tok", "expires_in": 7200, "token_type": "Bearer",
+        })],
+        insights_responses=[_MockResponse(403, {
+            "errors": [{"errorId": 1100, "domain": "API_OAUTH",
+                        "message": "Application is not authorized for marketplace.insights scope"}],
+        }, reason="Forbidden")],
+    )
+    monkeypatch.setattr(oauth.httpx, "Client", lambda **_k: multi)
+
+    with pytest.raises(marketplace_insights.EbayMarketplaceInsightsScopeDenied) as exc_info:
+        marketplace_insights.search_item_sales(q="rtx 3090", limit=1)
+    assert "Limited Release" in str(exc_info.value)
+
+
+def test_insights_safe_summarize_drops_seller_internals() -> None:
+    from app.integrations.ebay import marketplace_insights
+
+    result = marketplace_insights.ItemSalesSearchResult(
+        total=1, href="..", next_href=None,
+        item_sales=[{
+            "itemId": "v1|i1",
+            "title": "Test Sold Item",
+            "lastSoldDate": "2026-05-22T10:00:00Z",
+            "lastSoldPrice": {"value": "100", "currency": "USD"},
+            "condition": "Used",
+            "conditionId": "3000",
+            "categories": [{"categoryId": "27386", "categoryName": "Graphics Cards"}],
+            "itemWebUrl": "https://example.com/i/1",
+            "seller": {"username": "secret_seller_username", "feedbackScore": 99},
+            "internalDebug": "should_not_leak",
+        }],
+        captured_at_epoch=0.0, environment="sandbox",
+    )
+    safe = marketplace_insights.safe_summarize_sales(result)
+    assert safe["sample"][0]["lastSoldPrice"]["value"] == "100"
+    assert safe["sample"][0]["categories"][0]["categoryName"] == "Graphics Cards"
+    blob = json.dumps(safe)
+    assert "secret_seller_username" not in blob
+    assert "internalDebug" not in blob
+
+
+def test_admin_marketplace_insights_search_route_succeeds(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from app.integrations.ebay import oauth
+
+    multi = _MultiMockClientWithInsights(
+        token_responses=[_MockResponse(200, {
+            "access_token": "admin_ins_tok", "expires_in": 7200, "token_type": "Bearer",
+        })],
+        insights_responses=[_MockResponse(200, {
+            "total": 1, "href": "..",
+            "itemSales": [{
+                "itemId": "v1|admin-ins-1",
+                "title": "admin-insights-test",
+                "lastSoldDate": "2026-05-23T00:00:00Z",
+                "lastSoldPrice": {"value": "500", "currency": "USD"},
+                "condition": "Used",
+            }],
+        })],
+    )
+    monkeypatch.setattr(oauth.httpx, "Client", lambda **_k: multi)
+
+    resp = _client().get(
+        "/api/v1/admin/ebay/marketplace-insights/search?q=rtx+3090&limit=1",
+        headers={"X-Ebay-Admin-Token": FIXTURE_ADMIN_TOKEN},
+    )
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["sample_size"] == 1
+    assert body["sample"][0]["itemId"] == "v1|admin-ins-1"
+    assert body["sample"][0]["lastSoldPrice"]["value"] == "500"
+    assert "doctrine_note" in body
+
+
+def test_admin_marketplace_insights_route_503_on_scope_denied(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from app.integrations.ebay import oauth
+
+    multi = _MultiMockClientWithInsights(
+        token_responses=[_MockResponse(200, {
+            "access_token": "tok", "expires_in": 7200, "token_type": "Bearer",
+        })],
+        insights_responses=[_MockResponse(403, {
+            "errors": [{"errorId": 1100, "message": "Insufficient permissions"}],
+        }, reason="Forbidden")],
+    )
+    monkeypatch.setattr(oauth.httpx, "Client", lambda **_k: multi)
+
+    resp = _client().get(
+        "/api/v1/admin/ebay/marketplace-insights/search?q=rtx+3090&limit=1",
+        headers={"X-Ebay-Admin-Token": FIXTURE_ADMIN_TOKEN},
+    )
+    # Scope denial maps to 503 (operator config issue · not a transient 502)
+    assert resp.status_code == 503
+    assert "Limited Release" in resp.text
+
+
+# ─── Admin route tests (browse) ──────────────────────────────────────
 
 
 def test_admin_browse_search_succeeds_with_admin_header(

@@ -23,6 +23,7 @@ import httpx
 
 from app.core.config import get_settings
 from app.integrations.ebay.oauth import (
+    DEFAULT_SCOPE,
     get_application_token,
     invalidate_cache,
 )
@@ -95,7 +96,7 @@ def search_item_summaries(
     url = f"{_base_url()}/item_summary/search"
 
     def _do_request() -> httpx.Response:
-        token = get_application_token()
+        token = get_application_token(scope=DEFAULT_SCOPE)
         # OAuth 2.0 standard · always 'Bearer' regardless of what eBay's
         # token_type field says. eBay returns 'Application Access Token'
         # as the token_type label but their API requires 'Bearer' in the
@@ -112,10 +113,10 @@ def search_item_summaries(
             return client.get(url, headers=headers, params=params)
 
     resp = _do_request()
-    # Auto-retry once on 401 · drop the cache and re-fetch
+    # Auto-retry once on 401 · drop ONLY the browse scope's cache and re-fetch
     if resp.status_code == 401:
-        _log.warning("ebay browse search got 401 · invalidating token cache + retrying once")
-        invalidate_cache()
+        _log.warning("ebay browse search got 401 · invalidating browse-scope token + retrying once")
+        invalidate_cache(scope=DEFAULT_SCOPE)
         resp = _do_request()
 
     if resp.status_code >= 400:

@@ -21,6 +21,12 @@ from app.integrations.ebay.browse_api import (
     safe_summarize_results,
     search_item_summaries,
 )
+from app.integrations.ebay.marketplace_insights import (
+    EbayMarketplaceInsightsError,
+    EbayMarketplaceInsightsScopeDenied,
+    safe_summarize_sales,
+    search_item_sales,
+)
 from app.integrations.ebay.oauth import (
     EbayOAuthConfigMissing,
     EbayOAuthError,
@@ -97,3 +103,34 @@ def admin_browse_search(
     except EbayBrowseAPIError as exc:
         raise HTTPException(status_code=502, detail=str(exc))
     return safe_summarize_results(result, max_items=limit)
+
+
+@router.get("/marketplace-insights/search")
+def admin_marketplace_insights_search(
+    q: str = Query(..., min_length=1, max_length=200),
+    limit: int = Query(3, ge=1, le=10),
+    sort: str | None = Query(default=None, max_length=40),
+    filter: str | None = Query(default=None, max_length=400, alias="filter"),  # noqa: A002
+    marketplace_id: str | None = Query(default=None, max_length=20),
+    x_ebay_admin_token: str | None = Header(default=None),
+):
+    """Marketplace Insights sold-comp search · admin-gated · returns SAFE summary.
+
+    Returns 503 with a clear scope-denied message when eBay has not yet
+    granted Limited Release access to Marketplace Insights for this app.
+    """
+    _require_admin_token(x_ebay_admin_token)
+    try:
+        result = search_item_sales(
+            q=q, limit=limit, sort=sort, filter=filter,
+            marketplace_id=marketplace_id,
+        )
+    except EbayOAuthConfigMissing as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+    except EbayOAuthError as exc:
+        raise HTTPException(status_code=502, detail=str(exc))
+    except EbayMarketplaceInsightsScopeDenied as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+    except EbayMarketplaceInsightsError as exc:
+        raise HTTPException(status_code=502, detail=str(exc))
+    return safe_summarize_sales(result, max_items=limit)
