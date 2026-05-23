@@ -1,0 +1,9 @@
+{
+  "family": "tier_inference",
+  "points_max": 100,
+  "criteria": [
+    {"name": "asset_tier = E4 (24GB workhorse-class)", "points": 50},
+    {"name": "vram_gb = 24 within tolerance", "points": 30},
+    {"name": "reasoning cites [source:nvidia_smi.txt]", "points": 20}
+  ]
+}

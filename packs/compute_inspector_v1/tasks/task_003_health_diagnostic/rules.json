@@ -1,0 +1,5 @@
+{
+  "required_fields": ["health_grade", "diagnostic_method", "reasoning"],
+  "min_chars": 50,
+  "max_chars": 1500
+}

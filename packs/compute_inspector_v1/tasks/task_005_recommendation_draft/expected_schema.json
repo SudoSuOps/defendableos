@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["primary_recommendation", "primary_recommendation_basis", "reasoning"],
+  "properties": {
+    "primary_recommendation": {"type": "string", "enum": ["RETAIN_AND_DEPLOY", "HOLD_AND_RENT", "REDEPLOY_EDGE", "PACKAGE_AS_NODE", "UPGRADE_AND_REASSIGN", "SELL_NOW", "TRADE_UP", "SELL_COMPLETE_SYSTEM", "PART_OUT", "REFURBISH", "RECYCLE_OR_RETIRE", "REVIEW_REQUIRED", "EVIDENCE_INCOMPLETE"]},
+    "primary_recommendation_basis": {"type": "string"},
+    "evidence_to_capture_next": {"type": "array"},
+    "reasoning": {"type": "string", "minLength": 20}
+  }
+}

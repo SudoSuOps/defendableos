@@ -1,0 +1,9 @@
+{
+  "family": "system_manifest",
+  "points_max": 100,
+  "criteria": [
+    {"name": "host.cpu_model captured from supplied lscpu", "points": 40},
+    {"name": "host.cpu_count present and integer", "points": 30},
+    {"name": "reasoning cites [source:lscpu.txt]", "points": 30}
+  ]
+}

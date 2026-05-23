@@ -1,0 +1,15 @@
+Architecture:           x86_64
+CPU op-mode(s):         32-bit, 64-bit
+Byte Order:             Little Endian
+Address sizes:          52 bits physical, 57 bits virtual
+CPU(s):                 56
+On-line CPU(s) list:    0-55
+Thread(s) per core:     1
+Core(s) per socket:     56
+Socket(s):              1
+Vendor ID:              GenuineIntel
+Model name:             Intel(R) Xeon(R) w9-3475X
+CPU family:             6
+Model:                  143
+CPU max MHz:            5400.0000
+CPU min MHz:            800.0000

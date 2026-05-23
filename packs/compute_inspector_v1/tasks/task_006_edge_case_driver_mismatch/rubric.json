@@ -1,0 +1,9 @@
+{
+  "family": "edge_case",
+  "points_max": 100,
+  "criteria": [
+    {"name": "classification = MALFUNCTIONING (honest no-data)", "points": 60},
+    {"name": "recommended_action mentions repair/escalation", "points": 20},
+    {"name": "reasoning cites [source:nvidia_smi.txt]", "points": 20}
+  ]
+}

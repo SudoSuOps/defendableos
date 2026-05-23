@@ -1,0 +1,13 @@
+{
+  "family": "identity",
+  "points_max": 100,
+  "criteria": [
+    {"name": "asset_class correctly set to COMPUTE_HARDWARE", "points": 10},
+    {"name": "asset_tier matches VRAM bucket per taxonomy", "points": 20},
+    {"name": "manufacturer + model captured from supplied output", "points": 20},
+    {"name": "vram_gb within ±1 of supplied value", "points": 20},
+    {"name": "identity_confidence_grade present and within range", "points": 10},
+    {"name": "reasoning cites [source:nvidia_smi.txt]", "points": 10},
+    {"name": "no fields invented beyond supplied data", "points": 10}
+  ]
+}

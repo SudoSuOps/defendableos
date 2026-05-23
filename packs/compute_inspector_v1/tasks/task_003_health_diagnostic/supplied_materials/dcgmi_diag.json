@@ -1,0 +1,26 @@
+{
+  "DCGM Diagnostic" : {
+    "test_categories" : [
+      {
+        "category" : "Deployment",
+        "tests" : [
+          {
+            "name" : "software",
+            "results" : [
+              {
+                "entity_group" : "GPU",
+                "entity_id" : 0,
+                "status" : "Pass"
+              }
+            ],
+            "test_summary" : {"status" : "Pass"}
+          }
+        ]
+      }
+    ]
+  },
+  "metadata" : {
+    "Driver Version Detected" : "590.48.01",
+    "version" : "4.5.3"
+  }
+}

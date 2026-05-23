@@ -1,0 +1,7 @@
+{
+  "engine_version": "compute-bench-0.1.0",
+  "inference_engine": "deterministic-stub",
+  "seed": null,
+  "stub_note": "Deterministic Python \u00b7 no model inference \u00b7 runtime metrics are wall-clock only",
+  "temperature": null
+}

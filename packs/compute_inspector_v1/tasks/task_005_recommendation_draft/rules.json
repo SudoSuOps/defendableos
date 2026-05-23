@@ -1,0 +1,5 @@
+{
+  "required_fields": ["primary_recommendation", "primary_recommendation_basis", "reasoning"],
+  "min_chars": 80,
+  "max_chars": 2000
+}

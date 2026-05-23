@@ -1,0 +1,5 @@
+{
+  "required_fields": ["classification", "reasoning"],
+  "min_chars": 40,
+  "max_chars": 1000
+}

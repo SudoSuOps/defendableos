@@ -1,0 +1,93 @@
+{
+  "agent": {
+    "agent_id": "mock-reference-inspector-v0",
+    "agent_version": "0.1.0-mvp",
+    "model_summary": {
+      "base": "none \u00b7 pure-Python parser",
+      "implementation_note": "This adapter does NOT call an LLM. It parses supplied materials with regex + structured rules. Used to validate the AgentGrade pipeline end-to-end before wiring real LLM-backed agents.",
+      "name": "deterministic-stub-inspector",
+      "weights_sha256": "sha256:n/a"
+    },
+    "runtime_summary": {
+      "engine": "deterministic-stub",
+      "engine_version": "compute-bench-0.1.0",
+      "stub_note": "Deterministic Python \u00b7 no model inference \u00b7 runtime metrics are wall-clock only"
+    },
+    "vendor": "swarm-and-bee"
+  },
+  "benchmark": {
+    "bundle_hash": "sha256:29689649da4dafdd543acc08f41545a4e3642509c7bf4bb1ff9b8036656c3ab3",
+    "captured_at": "2026-05-23T09:40:08Z",
+    "captured_by": "swarm-and-bee",
+    "manifest_hash": "sha256:29689649da4dafdd543acc08f41545a4e3642509c7bf4bb1ff9b8036656c3ab3",
+    "pack_id": "compute-inspector-v1",
+    "pack_version": "1.0-alpha",
+    "run_id": "ag-20260523T094008Z-5c5c"
+  },
+  "compute_deed_binding": "DDEED-DOV-COMPUTE-000001-BENCH-v2",
+  "deed_reference": "DDEED-DOV-AGENT-COMPUTE-INSPECTOR-000001-v1",
+  "deed_subtype": "AGENT_GRADE_RECORD",
+  "deed_type": "DEFENDABLE_DEED",
+  "deed_version": "0.1",
+  "deployment_lane": "COMPUTE_INSPECTION_DRAFT \u00b7 Drafting only \u00b7 final inspection record requires human review",
+  "deployment_tier": "OBSERVED",
+  "deployment_tier_rationale": "Pack compute-inspector-v1 is DRAFT_PACK_NOT_PRODUCTION \u00b7 doctrine caps tier at OBSERVED until pack is READY_FOR_PRODUCTION. Without that cap, computed tier would be OBSERVED.",
+  "disclosures": {
+    "agent_under_test_class": "REFERENCE_STUB \u00b7 deterministic Python \u00b7 no LLM call",
+    "ai_assisted_record": false,
+    "disclaimer": "First Defendable Agent Deed \u00b7 MVP pipeline validation. Mock reference adapter (deterministic Python \u00b7 no LLM) benchmarked against pack v1.0-alpha (6 tasks \u00b7 3 adversarial cases \u00b7 expanding to 24 + 8 in v1.0-beta). Tier capped at OBSERVED per pack-approval doctrine. Grades are computed honestly from rule-only Tribunal verdicts \u00b7 judge model layer wired next session. This deed establishes the AgentGrade deed chain \u00b7 not a customer-facing performance certification.",
+    "first_agent_grade_deed": true,
+    "judge_layer_status": "STUB \u00b7 model judgment not consulted",
+    "pack_status": "DRAFT_PACK_NOT_PRODUCTION (v1.0-alpha)",
+    "professional_appraisal": false
+  },
+  "ens_identity": {
+    "name": "ddeed-dov-agent-compute-inspector-000001-v1.swarmbee.defendable.eth",
+    "parent_organization_ens": "swarmbee.defendable.eth",
+    "status": "RESERVED_NOT_ISSUED"
+  },
+  "evidence_packet": {
+    "bundle_archive_reference": "data/agentgrade-receipts/mock-reference-inspector/ag-20260523T094008Z-5c5c/",
+    "evidence_item_count": 33,
+    "manifest_sha256": "29689649da4dafdd543acc08f41545a4e3642509c7bf4bb1ff9b8036656c3ab3"
+  },
+  "grades": {
+    "agentgrade_composite": 70.5,
+    "capability": 94.7,
+    "efficiency": 0.0,
+    "numeric_structural": 83.3,
+    "reproducibility": 90.0,
+    "safety": 50.0,
+    "truth": 76.7
+  },
+  "issued_at": null,
+  "proof_of_value": {
+    "doctrine": "VALIDATE_THE_VALIDATOR",
+    "framework": "DEFENDABLEOS",
+    "intelligence_engine": "DEFENDABLE_AGENTGRADE",
+    "record_purpose": "First Defendable Agent Deed \u00b7 MVP reference adapter benchmarked against compute_inspector_v1 pack v1.0-alpha. Tier capped at OBSERVED per pack-approval doctrine. Establishes the deed chain and bundle integrity model before real LLM-backed agents land."
+  },
+  "publication_status": "NOT_PUBLISHED",
+  "record_hash": "sha256:ff7385b0f5319a11ebf7b7e43fb86a80bae5730ab61e29b7d5cb5fd6580a8733",
+  "record_status": "DRAFT_REVIEW_RECORD",
+  "safety_summary": {
+    "adversarial_compromised": 0,
+    "adversarial_conditional": 3,
+    "adversarial_resisted": 0,
+    "adversarial_total": 3
+  },
+  "tribunal_summary": {
+    "critical_failures": {},
+    "downgrade_reasons": {
+      "numeric_within_tolerance": 2
+    },
+    "honey_pct": 66.67,
+    "jelly_pct": 33.33,
+    "propolis_pct": 0.0
+  },
+  "validator_review": {
+    "mvp_note": "Judge layer stub \u00b7 Tribunal verdicts rule-only \u00b7 validator review begins when real judge model wired",
+    "protocol": "VALIDATE_THE_VALIDATOR",
+    "status": "VALIDATOR_REVIEW_REQUIRED"
+  }
+}

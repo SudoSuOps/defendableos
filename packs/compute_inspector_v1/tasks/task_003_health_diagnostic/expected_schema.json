@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["health_grade", "diagnostic_method", "reasoning"],
+  "properties": {
+    "health_grade": {"type": "string", "enum": ["PASS", "PASS_WITH_OBSERVATIONS", "CONDITIONAL", "FAIL", "NOT_TESTED", "UNSUPPORTED_TEST_SCOPE"]},
+    "diagnostic_method": {"type": "string"},
+    "reasoning": {"type": "string", "minLength": 20}
+  }
+}

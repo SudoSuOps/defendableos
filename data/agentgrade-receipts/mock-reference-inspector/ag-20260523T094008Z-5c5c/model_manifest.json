@@ -1,0 +1,7 @@
+{
+  "base_model": "none \u00b7 pure-Python parser",
+  "implementation_note": "This adapter does NOT call an LLM. It parses supplied materials with regex + structured rules. Used to validate the AgentGrade pipeline end-to-end before wiring real LLM-backed agents.",
+  "license": "MVP reference adapter \u00b7 operator-attested \u00b7 ships with defendable-box",
+  "model_name": "deterministic-stub-inspector",
+  "weights_sha256": "sha256:n/a"
+}

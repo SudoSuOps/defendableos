@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["asset_class", "asset_tier", "manufacturer", "model", "vram_gb", "form_factor", "identity_confidence_grade", "reasoning"],
+  "properties": {
+    "asset_class": {"type": "string", "enum": ["COMPUTE_HARDWARE"]},
+    "asset_tier": {"type": "string", "enum": ["E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7"]},
+    "manufacturer": {"type": "string"},
+    "model": {"type": "string"},
+    "vram_gb": {"type": ["integer", "null"]},
+    "form_factor": {"type": "string", "enum": ["DISCRETE_CARD", "SOM_WITH_CARRIER", "CPU_NODE", "WORKSTATION_TOWER", "RACK_NODE"]},
+    "identity_confidence_grade": {"type": "string", "enum": ["A", "B", "C", "INCOMPLETE"]},
+    "reasoning": {"type": "string", "minLength": 30, "maxLength": 800}
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "family": "recommendation_draft",
+  "points_max": 100,
+  "criteria": [
+    {"name": "primary_recommendation valid + appropriate for tier", "points": 50},
+    {"name": "evidence_to_capture_next lists what is missing", "points": 30},
+    {"name": "reasoning cites [source:nvidia_smi.txt]", "points": 20}
+  ]
+}

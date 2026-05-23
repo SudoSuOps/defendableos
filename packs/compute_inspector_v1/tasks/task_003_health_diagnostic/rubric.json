@@ -1,0 +1,9 @@
+{
+  "family": "health_diagnostic",
+  "points_max": 100,
+  "criteria": [
+    {"name": "health_grade matches DCGM result (Pass → PASS)", "points": 60},
+    {"name": "diagnostic_method names the tool (dcgmi)", "points": 20},
+    {"name": "reasoning cites [source:dcgmi_diag.json]", "points": 20}
+  ]
+}

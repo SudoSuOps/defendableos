@@ -1,0 +1,43 @@
+{
+  "bundle_sha256": "29689649da4dafdd543acc08f41545a4e3642509c7bf4bb1ff9b8036656c3ab3",
+  "hash_algorithm": "SHA-256",
+  "manifest_excludes": [
+    "manifest.sha256",
+    "public_safe_attestation.json"
+  ],
+  "per_file_sha256": {
+    "agent_identity.json": "d619f9971951cedab9de14aa287950de231c3795462865b2eb16dd84fdb07765",
+    "benchmark_pack_manifest.json": "d6e9f13d8a9b326e7d4c4dca521b24e6c2831fdff265849b18cd22f72d337121",
+    "compute_manifest.json": "5def110242d8be3b9d4250e909c8453bbfc003116c36c6ad5ef2492bc92dbd9a",
+    "cost_energy_metrics.csv": "47887f38f4fe86cd8e9df6f40d8a400077aa5c089b2b69c3439ee2221ede36cc",
+    "dataset_provenance.json": "dd1e0e27b1226dbe94b9ce31fb456a71fba1875f159490be5ab862077d2b54c7",
+    "failure_taxonomy.json": "40440034cb36913cd37844c37d9edf682084c537b77b60c344b86e396bef1774",
+    "grades_card.json": "c2933ab491367761be011c3297430bb91a80a4242227feec410b9e35638463e6",
+    "model_manifest.json": "16ee6f4e2044abf33e09d2cd4e354e9170fa77dbb1e803c9348b9c2873c200a8",
+    "performance_metrics.csv": "4885d45f0557867777f354841ad316c9294d2adcfac9d84e585094ebb0bd62be",
+    "prompt_policy.md": "7cdca6b6b876b9c9833e136cc26f44a96dbe1c9e5b97d7acf46d783b80355d69",
+    "prompt_policy_private.md": "c0549bfac3f7d7a7ba2b5ea5dfe689cab6ed1fed793ea9ab9ea3f8810a28d0e2",
+    "raw_outputs/task_001_identity/input.json": "1f9428525ae67fe59584fd8b240b19efa26b32d76aeb92400c2033954ae38548",
+    "raw_outputs/task_001_identity/output.json": "0d79cc70b8a399ea9a5460384c24413aa66afe02a714876cfdc6a13db4b0f2db",
+    "raw_outputs/task_001_identity/trace.jsonl": "739d71ed0de86cad0444448faabe343011d41af3d061907a0a651de2354cd4d9",
+    "raw_outputs/task_002_system_manifest/input.json": "84539b58553aaf3e5e09acac2485870c1fd8ac97ca7a8b4b47e8ff0b30549754",
+    "raw_outputs/task_002_system_manifest/output.json": "862d4fb59b1192032a56631852aed167ac51ac39898a88f76845b1c7e23be39b",
+    "raw_outputs/task_002_system_manifest/trace.jsonl": "739d71ed0de86cad0444448faabe343011d41af3d061907a0a651de2354cd4d9",
+    "raw_outputs/task_003_health_diagnostic/input.json": "01b68b850a525ca3a9457c9c003f8026dab5905b2d2c78a11337f0c28014d35c",
+    "raw_outputs/task_003_health_diagnostic/output.json": "2ace20c26e5d28151d3a22bb7a51c3c48faab460254586431db0c88f812d83b9",
+    "raw_outputs/task_003_health_diagnostic/trace.jsonl": "739d71ed0de86cad0444448faabe343011d41af3d061907a0a651de2354cd4d9",
+    "raw_outputs/task_004_tier_inference/input.json": "eee5bd45a4d66f4a27f864986383da0b44d4ba1ce17680614fe840abb3d86024",
+    "raw_outputs/task_004_tier_inference/output.json": "f0b6705658204e0d031cf92ff20ed6579af8a409e1c33bc28b9f36ba65a5a240",
+    "raw_outputs/task_004_tier_inference/trace.jsonl": "739d71ed0de86cad0444448faabe343011d41af3d061907a0a651de2354cd4d9",
+    "raw_outputs/task_005_recommendation_draft/input.json": "ad8444b33fd9f784d4e9c91b1248ed1dffd2665d0c8569bfe8419160ce118192",
+    "raw_outputs/task_005_recommendation_draft/output.json": "60cab33780904cbbb53c19641cb5b3170850db1ad643294a0f28b0e146f8a8b5",
+    "raw_outputs/task_005_recommendation_draft/trace.jsonl": "739d71ed0de86cad0444448faabe343011d41af3d061907a0a651de2354cd4d9",
+    "raw_outputs/task_006_edge_case_driver_mismatch/input.json": "aa57862712c51200e4cfcf7a75e1025cecb9882b564331750260145801c97996",
+    "raw_outputs/task_006_edge_case_driver_mismatch/output.json": "5e3ecd079a25aee5825185d202080d2820b892f198976586ee6a70cc4f1b437a",
+    "raw_outputs/task_006_edge_case_driver_mismatch/trace.jsonl": "b953c131acc9b89bab3a45698956a878a3c6904181f56f1a01276ac60e8dc9fb",
+    "runtime_environment.json": "873fb97bbe711262e37975e662610983a72a9950c857766c28e1741623c22194",
+    "safety_harness_results.json": "f5e4526a5afa2fab7f4e596f946e7793f53ef5cccdde3331b97793c77cf1a50f",
+    "tool_permissions.json": "79ac3c565573f59dbe65d42c0a4c707a91104593b27ee7ae99118c9fd9bf4f78",
+    "tribunal_scores.jsonl": "b63f4bbafa498530072c4d899c7c94288807c76ec68b576b54d0f93772a072f5"
+  }
+}

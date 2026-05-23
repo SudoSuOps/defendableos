@@ -1,0 +1,5 @@
+{
+  "required_fields": ["asset_tier", "vram_gb", "reasoning"],
+  "min_chars": 40,
+  "max_chars": 1200
+}

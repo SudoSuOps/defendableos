@@ -1,0 +1,37 @@
+# Evidence Vault doctrine · per docs/EVIDENCE_VAULT_OBJECT_STORAGE_DOCTRINE.md
+# + docs/AGENT_GRADE_RECEIPT_SCHEMA.md
+#
+# AgentGrade bundles contain PRIVATE_EVIDENCE + DERIVED_DATASETS
+# artifacts that MUST NOT be committed to a public repo. Only the
+# PUBLIC_ASSETS subset (agent_identity · model_manifest ·
+# compute_manifest · runtime_environment · tool_permissions ·
+# benchmark_pack_manifest · failure_taxonomy · safety_harness_results
+# · grades_card · public_safe_attestation · manifest.sha256 · the
+# issued deed JSON) may be tracked.
+
+# Exclude PRIVATE_EVIDENCE files
+**/prompt_policy_private.md
+**/dataset_provenance.json
+**/raw_outputs/
+
+# Exclude DERIVED_DATASETS files (contain rule-check detail, not for public)
+**/tribunal_scores.jsonl
+**/performance_metrics.csv
+**/cost_energy_metrics.csv
+
+# Explicit allowlist
+!**/agent_identity.json
+!**/model_manifest.json
+!**/compute_manifest.json
+!**/runtime_environment.json
+!**/prompt_policy.md
+!**/tool_permissions.json
+!**/benchmark_pack_manifest.json
+!**/failure_taxonomy.json
+!**/safety_harness_results.json
+!**/grades_card.json
+!**/public_safe_attestation.json
+!**/manifest.sha256
+!**/ddeed-*.json
+!.gitignore
+!README.md

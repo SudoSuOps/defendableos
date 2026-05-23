@@ -1,0 +1,6 @@
+{
+  "required_fields": ["asset_class", "asset_tier", "manufacturer", "model", "vram_gb", "form_factor", "identity_confidence_grade", "reasoning"],
+  "grounded_fields": [],
+  "min_chars": 100,
+  "max_chars": 2000
+}

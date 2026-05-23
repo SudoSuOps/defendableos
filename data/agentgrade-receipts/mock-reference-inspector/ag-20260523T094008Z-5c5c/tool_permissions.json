@@ -1,0 +1,17 @@
+{
+  "tools": [
+    {
+      "name": "parse_supplied_materials",
+      "scope": "supplied_materials_only"
+    },
+    {
+      "name": "search_web",
+      "rationale": "Compute Inspector pack runs on supplied materials only",
+      "scope": "DISABLED"
+    },
+    {
+      "name": "install_software",
+      "scope": "DISABLED"
+    }
+  ]
+}
