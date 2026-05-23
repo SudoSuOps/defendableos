@@ -1,0 +1,123 @@
+{
+  "agent": {
+    "agent_id": "mock-reference-inspector-v0",
+    "agent_version": "0.1.0-mvp",
+    "model_summary": {
+      "base": "none \u00b7 pure-Python parser",
+      "implementation_note": "This adapter does NOT call an LLM. It parses supplied materials with regex + structured rules. Used to validate the AgentGrade pipeline end-to-end before wiring real LLM-backed agents.",
+      "name": "deterministic-stub-inspector",
+      "weights_sha256": "sha256:n/a"
+    },
+    "runtime_summary": {
+      "engine": "deterministic-stub",
+      "engine_version": "compute-bench-0.1.0",
+      "stub_note": "Deterministic Python \u00b7 no model inference \u00b7 runtime metrics are wall-clock only"
+    },
+    "vendor": "swarm-and-bee"
+  },
+  "benchmark": {
+    "bundle_hash": "sha256:144e1c51e1252ca554c6b4a3f3f0578e69f7d3a7656968e8ce2bda0d3d895107",
+    "captured_at": "2026-05-23T10:06:46Z",
+    "captured_by": "swarm-and-bee",
+    "manifest_hash": "sha256:144e1c51e1252ca554c6b4a3f3f0578e69f7d3a7656968e8ce2bda0d3d895107",
+    "pack_id": "compute-inspector-v1",
+    "pack_version": "1.0-alpha",
+    "run_id": "ag-20260523T100646Z-e8c1"
+  },
+  "compute_deed_binding": "DDEED-DOV-COMPUTE-000001-BENCH-v2",
+  "deed_reference": "DDEED-DOV-AGENT-COMPUTE-INSPECTOR-000001-v2",
+  "deed_subtype": "AGENT_GRADE_RECORD",
+  "deed_type": "DEFENDABLE_DEED",
+  "deed_version": "0.1",
+  "deployment_lane": "COMPUTE_INSPECTION_DRAFT \u00b7 Drafting only \u00b7 final inspection record requires human review",
+  "deployment_tier": "OBSERVED",
+  "deployment_tier_rationale": "Pack compute-inspector-v1 is DRAFT_PACK_NOT_PRODUCTION \u00b7 doctrine caps tier at OBSERVED until pack is READY_FOR_PRODUCTION. Without that cap, computed tier would be OBSERVED.",
+  "disclosures": {
+    "agent_bugs_fixed": [
+      "VRAM regex matched used-memory (1MiB \u2192 0GB) \u00b7 fixed to take max of all MiB matches",
+      "System manifest fabricated 'supplied timestamp' \u00b7 fixed to report NO_TIMESTAMP_IN_SUPPLIED_MATERIALS",
+      "Model name extraction truncated \u00b7 improved regex to capture full name"
+    ],
+    "ai_assisted_record": true,
+    "context_truncation_fixed": "task_context excerpts bumped from 600 \u2192 4000 chars \u00b7 prevented Kimi from seeing only headers and incorrectly flagging valid outputs as PROPOLIS",
+    "disclaimer": "Second Defendable Agent Deed \u00b7 Tribunal judge layer upgraded to live Kimi K2.6 with typed tool contract. Reflects measurable closed-loop improvement: original Kimi run caught real agent bugs (PROPOLIS 50%) \u00b7 agent fixed \u00b7 re-run shows 83.3% Honey + 0% Propolis. Tier still capped at OBSERVED per pack-alpha doctrine until pack v1.0 graduates to READY_FOR_PRODUCTION.",
+    "first_real_kimi_judge_deed": true,
+    "judge_timeout_bumped": "60s \u2192 180s \u00b7 5/6 tasks were timing out at 60s with Kimi K2.6 thinking mode",
+    "judge_upgraded": "STUB_NEUTRAL \u2192 kimi-k2.6 \u00b7 typed record_tribunal_verdict tool contract",
+    "phase": "B \u00b7 Tribunal judge layer live",
+    "professional_appraisal": false,
+    "supersedes_v1": true
+  },
+  "ens_identity": {
+    "name": "ddeed-dov-agent-compute-inspector-000001-v2.swarmbee.defendable.eth",
+    "parent_organization_ens": "swarmbee.defendable.eth",
+    "status": "RESERVED_NOT_ISSUED"
+  },
+  "evidence_packet": {
+    "bundle_archive_reference": "data/agentgrade-receipts/mock-reference-inspector/ag-20260523T100646Z-e8c1/",
+    "evidence_item_count": 34,
+    "manifest_sha256": "144e1c51e1252ca554c6b4a3f3f0578e69f7d3a7656968e8ce2bda0d3d895107"
+  },
+  "grades": {
+    "agentgrade_composite": 76.66,
+    "capability": 97.3,
+    "efficiency": 0.0,
+    "numeric_structural": 100.0,
+    "reproducibility": 90.0,
+    "safety": 50.0,
+    "truth": 91.7
+  },
+  "issued_at": null,
+  "judge_attestation": {
+    "judge_call_status": "RAN on 6/6 tasks \u00b7 no timeouts after timeout bump 60s \u2192 180s",
+    "judge_call_timeout_seconds": 180,
+    "model": "kimi-k2.6",
+    "provider": "kimi",
+    "provider_quirks_respected": {
+      "kimi_temperature_locked_to_1": true,
+      "openai_temperature_0": true,
+      "tool_choice_forced": true
+    },
+    "tool_contract": "record_tribunal_verdict (HONEY|JELLY|PROPOLIS \u00b7 confidence 0..1 \u00b7 reasoning 1-3 sentences)"
+  },
+  "proof_of_value": {
+    "doctrine": "VALIDATE_THE_VALIDATOR",
+    "framework": "DEFENDABLEOS",
+    "intelligence_engine": "DEFENDABLE_AGENTGRADE",
+    "judge_provider": {
+      "captured_at": "2026-05-23T10:06:46Z",
+      "configured": true,
+      "model": "kimi-k2.6",
+      "provider": "kimi",
+      "provider_quirks_respected": {
+        "kimi_temperature_locked_to_1": true,
+        "openai_temperature_0": true,
+        "tool_choice_forced": true
+      },
+      "tool_contract": "record_tribunal_verdict (HONEY|JELLY|PROPOLIS \u00b7 confidence 0..1 \u00b7 reasoning 1-3 sentences)"
+    },
+    "record_purpose": "Second Defendable Agent Deed \u00b7 supersedes BENCH-v1 \u00b7 upgrades the judge layer from STUB_NEUTRAL to live Kimi K2.6 with the record_tribunal_verdict typed tool contract. Captures 6/6 task runs with full Kimi judgment \u00b7 83.3% Honey \u00b7 0% Propolis \u00b7 composite 76.66. The agent bug Kimi originally caught (regex matching used-memory instead of total-VRAM \u00b7 fabricated 'supplied timestamp') is fixed in the same commit \u00b7 this deed reflects the post-fix run that proves the rule-then-judge loop works end-to-end."
+  },
+  "publication_status": "NOT_PUBLISHED",
+  "record_hash": "sha256:68770c2d9095841ce4ecf2025122e011890adae36208db309baf8c7eeae9345f",
+  "record_status": "DRAFT_REVIEW_RECORD",
+  "safety_summary": {
+    "adversarial_compromised": 0,
+    "adversarial_conditional": 3,
+    "adversarial_resisted": 0,
+    "adversarial_total": 3
+  },
+  "supersedes_deed_reference": "DDEED-DOV-AGENT-COMPUTE-INSPECTOR-000001-v1",
+  "tribunal_summary": {
+    "critical_failures": {},
+    "downgrade_reasons": {},
+    "honey_pct": 83.33,
+    "jelly_pct": 16.67,
+    "propolis_pct": 0.0
+  },
+  "validator_review": {
+    "kimi_attested_note": "Tribunal verdicts now reflect Kimi K2.6 judgment via typed tool contract \u00b7 validator can review the Kimi reasoning per-task in tribunal_scores.jsonl",
+    "protocol": "VALIDATE_THE_VALIDATOR",
+    "status": "VALIDATOR_REVIEW_REQUIRED"
+  }
+}

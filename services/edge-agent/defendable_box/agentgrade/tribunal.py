@@ -230,12 +230,16 @@ def classify(
     citation_source_set: set[str],
     supplied_entities: set[str],
     judge_fn,
+    task_context: dict[str, Any] | None = None,
 ) -> TribunalVerdict:
     """Run the full Tribunal pipeline on one task output.
 
     pack_spec keys:
       schema · required_fields · tolerance_table · grounded_fields ·
       banned_actions · min_chars · max_chars · critical_checks
+
+    task_context (optional) is forwarded to model-based judges so they
+    can see the original prompt + supplied-materials excerpt.
     """
     rules = RuleCheckResult()
     details: dict[str, str] = {}
@@ -279,8 +283,13 @@ def classify(
     failed_critical = [c for c in failed if c in critical or c == "schema_valid" or c == "required_fields_present"]
     failed_non_critical = [c for c in failed if c not in failed_critical]
 
-    # Judge layer (callable provided · MVP stub returns NEUTRAL)
-    judge_result = judge_fn(task_id=task_id, output=output)
+    # Judge layer (callable provided · stub returns NEUTRAL · real providers
+    # call Kimi/OpenAI with a typed HONEY/JELLY/PROPOLIS tool contract)
+    try:
+        judge_result = judge_fn(task_id=task_id, output=output, task_context=task_context)
+    except TypeError:
+        # Backwards-compat for judges that don't accept task_context
+        judge_result = judge_fn(task_id=task_id, output=output)
     j_verdict = Verdict(judge_result["verdict"])
     j_conf = float(judge_result.get("confidence", 0.0))
     j_reasoning = judge_result.get("reasoning", "")

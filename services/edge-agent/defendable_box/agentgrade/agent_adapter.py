@@ -170,9 +170,21 @@ class MockReferenceAgent:
     def _identity(self, task: TaskInput) -> tuple[Any, list[str]]:
         nvidia = self._material(task, "nvidia_smi.txt")
         notes = []
-        # Try to extract a GPU name + VRAM
-        name_match = re.search(r"NVIDIA\s+([\w\s\-]+?)(?:\s+Workstation|\s+Edition|\s+\d{2,3}MiB|\n)", nvidia)
-        vram_match = re.search(r"(\d+)MiB", nvidia)
+        # GPU name: capture everything after "NVIDIA" on the GPU index line up
+        # to a chassis-style separator. The full model name (e.g., "RTX PRO 6000
+        # Blackwell Workstation Edition") often contains a column separator
+        # before " On" or other status text. Match the longest plausible name.
+        name_match = re.search(
+            r"NVIDIA\s+(.+?)(?:\s+On\s|\s+Off\s|\s{2,}On\s|\s{2,}Off\s|$)",
+            nvidia,
+            re.MULTILINE,
+        )
+        # VRAM: the pattern is "<used>MiB / <total>MiB" · always take the
+        # LARGER value (total) · this previously took the first MiB match
+        # which was the used-memory number (typically 1MiB · giving 0 GB).
+        vram_matches = [int(m) for m in re.findall(r"(\d+)\s*MiB", nvidia)]
+        vram_mib_total = max(vram_matches) if vram_matches else 0
+        vram_match = vram_mib_total > 0  # backwards-compat flag
         if "Failed to initialize NVML" in nvidia or "Driver/library version mismatch" in nvidia:
             return (
                 {
@@ -188,8 +200,9 @@ class MockReferenceAgent:
                 ["edge case: driver mismatch detected"],
             )
         name = name_match.group(1).strip() if name_match else "Unknown NVIDIA GPU"
-        vram_mib = int(vram_match.group(1)) if vram_match else 0
-        vram_gb = vram_mib // 1024
+        # Trim trailing column-separator chars + extra whitespace
+        name = re.sub(r"\s*\|\s*.*$", "", name).strip()
+        vram_gb = vram_mib_total // 1024
         if vram_gb >= 80:
             tier, form = "E6", "DISCRETE_CARD"
         elif vram_gb >= 30:
@@ -225,8 +238,8 @@ class MockReferenceAgent:
                     "cpu_count": int(cores_match.group(1)) if cores_match else None,
                     "platform": "Linux",
                 },
-                "captured_at": "supplied · timestamp from task materials",
-                "reasoning": "Parsed lscpu output for CPU model and core count. [source:lscpu.txt]",
+                "captured_at_status": "NO_TIMESTAMP_IN_SUPPLIED_MATERIALS",
+                "reasoning": "Parsed lscpu output for CPU model and core count. Supplied lscpu.txt does not include a timestamp · field reported as NO_TIMESTAMP_IN_SUPPLIED_MATERIALS rather than fabricated. [source:lscpu.txt]",
             },
             [],
         )

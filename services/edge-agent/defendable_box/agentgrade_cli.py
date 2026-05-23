@@ -66,6 +66,10 @@ def run(
         help="Explicit workflow boundary clause embedded in the deed",
     ),
     kwh_rate: float = typer.Option(0.13, help="Operator-attested local kWh rate for cost accounting"),
+    judge: str = typer.Option(
+        "stub",
+        help="Judge provider · stub · kimi · openai · auto. Keys loaded from local .env.",
+    ),
 ) -> None:
     """Execute a pack against an agent · produce a receipt bundle.
 
@@ -101,6 +105,7 @@ def run(
         role_lane=role_lane,
         intended_workflow_boundary=intended_workflow_boundary,
         kwh_rate_usd=kwh_rate,
+        judge_provider=judge,
     )
 
     # Print summary

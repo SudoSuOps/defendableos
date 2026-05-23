@@ -38,7 +38,7 @@ from .grades import (
     compute_safety,
     compute_truth,
 )
-from .judge import JudgeFn, make_judge
+from .judge import JudgeFn, judge_provider_summary, make_judge
 from .pack import Pack, PackTask, load_pack
 from .tribunal import TribunalVerdict, Verdict, aggregate_failure_taxonomy, classify
 
@@ -123,6 +123,21 @@ def run_pack(
 
         # Tribunal
         pack_spec = _pack_spec_for(task, pack)
+        # Show the judge enough context to evaluate the output. 600-char
+        # excerpt was truncating mid-file and removing the actual data
+        # lines the agent extracted from · which led Kimi to flag valid
+        # outputs as PROPOLIS ("the excerpt contains only headers").
+        # 4000 chars accommodates typical nvidia-smi / lscpu / dcgmi
+        # outputs in full while bounding token cost.
+        task_context = {
+            "task_id": task.task_id,
+            "family": task.family,
+            "prompt": task.prompt[:1500],
+            "supplied_material_names": list(task.supplied_materials.keys()),
+            "supplied_material_excerpts": {
+                k: v[:4000] for k, v in task.supplied_materials.items()
+            },
+        }
         verdict = classify(
             task_id=task.task_id,
             output=result.output,
@@ -130,6 +145,7 @@ def run_pack(
             citation_source_set=pack.citation_source_set,
             supplied_entities=pack.supplied_entities,
             judge_fn=judge,
+            task_context=task_context,
         )
         verdicts.append(verdict)
 
@@ -231,6 +247,17 @@ def run_pack(
     _write_json(run_dir / "benchmark_pack_manifest.json", {
         **pack.manifest,
         "captured_at": captured_at,
+    })
+    # Judge provider summary · transparency in the bundle · NO key values
+    _write_json(run_dir / "judge_provider.json", {
+        **judge_provider_summary(judge_provider),
+        "captured_at": captured_at,
+        "tool_contract": "record_tribunal_verdict (HONEY|JELLY|PROPOLIS · confidence 0..1 · reasoning 1-3 sentences)",
+        "provider_quirks_respected": {
+            "kimi_temperature_locked_to_1": True,
+            "openai_temperature_0": True,
+            "tool_choice_forced": True,
+        },
     })
 
     # ── Grades ─────────────────────────────────────────────────────────
