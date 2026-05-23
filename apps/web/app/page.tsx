@@ -10,6 +10,7 @@ export default function Landing() {
         <nav className="flex items-center gap-5 text-sm text-stone-400">
           <a href="https://defendableos.com" className="hover:text-stone-200">Public site</a>
           <Link href="/claw-bakery" className="hover:text-stone-200">Claw Bakery</Link>
+          <Link href="/compute-claw" className="hover:text-stone-200">ComputeClaw</Link>
           <Link href="/login" className="text-honey-300 font-semibold hover:text-honey-200">Sign in</Link>
         </nav>
       </header>
