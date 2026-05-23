@@ -14,6 +14,9 @@
 # Exclude PRIVATE_EVIDENCE files from any bundle directory
 */private_identity_reference.json
 */thermal_power_trace.jsonl
+*/dcgmi_diag_output_private.json
+*/*_private.json
+*/*_private.jsonl
 
 # Exclude DERIVED_DATASETS files (contain hostnames, raw serials, etc.)
 */system_manifest.json

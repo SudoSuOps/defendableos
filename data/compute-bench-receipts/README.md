@@ -34,9 +34,10 @@ Per bundle:
 
 ## Bundles indexed here
 
-| Bundle | Host | Asset | Captured | Bundle Hash | Deed |
-|---|---|---|---|---|---|
-| `swarmrails/cb-20260523T025801Z-2d4e/` | swarmrails | NVIDIA RTX PRO 6000 Blackwell (E6 · GPU 0) | 2026-05-23T02:58:01Z | `sha256:3a5717285f1de11d5adec2c77300e3505c3395f2074532d6b1d3b067e1075747` | `DDEED-DOV-COMPUTE-000001-BENCH-v1` |
+| Bundle | Phase | Host | Asset | Captured | Bundle Hash | Deed |
+|---|---|---|---|---|---|---|
+| `swarmrails/cb-20260523T025801Z-2d4e/` | A · identity+runtime | swarmrails | NVIDIA RTX PRO 6000 Blackwell (E6 · GPU 0) | 2026-05-23T02:58:01Z | `sha256:3a5717285f1de11d5adec2c77300e3505c3395f2074532d6b1d3b067e1075747` | `DDEED-DOV-COMPUTE-000001-BENCH-v1` |
+| `swarmrails/cb-20260523T030859Z-8ed9/` | B · DCGM Level 1 PASS | swarmrails | NVIDIA RTX PRO 6000 Blackwell (E6 · GPU 0) | 2026-05-23T03:08:59Z | `sha256:4105a3ff99f2ba39c54167c43da2f54bcf42c0d2fea8776b9ae0a8fbfd23aefc` | `DDEED-DOV-COMPUTE-000001-BENCH-v2` (supersedes v1) |
 
 ## Verification
 

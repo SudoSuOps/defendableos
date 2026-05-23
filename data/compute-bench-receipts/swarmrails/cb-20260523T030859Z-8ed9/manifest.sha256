@@ -1,0 +1,23 @@
+{
+  "bundle_sha256": "4105a3ff99f2ba39c54167c43da2f54bcf42c0d2fea8776b9ae0a8fbfd23aefc",
+  "hash_algorithm": "SHA-256",
+  "manifest_excludes": [
+    "manifest.sha256",
+    "public_safe_attestation.json"
+  ],
+  "per_file_sha256": {
+    "asset_identity.json": "05729a9dbcd9fd34245007e083a158bccc83d5719e8eb27cc67dc2f872b97cd2",
+    "benchmark_plan.json": "e732967758a84b646bdd11c6170993833f4b5fc494b2e62ffdd012b4381fd7f4",
+    "benchmark_results.json": "3304a67155e4c6ffdb169f29e54a75d410e738be405482e4c9c1864291759fbc",
+    "best_next_use_inputs.json": "3f55d0526fbf3bbfa052e99078f7d10f2a6493d34ab4b216cad2f21e6aa30a8f",
+    "dcgmi_diag_output_private.json": "807c5455bb787c11bba1f53fd8aeb3e12667c8aefd7df17b1d7c16339c1ec696",
+    "evidence_classification.json": "5723d04728c12ead87a5c2e1d36be1d52a80773994f72526de12728511312ce9",
+    "health_diagnostic.json": "f590ba8bc76f5ddee55809d798f3c613d9b1b10b7dac89a851e2e37e1ac99c41",
+    "phase_a_reference.json": "c87393ce0a5b83664b32b7952908d9bdf618b125cf93a810887f94eb9356d581",
+    "private_identity_reference.json": "b0a8aa27a37e38c6ab1e8a5cd4d16a4e2a3f606ac77a3366ef216ada2980e32a",
+    "runtime_environment.json": "94a135b9b98615cc6518d918f6298dbb2479f4c5d79ec35011253f557f4597fc",
+    "system_manifest.json": "5ed05f181db7aae17a6830009e31d5c08b1f89f32e6d231a722a51a603e9c8a8",
+    "validator_flags.json": "bab3482d78c44c606e60df7ac7792dc1381c2e7c4b80995687dcbecbdd275eb7",
+    "workload_compatibility.json": "a4add99d888855195ac589334a572b1b7a559c4821890bf17957d95512ea8ef3"
+  }
+}

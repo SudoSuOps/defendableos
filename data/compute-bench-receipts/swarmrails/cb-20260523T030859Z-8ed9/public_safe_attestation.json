@@ -1,0 +1,65 @@
+{
+  "asset_class": "COMPUTE_HARDWARE",
+  "asset_tier": "E6",
+  "benchmark_plan_scope": "diagnostic-quick",
+  "bundle_hash": "sha256:4105a3ff99f2ba39c54167c43da2f54bcf42c0d2fea8776b9ae0a8fbfd23aefc",
+  "captured_at": "2026-05-23T03:09:00Z",
+  "captured_by": "swarm-and-bee",
+  "demonstrated_workloads": [],
+  "diagnostic_summary": {
+    "categories_failed": 0,
+    "categories_passed": 1,
+    "level": 1,
+    "level_name": "Quick (deployment/runtime validation)",
+    "results": [
+      {
+        "category": "Deployment",
+        "status": "Pass",
+        "test": "software"
+      }
+    ],
+    "tool": "dcgmi",
+    "tool_version": "4.5.3"
+  },
+  "form_factor": "DISCRETE_CARD",
+  "grades": {
+    "evidence": "B \u00b7 FIRST_PARTY_OPERATIONAL_EVIDENCE_ONLY (DCGM-attested \u00b7 validator review pending)",
+    "health": "PASS (DCGM Level 1 quick diag \u00b7 1/1 categories)",
+    "identity_confidence": "C \u00b7 MODEL_SELF_REPORTED_ONLY",
+    "utility": "UTILITY_NOT_YET_MEASURED (Phase B = diagnostic \u00b7 workload tests are Phase C)"
+  },
+  "limitations": [
+    "DCGM Level 1 = Quick \u00b7 validates deployment/runtime \u00b7 does NOT stress GPU under sustained load",
+    "Phase C (workload utility tests) required to upgrade Utility Grade",
+    "Buyer-side re-attestation required for transfer assurance"
+  ],
+  "manifest_hash": "sha256:4105a3ff99f2ba39c54167c43da2f54bcf42c0d2fea8776b9ae0a8fbfd23aefc",
+  "model": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "not_tested": [
+    "Sustained workload utility (Phase C)"
+  ],
+  "parent_run_id": "cb-20260523T025801Z-2d4e",
+  "phase": "B",
+  "re_attestation_trigger": "OWNERSHIP_TRANSFER \u00b7 HARDWARE_RELOCATION \u00b7 DRIVER_MAJOR_UPGRADE",
+  "run_id": "cb-20260523T030859Z-8ed9",
+  "runtime_summary": {
+    "cuda": "nvcc: NVIDIA (R) Cuda compiler driver",
+    "dcgm": "4.5.3",
+    "driver": "NVIDIA-SMI version  : 590.48.01",
+    "kernel": "6.8.0-110-generic",
+    "os": "Ubuntu 24.04.4 LTS"
+  },
+  "safety_attestation": {
+    "co_resident_gpus_untouched": [
+      {
+        "index": 1,
+        "pci_bus_id": "00000000:CA:00.0",
+        "policy": "OFF_LIMITS_PRODUCTION_QWEN_WORKLOAD"
+      }
+    ],
+    "dcgm_invocation": "dcgmi diag -r 1 -i 0",
+    "target_gpu_index": 0,
+    "target_gpu_pci_bus_id": "00000000:34:00.0"
+  },
+  "vram_gb": 95
+}

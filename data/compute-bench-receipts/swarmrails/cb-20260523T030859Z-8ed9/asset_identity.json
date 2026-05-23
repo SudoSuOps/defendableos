@@ -1,0 +1,18 @@
+{
+  "asset_class": "COMPUTE_HARDWARE",
+  "asset_tier": "E6",
+  "captured_at": "2026-05-23T02:58:01Z",
+  "form_factor": "DISCRETE_CARD",
+  "host_role": "INSTITUTIONAL_WORKSTATION",
+  "identity_capture_method": [
+    "nvidia-smi",
+    "lspci",
+    "lscpu"
+  ],
+  "identity_confidence_grade": "C \u00b7 MODEL_SELF_REPORTED_ONLY",
+  "manufacturer": "NVIDIA",
+  "model": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "run_id": "cb-20260523T030859Z-8ed9",
+  "tier_inference_reasoning": "Institutional-class accelerator (NVIDIA RTX PRO 6000 Blackwell Workstation Edition)",
+  "vram_gb": 95
+}
