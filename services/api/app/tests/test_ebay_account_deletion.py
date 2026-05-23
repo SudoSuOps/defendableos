@@ -88,14 +88,32 @@ def test_get_digest_order_is_challenge_token_endpoint() -> None:
     assert body["challengeResponse"] != wrong_order
 
 
-def test_get_missing_challenge_code_returns_4xx() -> None:
+def test_get_bare_reachability_ping_returns_200_safe() -> None:
+    """eBay's portal pings the endpoint with NO query string first as a
+    reachability check before sending the actual challenge. We MUST
+    respond 200 with a non-secret body or eBay rejects the URL and never
+    sends the real challenge."""
     resp = _client().get(
         "/api/v1/marketplace/ebay/notifications/account-deletion",
     )
-    assert resp.status_code in (400, 422)
+    assert resp.status_code == 200
+    assert resp.headers["content-type"].startswith("application/json")
+    body = resp.json()
+    assert body["service"] == "ebay-marketplace-account-deletion"
+    assert body["status"] == "endpoint_reachable"
+    # Bare ping must NOT leak the token OR the endpoint URL
     blob = resp.text.lower()
-    # Even on error · the token must NOT appear in the body
     assert FIXTURE_TOKEN.lower() not in blob
+    assert "api.defendableos.com" not in blob
+
+
+def test_get_empty_challenge_code_returns_200_safe() -> None:
+    """`?challenge_code=` (empty value) behaves the same as bare GET."""
+    resp = _client().get(
+        "/api/v1/marketplace/ebay/notifications/account-deletion?challenge_code=",
+    )
+    assert resp.status_code == 200
+    assert resp.json()["status"] == "endpoint_reachable"
 
 
 def test_get_missing_token_returns_503_without_leaking_endpoint_or_token(

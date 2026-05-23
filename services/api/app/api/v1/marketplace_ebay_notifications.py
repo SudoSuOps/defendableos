@@ -40,17 +40,37 @@ router = APIRouter(
 
 @router.get("/account-deletion")
 def verification_challenge(
-    challenge_code: str = Query(..., min_length=1, max_length=256),
+    challenge_code: str | None = Query(default=None, max_length=256),
 ):
     """eBay verification challenge handler.
 
-    eBay calls this immediately after a Save in the Developer portal with
-    `?challenge_code=<unique value>`. We must respond with:
+    eBay's portal performs TWO actions on Save:
+      1. A bare GET to the endpoint URL (no query string) as a reachability
+         pre-check. If we 4xx/5xx here, eBay never sends the actual
+         challenge and the portal Save fails with no specific error.
+      2. A GET with `?challenge_code=<unique value>` · the real verification
+         challenge. We respond with:
+             {"challengeResponse": "<sha256(challenge_code + token + endpoint_url)>"}
 
-        {"challengeResponse": "<sha256(challenge_code + token + endpoint_url)>"}
+    Therefore:
+      · bare GET (no challenge_code) → 200 with a benign identifier body
+        that does NOT include the token, endpoint URL, or any sensitive
+        config. It only confirms the route exists.
+      · GET with challenge_code → normal SHA-256 response per eBay spec.
 
-    HTTP 200 · Content-Type: application/json.
+    HTTP 200 · Content-Type: application/json in both cases.
     """
+    # Bare reachability ping · safe affirmative response · no secret bits
+    if not challenge_code:
+        return JSONResponse(
+            status_code=status.HTTP_200_OK,
+            content={
+                "service": "ebay-marketplace-account-deletion",
+                "status": "endpoint_reachable",
+                "expects": "GET with ?challenge_code=<value> for verification challenge",
+            },
+            media_type="application/json",
+        )
     try:
         digest = compute_challenge_response(challenge_code)
     except VerificationConfigMissing:
