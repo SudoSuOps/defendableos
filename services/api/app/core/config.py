@@ -92,6 +92,16 @@ class Settings(BaseSettings):
     ebay_environment: str = "production"  # 'production' or 'sandbox'
     ebay_marketplace_id: str = "EBAY_US"  # EBAY_US · EBAY_GB · EBAY_DE · etc.
 
+    # eBay · Marketplace Account Deletion notification endpoint · regulatory.
+    # See app/api/v1/marketplace_ebay_notifications.py +
+    #     app/services/compliance/ebay_account_deletion.py
+    # NEVER commit a real token to source · token is read from env / Fly secret.
+    ebay_account_deletion_endpoint: str = (
+        "https://api.defendableos.com/api/v1/marketplace/ebay/notifications/account-deletion"
+    )
+    ebay_account_deletion_verification_token: str = ""
+    ebay_account_deletion_notifications_enabled: bool = False
+
     # Model gateway · provider-agnostic. Switch with MODEL_PROVIDER=kimi|openai.
     model_provider: str = "kimi"
 

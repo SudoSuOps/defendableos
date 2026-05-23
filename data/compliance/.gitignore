@@ -1,0 +1,10 @@
+# Compliance local-driver state · NEVER committed.
+#
+# Contains raw eBay marketplace account-deletion notification bodies
+# (regulator-only data) + SHA-256 receipts + review-queue records.
+# In production this is the S3 driver pointed at the existing
+# s3_private_evidence_bucket · this dir does not exist there.
+
+*
+!.gitignore
+!README.md
