@@ -29,6 +29,25 @@ from . import _env
 JudgeFn = Callable[..., dict[str, Any]]
 
 
+# ─── Conservative-vote ordering · doctrine ────────────────────────────────
+
+
+_VERDICT_RANK = {"HONEY": 0, "JELLY": 1, "PROPOLIS": 2}
+
+
+def _most_conservative(verdicts: list[str]) -> str:
+    """Return the most-conservative verdict (highest rank).
+
+    Doctrine: ensemble layer should bias toward downgrade · same as the
+    rule layer. PROPOLIS > JELLY > HONEY. When judges disagree, the
+    safer verdict wins · operators get protection from the strictest
+    reviewer.
+    """
+    if not verdicts:
+        return "HONEY"
+    return max(verdicts, key=lambda v: _VERDICT_RANK.get(v, 0))
+
+
 # ─── Typed tool contract for HONEY/JELLY/PROPOLIS ────────────────────────
 
 
@@ -221,6 +240,130 @@ def _openai_judge(*, task_id: str, output: Any, task_context: dict | None = None
     return _parse_tool_response(data, provider="openai", model=model)
 
 
+# ─── Ensemble judge · multi-model parallel verdict ───────────────────────
+
+
+def _ensemble_judge(*, task_id: str, output: Any, task_context: dict | None = None) -> dict[str, Any]:
+    """Call every configured provider in parallel · vote via most-conservative.
+
+    Doctrine:
+    - Run all available providers simultaneously (ThreadPoolExecutor)
+    - Each returns a verdict + confidence + reasoning
+    - Consensus = most-conservative (PROPOLIS > JELLY > HONEY)
+    - When judges DISAGREE, surface the disagreement in metadata
+    - Confidence = mean of per-judge confidences for the winning verdict
+    - Defense-in-depth: a single permissive judge cannot rescue a flagged
+      output · matches the rule-layer doctrine ("can only downgrade")
+    """
+    import concurrent.futures as _cf
+
+    providers: list[tuple[str, JudgeFn]] = []
+    if _env.get("MOONSHOT_API_KEY"):
+        providers.append(("kimi", _kimi_judge))
+    if _env.get("OPENAI_API_KEY"):
+        providers.append(("openai", _openai_judge))
+
+    if not providers:
+        return {**stub_judge(task_id=task_id, output=output), "status": "UNAVAILABLE_NO_PROVIDERS"}
+    if len(providers) == 1:
+        # Only one provider configured · return single-judge result with ensemble metadata
+        name, fn = providers[0]
+        single = fn(task_id=task_id, output=output, task_context=task_context)
+        single["ensemble_metadata"] = {
+            "providers_attempted": [name],
+            "providers_succeeded": [name] if single.get("status") == "RAN" else [],
+            "consensus_basis": "single_provider_no_ensemble",
+            "judges_agreed": True,
+        }
+        single["provider"] = f"ensemble({name})"
+        return single
+
+    # Parallel fan-out
+    results: dict[str, dict[str, Any]] = {}
+    with _cf.ThreadPoolExecutor(max_workers=len(providers)) as ex:
+        future_to_name = {
+            ex.submit(fn, task_id=task_id, output=output, task_context=task_context): name
+            for name, fn in providers
+        }
+        for fut in _cf.as_completed(future_to_name):
+            name = future_to_name[fut]
+            try:
+                results[name] = fut.result()
+            except Exception as exc:  # noqa: BLE001
+                results[name] = {
+                    "verdict": "HONEY",
+                    "confidence": 0.0,
+                    "reasoning": f"Provider {name} raised {type(exc).__name__}",
+                    "status": "FAILED_EXCEPTION",
+                    "provider": name,
+                    "model": "(unknown)",
+                }
+
+    succeeded = [n for n, r in results.items() if r.get("status") == "RAN"]
+    failed = [n for n in results if n not in succeeded]
+
+    if not succeeded:
+        # All providers failed · fall back to stub HONEY (rule-only)
+        return {
+            "verdict": "HONEY",
+            "confidence": 0.0,
+            "reasoning": f"All ensemble providers failed · {failed} · rule-only verdict applies",
+            "status": "FAILED_ALL_PROVIDERS",
+            "provider": "ensemble",
+            "model": "+".join(failed),
+            "ensemble_metadata": {
+                "providers_attempted": list(results.keys()),
+                "providers_succeeded": [],
+                "providers_failed": failed,
+                "per_provider_status": {n: r.get("status") for n, r in results.items()},
+            },
+        }
+
+    # Tally verdicts from successful providers
+    verdicts = [results[n]["verdict"] for n in succeeded]
+    consensus_verdict = _most_conservative(verdicts)
+    agreed = all(v == consensus_verdict for v in verdicts)
+
+    # Confidence · mean of providers that returned the winning verdict
+    matching_confs = [
+        float(results[n].get("confidence", 0.0))
+        for n in succeeded
+        if results[n]["verdict"] == consensus_verdict
+    ]
+    consensus_confidence = (
+        round(sum(matching_confs) / len(matching_confs), 3) if matching_confs else 0.0
+    )
+
+    # Compose reasoning · pull the winning-verdict reasoning from each agreeing provider
+    reasoning_parts = []
+    for n in succeeded:
+        r = results[n]
+        marker = "✓" if r["verdict"] == consensus_verdict else "✗"
+        reasoning_parts.append(
+            f"[{marker} {n} · {r['verdict']} · {r.get('confidence', 0):.2f}] {r.get('reasoning', '')[:200]}"
+        )
+    composed = " | ".join(reasoning_parts)[:800]
+
+    return {
+        "verdict": consensus_verdict,
+        "confidence": consensus_confidence,
+        "reasoning": composed,
+        "status": "RAN",
+        "provider": "ensemble",
+        "model": "+".join(succeeded),
+        "ensemble_metadata": {
+            "providers_attempted": list(results.keys()),
+            "providers_succeeded": succeeded,
+            "providers_failed": failed,
+            "per_provider_verdict": {n: results[n]["verdict"] for n in succeeded},
+            "per_provider_confidence": {n: results[n].get("confidence", 0) for n in succeeded},
+            "per_provider_model": {n: results[n].get("model") for n in succeeded},
+            "consensus_basis": "unanimous_agreement" if agreed else "most_conservative_vote",
+            "judges_agreed": agreed,
+        },
+    }
+
+
 # ─── Shared tool-response parser ──────────────────────────────────────────
 
 
@@ -305,6 +448,8 @@ def make_judge(provider: str | None = None) -> JudgeFn:
         return _kimi_judge
     if p == "openai":
         return _openai_judge
+    if p == "ensemble":
+        return _ensemble_judge
     raise ValueError(f"Unknown judge provider: {provider!r}")
 
 
@@ -321,4 +466,16 @@ def judge_provider_summary(provider: str | None) -> dict[str, Any]:
         return {"provider": "kimi", "model": _env.get("MOONSHOT_MODEL"), "configured": bool(_env.get("MOONSHOT_API_KEY"))}
     if p == "openai":
         return {"provider": "openai", "model": _env.get("OPENAI_MODEL"), "configured": bool(_env.get("OPENAI_API_KEY"))}
+    if p == "ensemble":
+        return {
+            "provider": "ensemble",
+            "model": "+".join(
+                [
+                    n for n, k in [("kimi", "MOONSHOT_API_KEY"), ("openai", "OPENAI_API_KEY")]
+                    if _env.get(k)
+                ]
+            ) or "none",
+            "configured": bool(_env.get("MOONSHOT_API_KEY")) or bool(_env.get("OPENAI_API_KEY")),
+            "consensus_rule": "most_conservative (PROPOLIS > JELLY > HONEY)",
+        }
     return {"provider": "stub", "model": "none", "configured": False}

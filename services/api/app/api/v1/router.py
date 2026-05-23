@@ -15,6 +15,7 @@ from app.api.v1 import (
     edge,
     public,
     audit,
+    claw_swarm,
 )
 
 api_router = APIRouter(prefix="/api/v1")
@@ -33,3 +34,4 @@ api_router.include_router(public.router, tags=["public"])
 api_router.include_router(audit.router, tags=["audit"])
 api_router.include_router(admin_goods.router, tags=["admin-goods"])
 api_router.include_router(admin_summary.router, tags=["admin-summary"])
+api_router.include_router(claw_swarm.router)
