@@ -96,10 +96,17 @@ def search_item_summaries(
 
     def _do_request() -> httpx.Response:
         token = get_application_token()
+        # OAuth 2.0 standard · always 'Bearer' regardless of what eBay's
+        # token_type field says. eBay returns 'Application Access Token'
+        # as the token_type label but their API requires 'Bearer' in the
+        # Authorization header. (Confirmed via 400-not-401 on sandbox when
+        # we used token_type verbatim · auth was accepted but request was
+        # malformed elsewhere · standardizing to Bearer eliminates ambiguity.)
         headers = {
-            "Authorization": f"{token.token_type} {token.access_token}",
+            "Authorization": f"Bearer {token.access_token}",
             "X-EBAY-C-MARKETPLACE-ID": mp,
             "Accept": "application/json",
+            "Accept-Encoding": "gzip",
         }
         with httpx.Client(timeout=timeout) as client:
             return client.get(url, headers=headers, params=params)
@@ -112,9 +119,14 @@ def search_item_summaries(
         resp = _do_request()
 
     if resp.status_code >= 400:
+        # Log eBay's actual error body server-side · helps debug 400s where
+        # eBay tells us exactly which field was wrong. NOT included in the
+        # HTTP response to the caller (since the body may contain debug
+        # metadata that's not appropriate for an admin probe).
+        body_excerpt = (resp.text or "")[:500]
         _log.error(
-            "ebay browse search failed · status=%d reason=%s q=%r limit=%d",
-            resp.status_code, resp.reason_phrase, q, limit,
+            "ebay browse search failed · status=%d reason=%s q=%r limit=%d body=%s",
+            resp.status_code, resp.reason_phrase, q, limit, body_excerpt,
         )
         # Surface a safe error · do NOT include response body verbatim
         raise EbayBrowseAPIError(
