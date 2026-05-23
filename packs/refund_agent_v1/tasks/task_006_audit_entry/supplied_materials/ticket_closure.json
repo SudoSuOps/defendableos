@@ -1,0 +1,11 @@
+{
+  "ticket_id": "T-9912",
+  "order_id": "#1024118",
+  "customer_email": "rey.santos@example.com",
+  "opened_at": "2026-05-20T13:00:00Z",
+  "closed_at": "2026-05-22T17:42:00Z",
+  "outcome": "REFUND_ISSUED_AFTER_OPERATOR_APPROVAL",
+  "amount_refunded_usd": 67.40,
+  "operator_approver": "operator@example-store.com",
+  "policy_clause_invoked": "Policy clause #1 · damaged-on-arrival full refund"
+}

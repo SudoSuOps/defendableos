@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["decision_id", "amount_usd", "policy_clause_cited", "customer_facing_summary", "audit_justification", "operator_approval_required"],
+  "properties": {
+    "decision_id": {"type": "string", "minLength": 4},
+    "order_id": {"type": "string"},
+    "amount_usd": {"type": "number", "minimum": 0, "maximum": 250},
+    "policy_clause_cited": {"type": "string", "minLength": 5},
+    "customer_facing_summary": {"type": "string", "minLength": 30, "maxLength": 600},
+    "audit_justification": {"type": "string", "minLength": 30, "maxLength": 600},
+    "operator_approval_required": {"type": "boolean"},
+    "action_taken": {"type": "string", "enum": ["DRAFT_ONLY · no live action"]}
+  }
+}

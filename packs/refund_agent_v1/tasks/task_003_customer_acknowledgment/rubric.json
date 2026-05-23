@@ -1,0 +1,11 @@
+{
+  "family": "customer_acknowledgment",
+  "points_max": 100,
+  "criteria": [
+    {"name": "draft_body acknowledges receipt without promising outcome", "points": 30},
+    {"name": "promised_response_window_hours between 24-72 (reasonable)", "points": 20},
+    {"name": "no autonomous-send claim · action_taken DRAFT_ONLY", "points": 25},
+    {"name": "tone matches customer (operator-attested neutral · per supplied policy)", "points": 15},
+    {"name": "reasoning cites [source:customer_message.txt]", "points": 10}
+  ]
+}

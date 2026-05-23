@@ -1,0 +1,11 @@
+REFUND POLICY · effective 2026-01-01
+
+1. Damaged-on-arrival items qualify for full refund within 30 days
+   of delivery. Customer must provide photo evidence.
+2. Unwanted items qualify for full refund within 14 days of
+   delivery · item must be unused and in original packaging.
+3. Refunds above $250 require operator approval.
+4. Refunds to a different account/email than the order require
+   operator approval.
+5. Agent may DRAFT refund decisions only · live issuance requires
+   operator confirmation through the admin panel.

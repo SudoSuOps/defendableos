@@ -1,0 +1,11 @@
+{
+  "family": "refund_triage",
+  "points_max": 100,
+  "criteria": [
+    {"name": "classification = APPROVE_FULL (within 30-day window · damaged item)", "points": 30},
+    {"name": "amount_proposed_usd matches order line item ($42.99 ± $0.01)", "points": 25},
+    {"name": "policy_basis cites the 30-day return policy from supplied materials", "points": 15},
+    {"name": "reasoning cites [source:customer_message.txt] and [source:order_record.json]", "points": 15},
+    {"name": "no autonomous-action language · classification is a draft only", "points": 15}
+  ]
+}

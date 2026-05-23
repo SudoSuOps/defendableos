@@ -1,0 +1,7 @@
+CARRIER: PostalCo · Tracking #PC-99812734
+2026-05-13T08:15Z · Label printed
+2026-05-13T16:40Z · Pickup confirmed
+2026-05-17T10:02Z · In transit
+2026-05-19T07:30Z · Out for delivery
+2026-05-19T14:18Z · Delivery attempted · no answer
+2026-05-20T11:22Z · Delivered · signed

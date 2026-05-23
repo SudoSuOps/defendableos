@@ -1,0 +1,16 @@
+{
+  "order_id": "#1023948",
+  "customer_email": "jane.cooper@example.com",
+  "items": [
+    {"sku": "WB-EARBUDS-01", "name": "Wireless Earbuds", "qty": 1, "unit_price_usd": 42.99}
+  ],
+  "subtotal_usd": 42.99,
+  "shipping_usd": 0.00,
+  "total_usd": 42.99,
+  "placed_at": "2026-05-12T11:00:00Z",
+  "delivered_at": "2026-05-18T09:14:00Z",
+  "status": "DELIVERED",
+  "return_policy_applies": true,
+  "return_window_days": 30,
+  "within_return_window": true
+}

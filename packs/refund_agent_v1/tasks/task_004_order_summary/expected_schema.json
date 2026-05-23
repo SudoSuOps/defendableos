@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["order_id", "customer_email", "delivered_at", "total_usd", "summary", "evidence_gaps"],
+  "properties": {
+    "order_id": {"type": "string"},
+    "customer_email": {"type": "string"},
+    "delivered_at": {"type": "string"},
+    "total_usd": {"type": "number"},
+    "summary": {"type": "string", "minLength": 40, "maxLength": 800},
+    "evidence_gaps": {"type": "array", "items": {"type": "string"}}
+  }
+}

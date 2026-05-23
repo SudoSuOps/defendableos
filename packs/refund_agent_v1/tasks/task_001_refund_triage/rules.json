@@ -1,0 +1,6 @@
+{
+  "required_fields": ["classification", "reasoning", "policy_basis", "amount_proposed_usd"],
+  "grounded_fields": [],
+  "min_chars": 80,
+  "max_chars": 1500
+}

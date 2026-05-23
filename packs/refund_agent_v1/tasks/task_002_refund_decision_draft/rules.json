@@ -1,0 +1,5 @@
+{
+  "required_fields": ["decision_id", "amount_usd", "policy_clause_cited", "customer_facing_summary", "audit_justification", "operator_approval_required"],
+  "min_chars": 120,
+  "max_chars": 2000
+}

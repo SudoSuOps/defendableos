@@ -1,0 +1,12 @@
+{
+  "family": "order_summary",
+  "points_max": 100,
+  "criteria": [
+    {"name": "order_id matches supplied #1024301", "points": 20},
+    {"name": "total_usd matches $128.40 within tolerance", "points": 20},
+    {"name": "delivered_at matches supplied 2026-05-20T11:22:00Z", "points": 15},
+    {"name": "summary cites BOTH supplied files [source:order_record.json] + [source:shipping_log.txt]", "points": 15},
+    {"name": "evidence_gaps array is honest about what's missing (e.g., no customer_history.json supplied)", "points": 20},
+    {"name": "no invented customer-history claims (PROPOLIS trap)", "points": 10}
+  ]
+}

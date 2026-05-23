@@ -1,0 +1,18 @@
+{
+  "order_id": "#1024112",
+  "customer_email": "alex.kim@example.com",
+  "items": [
+    {"sku": "TS-COTTON-LRG", "name": "Cotton T-Shirt · Large · Navy", "qty": 1, "unit_price_usd": 35.00},
+    {"sku": "HAT-BB-BLK", "name": "Baseball Cap · Black", "qty": 1, "unit_price_usd": 22.50},
+    {"sku": "MUG-CER-12OZ", "name": "Ceramic Mug · 12oz", "qty": 2, "unit_price_usd": 16.00}
+  ],
+  "subtotal_usd": 89.50,
+  "shipping_usd": 0.00,
+  "total_usd": 89.50,
+  "placed_at": "2026-05-08T10:00:00Z",
+  "delivered_at": "2026-05-14T15:42:00Z",
+  "status": "DELIVERED",
+  "return_window_days": 30,
+  "within_return_window": true,
+  "customer_reason": "Items arrived but customer wants full refund · unopened + boxed for return."
+}

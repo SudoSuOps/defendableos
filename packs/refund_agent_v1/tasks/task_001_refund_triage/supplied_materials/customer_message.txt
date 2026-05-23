@@ -1,0 +1,16 @@
+From: jane.cooper@example.com
+Channel: email
+Order: #1023948
+Received: 2026-05-19T14:30:00Z
+
+Hi support,
+
+I received my order yesterday but the package was damaged in
+transit · the wireless earbuds case is cracked and one earbud is
+loose inside. I have attached two photos. I'd like a full refund ·
+I do not need a replacement.
+
+Order total was $42.99 (wireless earbuds · 1 unit).
+
+Thanks,
+Jane

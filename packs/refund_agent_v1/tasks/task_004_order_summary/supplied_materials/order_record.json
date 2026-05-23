@@ -1,0 +1,14 @@
+{
+  "order_id": "#1024301",
+  "customer_email": "morgan.lee@example.com",
+  "items": [
+    {"sku": "SHOES-RUN-9", "name": "Running Shoes · M9", "qty": 1, "unit_price_usd": 99.90},
+    {"sku": "SOCKS-WOOL-3PK", "name": "Wool Socks 3-pack", "qty": 1, "unit_price_usd": 28.50}
+  ],
+  "subtotal_usd": 128.40,
+  "shipping_usd": 0.00,
+  "total_usd": 128.40,
+  "placed_at": "2026-05-12T09:30:00Z",
+  "delivered_at": "2026-05-20T11:22:00Z",
+  "status": "DELIVERED"
+}
