@@ -4,7 +4,7 @@ from __future__ import annotations
 from functools import lru_cache
 from typing import Literal
 
-from pydantic import field_validator
+from pydantic import AliasChoices, Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -60,16 +60,42 @@ class Settings(BaseSettings):
     # GOODS_INTELLIGENCE_ARCHITECTURE.md.
     object_storage_provider: Literal["minio", "tigris", "s3"] = "minio"
     object_storage_live_enabled: bool = False
-    s3_endpoint_url: str = "http://localhost:9000"
-    s3_access_key_id: str = "minioadmin"
-    s3_secret_access_key: str = "minioadmin"
-    s3_region: str = "us-east-1"
+    # The S3 connection fields below accept BOTH naming conventions so a Fly
+    # operator can run a single `flyctl storage create` (Tigris) and have the
+    # bakery just work — Tigris auto-injects AWS_ENDPOINT_URL_S3 /
+    # AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY / AWS_REGION / BUCKET_NAME,
+    # and our existing S3_ENDPOINT_URL / S3_* names still resolve for local
+    # MinIO dev. AWS_-prefixed values win when both are set (production).
+    s3_endpoint_url: str = Field(
+        default="http://localhost:9000",
+        validation_alias=AliasChoices("AWS_ENDPOINT_URL_S3", "S3_ENDPOINT_URL"),
+    )
+    s3_access_key_id: str = Field(
+        default="minioadmin",
+        validation_alias=AliasChoices("AWS_ACCESS_KEY_ID", "S3_ACCESS_KEY_ID"),
+    )
+    s3_secret_access_key: str = Field(
+        default="minioadmin",
+        validation_alias=AliasChoices("AWS_SECRET_ACCESS_KEY", "S3_SECRET_ACCESS_KEY"),
+    )
+    s3_region: str = Field(
+        default="us-east-1",
+        validation_alias=AliasChoices("AWS_REGION", "S3_REGION"),
+    )
     s3_presigned_url_ttl_seconds: int = 900
     # Legacy 2-bucket pair (kept for existing deed/evidence code paths)
     s3_private_bucket: str = "defendable-private"
     s3_public_bucket: str = "defendable-public"
-    # New 4-bucket goods intelligence layout
-    s3_private_evidence_bucket: str = "defendable-private-evidence-prod"
+    # New 4-bucket goods intelligence layout. The PRIVATE_EVIDENCE bucket
+    # is where the Claw Bakery writes — Tigris's auto-injected BUCKET_NAME
+    # is accepted as an alias so a single bucket can back PRIVATE_EVIDENCE
+    # on first provision. The other 3 disclosure-boundary buckets stay at
+    # their explicit S3_* names and require separate provisioning before
+    # use (per Evidence Vault doctrine — disclosure classes never mix).
+    s3_private_evidence_bucket: str = Field(
+        default="defendable-private-evidence-prod",
+        validation_alias=AliasChoices("BUCKET_NAME", "S3_PRIVATE_EVIDENCE_BUCKET"),
+    )
     s3_market_observations_bucket: str = "defendable-market-observations-prod"
     s3_derived_datasets_bucket: str = "defendable-derived-datasets-prod"
     s3_public_assets_bucket: str = "defendable-public-assets-prod"
