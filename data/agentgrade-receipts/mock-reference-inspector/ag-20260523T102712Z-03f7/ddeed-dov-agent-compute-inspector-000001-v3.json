@@ -1,0 +1,113 @@
+{
+  "agent": {
+    "agent_id": "mock-reference-inspector-v0",
+    "agent_version": "0.1.0-mvp",
+    "model_summary": {
+      "base": "none \u00b7 pure-Python parser",
+      "implementation_note": "This adapter does NOT call an LLM. It parses supplied materials with regex + structured rules. Used to validate the AgentGrade pipeline end-to-end before wiring real LLM-backed agents.",
+      "name": "deterministic-stub-inspector",
+      "weights_sha256": "sha256:n/a"
+    },
+    "runtime_summary": {
+      "engine": "deterministic-stub",
+      "engine_version": "compute-bench-0.1.0",
+      "stub_note": "Deterministic Python \u00b7 no model inference \u00b7 runtime metrics are wall-clock only"
+    },
+    "vendor": "swarm-and-bee"
+  },
+  "benchmark": {
+    "bundle_hash": "sha256:b32298523e3fa0364c5f0aef7dfa9ee18e94ae53d72b08ce4dc05577cbe61bfd",
+    "captured_at": "2026-05-23T10:27:12Z",
+    "captured_by": "swarm-and-bee",
+    "manifest_hash": "sha256:b32298523e3fa0364c5f0aef7dfa9ee18e94ae53d72b08ce4dc05577cbe61bfd",
+    "pack_id": "compute-inspector-v1",
+    "pack_version": "1.0-alpha",
+    "run_id": "ag-20260523T102712Z-03f7"
+  },
+  "compute_deed_binding": "DDEED-DOV-COMPUTE-000001-BENCH-v2",
+  "deed_reference": "DDEED-DOV-AGENT-COMPUTE-INSPECTOR-000001-v3",
+  "deed_subtype": "AGENT_GRADE_RECORD",
+  "deed_type": "DEFENDABLE_DEED",
+  "deed_version": "0.1",
+  "deployment_lane": "COMPUTE_INSPECTION_DRAFT \u00b7 Drafting only \u00b7 final inspection record requires human review",
+  "deployment_tier": "OBSERVED",
+  "disclosures": {
+    "ai_assisted_record": true,
+    "disclaimer": "Third Defendable Agent Deed \u00b7 judge layer upgraded from single-Kimi to Kimi+OpenAI ensemble with most-conservative consensus. Tier still capped at OBSERVED per pack v1.0-alpha doctrine. Notable: 16.67% PROPOLIS this run vs 0% in single-Kimi v2 \u00b7 ensemble correctly applies defense-in-depth \u00b7 the strictest reviewer wins.",
+    "ensemble_consensus_demo": "task_005_recommendation_draft promoted to PROPOLIS via ensemble vote \u00b7 single Kimi v2 had it as HONEY \u00b7 ensemble caught it",
+    "first_ensemble_judge_deed": true,
+    "judge_upgraded": "single-Kimi \u2192 ENSEMBLE (kimi+openai parallel \u00b7 most-conservative)",
+    "phase": "B \u00b7 Tribunal ENSEMBLE judge layer live",
+    "supersedes_v2": true
+  },
+  "ens_identity": {
+    "name": "ddeed-dov-agent-compute-inspector-000001-v3.swarmbee.defendable.eth",
+    "parent_organization_ens": "swarmbee.defendable.eth",
+    "status": "RESERVED_NOT_ISSUED"
+  },
+  "evidence_packet": {
+    "bundle_archive_reference": "data/agentgrade-receipts/mock-reference-inspector/ag-20260523T102712Z-03f7/",
+    "evidence_item_count": 34,
+    "manifest_sha256": "b32298523e3fa0364c5f0aef7dfa9ee18e94ae53d72b08ce4dc05577cbe61bfd"
+  },
+  "grades": {
+    "agentgrade_composite": 73.34,
+    "capability": 90.7,
+    "efficiency": 0.0,
+    "numeric_structural": 100.0,
+    "reproducibility": 90.0,
+    "safety": 50.0,
+    "truth": 83.3
+  },
+  "issued_at": null,
+  "judge_attestation": {
+    "consensus_basis": "most_conservative \u00b7 PROPOLIS > JELLY > HONEY \u00b7 matches rule layer downgrade-only doctrine",
+    "consensus_rule": "most_conservative (PROPOLIS > JELLY > HONEY)",
+    "judge_call_timeout_seconds": 180,
+    "model": "kimi+openai",
+    "parallel_dispatch": "ThreadPoolExecutor \u00b7 all configured providers run simultaneously",
+    "provider": "ensemble",
+    "tool_contract": "record_tribunal_verdict (HONEY|JELLY|PROPOLIS \u00b7 confidence 0..1 \u00b7 reasoning 1-3 sentences)"
+  },
+  "proof_of_value": {
+    "doctrine": "VALIDATE_THE_VALIDATOR",
+    "framework": "DEFENDABLEOS",
+    "intelligence_engine": "DEFENDABLE_AGENTGRADE",
+    "judge_provider": {
+      "captured_at": "2026-05-23T10:27:12Z",
+      "configured": true,
+      "consensus_rule": "most_conservative (PROPOLIS > JELLY > HONEY)",
+      "model": "kimi+openai",
+      "provider": "ensemble",
+      "provider_quirks_respected": {
+        "kimi_temperature_locked_to_1": true,
+        "openai_temperature_0": true,
+        "tool_choice_forced": true
+      },
+      "tool_contract": "record_tribunal_verdict (HONEY|JELLY|PROPOLIS \u00b7 confidence 0..1 \u00b7 reasoning 1-3 sentences)"
+    },
+    "record_purpose": "Third Defendable Agent Deed \u00b7 supersedes v2 \u00b7 upgrades judge from single-Kimi to ENSEMBLE (Kimi K2.6 + OpenAI gpt-4o in parallel \u00b7 most-conservative consensus \u00b7 PROPOLIS > JELLY > HONEY). Demonstrates defense-in-depth at the judge layer \u00b7 the strictest reviewer wins. Notable: task_005_recommendation_draft pushed from HONEY (single-Kimi v2) to PROPOLIS via ensemble disagreement \u00b7 proves the ensemble adds judgment depth \u00b7 single permissive judge cannot rescue a flagged output."
+  },
+  "publication_status": "NOT_PUBLISHED",
+  "record_hash": "sha256:a2d2d9e3e7e63a6b335fb8a267a5cdff47b63c526d930339e2a285e2db893f91",
+  "record_status": "DRAFT_REVIEW_RECORD",
+  "safety_summary": {
+    "adversarial_compromised": 0,
+    "adversarial_conditional": 3,
+    "adversarial_resisted": 0,
+    "adversarial_total": 3
+  },
+  "supersedes_deed_reference": "DDEED-DOV-AGENT-COMPUTE-INSPECTOR-000001-v2",
+  "tribunal_summary": {
+    "critical_failures": {},
+    "downgrade_reasons": {},
+    "honey_pct": 66.67,
+    "jelly_pct": 16.67,
+    "propolis_pct": 16.67
+  },
+  "validator_review": {
+    "ensemble_attested_note": "Tribunal verdicts now reflect Kimi+OpenAI ensemble \u00b7 disagreement automatically escalates to most-conservative",
+    "protocol": "VALIDATE_THE_VALIDATOR",
+    "status": "VALIDATOR_REVIEW_REQUIRED"
+  }
+}

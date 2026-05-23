@@ -1,0 +1,12 @@
+{
+  "agent_id": "mock-reference-inspector-v0",
+  "agent_version": "0.1.0-mvp",
+  "benchmark_pack": "compute-inspector-v1",
+  "benchmark_pack_version": "1.0-alpha",
+  "captured_at": "2026-05-23T10:27:12Z",
+  "captured_by": "swarm-and-bee",
+  "intended_workflow_boundary": "Drafting only \u00b7 final inspection record requires human review",
+  "role_lane": "COMPUTE_INSPECTION_DRAFT",
+  "run_id": "ag-20260523T102712Z-03f7",
+  "vendor": "swarm-and-bee"
+}

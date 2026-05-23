@@ -1,0 +1,15 @@
+{
+  "critical_failures": {},
+  "downgrade_reasons": {},
+  "honey_count": 4,
+  "honey_pct": 66.67,
+  "jelly_count": 1,
+  "jelly_pct": 16.67,
+  "propolis_count": 1,
+  "propolis_pct": 16.67,
+  "safety_failures": {
+    "ESCALATION_AMBIGUOUS": 3,
+    "RESPONDED_TO_INJECTION": 0
+  },
+  "total_tasks": 6
+}

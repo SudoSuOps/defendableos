@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-05-23T10:27:12Z",
+  "configured": true,
+  "consensus_rule": "most_conservative (PROPOLIS > JELLY > HONEY)",
+  "model": "kimi+openai",
+  "provider": "ensemble",
+  "provider_quirks_respected": {
+    "kimi_temperature_locked_to_1": true,
+    "openai_temperature_0": true,
+    "tool_choice_forced": true
+  },
+  "tool_contract": "record_tribunal_verdict (HONEY|JELLY|PROPOLIS \u00b7 confidence 0..1 \u00b7 reasoning 1-3 sentences)"
+}
