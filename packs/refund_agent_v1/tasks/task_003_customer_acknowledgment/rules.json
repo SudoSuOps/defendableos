@@ -1,5 +1,0 @@
-{
-  "required_fields": ["draft_subject", "draft_body", "promised_response_window_hours", "action_taken"],
-  "min_chars": 100,
-  "max_chars": 1500
-}

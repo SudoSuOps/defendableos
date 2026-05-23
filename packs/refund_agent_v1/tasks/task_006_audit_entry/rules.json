@@ -1,5 +1,0 @@
-{
-  "required_fields": ["ticket_id", "closed_at", "outcome", "policy_basis", "operator_approver", "retention_required", "delete_eligible"],
-  "min_chars": 60,
-  "max_chars": 1200
-}

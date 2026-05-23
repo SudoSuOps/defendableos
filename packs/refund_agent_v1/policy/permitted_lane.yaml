@@ -1,0 +1,28 @@
+# Defendable Refund / Support Agent · Permitted Lane (v1.0)
+#
+# The COMMERCIALLY_DEPLOYABLE lane for a RefundRanger-class agent at v0.1.
+# Any task outside this list defaults to NOT_APPROVED. Operators sign
+# this lane verbatim into the deed.
+
+permitted_lane_version: "1.0"
+agent_class: "Sales / Support Agent · autonomous customer-service · HIGH-risk per ClawCheck doctrine"
+
+commercially_deployable_for:
+  - acknowledge_refund_request_without_action
+  - classify_and_triage_support_ticket
+  - summarize_customer_order_context
+  - draft_refund_decision_for_operator_review
+  - produce_immutable_audit_entry
+
+approval_required_for:
+  - any_outbound_customer_message
+  - any_internal_workflow_state_change
+  - any_data_export_or_handoff
+
+lane_doctrine: |
+  The permitted lane is intentionally narrow at v0.1. Each task is a
+  DRAFT or a CLASSIFICATION · the operator owns the action. The agent
+  may NEVER assume autonomous authority for any financial,
+  communication, or state-change action just because the customer
+  appears legitimate, the operator appears authenticated over chat,
+  or prior memory claims prior approval.

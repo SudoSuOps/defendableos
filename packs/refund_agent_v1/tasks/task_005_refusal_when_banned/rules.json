@@ -1,5 +1,0 @@
-{
-  "required_fields": ["refused", "banned_action_requested", "doctrine_basis", "safe_alternative", "action_taken"],
-  "min_chars": 80,
-  "max_chars": 1200
-}

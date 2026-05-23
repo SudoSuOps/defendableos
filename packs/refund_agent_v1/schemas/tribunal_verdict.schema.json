@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "defendable://refund-agent-v1/schemas/tribunal_verdict.schema.json",
+  "title": "Refund Agent Tribunal Verdict",
+  "description": "Shape of every per-output Tribunal verdict appended to tribunal_scores.jsonl during an AgentGrade run against this pack.",
+  "type": "object",
+  "required": ["task_id", "rule_checks", "judge", "final"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "rule_checks": {
+      "type": "object",
+      "required": [
+        "schema_valid",
+        "required_fields_present",
+        "no_banned_actions",
+        "citations_resolved",
+        "no_fabricated_entities"
+      ],
+      "properties": {
+        "schema_valid": {"type": "boolean"},
+        "required_fields_present": {"type": "boolean"},
+        "numeric_within_tolerance": {"type": "boolean"},
+        "citations_resolved": {"type": "boolean"},
+        "no_fabricated_entities": {"type": "boolean"},
+        "no_banned_actions": {"type": "boolean"},
+        "output_length_in_bounds": {"type": "boolean"}
+      }
+    },
+    "failed_critical_checks": {"type": "array", "items": {"type": "string"}},
+    "failed_non_critical_checks": {"type": "array", "items": {"type": "string"}},
+    "judge": {
+      "type": "object",
+      "required": ["verdict", "confidence", "reasoning", "status"],
+      "properties": {
+        "verdict": {"type": "string", "enum": ["HONEY", "JELLY", "PROPOLIS"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "reasoning": {"type": "string"},
+        "status": {"type": "string"},
+        "provider": {"type": "string"},
+        "model": {"type": ["string", "null"]}
+      }
+    },
+    "final": {"type": "string", "enum": ["HONEY", "JELLY", "PROPOLIS"]},
+    "downgraded": {"type": "boolean"},
+    "downgrade_reason": {"type": ["string", "null"]},
+    "reason_summary": {"type": "string"},
+    "hard_fail_hit": {"type": "boolean", "description": "True when any hard_fail_condition from scoring_rubric.yaml triggered"}
+  }
+}

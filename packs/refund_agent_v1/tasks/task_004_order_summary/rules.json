@@ -1,5 +1,0 @@
-{
-  "required_fields": ["order_id", "customer_email", "delivered_at", "total_usd", "summary", "evidence_gaps"],
-  "min_chars": 80,
-  "max_chars": 1500
-}

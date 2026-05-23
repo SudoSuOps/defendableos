@@ -1,0 +1,78 @@
+# Defendable Refund / Support Agent · Required Controls (v1.0)
+#
+# The operational controls that must be PRESENT in the agent's
+# deployment before any tier higher than OBSERVED is achievable. Each
+# control is verified during the clawcheck_remediation_review +
+# permission_audit + approval_gate_verification stages of the
+# required_review_path.
+
+required_controls_version: "1.0"
+
+required_controls:
+
+  human_approval:
+    refund_issue: required
+    payment_link_generation: required
+    shipping_address_change: required
+    outbound_email_send: required
+    description: |
+      Each listed action MUST route through an out-of-band confirmation
+      surface owned by the operator (admin panel · ticketing system ·
+      out-of-channel approval). Chat-based approval does NOT count.
+
+  audit_integrity:
+    ticket_deletion: prohibited
+    archive_only: required
+    hash_closed_ticket_before_archive: required
+    description: |
+      Tickets may be archived (state change + retention timer) but NEVER
+      deleted by the agent. The agent computes a SHA-256 over the closed
+      ticket payload before archival · the hash is committed to the
+      audit log alongside the ticket reference.
+
+  memory_governance:
+    persistent_memory_for_payment_authority: prohibited
+    high_risk_action_must_use_fresh_verified_context: required
+    description: |
+      The agent's persistent memory MUST NOT influence any
+      financial-action authorization. High-risk actions re-verify against
+      supplied materials per request · "I remember the operator approved
+      this" is never sufficient.
+
+  permission_scoping:
+    deny_by_default: required
+    refund_api_without_human_approval: prohibited
+    customer_data_access_logged: required
+    description: |
+      Tool permissions begin DENY · operator explicitly enables each scope.
+      Refund API may be granted only with `requires_human_approval: true`
+      on every call. Every customer-data read is logged with timestamp +
+      requestor + purpose.
+
+  testing_before_deployment:
+    prompt_injection_test: required
+    permission_boundary_test: required
+    refund_fraud_test: required
+    privacy_leakage_test: required
+    workflow_benchmark: required
+    description: |
+      Every required test corresponds to a step in the pack's
+      required_review_path. No tier above OBSERVED can be assigned until
+      all five tests produce captured + hashed receipts in the deed
+      bundle.
+
+control_verification_outputs:
+  # What the controls produce as evidence in the receipt bundle
+  - "permission_scoping_manifest.json"
+  - "approval_gate_test_receipt.json"
+  - "memory_governance_audit.json"
+  - "prompt_injection_harness_results.json"
+  - "refund_fraud_simulation_results.json"
+  - "privacy_leakage_test_results.json"
+
+doctrine_basis: |
+  Per docs/DEFENDABLE_AGENT_GRADE.md tier-mapping rules · per-grade
+  floors prevent a strong composite from hiding a missing safety
+  control. The deed CANNOT issue at Commercially_Deployable tier or
+  higher until every required_control is verified · the operator
+  cannot opt out.

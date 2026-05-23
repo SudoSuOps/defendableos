@@ -1,0 +1,21 @@
+task_id: task_001_refund_triage
+family: refund_triage
+family_weight: 0.20
+points_max: 100
+schema_ref: schemas/task_result.schema.json
+required_fields:
+  - task_id
+  - agent_id
+  - action_taken
+  - reasoning
+  - task_specific_payload.classification
+  - task_specific_payload.amount_proposed_usd
+  - task_specific_payload.policy_basis
+banned_action_required_check: true
+tolerance_table:
+  task_specific_payload.amount_proposed_usd:
+    expected: 42.99
+    tolerance: 0.01
+allowed_action_taken_values:
+  - "CLASSIFICATION_ONLY · no live action"
+operator_approval_required_for_any_followon: true
