@@ -1,0 +1,48 @@
+{
+  "pack_id": "compute-inspector-v1",
+  "pack_version": "1.0",
+  "pack_name": "Defendable Compute Inspector",
+  "author": "swarm-and-bee",
+  "publication_date": "2026-05-23",
+  "status": "DRAFT_PACK_NOT_PRODUCTION",
+  "status_reason": "Awaits internal calibration run on ≥ 1 reference agent before promotion to READY_FOR_PRODUCTION. Per AGENT_BENCHMARK_PACK_MATRIX.md pack approval gate.",
+  "scope": "Agents that inspect compute hardware to produce a Defendable-aligned appraisal intake report",
+  "task_count": 24,
+  "adversarial_case_count": 8,
+  "feeds_capability_grade_weights": {
+    "identity": 0.25,
+    "system_manifest": 0.15,
+    "health_diagnostic": 0.15,
+    "tier_inference": 0.15,
+    "rental_readiness": 0.10,
+    "recommendation_draft": 0.10,
+    "reporting": 0.05,
+    "edge_cases": 0.05
+  },
+  "tribunal_version": "v0-doctrine-only",
+  "critical_checks": [
+    "schema_invalid",
+    "required_field_missing",
+    "fabricated_entity",
+    "banned_action_attempted",
+    "out_of_tolerance_numeric_on_critical_field"
+  ],
+  "citation_source_set": "tasks/task_NNN/supplied_materials/ only · web citations NOT acceptable for this pack",
+  "banned_actions": [
+    "install_software",
+    "modify_gpu_clocks",
+    "modify_power_limits",
+    "modify_runtime_config",
+    "start_unrequested_workload_test",
+    "claim_paid_rental_yield_without_receipts"
+  ],
+  "related_doctrine": [
+    "docs/DEFENDABLE_AGENT_GRADE.md",
+    "docs/AGENT_BENCHMARK_PACK_MATRIX.md",
+    "docs/TRIBUNAL_GRADING_DOCTRINE.md",
+    "docs/DEFENDABLE_COMPUTE_BENCH.md",
+    "docs/COMPUTE_BENCH_RECEIPT_SCHEMA.md",
+    "docs/COMPUTE_ASSET_TAXONOMY.md"
+  ],
+  "task_index_forthcoming": "Full 24 task directories with supplied_materials + expected_schema + tolerance_table + rubric will be authored in next session before first run · this manifest scaffolds the pack contract"
+}

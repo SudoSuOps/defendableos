@@ -11,28 +11,30 @@
 # attestation is the integrity reference · operators verify by recomputing
 # against their local bundle.
 
-# Exclude PRIVATE_EVIDENCE files from any bundle directory
-*/private_identity_reference.json
-*/thermal_power_trace.jsonl
-*/dcgmi_diag_output_private.json
-*/*_private.json
-*/*_private.jsonl
+# Exclude PRIVATE_EVIDENCE files from any bundle directory at ANY depth.
+# Use ** to match nested host/run-id paths (e.g., swarmrails/cb-XXX/foo.json).
+**/private_identity_reference.json
+**/thermal_power_trace.jsonl
+**/dcgmi_diag_output_private.json
+**/*_private.json
+**/*_private.jsonl
 
 # Exclude DERIVED_DATASETS files (contain hostnames, raw serials, etc.)
-*/system_manifest.json
-*/health_diagnostic.json
-*/benchmark_results.json
-*/validator_flags.json
-*/best_next_use_inputs.json
-*/evidence_classification.json
+**/system_manifest.json
+**/health_diagnostic.json
+**/benchmark_results.json
+**/validator_flags.json
+**/best_next_use_inputs.json
+**/evidence_classification.json
 
 # Explicit allowlist (override any prior pattern):
-!*/asset_identity.json
-!*/runtime_environment.json
-!*/benchmark_plan.json
-!*/workload_compatibility.json
-!*/public_safe_attestation.json
-!*/manifest.sha256
-!*/ddeed-*.json
+!**/asset_identity.json
+!**/runtime_environment.json
+!**/benchmark_plan.json
+!**/workload_compatibility.json
+!**/public_safe_attestation.json
+!**/manifest.sha256
+!**/phase_a_reference.json
+!**/ddeed-*.json
 !.gitignore
 !README.md
