@@ -138,6 +138,41 @@ def computeclaw_readiness_statuses() -> dict[str, Any]:
     }
 
 
+@router.get("/admin/readiness")
+def computeclaw_admin_readiness() -> dict[str, Any]:
+    """Booleans only · safe for an unauthenticated probe.
+
+    Reports whether MarketScout is configured and whether the env
+    kill-switch is on. NEVER includes any secret value.
+    """
+    import os
+    s = get_settings()
+    market_obs_env = os.environ.get(
+        "COMPUTECLAW_MARKET_OBSERVATION_ENABLED", "false"
+    ).lower() == "true"
+    bakery_driver = os.environ.get("CLAW_BAKERY_STORAGE_DRIVER", "local").lower()
+    return {
+        "integration": "compute_claw",
+        "intake_enabled": True,
+        "marketscout_killswitch_enabled": market_obs_env,
+        "marketscout_underlying_ebay_oauth_configured": bool(
+            s.ebay_app_id and s.ebay_cert_id
+        ),
+        "marketscout_ebay_environment": (s.ebay_environment or "sandbox").lower(),
+        "marketscout_ready_for_live_calls": (
+            market_obs_env and bool(s.ebay_app_id and s.ebay_cert_id)
+        ),
+        "admin_token_configured": bool(s.ebay_admin_token),
+        "bakery_storage_driver": bakery_driver,
+        "doctrine_note": (
+            "MarketScout is disabled by default. To enable: set "
+            "COMPUTECLAW_MARKET_OBSERVATION_ENABLED=true. All Browse results "
+            "are labeled OBSERVED_ASKING_PRICE_EVIDENCE. No final value "
+            "opinion is issued. No deed is issued."
+        ),
+    }
+
+
 # ─── Admin gate ──────────────────────────────────────────────────────
 
 

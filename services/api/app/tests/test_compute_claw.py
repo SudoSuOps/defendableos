@@ -457,6 +457,27 @@ def test_public_endpoints_contain_no_credentials() -> None:
         assert "Authorization" not in blob
 
 
+def test_computeclaw_admin_readiness_returns_safe_booleans_no_secret(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The /admin/readiness probe is safe to expose · booleans only ·
+    no token values · no secret bits."""
+    resp = _client().get("/api/v1/compute-claw/admin/readiness")
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["integration"] == "compute_claw"
+    assert body["intake_enabled"] is True
+    assert body["marketscout_killswitch_enabled"] is False  # default off
+    assert body["marketscout_underlying_ebay_oauth_configured"] is True  # fixture sets creds
+    assert body["marketscout_ebay_environment"] == "sandbox"
+    assert body["marketscout_ready_for_live_calls"] is False  # killswitch off
+    assert body["admin_token_configured"] is True
+    assert body["bakery_storage_driver"] == "local"
+    blob = resp.text
+    assert "SBX-testcert" not in blob
+    assert FIXTURE_ADMIN_TOKEN not in blob
+
+
 def test_marketscout_admin_route_503_when_disabled(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

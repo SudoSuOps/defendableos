@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { CategoryCards } from "@/components/compute-claw/CategoryCards";
 import { EvidenceStack } from "@/components/compute-claw/EvidenceStack";
+import { IntakeForm } from "@/components/compute-claw/IntakeForm";
 import { ComputeClawProductLadder } from "@/components/compute-claw/ProductLadder";
 import { SeededAssets } from "@/components/compute-claw/SeededAssets";
 
@@ -189,25 +190,24 @@ export default function ComputeClawPage() {
         </div>
       </section>
 
-      {/* ── Start Intake CTA ─────────────────────────────────── */}
+      {/* ── Start Intake form ────────────────────────────────── */}
       <section id="start-intake" className="px-6 py-20 border-t border-stone-900/80 bg-stone-950/80">
-        <div className="max-w-4xl mx-auto w-full text-center">
-          <div className="text-[10px] uppercase tracking-[0.32em] text-honey-400 font-semibold">
-            Prove the box behind the claw
+        <div className="max-w-3xl mx-auto w-full">
+          <div className="text-center">
+            <div className="text-[10px] uppercase tracking-[0.32em] text-honey-400 font-semibold">
+              Prove the box behind the claw
+            </div>
+            <h2 className="mt-5 text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
+              Before you sell, rent, insure or finance AI compute,{" "}
+              <span className="font-serif italic text-honey-300">build a receipt-backed evidence file.</span>
+            </h2>
           </div>
-          <h2 className="mt-5 text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
-            Before you sell, rent, insure or finance AI compute,{" "}
-            <span className="font-serif italic text-honey-300">build a receipt-backed evidence file.</span>
-          </h2>
-          <div className="mt-10 flex items-center justify-center">
-            <a
-              href="https://defendableos.com/defend-the-claw"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-honey-400/60 text-honey-100 hover:bg-honey-400/[0.1] font-semibold tracking-tight text-lg"
-            >
-              Start Compute Intake →
-            </a>
+
+          <div className="mt-10">
+            <IntakeForm />
           </div>
-          <p className="mt-6 text-stone-500 text-xs">
+
+          <p className="mt-6 text-stone-500 text-xs text-center">
             No final value opinion. No deed issued without Validator review.
             Active listings are observed asking-price evidence only.
           </p>
