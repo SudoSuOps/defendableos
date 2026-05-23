@@ -70,6 +70,12 @@ BAKERY_DIRS = (
     "pair-candidates/jelly-repaired",
     "pair-candidates/propolis-failures",
     "pair-candidates/quarantined",
+    # Compute Market Watch · sold-comp evidence tribunal
+    "compute-market-watch/sold-comps/honey",
+    "compute-market-watch/sold-comps/jelly",
+    "compute-market-watch/sold-comps/propolis",
+    "compute-market-watch/sold-comps/quarantined",
+    "compute-market-watch/ingest-runs",
     "benchmark-packs",
     "holdouts/sealed",
     "holdouts/manifests",

@@ -105,6 +105,63 @@ def admin_browse_search(
     return safe_summarize_results(result, max_items=limit)
 
 
+@router.post("/sold-comps/ingest-compute")
+def admin_ingest_compute_sold_comps(
+    sku_aliases: list[str] | None = Query(default=None),
+    limit_per_sku: int = Query(default=5, ge=1, le=50),
+    dry_run: bool = Query(default=True),
+    x_ebay_admin_token: str | None = Header(default=None),
+):
+    """Run a Compute Market Watch sold-comp ingest pass.
+
+    Pulls Marketplace Insights for each compute SKU · runs each return
+    through the deterministic Tribunal · writes immutable artifacts
+    under compute-market-watch/sold-comps/<label>/ in the bakery vault.
+
+    Defaults to dry_run=true · returns counts only · no artifacts written.
+    Set dry_run=false to actually persist.
+
+    `sku_aliases` defaults to the operator's DEFAULT_INGEST_SKUS list
+    (RTX 3090 · 4090 · A6000 · 4500 Ada · PRO 6000 Blackwell · H100 · A100).
+    """
+    _require_admin_token(x_ebay_admin_token)
+    # Lazy import to keep admin route imports cheap when ingest unused
+    from app.services.compute_market_watch.ingest import (
+        run_compute_sold_comp_ingest,
+    )
+    try:
+        result = run_compute_sold_comp_ingest(
+            sku_aliases=sku_aliases,
+            limit_per_sku=limit_per_sku,
+            dry_run=dry_run,
+        )
+    except EbayOAuthConfigMissing as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+    except EbayOAuthError as exc:
+        raise HTTPException(status_code=502, detail=str(exc))
+    # SAFE summary · counts only · no seller/raw bodies
+    return {
+        "run_id": result.run_id,
+        "environment": result.environment,
+        "dry_run": result.dry_run,
+        "started_at": result.started_at,
+        "completed_at": result.completed_at,
+        "skus_requested": result.skus_requested,
+        "total_processed": result.total_processed,
+        "total_by_label": result.total_by_label,
+        "per_sku": [
+            {
+                "sku_alias": s.sku_alias,
+                "total_from_ebay": s.total_from_ebay,
+                "by_label": s.by_label,
+                "errors": s.errors,
+            } for s in result.per_sku_stats
+        ],
+        "manifest_artifact_key": result.manifest_artifact_key if not result.dry_run else None,
+        "bundle_sha256": result.bundle_sha256,
+    }
+
+
 @router.get("/marketplace-insights/search")
 def admin_marketplace_insights_search(
     q: str = Query(..., min_length=1, max_length=200),
