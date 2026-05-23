@@ -65,6 +65,14 @@ class SignalClass(str, enum.Enum):
     # NEVER confirmed sale · NEVER supplier authorization · informs the
     # discovery pipeline only · doctrine refuses any sold-claim derivation.
     BRANDED_COMMERCE_PLACEMENT = "BRANDED_COMMERCE_PLACEMENT"
+    # Semrush · ecommerce product clicks (shopper-engagement signal · added
+    # 2026-05-22). The unit is "clicks on product pages after a keyword
+    # search" · richer than search volume but still NOT a completed sale.
+    ECOMMERCE_PRODUCT_CLICK_SIGNAL = "ECOMMERCE_PRODUCT_CLICK_SIGNAL"
+    # Semrush · paid/organic visibility for competing stores · added 2026-05-22.
+    # Distinct from RETAIL_INTELLIGENCE_ESTIMATE which is traffic-estimated;
+    # this class is about keyword-level visibility/competition · NOT revenue.
+    COMPETITOR_VISIBILITY_SIGNAL = "COMPETITOR_VISIBILITY_SIGNAL"
 
 
 class OpportunityStatus(str, enum.Enum):
@@ -640,6 +648,58 @@ class BrandPlacementSignal(Base, TimestampMixin):
     )
 
 
+# ────────────────────────────────────────────────────────────────────
+#  13 · EcommerceProductClickSignal · Semrush Retail Keywords + clicks
+# ────────────────────────────────────────────────────────────────────
+
+
+class EcommerceProductClickSignal(Base, TimestampMixin):
+    """Product-clicks-after-keyword-search · richer than search volume
+    alone · NOT a completed sale.
+
+    Per Semrush docs the Retail Keywords product surfaces estimated
+    search requests across analyzed ecommerce domains AND product
+    clicks (visits to product pages after the search). The combination
+    is closer to shopper-intent confirmation than raw demand · still
+    not a transaction.
+    """
+    __tablename__ = "ecommerce_product_click_signals"
+
+    id: Mapped[uuid.UUID] = uuid_pk()
+    opportunity_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("product_opportunities.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    provider: Mapped[str] = mapped_column(String(64), nullable=False, default="SEMRUSH")
+    retail_keyword: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
+    country: Mapped[str | None] = mapped_column(String(8))
+    estimated_search_requests: Mapped[int | None] = mapped_column(Integer)
+    product_clicks: Mapped[int | None] = mapped_column(Integer)
+    month_over_month_change_pct: Mapped[float | None] = mapped_column(Float)
+    top_clicked_domains_json: Mapped[list | None] = mapped_column(JSONB)
+    measurement_period_start: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    measurement_period_end: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    # Doctrine pins · service refuses to flip these on this signal class.
+    sales_confirmed: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    rights_status: Mapped[str] = mapped_column(
+        String(64), nullable=False, default="INTERNAL_RESEARCH_ONLY"
+    )
+    training_eligible: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    signal_class: Mapped[SignalClass] = mapped_column(
+        Enum(SignalClass, name="signal_class_enum"),
+        nullable=False,
+        default=SignalClass.ECOMMERCE_PRODUCT_CLICK_SIGNAL,
+    )
+    raw_artifact_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("artifact_registry.id", ondelete="SET NULL")
+    )
+    captured_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
 __all__ = [
     # enums
     "SignalClass",
@@ -667,4 +727,5 @@ __all__ = [
     "OpportunityScoreReceipt",
     "BrandWatchlist",
     "BrandPlacementSignal",
+    "EcommerceProductClickSignal",
 ]

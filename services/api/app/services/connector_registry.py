@@ -35,6 +35,30 @@ def _brave_status() -> ProviderStatus:
     return ProviderStatus.READY
 
 
+def _semrush_status() -> ProviderStatus:
+    """Honest Semrush state · key + per-endpoint enables + live-call gate.
+
+    Returns:
+      NOT_CONFIGURED              · no SEMRUSH_API_KEY
+      PLAN_VERIFICATION_REQUIRED  · key present, no endpoints enabled
+      CONFIGURED_DISABLED         · key + endpoints enabled, live calls off
+      READY                       · all preconditions met
+    """
+    if not settings.semrush_api_key:
+        return ProviderStatus.NOT_CONFIGURED
+    any_endpoint_enabled = (
+        settings.semrush_seo_api_enabled
+        or settings.semrush_trends_api_enabled
+        or settings.semrush_ecommerce_keyword_analytics_enabled
+    )
+    if not any_endpoint_enabled:
+        # Founder verified the key but hasn't told us which plan tier we're on
+        return ProviderStatus.PLAN_VERIFICATION_REQUIRED
+    if not settings.semrush_live_calls_enabled or not settings.live_provider_calls_enabled:
+        return ProviderStatus.CONFIGURED_DISABLED
+    return ProviderStatus.READY
+
+
 def _ebay_browse_status() -> ProviderStatus:
     if not (settings.ebay_app_id and settings.ebay_cert_id):
         return ProviderStatus.NOT_CONFIGURED
@@ -177,6 +201,19 @@ CONNECTOR_DEFINITIONS: list[dict] = [
         # Manual analyst-workflow source · READY because no API key
         # required · analyst captures snapshots into brand_placement_signals.
         "status_fn": lambda: ProviderStatus.READY,
+    },
+    {
+        "provider_name": ProviderName.SEMRUSH,
+        "connector_purpose": (
+            "Semrush · ProductRadar competitive-intelligence rail · keyword "
+            "demand + ecommerce product clicks + competitor visibility + "
+            "traffic trends · NEVER confirmed sales"
+        ),
+        "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
+        # Plan-tier connector · status helper checks key + each per-endpoint
+        # enable flag · returns NOT_CONFIGURED / PLAN_VERIFICATION_REQUIRED /
+        # CONFIGURED_DISABLED / READY.
+        "status_fn": lambda: _semrush_status(),
     },
 ]
 

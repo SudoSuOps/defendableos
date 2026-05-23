@@ -136,7 +136,9 @@ def test_brand_outlet_in_connector_definitions():
     from app.services.connector_registry import CONNECTOR_DEFINITIONS
     names = {d["provider_name"] for d in CONNECTOR_DEFINITIONS}
     assert ProviderName.EBAY_BRAND_OUTLET in names
-    assert len(CONNECTOR_DEFINITIONS) == 16
+    # Connector count grows over time as new lanes land · just assert
+    # the EBAY_BRAND_OUTLET registration and a sensible minimum.
+    assert len(CONNECTOR_DEFINITIONS) >= 16
 
 
 # ════════════════════════════════════════════════════════════════════

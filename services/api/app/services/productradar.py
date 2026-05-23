@@ -426,6 +426,32 @@ def assert_no_confirmed_sale_aggregation(signal_classes: list[SignalClass]) -> N
 # ────────────────────────────────────────────────────────────────────
 
 
+def assert_semrush_signal_safe(
+    sales_confirmed: bool,
+    signal_class: SignalClass,
+) -> None:
+    """Semrush is NEVER a sales-confirmation source.
+
+    Whether it's a SEARCH_DEMAND_SIGNAL, ECOMMERCE_PRODUCT_CLICK_SIGNAL,
+    COMPETITOR_VISIBILITY_SIGNAL or RETAIL_INTELLIGENCE_ESTIMATE,
+    Semrush-derived data is shopper-engagement / competitor-visibility /
+    traffic-estimate signal · NOT a completed sale. The service
+    refuses to ingest a Semrush row with sales_confirmed=True.
+    """
+    semrush_classes = {
+        SignalClass.SEARCH_DEMAND_SIGNAL,
+        SignalClass.ECOMMERCE_PRODUCT_CLICK_SIGNAL,
+        SignalClass.COMPETITOR_VISIBILITY_SIGNAL,
+        SignalClass.RETAIL_INTELLIGENCE_ESTIMATE,
+    }
+    if signal_class in semrush_classes and sales_confirmed:
+        raise ProductRadarError(
+            f"Semrush-class signal ({signal_class.value}) MUST have "
+            f"sales_confirmed=False · Semrush surfaces demand, clicks, "
+            f"visibility and traffic estimates · NEVER completed sales"
+        )
+
+
 def assert_brand_placement_signal_safe(
     sales_confirmed: bool,
     supplier_authorization_confirmed: bool,

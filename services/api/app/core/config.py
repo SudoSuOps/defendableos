@@ -143,6 +143,18 @@ class Settings(BaseSettings):
     pgvector_enabled: bool = False
     postgis_enabled: bool = False
 
+    # Semrush · ProductRadar competitive-intelligence rail (added 2026-05-22).
+    # All endpoints default OFF · founder verifies plan tier before flipping.
+    semrush_api_key: str = ""
+    semrush_live_calls_enabled: bool = False
+    semrush_max_calls_per_run: int = 1
+    semrush_seo_api_enabled: bool = False
+    semrush_trends_api_enabled: bool = False
+    semrush_ecommerce_keyword_analytics_enabled: bool = False
+    semrush_rights_status: str = "TERMS_REVIEW_PENDING"
+    semrush_data_use: str = "INTERNAL_RESEARCH_ONLY"
+    semrush_model_training_export_enabled: bool = False
+
     # Demo affordances
     seed_demo_data: bool = True
     demo_user_email: str = "demo@swarmandbee.ai"

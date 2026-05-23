@@ -19,6 +19,7 @@ from app.models.productradar import (
     BrandPlacementSignal,
     BrandWatchlist,
     ConnectedStoreOutcome,
+    EcommerceProductClickSignal,
     KeywordDemandSignal,
     MarginScenario,
     MarketplaceSalesResearch,
@@ -104,4 +105,5 @@ __all__ = [
     "SupplierCandidate",
     "BrandWatchlist",
     "BrandPlacementSignal",
+    "EcommerceProductClickSignal",
 ]

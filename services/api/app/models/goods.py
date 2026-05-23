@@ -104,6 +104,10 @@ class ProviderName(str, enum.Enum):
     # Brand Outlet · ProductRadar watchlist generator · added 2026-05-22.
     # NEVER a sales-confirmed source · merchandising placement only.
     EBAY_BRAND_OUTLET = "EBAY_BRAND_OUTLET"
+    # Semrush · ProductRadar competitive-intelligence rail · added 2026-05-22.
+    # Serves 4 roles: keyword demand, ecommerce product clicks,
+    # competitor visibility, traffic trends. NEVER a sales-confirmed source.
+    SEMRUSH = "SEMRUSH"
 
 
 class ProviderStatus(str, enum.Enum):
@@ -118,6 +122,9 @@ class ProviderStatus(str, enum.Enum):
     OUTREACH_READY = "OUTREACH_READY"
     IN_CONVERSATION = "IN_CONVERSATION"
     AGREEMENT_REQUIRED = "AGREEMENT_REQUIRED"
+    # Plan-tier connectors (e.g. Semrush) · key present but plan
+    # access to specific endpoints needs verification · added 2026-05-22.
+    PLAN_VERIFICATION_REQUIRED = "PLAN_VERIFICATION_REQUIRED"
 
 
 class TermsReviewStatus(str, enum.Enum):
