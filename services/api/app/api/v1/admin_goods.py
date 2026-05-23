@@ -371,6 +371,34 @@ def productradar_overview(
     }
 
 
+@router.get("/productradar/brand-watchlist")
+def list_brand_watchlist(
+    db: Session = Depends(get_db),
+    _admin=Depends(require_platform_admin),
+) -> list[dict]:
+    """Brand Outlet watchlist · 10 Priority A + 6 DEFER seeded today."""
+    from app.models.productradar import BrandWatchlist, BrandPlacementSignal as BPS
+    rows = db.query(BrandWatchlist).order_by(
+        BrandWatchlist.priority_tier, BrandWatchlist.brand_slug
+    ).all()
+    return [
+        {
+            "id": str(b.id),
+            "brand_slug": b.brand_slug,
+            "brand_name": b.brand_name,
+            "merchandising_lane": b.merchandising_lane.value,
+            "priority_tier": b.priority_tier.value,
+            "sourcing_status": b.sourcing_status.value,
+            "policy_risk_flag": b.policy_risk_flag.value,
+            "notes": b.notes,
+            "placement_signal_count": (
+                db.query(BPS).filter(BPS.brand_watchlist_id == b.id).count()
+            ),
+        }
+        for b in rows
+    ]
+
+
 @router.get("/productradar/opportunities")
 def list_product_opportunities(
     db: Session = Depends(get_db),

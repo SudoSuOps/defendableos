@@ -16,6 +16,8 @@ from app.models.ens import ENSIdentity
 from app.models.edge import EdgeNode, EdgeUploadEvent, EdgeEnrollmentToken
 from app.models.audit import AuditEvent
 from app.models.productradar import (
+    BrandPlacementSignal,
+    BrandWatchlist,
     ConnectedStoreOutcome,
     KeywordDemandSignal,
     MarginScenario,
@@ -100,4 +102,6 @@ __all__ = [
     "SocialTrendSignal",
     "StoreIntelligenceObservation",
     "SupplierCandidate",
+    "BrandWatchlist",
+    "BrandPlacementSignal",
 ]

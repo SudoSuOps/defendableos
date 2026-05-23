@@ -419,3 +419,32 @@ def assert_no_confirmed_sale_aggregation(signal_classes: list[SignalClass]) -> N
             "Aggregated signal set contains no PERMISSIONED_CONNECTED_SALE or "
             "FIRST_PARTY_DEFENDABLE_SALE · refuse to derive a confirmed-sale claim"
         )
+
+
+# ────────────────────────────────────────────────────────────────────
+#  Brand Outlet guards · BRANDED_COMMERCE_PLACEMENT doctrine
+# ────────────────────────────────────────────────────────────────────
+
+
+def assert_brand_placement_signal_safe(
+    sales_confirmed: bool,
+    supplier_authorization_confirmed: bool,
+    signal_class: SignalClass,
+) -> None:
+    """Brand Outlet placement is NEVER a sales confirmation and NEVER
+    a supplier authorization. The service refuses to ingest a row that
+    sets either to True while claiming BRANDED_COMMERCE_PLACEMENT
+    classification.
+    """
+    if signal_class != SignalClass.BRANDED_COMMERCE_PLACEMENT:
+        return  # rule applies only to this class
+    if sales_confirmed:
+        raise ProductRadarError(
+            "BRANDED_COMMERCE_PLACEMENT signals MUST have sales_confirmed=False · "
+            "Brand Outlet placement is merchandising context, not sold proof"
+        )
+    if supplier_authorization_confirmed:
+        raise ProductRadarError(
+            "BRANDED_COMMERCE_PLACEMENT signals MUST have supplier_authorization_confirmed=False · "
+            "appearing in Brand Outlet does not authorize us to resell the brand"
+        )

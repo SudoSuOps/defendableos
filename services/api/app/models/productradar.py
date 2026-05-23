@@ -61,6 +61,10 @@ class SignalClass(str, enum.Enum):
     MARKETPLACE_SOLD_RESEARCH = "MARKETPLACE_SOLD_RESEARCH"
     PERMISSIONED_CONNECTED_SALE = "PERMISSIONED_CONNECTED_SALE"
     FIRST_PARTY_DEFENDABLE_SALE = "FIRST_PARTY_DEFENDABLE_SALE"
+    # Brand Outlet · merchandising-placement watchlist signal · added 2026-05-22.
+    # NEVER confirmed sale · NEVER supplier authorization · informs the
+    # discovery pipeline only · doctrine refuses any sold-claim derivation.
+    BRANDED_COMMERCE_PLACEMENT = "BRANDED_COMMERCE_PLACEMENT"
 
 
 class OpportunityStatus(str, enum.Enum):
@@ -134,6 +138,39 @@ class ConnectedStoreProvider(str, enum.Enum):
     EBAY = "EBAY"
     AMAZON = "AMAZON"
     WOOCOMMERCE = "WOOCOMMERCE"
+    OTHER = "OTHER"
+
+
+# ── Brand Outlet · ProductRadar watchlist generator (added 2026-05-22) ──
+
+
+class BrandPriorityTier(str, enum.Enum):
+    """Operator-set research priority for a brand on the watchlist."""
+    A = "A"  # research now
+    B = "B"  # research next
+    C = "C"  # backlog
+    DEFER = "DEFER"  # explicitly deferred (e.g. luxury without authorization)
+
+
+class BrandSourcingStatus(str, enum.Enum):
+    NOT_REVIEWED = "NOT_REVIEWED"
+    AUTHORIZED_RESELLER_KNOWN = "AUTHORIZED_RESELLER_KNOWN"
+    DIRECT_SOURCE_KNOWN = "DIRECT_SOURCE_KNOWN"
+    RESTRICTED = "RESTRICTED"           # brand will not authorize / counterfeit risk
+    NOT_AVAILABLE = "NOT_AVAILABLE"     # no path identified
+
+
+class MerchandisingLane(str, enum.Enum):
+    """Brand Outlet merchandising buckets · keep aligned with eBay's lanes."""
+    ELITE_TECH = "ELITE_TECH"
+    LATEST_TECH = "LATEST_TECH"
+    HOME_POWER_EQUIPMENT = "HOME_POWER_EQUIPMENT"
+    HOME_KITCHEN = "HOME_KITCHEN"
+    TOOLS_EQUIPMENT = "TOOLS_EQUIPMENT"
+    LUXURY_HANDBAGS = "LUXURY_HANDBAGS"
+    LUXURY_WATCHES_JEWELRY = "LUXURY_WATCHES_JEWELRY"
+    FASHION_FOOTWEAR = "FASHION_FOOTWEAR"
+    REFURBISHED_ELECTRONICS = "REFURBISHED_ELECTRONICS"
     OTHER = "OTHER"
 
 
@@ -511,6 +548,98 @@ class OpportunityScoreReceipt(Base, TimestampMixin):
     notes: Mapped[str | None] = mapped_column(Text)
 
 
+# ────────────────────────────────────────────────────────────────────
+#  11 · BrandWatchlist · brand-level entity tracked for ProductRadar
+# ────────────────────────────────────────────────────────────────────
+
+
+class BrandWatchlist(Base, TimestampMixin):
+    __tablename__ = "brand_watchlists"
+
+    id: Mapped[uuid.UUID] = uuid_pk()
+    brand_slug: Mapped[str] = mapped_column(String(120), unique=True, nullable=False, index=True)
+    brand_name: Mapped[str] = mapped_column(String(255), nullable=False)
+    merchandising_lane: Mapped[MerchandisingLane] = mapped_column(
+        Enum(MerchandisingLane, name="merchandising_lane_enum"),
+        nullable=False,
+        default=MerchandisingLane.OTHER,
+    )
+    priority_tier: Mapped[BrandPriorityTier] = mapped_column(
+        Enum(BrandPriorityTier, name="brand_priority_tier_enum"),
+        nullable=False,
+        default=BrandPriorityTier.B,
+    )
+    sourcing_status: Mapped[BrandSourcingStatus] = mapped_column(
+        Enum(BrandSourcingStatus, name="brand_sourcing_status_enum"),
+        nullable=False,
+        default=BrandSourcingStatus.NOT_REVIEWED,
+    )
+    # Reuses existing policy_risk_flag_enum from ProductRadar.
+    policy_risk_flag: Mapped[PolicyRiskFlag] = mapped_column(
+        Enum(PolicyRiskFlag, name="policy_risk_flag_enum"),
+        nullable=False,
+        default=PolicyRiskFlag.NONE,
+    )
+    notes: Mapped[str | None] = mapped_column(Text)
+
+
+# ────────────────────────────────────────────────────────────────────
+#  12 · BrandPlacementSignal · one Brand Outlet observation per brand
+# ────────────────────────────────────────────────────────────────────
+
+
+class BrandPlacementSignal(Base, TimestampMixin):
+    __tablename__ = "brand_placement_signals"
+
+    id: Mapped[uuid.UUID] = uuid_pk()
+    brand_watchlist_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("brand_watchlists.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    opportunity_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("product_opportunities.id", ondelete="SET NULL"),
+        index=True,
+    )
+    source_provider: Mapped[str] = mapped_column(
+        String(64), nullable=False, default="EBAY_BRAND_OUTLET"
+    )
+    marketplace: Mapped[str] = mapped_column(String(32), nullable=False, default="EBAY_US")
+    merchandising_lane: Mapped[MerchandisingLane] = mapped_column(
+        Enum(MerchandisingLane, name="merchandising_lane_enum"),
+        nullable=False,
+        default=MerchandisingLane.OTHER,
+    )
+    promotional_language: Mapped[str | None] = mapped_column(Text)
+    signal_status: Mapped[str] = mapped_column(
+        String(64), nullable=False, default="MERCHANDISED_BRAND_WATCHLIST"
+    )
+    # DOCTRINE GUARDS · these must stay False on this signal class
+    # forever. The service-layer ingester refuses to set them to True.
+    sales_confirmed: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    supplier_authorization_confirmed: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False
+    )
+    rights_status: Mapped[str] = mapped_column(
+        String(64), nullable=False, default="INTERNAL_RESEARCH_ONLY"
+    )
+    training_eligible: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    signal_class: Mapped[SignalClass] = mapped_column(
+        Enum(SignalClass, name="signal_class_enum"),
+        nullable=False,
+        default=SignalClass.BRANDED_COMMERCE_PLACEMENT,
+    )
+    recommended_next_steps_json: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    raw_artifact_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("artifact_registry.id", ondelete="SET NULL")
+    )
+    captured_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
 __all__ = [
     # enums
     "SignalClass",
@@ -522,6 +651,9 @@ __all__ = [
     "SupplierFeasibility",
     "PolicyRiskFlag",
     "ConnectedStoreProvider",
+    "BrandPriorityTier",
+    "BrandSourcingStatus",
+    "MerchandisingLane",
     # models
     "ProductOpportunity",
     "KeywordDemandSignal",
@@ -533,4 +665,6 @@ __all__ = [
     "MarginScenario",
     "ConnectedStoreOutcome",
     "OpportunityScoreReceipt",
+    "BrandWatchlist",
+    "BrandPlacementSignal",
 ]

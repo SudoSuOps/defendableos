@@ -166,6 +166,18 @@ CONNECTOR_DEFINITIONS: list[dict] = [
         "default_terms": TermsReviewStatus.TERMS_REVIEW_PENDING,
         "status_fn": lambda: ProviderStatus.FUTURE_DISABLED,
     },
+    {
+        "provider_name": ProviderName.EBAY_BRAND_OUTLET,
+        "connector_purpose": (
+            "eBay Brand Outlet · merchandising-placement signal · "
+            "watchlist generator for ProductRadar · NEVER confirmed sales "
+            "and NEVER supplier authorization"
+        ),
+        "default_terms": TermsReviewStatus.REVIEWED_INTERNAL_RESEARCH_ONLY,
+        # Manual analyst-workflow source · READY because no API key
+        # required · analyst captures snapshots into brand_placement_signals.
+        "status_fn": lambda: ProviderStatus.READY,
+    },
 ]
 
 

@@ -101,6 +101,9 @@ class ProviderName(str, enum.Enum):
     SIMILARWEB_SHOPPER_INTELLIGENCE = "SIMILARWEB_SHOPPER_INTELLIGENCE"
     CONNECTED_SHOPIFY_STORE = "CONNECTED_SHOPIFY_STORE"
     SUPPLIER_CATALOG_FUTURE = "SUPPLIER_CATALOG_FUTURE"
+    # Brand Outlet · ProductRadar watchlist generator · added 2026-05-22.
+    # NEVER a sales-confirmed source · merchandising placement only.
+    EBAY_BRAND_OUTLET = "EBAY_BRAND_OUTLET"
 
 
 class ProviderStatus(str, enum.Enum):

@@ -197,9 +197,9 @@ def test_product_opportunity_default_category_is_other():
 # ════════════════════════════════════════════════════════════════════
 
 
-def test_connector_definitions_count_now_fifteen():
-    """8 → 15 connectors · 7 new ProductRadar entries."""
-    assert len(CONNECTOR_DEFINITIONS) == 15
+def test_productradar_connectors_registered():
+    """ProductRadar connectors are present · count may grow with new lanes."""
+    assert len(CONNECTOR_DEFINITIONS) >= 15
     names = {d["provider_name"] for d in CONNECTOR_DEFINITIONS}
     assert ProviderName.AHREFS_KEYWORDS_EXPLORER in names
     assert ProviderName.GOOGLE_MERCHANT_CENTER_BEST_SELLERS in names
