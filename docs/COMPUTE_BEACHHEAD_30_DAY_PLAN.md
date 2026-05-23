@@ -310,3 +310,7 @@ Anything more means we're underpricing.
 - `COMPUTE_UTILIZATION_INDEX_SPEC.md` · Tier 6 forthcoming
 - `EVIDENCE_VAULT_OBJECT_STORAGE_DOCTRINE.md` · the storage architecture every deed in this beachhead points back to
 - `OBJECT_STORAGE_POLICY.md` · the technical implementation reference
+- `DEFENDABLE_COMPUTE_BENCH.md` · the benchmark-attested live-test layer that runs BEFORE Opinion of Value · potential front-door product
+- `COMPUTE_ATTESTATION_GRADING_STANDARD.md` · the 4-grade output every bench-attested deed carries
+- `COMPUTE_BENCH_PROFILE_MATRIX.md` · per-tier benchmark profiles · founder proof-case order
+- `BEST_NEXT_USE_DECISION_SCHEMA.md` · how bench grades become a defendable next-action recommendation

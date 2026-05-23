@@ -159,3 +159,4 @@ Utility Record customer is onboarded.
 - `COMPUTE_UTILITY_SCORE_STANDARD.md` · workload-aware scoring framework
 - `COMPUTE_BEACHHEAD_30_DAY_PLAN.md` · where the Edge Utility Record fits in the product ladder
 - `EVIDENCE_VAULT_OBJECT_STORAGE_DOCTRINE.md` · how Edge Utility Record artifacts route through the 4-vault model (device-identity + workload-test receipts → PRIVATE/DERIVED · approved Edge Utility Record → PUBLIC)
+- `DEFENDABLE_COMPUTE_BENCH.md` + `COMPUTE_BENCH_PROFILE_MATRIX.md` · the E1 bench profile (jtop · tegrastats · local vision/small-LLM workload tests) that produces the Edge Utility Record receipts

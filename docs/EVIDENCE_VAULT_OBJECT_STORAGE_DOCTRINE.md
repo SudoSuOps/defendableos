@@ -295,3 +295,8 @@ Forthcoming (documented · not implemented this turn):
   · how Vast.ai signals enter the OBSERVATION vault
 - [`EDGE_AI_COMPUTE_LANE.md`](./EDGE_AI_COMPUTE_LANE.md) · how Edge
   Utility Records use the vault
+- [`DEFENDABLE_COMPUTE_BENCH.md`](./DEFENDABLE_COMPUTE_BENCH.md) · the
+  live-test layer that writes structured receipt bundles into the
+  four vault classes
+- [`COMPUTE_BENCH_RECEIPT_SCHEMA.md`](./COMPUTE_BENCH_RECEIPT_SCHEMA.md)
+  · the per-artifact vault + rights map every bench bundle carries

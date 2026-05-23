@@ -163,3 +163,5 @@ substrate · documented in detail there.
 - `COMPUTE_UTILITY_SCORE_STANDARD.md` · score families per tier
 - `COMPUTE_UTILIZATION_INDEX_SPEC.md` · aggregation across tiers
 - `COMPUTE_TRADE_UP_AND_REDEPLOYMENT_LANE.md` · lane mechanics
+- `DEFENDABLE_COMPUTE_BENCH.md` · the benchmark-attested live-test layer that grades every tier
+- `COMPUTE_BENCH_PROFILE_MATRIX.md` · per-tier benchmark profiles

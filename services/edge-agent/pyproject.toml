@@ -15,6 +15,7 @@ dependencies = [
 
 [project.scripts]
 defendable-box = "defendable_box.cli:app"
+defendable-compute = "defendable_box.compute_cli:app"
 
 [tool.setuptools.packages.find]
 include = ["defendable_box*"]
