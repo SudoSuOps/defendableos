@@ -308,3 +308,5 @@ Anything more means we're underpricing.
 - `COMPUTE_TRADE_UP_AND_REDEPLOYMENT_LANE.md` · Tier 4 mechanics
 - `COMPUTE_UTILITY_SCORE_STANDARD.md` · score families per tier
 - `COMPUTE_UTILIZATION_INDEX_SPEC.md` · Tier 6 forthcoming
+- `EVIDENCE_VAULT_OBJECT_STORAGE_DOCTRINE.md` · the storage architecture every deed in this beachhead points back to
+- `OBJECT_STORAGE_POLICY.md` · the technical implementation reference

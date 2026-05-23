@@ -158,3 +158,4 @@ Utility Record customer is onboarded.
 - `CPU_AND_SMALL_GPU_UTILITY_LANE.md` · sister lane for non-edge low-power compute
 - `COMPUTE_UTILITY_SCORE_STANDARD.md` · workload-aware scoring framework
 - `COMPUTE_BEACHHEAD_30_DAY_PLAN.md` · where the Edge Utility Record fits in the product ladder
+- `EVIDENCE_VAULT_OBJECT_STORAGE_DOCTRINE.md` · how Edge Utility Record artifacts route through the 4-vault model (device-identity + workload-test receipts → PRIVATE/DERIVED · approved Edge Utility Record → PUBLIC)

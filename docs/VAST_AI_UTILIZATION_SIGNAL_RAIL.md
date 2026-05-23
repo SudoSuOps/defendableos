@@ -225,3 +225,4 @@ delivers the analysis for $199 with founder-captured receipts.
 - `SECOND_LIFE_COMPUTE_STRATEGY.md` · why 3090 matters
 - `COMPUTE_ASSET_TAXONOMY.md` · the E0 → E7 ladder including E4 workhorse
 - `COMPUTE_UTILIZATION_INDEX_SPEC.md` · future internal index this feeds
+- `EVIDENCE_VAULT_OBJECT_STORAGE_DOCTRINE.md` · where Vast.ai public-rate snapshots land (OBSERVATION vault) and where founder rental receipts land (PRIVATE vault) before any derived yield analysis
