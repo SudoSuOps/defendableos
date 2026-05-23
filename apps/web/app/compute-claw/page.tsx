@@ -11,7 +11,21 @@ import { SeededAssets } from "@/components/compute-claw/SeededAssets";
 export const metadata: Metadata = {
   title: "ComputeClaw · DefendableOS",
   description:
-    "Proof of Value Intake for AI-Capable Compute · Bring your GPU, server, edge box or AI workstation. ComputeClaw captures asset facts, gathers observed market evidence, prepares benchmark requirements and assembles the file for a Defendable Compute Proof Pack.",
+    "Proof of Value Intake for AI-Capable Compute. Bring your GPU · AI workstation · edge device. ComputeClaw captures asset facts · observed market evidence · benchmark requirements · assembles a Defendable Compute Proof Pack draft. Active listings are NOT verified sold comps. No deed issued without Validator review.",
+  alternates: { canonical: "https://defendableos.com/compute-claw" },
+  openGraph: {
+    title: "ComputeClaw · DefendableOS",
+    description: "Proof of Value Intake for AI-Capable Compute. Bring your GPU · capture observed market evidence · attach benchmark receipts · prepare Proof of Value file.",
+    url: "https://defendableos.com/compute-claw",
+    siteName: "DefendableOS",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ComputeClaw · DefendableOS",
+    description: "Prove the box behind the claw. Observed market evidence + benchmark receipts. NEVER a final value opinion.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function ComputeClawPage() {
