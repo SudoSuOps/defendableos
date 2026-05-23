@@ -16,16 +16,24 @@ from app.services.claw_swarm.intake_agent import (
     run_intake_turn,
 )
 from app.services.claw_swarm.roles import roles_summary
+from app.services.claw_bakery.ingest import ingest_intake_turn, ingest_snapshot
 from app.core.config import settings
 
 
 router = APIRouter(prefix="/agent-swarm", tags=["claw-swarm"])
 
 
+class ConsentIn(BaseModel):
+    store_for_snapshot: bool = True
+    allow_deidentified_training_use: bool = False
+    allow_evaluation_use: bool = False
+
+
 class IntakeTurnIn(BaseModel):
     user_message: str = Field(..., min_length=1, max_length=4000)
     prior_findings: dict[str, Any] = Field(default_factory=dict)
     session_id: str | None = Field(default=None, max_length=128)
+    consent: ConsentIn | None = None
 
 
 class IntakeTurnOut(BaseModel):
@@ -38,6 +46,7 @@ class IntakeTurnOut(BaseModel):
     judge_provider: dict[str, Any]
     raw_status: str
     doctrine_disclaimer: str
+    bakery: dict[str, Any] | None = None
 
 
 _DISCLAIMER = (
@@ -56,6 +65,29 @@ def clawcheck_intake(payload: IntakeTurnIn) -> IntakeTurnOut:
         prior_findings=payload.prior_findings,
     )
     res = run_intake_turn(req)
+
+    # Bakery ingestion (best-effort · MUST NOT break the user response)
+    consent = payload.consent.model_dump() if payload.consent else None
+    bakery_envelope: dict[str, Any] | None = None
+    intake_env = ingest_intake_turn(
+        user_message=payload.user_message,
+        findings=res.findings,
+        intake_complete=res.intake_complete,
+        refusal_reason=res.refusal_reason,
+        judge_provider=res.judge_provider,
+        consent=consent,
+    )
+    if intake_env is not None:
+        bakery_envelope = {"intake": intake_env}
+        if res.intake_complete and res.snapshot is not None:
+            snap_env = ingest_snapshot(
+                run_id=intake_env["run_id"],
+                snapshot=res.snapshot,
+                consent=consent,
+            )
+            if snap_env is not None:
+                bakery_envelope["snapshot"] = snap_env
+
     return IntakeTurnOut(
         session_id=payload.session_id,
         agent_message=res.agent_message,
@@ -66,6 +98,7 @@ def clawcheck_intake(payload: IntakeTurnIn) -> IntakeTurnOut:
         judge_provider=res.judge_provider,
         raw_status=res.raw_status,
         doctrine_disclaimer=_DISCLAIMER,
+        bakery=bakery_envelope,
     )
 
 

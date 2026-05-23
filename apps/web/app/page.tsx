@@ -9,6 +9,7 @@ export default function Landing() {
         <Wordmark />
         <nav className="flex items-center gap-5 text-sm text-stone-400">
           <a href="https://defendableos.com" className="hover:text-stone-200">Public site</a>
+          <Link href="/claw-bakery" className="hover:text-stone-200">Claw Bakery</Link>
           <Link href="/login" className="text-honey-300 font-semibold hover:text-honey-200">Sign in</Link>
         </nav>
       </header>
@@ -34,6 +35,12 @@ export default function Landing() {
             className="inline-flex items-center gap-2 px-5 py-3 rounded border border-honey-400/50 text-honey-200 hover:bg-honey-400/[0.08] font-semibold tracking-tight"
           >
             Enter the portal →
+          </Link>
+          <Link
+            href="/claw-bakery"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded border border-stone-700 text-stone-300 hover:border-stone-600 hover:text-stone-100 text-sm"
+          >
+            Visit the Claw Bakery
           </Link>
           <a
             href="https://defendableos.com"

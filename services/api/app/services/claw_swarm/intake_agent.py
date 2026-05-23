@@ -20,8 +20,13 @@ from dataclasses import dataclass
 from typing import Any
 
 from app.core.config import settings
-from app.services.claw_swarm.risk import compute_risk_tier, recommended_product
+from app.services.claw_swarm.risk import (
+    compute_risk_tier,
+    evaluate_intake,
+    recommended_product,
+)
 from app.services.claw_swarm.roles import CLAW_INTAKE_SYSTEM_PROMPT, CLAW_INTAKE_TOOL
+from app.services.claw_swarm.structured_intake import derive_structured_intake
 
 
 @dataclass
@@ -67,7 +72,21 @@ def _all_five_present(findings: dict[str, Any]) -> bool:
 
 
 def _assemble_snapshot(findings: dict[str, Any]) -> dict[str, Any]:
-    risk = compute_risk_tier(
+    # Evidence-specific rule evaluation · uses the structured-intake
+    # projection so reasons match the actual permissions / sensitive
+    # access detected. Falls back to the legacy heuristic only when no
+    # specific rule matches.
+    structured = derive_structured_intake(
+        agent_name=findings.get("agent_name"),
+        worker_kind=findings.get("worker_kind"),
+        deployment_target=findings.get("deployment_target"),
+        model_provider=findings.get("model_provider"),
+        memory_enabled=findings.get("memory_enabled"),
+        access_surfaces=findings.get("access_surfaces") or [],
+        operator_attested_context=findings.get("operator_attested_context"),
+    )
+    risk = evaluate_intake(structured)
+    legacy = compute_risk_tier(
         worker_kind=findings.get("worker_kind"),
         deployment_target=findings.get("deployment_target"),
         access_surfaces=findings.get("access_surfaces") or [],
@@ -76,12 +95,16 @@ def _assemble_snapshot(findings: dict[str, Any]) -> dict[str, Any]:
     rec = recommended_product(risk["tier"])
     return {
         "captured": findings,
+        "structured_intake": structured.to_dict(),
         "risk": risk,
+        "legacy_risk": legacy,
         "recommended": rec,
         "snapshot_kind": "CLAW_EXPOSURE_SNAPSHOT",
         "doctrine_note": (
             "Risk Tier is computed by platform code from documented rules · "
-            "NOT by the model. The model's role is intake conversation only."
+            "NOT by the model. The model's role is intake conversation only. "
+            "Risk explanations are evidence-specific · they cite only the "
+            "permission / sensitive-access flags actually detected."
         ),
     }
 

@@ -18,8 +18,12 @@
 **/tribunal_scores.jsonl
 **/performance_metrics.csv
 **/cost_energy_metrics.csv
+# Refund-batch convention adds per-task / per-case detail jsonl · same
+# privacy class as tribunal_scores.jsonl above.
+**/task_results.jsonl
+**/adversarial_results.jsonl
 
-# Explicit allowlist
+# Explicit allowlist · compute-inspector convention
 !**/agent_identity.json
 !**/model_manifest.json
 !**/compute_manifest.json
@@ -33,5 +37,11 @@
 !**/public_safe_attestation.json
 !**/manifest.sha256
 !**/ddeed-*.json
+# Refund-batch public-safe subset (founder-spec files minus the two
+# per-task / per-case jsonls above):
+!**/run_manifest.json
+!**/tribunal_candidate_verdict.json
+!**/hard_fail_summary.json
+!**/sha256sums.txt
 !.gitignore
 !README.md

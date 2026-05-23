@@ -22,6 +22,11 @@ from rich.panel import Panel
 from rich.table import Table
 
 from defendable_box.agentgrade.agent_adapter import MockReferenceAgent
+from defendable_box.agentgrade.refund_agents import (
+    ControlledRefundDraftAgent,
+    UnsafeRefundAgent,
+)
+from defendable_box.agentgrade.refund_runner import run_refund_pack
 from defendable_box.agentgrade.runner import run_pack
 
 app = typer.Typer(
@@ -37,14 +42,26 @@ console = Console()
 def _load_agent(agent_id: str):
     """Resolve --agent string to an adapter instance.
 
-    MVP: only `mock-reference-inspector-v0` is wired. Future: vllm-, kimi-,
-    openai-, llama-cpp- prefixed adapters.
+    Registered:
+      · mock-reference-inspector-v0 · MockReferenceAgent · compute-inspector pack
+      · unsafe-refund-agent          · UnsafeRefundAgent · refund-agent pack
+      · controlled-refund-draft-agent · ControlledRefundDraftAgent · refund-agent pack
     """
     if agent_id in ("mock-reference-inspector-v0", "mock", "stub"):
         return MockReferenceAgent()
+    if agent_id in ("unsafe-refund-agent", "unsafe"):
+        return UnsafeRefundAgent()
+    if agent_id in ("controlled-refund-draft-agent", "controlled"):
+        return ControlledRefundDraftAgent()
     raise typer.BadParameter(
-        f"Agent '{agent_id}' not registered in MVP. Use 'mock-reference-inspector-v0'."
+        f"Agent '{agent_id}' not registered. Available: "
+        "mock-reference-inspector-v0 · unsafe-refund-agent · controlled-refund-draft-agent."
     )
+
+
+def _is_refund_pack(pack_dir: Path) -> bool:
+    """Auto-detect refund-style packs (presence of policy/scoring_rubric.yaml)."""
+    return (pack_dir / "policy" / "scoring_rubric.yaml").exists()
 
 
 @app.command()
@@ -84,6 +101,48 @@ def run(
         raise typer.Exit(1)
 
     agent_obj = _load_agent(agent)
+    output.mkdir(parents=True, exist_ok=True)
+
+    # ── Route refund-style packs to the deterministic-policy runner ────
+    if _is_refund_pack(pack) or judge == "deterministic-policy":
+        console.print(
+            Panel.fit(
+                f"Running [bold]refund-pack[/bold] [bold]{pack.name}[/bold] against agent [bold]{agent_obj.agent_id}[/bold]\n"
+                f"Output → {output}\n"
+                f"Judge → deterministic-policy (no LLM call)\n"
+                f"NOTE · No deed will issue from this run · Validator review required",
+                title="defendable-agentgrade · run (refund-pack mode)",
+                style="cyan",
+            )
+        )
+        result = run_refund_pack(
+            pack_dir=pack,
+            agent=agent_obj,
+            output_dir=output,
+        )
+        t = Table(title=f"AgentGrade · {result.run_id}")
+        t.add_column("field")
+        t.add_column("value")
+        t.add_row("Pack", f"{result.pack_id} · {result.pack_version}")
+        t.add_row("Agent", result.agent_id)
+        t.add_row("Tasks", str(result.task_count))
+        t.add_row("Adversarial", str(result.adversarial_count))
+        t.add_row("Final verdict", f"[bold]{result.final_verdict}[/bold]")
+        t.add_row("Deployment status", result.deployment_status)
+        t.add_row("Deed eligibility", result.deed_eligibility)
+        t.add_row("Hard fails", str(result.hard_fail_summary["total_hard_fail_conditions_triggered"]))
+        t.add_row("Resisted", str(len(result.hard_fail_summary["resisted_adversarial_cases"])))
+        t.add_row("Compromised", str(len(result.hard_fail_summary["compromised_adversarial_cases"])))
+        t.add_row("Bundle dir", str(result.run_dir))
+        t.add_row("Bundle sha256", result.bundle_sha256)
+        console.print(t)
+        console.print(
+            "\n[dim]Doctrine seal: no deed issued · Validator review required · "
+            "no training admission · receipts written immutably.[/dim]"
+        )
+        return
+
+    # ── Otherwise fall through to the existing compute-inspector runner ─
     console.print(
         Panel.fit(
             f"Running pack [bold]{pack.name}[/bold] against agent [bold]{agent_obj.agent_id}[/bold]\n"
@@ -94,8 +153,6 @@ def run(
             style="cyan",
         )
     )
-
-    output.mkdir(parents=True, exist_ok=True)
     result = run_pack(
         pack_dir=pack,
         agent=agent_obj,

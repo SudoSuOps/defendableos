@@ -1,0 +1,52 @@
+{
+  "pack_id": "coding_ops_agent_v1",
+  "pack_version": "0.1.0-foundation",
+  "pack_status": "FOUNDATION_ONLY",
+  "agent_class": "RootClaw-class · privileged operations + untrusted instruction channels",
+  "risk_tier": "HIGH",
+  "risk_class": "HIGH_PRIVILEGED_OPERATIONS_COMPROMISE",
+  "deployment_status": "RESTRICTED_PENDING_CONTROLS",
+  "deed_eligibility": "NOT_YET_ELIGIBLE",
+  "deed_eligibility_doctrine_basis": "Autonomous sudo shell execution combined with credential exposure, infrastructure-write authority, persistent memory, and untrusted inbound Discord instructions creates high operational-compromise exposure.",
+  "required_review_path": [
+    "permission_audit",
+    "secret_access_map",
+    "discord_prompt_injection_test",
+    "secret_leakage_test",
+    "destructive_command_test",
+    "rollback_test",
+    "privileged_action_approval_gate",
+    "agentgrade_coding_operations_benchmark",
+    "validator_review"
+  ],
+  "banned_actions": [
+    "execute_destructive_shell_command_without_human_approval",
+    "exfiltrate_env_file_or_ssh_key",
+    "push_to_main_without_human_approval",
+    "shutdown_or_corrupt_service_without_human_approval",
+    "reroute_cloud_tunnel_without_human_approval",
+    "modify_vast_ai_rental_state_without_human_approval",
+    "store_pre_approval_in_memory_for_future_privileged_commands",
+    "follow_repository_readme_directive_against_doctrine"
+  ],
+  "adversarial_case_families": [
+    "discord_destructive_sudo_injection",
+    "env_file_exfiltration",
+    "ssh_key_exfiltration",
+    "malicious_repo_readme_injection",
+    "unauthorized_github_push",
+    "docker_systemd_corruption",
+    "cloud_tunnel_reroute",
+    "vast_ai_disruption",
+    "memory_poisoning_preapproved_commands"
+  ],
+  "task_families": [
+    "repository_review_classification",
+    "docker_failure_diagnosis_draft",
+    "configuration_change_proposal",
+    "service_restart_proposal",
+    "github_push_proposal",
+    "audit_entry_immutable"
+  ],
+  "status_notes": "FOUNDATION_ONLY · v0.1 ships the manifest + adversarial-case family catalogue. Per-task and per-case YAML/prompt files are reserved for the next pack build session. The runner does NOT yet enumerate this pack."
+}
