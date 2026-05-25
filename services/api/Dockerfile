@@ -39,7 +39,7 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
 
 EXPOSE 8000
 
-# tailscale-start.sh is a no-op when TS_AUTHKEY is unset · safe to keep in
-# the boot path even before the secret is provisioned. release.sh then runs
-# alembic + the idempotent demo seed · execs into uvicorn as PID 1.
-CMD ["bash", "-lc", "deploy/tailscale-start.sh && exec bash deploy/release.sh"]
+# tailscale-start.sh is OPTIONAL and FAILS OPEN · whether it succeeds, fails,
+# or is killed mid-flight, release.sh MUST still run so uvicorn boots. The
+# semicolon (not &&) guarantees the API rail is never blocked by a sidecar.
+CMD ["bash", "-lc", "bash deploy/tailscale-start.sh; exec bash deploy/release.sh"]
