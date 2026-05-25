@@ -1,0 +1,80 @@
+{
+  "artifact_inventory": {
+    "cli_spec": [
+      "command_examples.md",
+      "defendable_compute_cli_spec.md",
+      "output_contract.md"
+    ],
+    "doctrine": [
+      "product_thesis.md",
+      "terminology_and_claim_boundaries.md",
+      "tribunal_gate.md"
+    ],
+    "examples": [
+      "smash_rtx5090_completion_receipt.md",
+      "smash_rtx5090_proof_receipt.example.json",
+      "smash_rtx5090_proof_receipt.example.md"
+    ],
+    "integrations": [
+      "aiov_future_integration.md",
+      "object_storage_record_layout.md",
+      "vast_ai_readiness_lane.md"
+    ],
+    "protocol": [
+      "benchmark_validation_protocol.md",
+      "evidence_capture_requirements.md",
+      "failure_taxonomy.md",
+      "gpu_host_post_rental_protocol.md"
+    ],
+    "schemas": [
+      "benchmark_observation.schema.json",
+      "compute_asset_identity.schema.json",
+      "compute_proof_receipt.schema.json",
+      "receipt_manifest.schema.json",
+      "service_state_observation.schema.json"
+    ]
+  },
+  "claim_boundaries_enforced": [
+    "no_market_value_assertion",
+    "no_uspap_appraisal_assertion",
+    "no_certified_claim",
+    "no_warranty_claim",
+    "no_insurance_assertion",
+    "no_lender_acceptance_claim",
+    "no_legal_title_assertion",
+    "no_third_party_accreditation_claim",
+    "validity_window_snapshot_only",
+    "successor_records_supersede"
+  ],
+  "doctrine": "Tribunal begins before training; no proof, no honey.",
+  "example_receipt": {
+    "asset_id": "smash-rtx5090-host-001",
+    "path": "examples/smash_rtx5090_proof_receipt.example.json",
+    "use_case": "rental_readiness",
+    "verdict": "HONEY"
+  },
+  "generated_at": "2026-05-25T11:58:37Z",
+  "host_repo": "/home/swarm/Desktop/defendableos",
+  "host_repo_branch_pre_commit": "main",
+  "host_repo_head_pre_commit": "65e7a00b5c606b3c76f9dc14880f8ef477d3c0c4",
+  "kimi_intake_cross_reference": "../../../research/kimi_intake/2026-05-25/",
+  "operator": "Claude Code \u2014 DefendableOS Product Build",
+  "product_name": "Defendable Compute Proof Receipt",
+  "product_status": "specification_with_one_real_example",
+  "product_version": "v0.1",
+  "safety_attestation": {
+    "cpu_filesystem_documentation_only": true,
+    "no_apt_installs": true,
+    "no_cuda_or_inference_invoked": true,
+    "no_docker_state_changes": true,
+    "no_github_push_performed": true,
+    "no_gpu_workload_executed": true,
+    "no_model_servers_launched": true,
+    "no_network_changes": true,
+    "no_nvidia_driver_or_runtime_changes": true,
+    "no_source_kimi_drop_modified": true,
+    "no_vast_service_changes": true
+  },
+  "schemas_validated": true,
+  "workspace_path": "/home/swarm/Desktop/defendableos/products/defendable_compute_proof_receipt/v0.1"
+}

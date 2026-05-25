@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defendable.eth/schemas/compute_proof_receipt/v0.1",
+  "title": "ComputeProofReceipt",
+  "description": "Top-level Defendable Compute Proof Receipt artifact. v0.1.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "schema_version",
+    "asset_identity",
+    "use_case",
+    "precheck_state",
+    "contamination_or_residual_workload_findings",
+    "remediation_actions",
+    "post_remediation_state",
+    "benchmark_validation_results",
+    "service_state_results",
+    "operating_baseline",
+    "tribunal_verdict",
+    "claim_boundaries",
+    "generated_artifact_hashes",
+    "created_at"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "description": "Globally unique receipt ID. Recommended: 'DCPR-{YYYYMMDD}-{ULID}'.",
+      "pattern": "^DCPR-[0-9]{8}-[A-Z0-9]{20,32}$"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "v0.1"
+    },
+    "supersedes": {
+      "type": ["string", "null"],
+      "description": "receipt_id of a prior receipt this one supersedes, if any."
+    },
+    "asset_identity": {
+      "$ref": "compute_asset_identity.schema.json"
+    },
+    "use_case": {
+      "type": "string",
+      "enum": ["rental_readiness", "resale_readiness", "disposition_intake", "fleet_audit"],
+      "description": "What this receipt is being issued for."
+    },
+    "precheck_state": {
+      "$ref": "service_state_observation.schema.json",
+      "description": "Service-state observation BEFORE any remediation."
+    },
+    "contamination_or_residual_workload_findings": {
+      "type": "array",
+      "description": "List of issues found in the precheck.",
+      "items": {
+        "type": "object",
+        "required": ["finding_code", "severity", "description", "evidence_locator"],
+        "properties": {
+          "finding_code": {
+            "type": "string",
+            "description": "Code from protocol/failure_taxonomy.md (e.g., 'RESIDUAL_DOCKER_ARTIFACTS', 'GPU_MEMORY_HELD_BY_LOCAL_PROCESS')."
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["informational", "warning", "blocker"]
+          },
+          "description": {"type": "string"},
+          "evidence_locator": {"type": "string"}
+        }
+      }
+    },
+    "remediation_actions": {
+      "type": "array",
+      "description": "What was done to resolve each finding.",
+      "items": {
+        "type": "object",
+        "required": ["finding_code", "action", "result", "operator_confirmed", "evidence_locator"],
+        "properties": {
+          "finding_code": {"type": "string"},
+          "action": {"type": "string", "description": "Human-readable action taken (e.g., 'Sent SIGTERM to vllm process PID 74905, waited 5s, confirmed VRAM released.')."},
+          "result": {"type": "string", "enum": ["resolved", "partially_resolved", "unresolved"]},
+          "operator_confirmed": {"type": "boolean", "description": "True if the operator explicitly approved the remediation before execution."},
+          "evidence_locator": {"type": "string"}
+        }
+      }
+    },
+    "post_remediation_state": {
+      "$ref": "service_state_observation.schema.json",
+      "description": "Service-state observation AFTER remediation."
+    },
+    "benchmark_validation_results": {
+      "type": "array",
+      "items": {"$ref": "benchmark_observation.schema.json"},
+      "minItems": 0,
+      "description": "Validation tests executed. May be empty for use_case=fleet_audit."
+    },
+    "service_state_results": {
+      "type": "object",
+      "description": "Summary of service-state pass/fail for quick consumption.",
+      "required": ["overall", "docker", "rental_platform", "gpu", "runtime"],
+      "properties": {
+        "overall": {"type": "string", "enum": ["pass", "fail", "pass_with_observations"]},
+        "docker": {"type": "string", "enum": ["pass", "fail", "n_a"]},
+        "rental_platform": {"type": "string", "enum": ["pass", "fail", "n_a"]},
+        "gpu": {"type": "string", "enum": ["pass", "fail", "n_a"]},
+        "runtime": {"type": "string", "enum": ["pass", "fail", "n_a"]}
+      }
+    },
+    "operating_baseline": {
+      "type": "object",
+      "description": "The intended baseline configuration this asset has been returned to.",
+      "required": ["power_cap_w", "persistence_mode", "thermal_policy_c_warning", "thermal_policy_c_shutdown", "documented_owner_state"],
+      "properties": {
+        "power_cap_w": {"type": "number", "minimum": 0},
+        "persistence_mode": {"type": "string", "enum": ["enabled", "disabled"]},
+        "thermal_policy_c_warning": {"type": "number"},
+        "thermal_policy_c_shutdown": {"type": "number"},
+        "expected_idle_vram_mib_max": {"type": "integer", "minimum": 0},
+        "expected_idle_utilization_percent_max": {"type": "integer", "minimum": 0, "maximum": 100},
+        "expected_idle_power_w_max": {"type": "number", "minimum": 0},
+        "documented_owner_state": {"type": "string", "description": "Plain-text description of the owner-intended operating state (e.g., 'idle, persistence on, 550W cap, no local model servers')."}
+      }
+    },
+    "tribunal_verdict": {
+      "type": "object",
+      "required": ["verdict", "rationale", "issued_by", "issued_at"],
+      "properties": {
+        "verdict": {"type": "string", "enum": ["HONEY", "JELLY", "PROPOLIS"]},
+        "rationale": {"type": "string", "description": "Plain-text justification for the verdict."},
+        "issued_by": {"type": "string"},
+        "issued_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "claim_boundaries": {
+      "type": "object",
+      "required": ["scope", "establishes", "does_not_establish", "validity_window", "successor_records_supersede"],
+      "properties": {
+        "scope": {
+          "type": "string",
+          "const": "operational_condition_at_timestamp_only"
+        },
+        "establishes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "does_not_establish": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "validity_window": {
+          "type": "string",
+          "const": "snapshot_at_observed_at_timestamp_only"
+        },
+        "successor_records_supersede": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "generated_artifact_hashes": {
+      "type": "array",
+      "description": "sha256 hashes of every evidence artifact referenced by this receipt.",
+      "items": {
+        "type": "object",
+        "required": ["artifact_path", "sha256"],
+        "properties": {
+          "artifact_path": {"type": "string"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      },
+      "minItems": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ledger_publication": {
+      "type": ["object", "null"],
+      "description": "Optional pointer to a DefendableLedger publication record once published.",
+      "properties": {
+        "ledger_record_id": {"type": "string", "description": "e.g., 'DLR-20260525-...'."},
+        "ledger_url": {"type": "string"},
+        "record_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

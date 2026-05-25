@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defendable.eth/schemas/service_state_observation/v0.1",
+  "title": "ServiceStateObservation",
+  "description": "Snapshot of host services that are relevant to compute rental, resale, or disposition readiness. v0.1.",
+  "type": "object",
+  "required": [
+    "docker_state",
+    "model_server_state",
+    "rental_platform_service_state",
+    "gpu_process_state",
+    "storage_mount_state",
+    "runtime_state",
+    "observations",
+    "pass_fail"
+  ],
+  "properties": {
+    "docker_state": {
+      "type": "object",
+      "required": ["daemon_running", "container_count", "image_count", "storage_driver", "runtimes_configured"],
+      "properties": {
+        "daemon_running": {"type": "boolean"},
+        "container_count": {"type": "integer", "minimum": 0},
+        "image_count": {"type": "integer", "minimum": 0},
+        "storage_driver": {"type": "string", "description": "e.g., 'overlay2'."},
+        "runtimes_configured": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of configured runtimes (e.g., ['runc', 'nvidia'])."
+        },
+        "cdi_devices_present": {"type": "boolean"},
+        "residual_artifacts_found": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Any residual containers, volumes, networks, or images attributable to a prior tenant."
+        }
+      }
+    },
+    "model_server_state": {
+      "type": "object",
+      "required": ["any_model_server_running", "named_processes"],
+      "properties": {
+        "any_model_server_running": {"type": "boolean"},
+        "named_processes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "pid", "vram_held_mib"],
+            "properties": {
+              "name": {"type": "string", "description": "e.g., 'vllm', 'ollama', 'llama.cpp', 'swarmcurator'."},
+              "pid": {"type": "integer", "minimum": 1},
+              "vram_held_mib": {"type": "integer", "minimum": 0},
+              "command_line": {"type": "string"},
+              "owner": {"type": "string", "description": "OS user or service owner."}
+            }
+          }
+        }
+      }
+    },
+    "rental_platform_service_state": {
+      "type": "object",
+      "required": ["platform", "services"],
+      "properties": {
+        "platform": {
+          "type": "string",
+          "enum": ["vast_ai", "runpod", "coreweave", "lambda_labs", "crusoe", "none", "other"]
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "active"],
+            "properties": {
+              "name": {"type": "string", "description": "e.g., 'vastai', 'vast_metrics'."},
+              "active": {"type": "boolean"},
+              "uptime_seconds": {"type": ["integer", "null"], "minimum": 0}
+            }
+          }
+        }
+      }
+    },
+    "gpu_process_state": {
+      "type": "object",
+      "required": ["vram_used_mib", "vram_total_mib", "utilization_gpu_percent", "temperature_c", "power_draw_w", "compute_processes"],
+      "properties": {
+        "vram_used_mib": {"type": "integer", "minimum": 0},
+        "vram_total_mib": {"type": "integer", "minimum": 0},
+        "utilization_gpu_percent": {"type": "integer", "minimum": 0, "maximum": 100},
+        "temperature_c": {"type": "number"},
+        "power_draw_w": {"type": "number", "minimum": 0},
+        "power_cap_w": {"type": "number", "minimum": 0},
+        "persistence_mode": {"type": "string", "enum": ["enabled", "disabled", "unknown"]},
+        "compute_processes": {
+          "type": "array",
+          "description": "Output of nvidia-smi --query-compute-apps or equivalent.",
+          "items": {
+            "type": "object",
+            "required": ["pid", "process_name", "used_memory_mib"],
+            "properties": {
+              "pid": {"type": "integer"},
+              "process_name": {"type": "string"},
+              "used_memory_mib": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      }
+    },
+    "storage_mount_state": {
+      "type": "object",
+      "required": ["mounts"],
+      "properties": {
+        "mounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["device", "mount_point", "fstype", "healthy"],
+            "properties": {
+              "device": {"type": "string"},
+              "mount_point": {"type": "string"},
+              "fstype": {"type": "string"},
+              "healthy": {"type": "boolean"},
+              "used_percent": {"type": ["integer", "null"], "minimum": 0, "maximum": 100}
+            }
+          }
+        }
+      }
+    },
+    "runtime_state": {
+      "type": "object",
+      "required": ["nvidia_runtime_available", "cdi_device_available", "driver_loaded", "nvml_responsive"],
+      "properties": {
+        "nvidia_runtime_available": {"type": "boolean"},
+        "cdi_device_available": {"type": "boolean"},
+        "driver_loaded": {"type": "boolean"},
+        "nvml_responsive": {"type": "boolean"}
+      }
+    },
+    "observations": {
+      "type": "array",
+      "description": "Free-text operator notes describing anything unexpected (e.g., 'High VRAM used despite zero containers — investigated and resolved.').",
+      "items": {"type": "string"}
+    },
+    "pass_fail": {
+      "type": "string",
+      "enum": ["pass", "fail", "pass_with_observations"],
+      "description": "Overall verdict for the service-state observation block."
+    }
+  },
+  "additionalProperties": false
+}

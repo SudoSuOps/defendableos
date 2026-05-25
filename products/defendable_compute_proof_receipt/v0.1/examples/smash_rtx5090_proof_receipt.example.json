@@ -1,0 +1,344 @@
+{
+  "receipt_id": "DCPR-20260525-EXAMPLE0SMASHRTX509000A",
+  "schema_version": "v0.1",
+  "supersedes": null,
+  "asset_identity": {
+    "asset_id": "smash-rtx5090-host-001",
+    "hostname": "smash",
+    "asset_type": "gpu_workstation",
+    "manufacturer": "NVIDIA",
+    "model": "NVIDIA GeForce RTX 5090",
+    "gpu_count": 1,
+    "vram_total_mib": 32607,
+    "driver_version": "[recorded_in_evidence_locator]",
+    "cuda_reported_version": "13.1",
+    "runtime_exposure": {
+      "host_runtime": "visible",
+      "container_runtime": "visible_via_cdi",
+      "rental_platform_runtime": "visible"
+    },
+    "serial_or_uuid": {
+      "gpu_uuid": "[redacted]",
+      "board_serial": "[redacted]",
+      "privacy_treatment": "redacted",
+      "salt_id": null
+    },
+    "operator": {
+      "name": "claude-code-swarm-research-intake",
+      "role": "audit_agent",
+      "signature": ""
+    },
+    "observed_at": "2026-05-25T10:57:00Z",
+    "evidence_sources": [
+      {
+        "tool": "nvidia-smi",
+        "command": "nvidia-smi --query-gpu=name,memory.used,memory.total,utilization.gpu,temperature.gpu --format=csv,noheader",
+        "artifact_path": "receipts/evidence/2026-05-25T10-57-00Z_nvidia_smi_gpu_query.txt",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "tool": "nvidia-smi",
+        "command": "nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv,noheader",
+        "artifact_path": "receipts/evidence/2026-05-25T10-57-00Z_nvidia_smi_compute_apps.txt",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ]
+  },
+  "use_case": "rental_readiness",
+  "precheck_state": {
+    "docker_state": {
+      "daemon_running": true,
+      "container_count": 0,
+      "image_count": 0,
+      "storage_driver": "overlay2",
+      "runtimes_configured": ["runc", "nvidia"],
+      "cdi_devices_present": true,
+      "residual_artifacts_found": []
+    },
+    "model_server_state": {
+      "any_model_server_running": true,
+      "named_processes": [
+        {
+          "name": "vllm",
+          "pid": 74905,
+          "vram_held_mib": 28104,
+          "command_line": "python -m vllm.entrypoints.openai.api_server --model /home/smash/models/swarmcurator-9b --served-model-name swarmcurator-9b --port 8088 ...",
+          "owner": "smash"
+        },
+        {
+          "name": "llama.cpp",
+          "pid": 106275,
+          "vram_held_mib": 0,
+          "command_line": "python -m llama_cpp.server --model /home/smash/models/swarmjelly-4b/swarmjelly-4b-tribunal.gguf --port 8089 ...",
+          "owner": "smash"
+        },
+        {
+          "name": "defendablerouter",
+          "pid": 134588,
+          "vram_held_mib": 0,
+          "command_line": "/home/smash/defendablerouter/.venv/bin/python3 .venv/bin/defendablerouter serve --port 8080",
+          "owner": "smash"
+        }
+      ]
+    },
+    "rental_platform_service_state": {
+      "platform": "vast_ai",
+      "services": [
+        {"name": "vastai", "active": true, "uptime_seconds": null},
+        {"name": "vast_metrics", "active": true, "uptime_seconds": null}
+      ]
+    },
+    "gpu_process_state": {
+      "vram_used_mib": 28114,
+      "vram_total_mib": 32607,
+      "utilization_gpu_percent": 0,
+      "temperature_c": 51.0,
+      "power_draw_w": 21.55,
+      "power_cap_w": 550.0,
+      "persistence_mode": "enabled",
+      "compute_processes": [
+        {"pid": 75037, "process_name": "VLLM::EngineCore", "used_memory_mib": 28104}
+      ]
+    },
+    "storage_mount_state": {
+      "mounts": [
+        {"device": "/dev/nvme0n1p2", "mount_point": "/", "fstype": "ext4", "healthy": true, "used_percent": 21}
+      ]
+    },
+    "runtime_state": {
+      "nvidia_runtime_available": true,
+      "cdi_device_available": true,
+      "driver_loaded": true,
+      "nvml_responsive": true
+    },
+    "observations": [
+      "Renter exited prior to observation; Docker had zero containers.",
+      "Despite zero containers, GPU VRAM showed 28,114 MiB used. Investigation identified the local SwarmCurator vLLM process (PID 75037) holding 28,104 MiB.",
+      "SwarmJelly llama.cpp server and DefendableRouter sessions were also identified."
+    ],
+    "pass_fail": "pass_with_observations"
+  },
+  "contamination_or_residual_workload_findings": [
+    {
+      "finding_code": "GPU_MEMORY_HELD_BY_LOCAL_PROCESS",
+      "severity": "blocker",
+      "description": "Local SwarmCurator vLLM process (PID 75037) was holding 28,104 MiB of VRAM at observation time. This is NOT renter contamination — it is a first-party workload that must be stopped before the host can be presented as rental-ready idle.",
+      "evidence_locator": "receipts/evidence/2026-05-25T10-57-00Z_nvidia_smi_compute_apps.txt"
+    }
+  ],
+  "remediation_actions": [
+    {
+      "finding_code": "GPU_MEMORY_HELD_BY_LOCAL_PROCESS",
+      "action": "Operator gracefully shut down local model services (vLLM swarmcurator-9b on port 8088, llama.cpp swarmjelly-4b on port 8089, DefendableRouter on port 8080) without touching Vast services (vastai, vast_metrics remained active). Docker containers remained at zero throughout.",
+      "result": "resolved",
+      "operator_confirmed": true,
+      "evidence_locator": "receipts/evidence/2026-05-25T10-58-XX-XZ_service_shutdown_log.txt"
+    }
+  ],
+  "post_remediation_state": {
+    "docker_state": {
+      "daemon_running": true,
+      "container_count": 0,
+      "image_count": 0,
+      "storage_driver": "overlay2",
+      "runtimes_configured": ["runc", "nvidia"],
+      "cdi_devices_present": true,
+      "residual_artifacts_found": []
+    },
+    "model_server_state": {
+      "any_model_server_running": false,
+      "named_processes": []
+    },
+    "rental_platform_service_state": {
+      "platform": "vast_ai",
+      "services": [
+        {"name": "vastai", "active": true, "uptime_seconds": null},
+        {"name": "vast_metrics", "active": true, "uptime_seconds": null}
+      ]
+    },
+    "gpu_process_state": {
+      "vram_used_mib": 2,
+      "vram_total_mib": 32607,
+      "utilization_gpu_percent": 0,
+      "temperature_c": 51.0,
+      "power_draw_w": 21.55,
+      "power_cap_w": 550.0,
+      "persistence_mode": "enabled",
+      "compute_processes": []
+    },
+    "storage_mount_state": {
+      "mounts": [
+        {"device": "/dev/nvme0n1p2", "mount_point": "/", "fstype": "ext4", "healthy": true, "used_percent": 21}
+      ]
+    },
+    "runtime_state": {
+      "nvidia_runtime_available": true,
+      "cdi_device_available": true,
+      "driver_loaded": true,
+      "nvml_responsive": true
+    },
+    "observations": [
+      "Post-remediation: VRAM returned to 2 MiB idle, utilization 0%, temperature ~51C, power draw ~21.55W, 550W cap, persistence enabled.",
+      "Vast services remained active throughout."
+    ],
+    "pass_fail": "pass"
+  },
+  "benchmark_validation_results": [
+    {
+      "test_id": "TEST-001",
+      "test_name": "System requirements test",
+      "test_origin": "platform_remote",
+      "test_scope": "identity_check",
+      "result": "pass",
+      "observed_output": {
+        "summary": "Platform-remote system requirements test passed.",
+        "raw_metrics_recorded_in_evidence_locator": true
+      },
+      "duration_seconds_if_known": null,
+      "evidence_locator": "receipts/evidence/vast_remote_validation_summary.txt",
+      "confidence": "high",
+      "limitations": "Single-pass remote validation; does not certify long-term operability.",
+      "executed_by": "vast_ai remote validator"
+    },
+    {
+      "test_id": "TEST-002",
+      "test_name": "ResNet18 GPU functional test",
+      "test_origin": "platform_remote",
+      "test_scope": "functional_inference",
+      "result": "pass",
+      "observed_output": {
+        "summary": "ResNet18 GPU functional test passed.",
+        "raw_metrics_recorded_in_evidence_locator": true
+      },
+      "duration_seconds_if_known": null,
+      "evidence_locator": "receipts/evidence/vast_remote_validation_summary.txt",
+      "confidence": "high",
+      "limitations": "Single-pass functional inference; does not establish sustained throughput.",
+      "executed_by": "vast_ai remote validator"
+    },
+    {
+      "test_id": "TEST-003",
+      "test_name": "ECC test",
+      "test_origin": "platform_remote",
+      "test_scope": "ecc_health",
+      "result": "pass",
+      "observed_output": {"summary": "ECC test passed."},
+      "duration_seconds_if_known": null,
+      "evidence_locator": "receipts/evidence/vast_remote_validation_summary.txt",
+      "confidence": "high",
+      "limitations": "Snapshot ECC check; does not project long-term memory health.",
+      "executed_by": "vast_ai remote validator"
+    },
+    {
+      "test_id": "TEST-004",
+      "test_name": "NCCL distributed test (single-GPU mode)",
+      "test_origin": "platform_remote",
+      "test_scope": "distributed_communication",
+      "result": "pass",
+      "observed_output": {
+        "summary": "NCCL distributed test passed with 1 GPU.",
+        "configured_gpu_count": 1
+      },
+      "duration_seconds_if_known": null,
+      "evidence_locator": "receipts/evidence/vast_remote_validation_summary.txt",
+      "confidence": "high",
+      "limitations": "Single-GPU NCCL test cannot exercise inter-GPU bandwidth; multi-GPU host would need re-validation.",
+      "executed_by": "vast_ai remote validator"
+    },
+    {
+      "test_id": "TEST-005",
+      "test_name": "Combined stress-ng + gpu-burn 60s",
+      "test_origin": "platform_remote",
+      "test_scope": "stress_combined",
+      "result": "pass",
+      "observed_output": {
+        "summary": "Simultaneous CPU (stress-ng) and GPU (gpu-burn) load held for 60 seconds. No thermal trip, no NCCL error.",
+        "duration_seconds": 60
+      },
+      "duration_seconds_if_known": 60,
+      "evidence_locator": "receipts/evidence/vast_remote_validation_summary.txt",
+      "confidence": "high",
+      "limitations": "60-second stress is a short-duration smoke test; does not certify operation over hours or days.",
+      "executed_by": "vast_ai remote validator"
+    },
+    {
+      "test_id": "TEST-006",
+      "test_name": "Test instance teardown",
+      "test_origin": "platform_remote",
+      "test_scope": "runtime_visibility",
+      "result": "pass",
+      "observed_output": {
+        "summary": "Test instance destroyed successfully; host returned DONE."
+      },
+      "duration_seconds_if_known": null,
+      "evidence_locator": "receipts/evidence/vast_remote_validation_summary.txt",
+      "confidence": "high",
+      "limitations": "Confirms the test lifecycle completed cleanly; not a host-stability claim.",
+      "executed_by": "vast_ai remote validator"
+    }
+  ],
+  "service_state_results": {
+    "overall": "pass",
+    "docker": "pass",
+    "rental_platform": "pass",
+    "gpu": "pass",
+    "runtime": "pass"
+  },
+  "operating_baseline": {
+    "power_cap_w": 550.0,
+    "persistence_mode": "enabled",
+    "thermal_policy_c_warning": 80.0,
+    "thermal_policy_c_shutdown": 90.0,
+    "expected_idle_vram_mib_max": 50,
+    "expected_idle_utilization_percent_max": 5,
+    "expected_idle_power_w_max": 50.0,
+    "documented_owner_state": "idle, persistence enabled, 550W rental cap, no local model servers running, Vast services active"
+  },
+  "tribunal_verdict": {
+    "verdict": "HONEY",
+    "rationale": "Asset returned to verified idle state (2 MiB VRAM, 0% utilization, ~51C, ~21.55W idle draw, 550W cap, persistence enabled) and passed platform-remote functional/stress validation for rental readiness: system requirements, ResNet18 GPU, ECC, NCCL (1 GPU), and combined stress-ng+gpu-burn 60s. Test instance destroyed successfully. No Docker containers remained.",
+    "issued_by": "claude-code-swarm-research-intake",
+    "issued_at": "2026-05-25T11:30:00Z"
+  },
+  "claim_boundaries": {
+    "scope": "operational_condition_at_timestamp_only",
+    "establishes": [
+      "asset_identified_to_runtime",
+      "no_unintended_workloads_at_timestamp",
+      "configured_to_documented_operating_baseline",
+      "passed_named_functional_and_stress_tests_at_timestamp"
+    ],
+    "does_not_establish": [
+      "market_value",
+      "appraisal_under_uspap_or_equivalent",
+      "manufacturer_warranty_status",
+      "insurance_underwriting_acceptance",
+      "lender_acceptance",
+      "legal_title_or_ownership",
+      "accreditation_by_third_party_body",
+      "fitness_for_any_specific_purpose_beyond_the_named_tests"
+    ],
+    "validity_window": "snapshot_at_observed_at_timestamp_only",
+    "successor_records_supersede": true
+  },
+  "generated_artifact_hashes": [
+    {
+      "artifact_path": "receipts/evidence/2026-05-25T10-57-00Z_nvidia_smi_gpu_query.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "artifact_path": "receipts/evidence/2026-05-25T10-57-00Z_nvidia_smi_compute_apps.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "artifact_path": "receipts/evidence/2026-05-25T10-58-XX-XZ_service_shutdown_log.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "artifact_path": "receipts/evidence/vast_remote_validation_summary.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "created_at": "2026-05-25T11:30:00Z",
+  "ledger_publication": null
+}

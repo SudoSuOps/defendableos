@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defendable.eth/schemas/receipt_manifest/v0.1",
+  "title": "ReceiptManifest",
+  "description": "Manifest published alongside a Defendable Compute Proof Receipt, summarizing its artifact provenance and claim boundary for ledger consumers. v0.1.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "source_artifact_paths",
+    "artifact_hashes",
+    "schema_versions",
+    "generated_at",
+    "doctrine",
+    "claim_boundary_statement"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^DCPR-[0-9]{8}-[A-Z0-9]{20,32}$"
+    },
+    "source_artifact_paths": {
+      "type": "array",
+      "description": "Operator-resolvable paths to every source artifact contributing to this receipt (raw nvidia-smi output, docker info, vast remote validation output, etc.).",
+      "items": {"type": "string"},
+      "minItems": 1
+    },
+    "artifact_hashes": {
+      "type": "array",
+      "description": "sha256 over every artifact in source_artifact_paths plus the receipt JSON itself.",
+      "items": {
+        "type": "object",
+        "required": ["artifact_path", "sha256", "size_bytes"],
+        "properties": {
+          "artifact_path": {"type": "string"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "size_bytes": {"type": "integer", "minimum": 0}
+        }
+      },
+      "minItems": 1
+    },
+    "schema_versions": {
+      "type": "object",
+      "required": ["compute_proof_receipt", "compute_asset_identity", "benchmark_observation", "service_state_observation", "receipt_manifest"],
+      "properties": {
+        "compute_proof_receipt": {"type": "string", "const": "v0.1"},
+        "compute_asset_identity": {"type": "string", "const": "v0.1"},
+        "benchmark_observation": {"type": "string", "const": "v0.1"},
+        "service_state_observation": {"type": "string", "const": "v0.1"},
+        "receipt_manifest": {"type": "string", "const": "v0.1"}
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "doctrine": {
+      "type": "string",
+      "const": "Tribunal begins before training; no proof, no honey."
+    },
+    "claim_boundary_statement": {
+      "type": "string",
+      "description": "Plain-text restatement of what this receipt establishes and does NOT establish, for human consumers who do not parse JSON.",
+      "minLength": 100
+    },
+    "publisher": {
+      "type": ["object", "null"],
+      "properties": {
+        "service": {"type": "string", "description": "e.g., 'defendableos-api ledger publisher v0.2'."},
+        "publication_url": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

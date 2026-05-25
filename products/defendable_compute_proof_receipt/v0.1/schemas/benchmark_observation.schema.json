@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defendable.eth/schemas/benchmark_observation/v0.1",
+  "title": "BenchmarkObservation",
+  "description": "A single benchmark or validation test result captured during the Proof Receipt protocol. v0.1.",
+  "type": "object",
+  "required": [
+    "test_id",
+    "test_name",
+    "test_origin",
+    "test_scope",
+    "result",
+    "observed_output",
+    "evidence_locator",
+    "confidence",
+    "limitations"
+  ],
+  "properties": {
+    "test_id": {
+      "type": "string",
+      "description": "Receipt-scoped identifier for this test (e.g., 'TEST-001').",
+      "pattern": "^[A-Z][A-Z0-9_\\-]{2,30}$"
+    },
+    "test_name": {
+      "type": "string",
+      "description": "Human-readable test name (e.g., 'ResNet18 GPU functional test')."
+    },
+    "test_origin": {
+      "type": "string",
+      "enum": ["local", "platform_remote", "OEM", "third_party"],
+      "description": "Where the test was executed and by whom."
+    },
+    "test_scope": {
+      "type": "string",
+      "enum": [
+        "identity_check",
+        "runtime_visibility",
+        "memory_inventory",
+        "process_inventory",
+        "functional_inference",
+        "stress_compute",
+        "stress_memory",
+        "stress_combined",
+        "network_throughput",
+        "storage_throughput",
+        "ecc_health",
+        "thermal_response",
+        "power_response",
+        "distributed_communication"
+      ]
+    },
+    "result": {
+      "type": "string",
+      "enum": ["pass", "fail", "not_applicable", "not_run", "inconclusive"]
+    },
+    "observed_output": {
+      "type": "object",
+      "description": "Structured snapshot of the test's reported metrics. v0.1 is permissive on schema inside this block; CLI lints for empty objects.",
+      "additionalProperties": true
+    },
+    "duration_seconds_if_known": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "Wall-clock duration of the test if measured."
+    },
+    "evidence_locator": {
+      "type": "string",
+      "description": "Operator-resolvable path or URL to the raw test artifact (stdout log, screenshot, report). MUST be non-empty for HONEY-eligible receipts.",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "Operator confidence in the test result. Local-only tests should generally be 'medium'; platform_remote and third_party generally 'high'."
+    },
+    "limitations": {
+      "type": "string",
+      "description": "Plain-text statement of what this test does NOT establish (e.g., 'single-pass functional check; does not establish sustained inference throughput over hours')."
+    },
+    "started_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "executed_by": {
+      "type": "string",
+      "description": "The operator or remote-platform service that executed this test (free text; e.g., 'vast remote validator', 'local CI worker swarm-ci-01')."
+    }
+  },
+  "additionalProperties": false
+}

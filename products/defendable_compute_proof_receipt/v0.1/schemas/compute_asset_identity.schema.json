@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defendable.eth/schemas/compute_asset_identity/v0.1",
+  "title": "ComputeAssetIdentity",
+  "description": "Identifies a single compute asset (host + GPU(s) + runtime context) at a point in time. v0.1.",
+  "type": "object",
+  "required": [
+    "asset_id",
+    "hostname",
+    "asset_type",
+    "manufacturer",
+    "model",
+    "gpu_count",
+    "vram_total_mib",
+    "driver_version",
+    "cuda_reported_version",
+    "runtime_exposure",
+    "serial_or_uuid",
+    "operator",
+    "observed_at",
+    "evidence_sources"
+  ],
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "description": "Stable, operator-assigned identifier for this asset across receipts. Recommended ULID or UUID v4.",
+      "pattern": "^[A-Za-z0-9_\\-]{8,64}$"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Operator-resolvable hostname. May be a tailnet name, internal DNS name, or short hostname."
+    },
+    "asset_type": {
+      "type": "string",
+      "enum": [
+        "gpu_workstation",
+        "gpu_server",
+        "edge_appliance",
+        "headless_node",
+        "cpu_only_node"
+      ]
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "GPU or asset OEM (e.g., NVIDIA, AMD, Intel)."
+    },
+    "model": {
+      "type": "string",
+      "description": "Model designation (e.g., 'NVIDIA GeForce RTX 5090')."
+    },
+    "gpu_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Count of GPUs visible to the host runtime at observation time. 0 is permitted for cpu_only_node."
+    },
+    "vram_total_mib": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total VRAM in mebibytes across all GPUs as reported by the runtime."
+    },
+    "driver_version": {
+      "type": "string",
+      "description": "Driver version as reported by nvidia-smi or equivalent."
+    },
+    "cuda_reported_version": {
+      "type": "string",
+      "description": "CUDA version reported by the driver (e.g., '13.1'). Distinct from any toolkit version."
+    },
+    "runtime_exposure": {
+      "type": "object",
+      "description": "Which runtimes can see the GPU(s).",
+      "required": ["host_runtime", "container_runtime", "rental_platform_runtime"],
+      "properties": {
+        "host_runtime": {
+          "type": "string",
+          "enum": ["visible", "partial", "missing", "unknown"]
+        },
+        "container_runtime": {
+          "type": "string",
+          "enum": ["visible_via_cdi", "visible_via_nvidia_runtime", "not_configured", "unknown"]
+        },
+        "rental_platform_runtime": {
+          "type": "string",
+          "description": "Vast.ai / RunPod / Coreweave-equivalent service visibility.",
+          "enum": ["visible", "not_configured", "service_down", "n_a", "unknown"]
+        }
+      }
+    },
+    "serial_or_uuid": {
+      "type": "object",
+      "description": "Hardware-level identity with privacy treatment.",
+      "required": ["gpu_uuid", "board_serial", "privacy_treatment"],
+      "properties": {
+        "gpu_uuid": {
+          "type": "string",
+          "description": "Per-doc treatment rules. May be 'redacted', a sha256 hex string (when treatment=salted_hash), or the literal UUID (when treatment=full)."
+        },
+        "board_serial": {
+          "type": "string",
+          "description": "Board serial subject to the same treatment rules as gpu_uuid."
+        },
+        "host_mac": {
+          "type": "string",
+          "description": "Host network MAC. Same treatment rules. Optional."
+        },
+        "privacy_treatment": {
+          "type": "string",
+          "enum": ["full", "salted_hash", "redacted"],
+          "description": "Required disclosure of how the identifiers are represented in this artifact."
+        },
+        "salt_id": {
+          "type": "string",
+          "description": "Identifier for the salt used when privacy_treatment=salted_hash. The actual salt is stored locally only."
+        }
+      }
+    },
+    "operator": {
+      "type": "object",
+      "required": ["name", "role", "signature"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Operator identifier (human, agent, or CI worker name)."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["host_operator", "fleet_owner", "audit_agent", "itad_intake", "broker"]
+        },
+        "signature": {
+          "type": "string",
+          "description": "Optional cryptographic signature over the receipt JSON. Empty string permitted in v0.1; required in v0.2+."
+        }
+      }
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC timestamp of the identity observation."
+    },
+    "evidence_sources": {
+      "type": "array",
+      "description": "Raw command output files (or other artifact paths) that this identity record was derived from. Each entry references an artifact in receipts/evidence/ with a sha256.",
+      "items": {
+        "type": "object",
+        "required": ["tool", "artifact_path", "sha256"],
+        "properties": {
+          "tool": {
+            "type": "string",
+            "description": "Tool name that produced the artifact (e.g., 'nvidia-smi', 'docker info', 'systemctl status vastai')."
+          },
+          "command": {
+            "type": "string",
+            "description": "Exact command line used to produce the artifact (operator-supplied, for replay verification)."
+          },
+          "artifact_path": {
+            "type": "string",
+            "description": "Operator-resolvable path to the raw output artifact."
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}
