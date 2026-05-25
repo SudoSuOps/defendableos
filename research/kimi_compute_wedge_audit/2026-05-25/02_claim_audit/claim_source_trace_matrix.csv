@@ -1,0 +1,26 @@
+claim_id,claim_category,cited_by_kimi,source_quality,primary_source_located,supports_exact_claim,classification,external_use_safe
+KCW-CLAIM-0001,product,mission spec + Dim5,primary,yes,yes,DIRECT_EVIDENCE,yes
+KCW-CLAIM-0002,product,Swarm telemetry,primary,yes,yes,DIRECT_EVIDENCE,yes
+KCW-CLAIM-0003,product,Swarm telemetry,primary,yes,yes,DIRECT_EVIDENCE,yes
+KCW-CLAIM-0004,product,Swarm+Vast telemetry,primary,yes,yes,DIRECT_EVIDENCE,yes
+KCW-CLAIM-0005,neocloud,Dim5/Dim8 + vast.ai,primary,yes,yes,HONEY,no_marketing_yet
+KCW-CLAIM-0006,target_company,barkr.ai,primary,yes,yes,HONEY,no_marketing_yet
+KCW-CLAIM-0007,competitor,blancco/spherity/equipmentwatch,primary,yes,yes,HONEY,no
+KCW-CLAIM-0008,itad,official ITAD homepages,primary,yes,yes,HONEY,outreach_prep_only
+KCW-CLAIM-0009,itad,ITAD homepages (GPU=0 hits),company_self_description,yes,no,JELLY,no
+KCW-CLAIM-0010,lending,Dim11 secondary,secondary,no,no,JELLY,no
+KCW-CLAIM-0011,lending,Dave Friedman (single analyst),weak,no,no,JELLY,no
+KCW-CLAIM-0012,lending,Insight4 (no primary),not_found,no,no,PROPOLIS,no
+KCW-CLAIM-0013,lending,Dim11 ABL inference,secondary,no,no,JELLY,no
+KCW-CLAIM-0014,market_size,GM Insights/Mordor,secondary,no,no,JELLY,no
+KCW-CLAIM-0015,market_size,market-research projection,secondary,no,no,JELLY,no
+KCW-CLAIM-0016,pricing,HashrateIndex/oplexa,secondary,no,no,JELLY,no
+KCW-CLAIM-0017,market_size,SemiAnalysis,secondary,no,no,JELLY,no
+KCW-CLAIM-0018,customer_demand,inference,weak,no,no,JELLY,no
+KCW-CLAIM-0019,regulatory,Dim6/Dim9 (ESPR/DPP),secondary,no,no,JELLY,no
+KCW-CLAIM-0020,compliance,HIPAA NPRM (proposed),secondary,no,no,JELLY,no
+KCW-CLAIM-0021,compliance,Dim9 BIS ECCN,secondary,no,no,JELLY,no
+KCW-CLAIM-0022,competitor,Dim6 scan,weak,no,no,PROPOLIS,no
+KCW-CLAIM-0023,target_company,Dim7 (dead domains),not_found,no,no,PROPOLIS,no
+KCW-CLAIM-0024,sales_strategy,Insight10 cross-ref,authoritative_secondary,no,no,JELLY,no
+KCW-CLAIM-0025,market_size,Burry commentary,weak,no,no,JELLY,no

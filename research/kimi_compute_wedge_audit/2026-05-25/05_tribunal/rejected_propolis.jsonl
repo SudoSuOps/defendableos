@@ -1,0 +1,3 @@
+{"claim_id":"KCW-CLAIM-0012","class":"PROPOLIS","summary":"Barkr backed by Munich Re — NOT on barkr.ai; no primary source. Prohibited externally.","disposition":"verification_queue"}
+{"claim_id":"KCW-CLAIM-0022","class":"PROPOLIS","summary":"'No competitor combines all five layers (49 scanned)' — unfalsifiable absolute. Rewrite mandated.","disposition":"rewrite_to_sampled_language"}
+{"claim_id":"KCW-CLAIM-0023","class":"PROPOLIS","summary":"Slyd / STS Electronic Recycling / Maxicom — domains do not resolve; identity unverifiable.","disposition":"drop_from_outreach_until_confirmed"}

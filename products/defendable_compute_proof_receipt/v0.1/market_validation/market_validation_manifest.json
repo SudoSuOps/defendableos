@@ -1,0 +1,24 @@
+{
+  "manifest_type": "DCPR-MARKET-VALIDATION",
+  "product": "Defendable Compute Proof Receipt v0.1",
+  "created_at": "2026-05-25",
+  "source_audit": "DEFENDABLEOS-KIMI-COMPUTE-PACKAGE-AUDIT-001",
+  "source_audit_path": "research/kimi_compute_wedge_audit/2026-05-25/",
+  "promotion_verdict": "PROMOTE — product rests on DIRECT_EVIDENCE; market dollar claims remain JELLY",
+  "verified_signals_count": 7,
+  "verified_targets_count": 10,
+  "verified_targets_outreach_prep_eligible": 6,
+  "targets_unverifiable": ["Slyd", "STS Electronic Recycling", "Maxicom"],
+  "commercialization_sequence": ["neocloud_validation", "itad_first_paid", "lender_scale_later"],
+  "claim_boundary": "No third-party (lender/insurer/regulator/government/market) acceptance claims in v0.1; no market-size figure as fact; mirrors product terminology doctrine.",
+  "files": [
+    "README.md",
+    "kimi_compute_wedge_audit_crosswalk.md",
+    "verified_market_signals.jsonl",
+    "verified_target_registry.jsonl",
+    "commercialization_sequence.md",
+    "outbound_claim_boundaries.md",
+    "market_validation_manifest.json"
+  ],
+  "doctrine": "Tribunal begins before training; no proof, no honey."
+}

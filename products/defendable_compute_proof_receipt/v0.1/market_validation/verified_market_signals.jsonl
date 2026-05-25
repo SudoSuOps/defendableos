@@ -1,0 +1,7 @@
+{"signal_id":"VMS-0001","signal":"Post-rental GPU readiness verification works end-to-end on real hardware (smash RTX 5090).","grade":"DIRECT_EVIDENCE","use":"product demo, sales-safe, federal-safe"}
+{"signal_id":"VMS-0002","signal":"Receipt distinguishes first-party residue from tenant contamination (28,114 MiB traced to internal vLLM).","grade":"DIRECT_EVIDENCE","use":"flagship value story, sales-safe"}
+{"signal_id":"VMS-0003","signal":"Independent validation suite (sysreq/ResNet18/ECC/NCCL/stress+burn) passes and is recordable.","grade":"DIRECT_EVIDENCE","use":"rent-ready evidence claim, sales-safe"}
+{"signal_id":"VMS-0004","signal":"Vast.ai is a real GPU rental marketplace running host verification.","grade":"HONEY","use":"Stage-1 validation channel; confirm API before integration claim"}
+{"signal_id":"VMS-0005","signal":"6 verified datacenter ITADs exist (Sims, SK tes, Apto, Procurri, Re-Teck, GreenTek Solutions).","grade":"HONEY","use":"Stage-2 outreach prep; GPU-specific fit unconfirmed"}
+{"signal_id":"VMS-0006","signal":"Barkr is a real AI, insurance-backed asset-valuation service for lenders (partner-candidate, pricing layer).","grade":"HONEY","use":"partnership exploration; no Munich Re claim; no endorsement claim"}
+{"signal_id":"VMS-0007","signal":"Verified adjacent platforms each occupy one layer (Blancco erasure, Spherity identity, EquipmentWatch comps).","grade":"HONEY","use":"internal positioning only; no 'no competitor' absolute"}

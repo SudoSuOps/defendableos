@@ -1,0 +1,5 @@
+abs_path,name,size_bytes,modified_at_utc,sha256,type,topic,disposition
+/home/swarm/Kimi_Agent_DefendableOS Compute Wedge Mission.zip,Kimi_Agent_DefendableOS Compute Wedge Mission.zip,916056,2026-05-25T16:32:14.104433+00:00,da0ae8df4ca820f838ba54bff3b202460db948d0809ae767c918025c9536512f,.zip,wedge_package_zip,PRIMARY_INPUT
+/home/swarm/defendableos.agent.final.md,defendableos.agent.final.md,260560,2026-05-25T16:33:59.938426+00:00,8977e76f170cd2eb6508e9d6b177d5ed28f205fe1b7a2826dfd796ac9bb7d5c1,.md,wedge_final_report_md_standalone,PRIMARY_INPUT
+/home/swarm/DefendableOS_Compute_Wedge_Report.docx,DefendableOS_Compute_Wedge_Report.docx,1115976,2026-05-25T16:36:32.382489+00:00,44785fa829011420945218e8219e63937933a74116663fd97d54804f93903f8f,.docx,wedge_final_report_docx_standalone,PRIMARY_INPUT
+/home/swarm/Desktop/defendableos/research/kimi_intake/2026-05-25,kimi_intake_2026-05-25 (DIR),1974497,—,(directory · reference only · 24 files),<dir>,prior_kimi_intake_pass,PRIOR_INTAKE_ARTIFACT

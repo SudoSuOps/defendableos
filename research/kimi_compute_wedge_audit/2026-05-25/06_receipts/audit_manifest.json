@@ -1,0 +1,45 @@
+{
+  "audit_id": "DEFENDABLEOS-KIMI-COMPUTE-PACKAGE-AUDIT-001",
+  "created_at": "2026-05-25",
+  "operator": "Claude Code — Swarm Evidence Audit",
+  "host": "swarm",
+  "repository": "defendableos",
+  "branch": "main",
+  "source_files": [
+    "/home/swarm/Kimi_Agent_DefendableOS Compute Wedge Mission.zip",
+    "/home/swarm/defendableos.agent.final.md",
+    "/home/swarm/DefendableOS_Compute_Wedge_Report.docx"
+  ],
+  "source_hashes": [
+    "da0ae8df4ca820f838ba54bff3b202460db948d0809ae767c918025c9536512f",
+    "8977e76f170cd2eb6508e9d6b177d5ed28f205fe1b7a2826dfd796ac9bb7d5c1",
+    "44785fa829011420945218e8219e63937933a74116663fd97d54804f93903f8f"
+  ],
+  "archive_members_reviewed": 32,
+  "material_claims_extracted": 25,
+  "material_claims_extracted_raw_pass": 590,
+  "claims_promoted_direct_evidence": 4,
+  "claims_promoted_honey": 4,
+  "claims_retained_jelly": 14,
+  "claims_rejected_propolis": 3,
+  "targets_audited": 10,
+  "targets_verified_for_outreach_preparation": 6,
+  "targets_unverifiable": ["Slyd", "STS Electronic Recycling", "Maxicom"],
+  "product_promotion_verdict": "PROMOTE — Defendable Compute Proof Receipt v0.1; rests on DIRECT_EVIDENCE; market dollar claims remain JELLY",
+  "commercialization_sequence": ["neocloud_validation_fastest", "itad_first_paid_revenue", "lender_scale_destination"],
+  "git_status_before": "clean except untracked research/kimi_compute_wedge_audit/ and research/kimi_compute_wedge_intake/",
+  "git_status_after": "new audit artifacts staged for one scoped local commit; NO push",
+  "doctrine": "Tribunal begins before training; no proof, no honey.",
+  "safety_attestation": {
+    "gpu_used": false,
+    "model_server_launched": false,
+    "docker_modified": false,
+    "vast_modified": false,
+    "nvidia_modified": false,
+    "network_modified": false,
+    "apt_modified": false,
+    "original_source_modified": false,
+    "github_push_performed": false,
+    "outreach_sent": false
+  }
+}
