@@ -52,6 +52,7 @@ def healthz() -> dict:
             "kimi_configured": settings.kimi_configured,
             "openai_configured": settings.openai_configured,
             "swarmcurator_configured": settings.swarmcurator_configured,
+            "defendable_ledger_publisher_configured": settings.defendable_ledger_publisher_configured,
             "ebay_configured": settings.ebay_configured,
             "ens_mode": settings.ens_mode,
             "ens_live_writes_enabled": settings.ens_live_writes_enabled,
