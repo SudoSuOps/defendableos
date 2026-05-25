@@ -1,0 +1,379 @@
+drop_file,member_path,member_size,member_crc32,member_modified,member_ext,topic_guess,file_class,disposition
+Kimi_Agent_Defendable Swarm Research Repo.zip,00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:39:48,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo.zip,01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:03:16,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T02:59:50,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo.zip,03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:04:36,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo.zip,04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T02:52:08,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:35:44,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:04:54,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:29:58,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:30:00,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:10:14,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:40:32,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:16:14,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:19:52,.md,strategy_planning,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,PUSH_GUIDE.md,3141,8125cb25,2026-05-25T03:53:54,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo.zip,README.md,18564,9add1b3b,2026-05-25T03:49:24,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo.zip,defendableos-swarm-research.bundle,554233,dc58adc3,2026-05-25T03:53:54,.bundle,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo.zip,defendableos-swarm-research.tar.gz,1237674,9d43eba7,2026-05-25T03:53:54,.gz,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo.zip,research/defendable_dim01_consumer_financial.md,55110,5d9a4274,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,research/defendable_dim02_fraud_digital.md,49882,9246f86e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,research/defendable_dim03_cyber_ai_risk.md,45575,0b397859,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,research/defendable_dim04_property_contractor.md,37690,e701b4dc,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,research/defendable_dim05_asset_compute.md,40021,2eb8f4dd,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,research/defendable_dim06_ai_agent_trust.md,44132,9abcf30e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,docs/VERDICT.md,4113,87295838,2026-05-25T03:49:24,.md,tribunal_verdict,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:49:24,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T03:49:24,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T03:49:24,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:49:24,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:49:24,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:49:24,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:49:24,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo.zip,deliverables/12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:49:24,.md,strategy_planning,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:39:48,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:03:16,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T02:59:50,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:04:36,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T02:52:08,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:35:44,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:04:54,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:29:58,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:30:00,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:10:14,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:40:32,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:16:14,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:19:52,.md,strategy_planning,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,PUSH_GUIDE.md,3141,8125cb25,2026-05-25T03:53:54,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,README.md,18564,9add1b3b,2026-05-25T03:49:24,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,defendableos-swarm-research-v2.bundle,777640,e1c280b2,2026-05-25T04:49:10,.bundle,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,defendableos-swarm-research.bundle,554233,dc58adc3,2026-05-25T03:53:54,.bundle,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,defendableos-swarm-research.tar.gz,1237674,9d43eba7,2026-05-25T03:53:54,.gz,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,research/defendable_dim01_consumer_financial.md,55110,5d9a4274,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,research/defendable_dim02_fraud_digital.md,49882,9246f86e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,research/defendable_dim03_cyber_ai_risk.md,45575,0b397859,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,research/defendable_dim04_property_contractor.md,37690,e701b4dc,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,research/defendable_dim05_asset_compute.md,40021,2eb8f4dd,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,research/defendable_dim06_ai_agent_trust.md,44132,9abcf30e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/00_EXECUTIVE_VERDICT.md,34127,b6db3af3,2026-05-25T04:29:34,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/01_FEDERAL_VOCABULARY_ADDENDUM.md,46832,5e67b435,2026-05-25T04:33:20,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl,118004,9771bbd3,2026-05-25T04:33:16,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/03_ACTIVE_TARGETS.csv,2428,6c9b00ea,2026-05-25T04:33:50,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/04_EXPIRED_MARKET_PROOF.csv,37101,06b61ecc,2026-05-25T04:30:38,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/05_AWARD_RECEIPTS.jsonl,31321,29c5ee19,2026-05-25T04:34:12,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/06_AGENCY_BUYER_MAP.md,39068,8dc813a0,2026-05-25T04:29:04,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/07_NAICS_PSC_EVIDENCE_MAP.csv,13199,69a5569c,2026-05-25T04:30:20,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/08_CAPABILITY_STATEMENT_BLUEPRINT.md,15116,f2a316e8,2026-05-25T04:32:46,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md,50053,6d3900de,2026-05-25T04:36:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md,62890,1ea6e67a,2026-05-25T04:39:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/11_PARTNER_AND_PRIME_MAP.md,46072,512eaa40,2026-05-25T04:44:04,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json,10294,973cc5a4,2026-05-25T04:38:08,.json,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/13_REJECTION_AND_QUARANTINE_LOG.jsonl,939,fc104409,2026-05-25T04:37:40,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md,72146,4bd623bf,2026-05-25T04:41:32,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/pod04_ai_tevv_results.md,27719,764da0ef,2026-05-25T04:16:34,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/pod05_cyber_results.md,33278,0c367635,2026-05-25T04:19:54,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/pod06_data_governance_results.md,26094,67643594,2026-05-25T04:15:50,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/pod07_08_fraud_compute_results.md,27508,f9b42ce8,2026-05-25T04:16:26,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/pod09_award_history_results.md,49758,658e0b4f,2026-05-25T04:22:58,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,federal/pod10_11_smallbusiness_naics_results.md,32170,bdf83005,2026-05-25T04:22:22,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,docs/VERDICT.md,4113,87295838,2026-05-25T03:49:24,.md,tribunal_verdict,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:49:24,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T03:49:24,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T03:49:24,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:49:24,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:49:24,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:49:24,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:49:24,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (1).zip,deliverables/12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:49:24,.md,strategy_planning,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:39:48,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:03:16,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T02:59:50,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:04:36,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T02:52:08,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:35:44,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:04:54,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:29:58,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:30:00,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:10:14,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:40:32,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:16:14,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:19:52,.md,strategy_planning,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM-v0.1.zip,228222,01f31965,2026-05-25T05:00:52,.zip,federal_procurement,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,PUSH_GUIDE.md,3141,8125cb25,2026-05-25T03:53:54,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,README.md,18564,9add1b3b,2026-05-25T03:49:24,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,defendableos-swarm-research-v2.bundle,777640,e1c280b2,2026-05-25T04:49:10,.bundle,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,defendableos-swarm-research.bundle,554233,dc58adc3,2026-05-25T03:53:54,.bundle,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,defendableos-swarm-research.tar.gz,1237674,9d43eba7,2026-05-25T03:53:54,.gz,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,research/defendable_dim01_consumer_financial.md,55110,5d9a4274,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,research/defendable_dim02_fraud_digital.md,49882,9246f86e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,research/defendable_dim03_cyber_ai_risk.md,45575,0b397859,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,research/defendable_dim04_property_contractor.md,37690,e701b4dc,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,research/defendable_dim05_asset_compute.md,40021,2eb8f4dd,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,research/defendable_dim06_ai_agent_trust.md,44132,9abcf30e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/00_EXECUTIVE_VERDICT.md,34127,b6db3af3,2026-05-25T04:29:34,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/01_FEDERAL_VOCABULARY_ADDENDUM.md,46832,5e67b435,2026-05-25T04:33:20,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl,118004,9771bbd3,2026-05-25T04:33:16,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/03_ACTIVE_TARGETS.csv,2428,6c9b00ea,2026-05-25T04:33:50,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/04_EXPIRED_MARKET_PROOF.csv,37101,06b61ecc,2026-05-25T04:30:38,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/05_AWARD_RECEIPTS.jsonl,31321,29c5ee19,2026-05-25T04:34:12,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/06_AGENCY_BUYER_MAP.md,39068,8dc813a0,2026-05-25T04:29:04,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/07_NAICS_PSC_EVIDENCE_MAP.csv,13199,69a5569c,2026-05-25T04:30:20,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/08_CAPABILITY_STATEMENT_BLUEPRINT.md,15116,f2a316e8,2026-05-25T04:32:46,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md,50053,6d3900de,2026-05-25T04:36:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md,62890,1ea6e67a,2026-05-25T04:39:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/11_PARTNER_AND_PRIME_MAP.md,46072,512eaa40,2026-05-25T04:44:04,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json,10294,973cc5a4,2026-05-25T04:38:08,.json,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/13_REJECTION_AND_QUARANTINE_LOG.jsonl,939,fc104409,2026-05-25T04:37:40,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md,72146,4bd623bf,2026-05-25T04:41:32,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/pod04_ai_tevv_results.md,27719,764da0ef,2026-05-25T04:16:34,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/pod05_cyber_results.md,33278,0c367635,2026-05-25T04:19:54,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/pod06_data_governance_results.md,26094,67643594,2026-05-25T04:15:50,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/pod07_08_fraud_compute_results.md,27508,f9b42ce8,2026-05-25T04:16:26,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/pod09_award_history_results.md,49758,658e0b4f,2026-05-25T04:22:58,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal/pod10_11_smallbusiness_naics_results.md,32170,bdf83005,2026-05-25T04:22:22,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/00_EXECUTIVE_VERDICT.md,34127,b6db3af3,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/01_FEDERAL_VOCABULARY_ADDENDUM.md,46832,5e67b435,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl,118004,9771bbd3,2026-05-25T04:58:48,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/03_ACTIVE_TARGETS.csv,2428,6c9b00ea,2026-05-25T04:58:48,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/04_EXPIRED_MARKET_PROOF.csv,37101,06b61ecc,2026-05-25T04:58:48,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/05_AWARD_RECEIPTS.jsonl,31321,29c5ee19,2026-05-25T04:58:48,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/06_AGENCY_BUYER_MAP.md,39068,8dc813a0,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/07_NAICS_PSC_EVIDENCE_MAP.csv,13199,69a5569c,2026-05-25T04:58:48,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/08_CAPABILITY_STATEMENT_BLUEPRINT.md,15116,f2a316e8,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md,50053,6d3900de,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md,62890,1ea6e67a,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/11_PARTNER_AND_PRIME_MAP.md,46072,512eaa40,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json,10294,973cc5a4,2026-05-25T04:58:48,.json,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/13_REJECTION_AND_QUARANTINE_LOG.jsonl,939,fc104409,2026-05-25T04:58:48,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md,72146,4bd623bf,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/pod04_ai_tevv_results.md,27719,764da0ef,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/pod05_cyber_results.md,33278,0c367635,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/pod06_data_governance_results.md,26094,67643594,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/pod07_08_fraud_compute_results.md,27508,f9b42ce8,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/pod09_award_history_results.md,49758,658e0b4f,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,federal-repo/pod10_11_smallbusiness_naics_results.md,32170,bdf83005,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,docs/VERDICT.md,4113,87295838,2026-05-25T03:49:24,.md,tribunal_verdict,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:49:24,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T03:49:24,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T03:49:24,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:49:24,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:49:24,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:49:24,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:49:24,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,deliverables/12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:49:24,.md,strategy_planning,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/00_EXECUTIVE_VERDICT.md,34127,b6db3af3,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/01_FEDERAL_VOCABULARY_ADDENDUM.md,46832,5e67b435,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl,118004,9771bbd3,2026-05-25T05:00:10,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/03_ACTIVE_TARGETS.csv,2428,6c9b00ea,2026-05-25T05:00:10,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/04_EXPIRED_MARKET_PROOF.csv,37101,06b61ecc,2026-05-25T05:00:10,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/05_AWARD_RECEIPTS.jsonl,31321,29c5ee19,2026-05-25T05:00:10,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/06_AGENCY_BUYER_MAP.md,39068,8dc813a0,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/07_NAICS_PSC_EVIDENCE_MAP.csv,13199,69a5569c,2026-05-25T05:00:10,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/08_CAPABILITY_STATEMENT_BLUEPRINT.md,15116,f2a316e8,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md,50053,6d3900de,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md,62890,1ea6e67a,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/11_PARTNER_AND_PRIME_MAP.md,46072,512eaa40,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json,10294,973cc5a4,2026-05-25T05:00:10,.json,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/13_REJECTION_AND_QUARANTINE_LOG.jsonl,939,fc104409,2026-05-25T05:00:10,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md,72146,4bd623bf,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/README.md,3688,160c79d6,2026-05-25T05:00:40,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod04_ai_tevv_results.md,27719,764da0ef,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod05_cyber_results.md,33278,0c367635,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod06_data_governance_results.md,26094,67643594,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod07_08_fraud_compute_results.md,27508,f9b42ce8,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod09_award_history_results.md,49758,658e0b4f,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (2).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod10_11_smallbusiness_naics_results.md,32170,bdf83005,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:39:48,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:03:16,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T02:59:50,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:04:36,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T02:52:08,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:35:44,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:04:54,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:29:58,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:30:00,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:10:14,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:40:32,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:16:14,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:19:52,.md,strategy_planning,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM-v0.1.zip,228222,01f31965,2026-05-25T05:00:52,.zip,federal_procurement,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,PUSH_GUIDE.md,3141,8125cb25,2026-05-25T03:53:54,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,README.md,18564,9add1b3b,2026-05-25T03:49:24,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal-v0.1.zip,167227,cfb6ee3a,2026-05-25T05:08:20,.zip,federal_procurement,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendableos-swarm-research-v2.bundle,777640,e1c280b2,2026-05-25T04:49:10,.bundle,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendableos-swarm-research.bundle,554233,dc58adc3,2026-05-25T03:53:54,.bundle,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendableos-swarm-research.tar.gz,1237674,9d43eba7,2026-05-25T03:53:54,.gz,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,research/defendable_dim01_consumer_financial.md,55110,5d9a4274,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,research/defendable_dim02_fraud_digital.md,49882,9246f86e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,research/defendable_dim03_cyber_ai_risk.md,45575,0b397859,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,research/defendable_dim04_property_contractor.md,37690,e701b4dc,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,research/defendable_dim05_asset_compute.md,40021,2eb8f4dd,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,research/defendable_dim06_ai_agent_trust.md,44132,9abcf30e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/00_EXECUTIVE_VERDICT.md,34127,b6db3af3,2026-05-25T04:29:34,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/01_FEDERAL_VOCABULARY_ADDENDUM.md,46832,5e67b435,2026-05-25T04:33:20,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl,118004,9771bbd3,2026-05-25T04:33:16,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/03_ACTIVE_TARGETS.csv,2428,6c9b00ea,2026-05-25T04:33:50,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/04_EXPIRED_MARKET_PROOF.csv,37101,06b61ecc,2026-05-25T04:30:38,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/05_AWARD_RECEIPTS.jsonl,31321,29c5ee19,2026-05-25T04:34:12,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/06_AGENCY_BUYER_MAP.md,39068,8dc813a0,2026-05-25T04:29:04,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/07_NAICS_PSC_EVIDENCE_MAP.csv,13199,69a5569c,2026-05-25T04:30:20,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/08_CAPABILITY_STATEMENT_BLUEPRINT.md,15116,f2a316e8,2026-05-25T04:32:46,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md,50053,6d3900de,2026-05-25T04:36:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md,62890,1ea6e67a,2026-05-25T04:39:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/11_PARTNER_AND_PRIME_MAP.md,46072,512eaa40,2026-05-25T04:44:04,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json,10294,973cc5a4,2026-05-25T04:38:08,.json,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/13_REJECTION_AND_QUARANTINE_LOG.jsonl,939,fc104409,2026-05-25T04:37:40,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md,72146,4bd623bf,2026-05-25T04:41:32,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/pod04_ai_tevv_results.md,27719,764da0ef,2026-05-25T04:16:34,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/pod05_cyber_results.md,33278,0c367635,2026-05-25T04:19:54,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/pod06_data_governance_results.md,26094,67643594,2026-05-25T04:15:50,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/pod07_08_fraud_compute_results.md,27508,f9b42ce8,2026-05-25T04:16:26,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/pod09_award_history_results.md,49758,658e0b4f,2026-05-25T04:22:58,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal/pod10_11_smallbusiness_naics_results.md,32170,bdf83005,2026-05-25T04:22:22,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/00_EXECUTIVE_VERDICT.md,34127,b6db3af3,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/01_FEDERAL_VOCABULARY_ADDENDUM.md,46832,5e67b435,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl,118004,9771bbd3,2026-05-25T04:58:48,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/03_ACTIVE_TARGETS.csv,2428,6c9b00ea,2026-05-25T04:58:48,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/04_EXPIRED_MARKET_PROOF.csv,37101,06b61ecc,2026-05-25T04:58:48,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/05_AWARD_RECEIPTS.jsonl,31321,29c5ee19,2026-05-25T04:58:48,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/06_AGENCY_BUYER_MAP.md,39068,8dc813a0,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/07_NAICS_PSC_EVIDENCE_MAP.csv,13199,69a5569c,2026-05-25T04:58:48,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/08_CAPABILITY_STATEMENT_BLUEPRINT.md,15116,f2a316e8,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md,50053,6d3900de,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md,62890,1ea6e67a,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/11_PARTNER_AND_PRIME_MAP.md,46072,512eaa40,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json,10294,973cc5a4,2026-05-25T04:58:48,.json,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/13_REJECTION_AND_QUARANTINE_LOG.jsonl,939,fc104409,2026-05-25T04:58:48,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md,72146,4bd623bf,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/pod04_ai_tevv_results.md,27719,764da0ef,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/pod05_cyber_results.md,33278,0c367635,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/pod06_data_governance_results.md,26094,67643594,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/pod07_08_fraud_compute_results.md,27508,f9b42ce8,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/pod09_award_history_results.md,49758,658e0b4f,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,federal-repo/pod10_11_smallbusiness_naics_results.md,32170,bdf83005,2026-05-25T04:58:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,docs/VERDICT.md,4113,87295838,2026-05-25T03:49:24,.md,tribunal_verdict,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:49:24,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T03:49:24,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T03:49:24,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:49:24,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:49:24,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:49:24,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:49:24,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,deliverables/12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:49:24,.md,strategy_planning,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/00_EXECUTIVE_VERDICT.md,34127,b6db3af3,2026-05-25T05:07:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/01_FEDERAL_VOCABULARY_ADDENDUM.md,46832,5e67b435,2026-05-25T05:07:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl,118004,9771bbd3,2026-05-25T05:07:52,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/03_ACTIVE_TARGETS.csv,2428,6c9b00ea,2026-05-25T05:07:52,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/04_EXPIRED_MARKET_PROOF.csv,37101,06b61ecc,2026-05-25T05:07:52,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/05_AWARD_RECEIPTS.jsonl,31321,29c5ee19,2026-05-25T05:07:52,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/06_AGENCY_BUYER_MAP.md,39068,8dc813a0,2026-05-25T05:07:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/07_NAICS_PSC_EVIDENCE_MAP.csv,13199,69a5569c,2026-05-25T05:07:52,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/08_CAPABILITY_STATEMENT_BLUEPRINT.md,15116,f2a316e8,2026-05-25T05:07:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md,50053,6d3900de,2026-05-25T05:07:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md,62890,1ea6e67a,2026-05-25T05:07:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/11_PARTNER_AND_PRIME_MAP.md,46072,512eaa40,2026-05-25T05:07:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json,10294,973cc5a4,2026-05-25T05:07:52,.json,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/13_REJECTION_AND_QUARANTINE_LOG.jsonl,939,fc104409,2026-05-25T05:07:52,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md,72146,4bd623bf,2026-05-25T05:07:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,defendable-federal/README.md,1840,8e629c61,2026-05-25T05:08:12,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/00_EXECUTIVE_VERDICT.md,34127,b6db3af3,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/01_FEDERAL_VOCABULARY_ADDENDUM.md,46832,5e67b435,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl,118004,9771bbd3,2026-05-25T05:00:10,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/03_ACTIVE_TARGETS.csv,2428,6c9b00ea,2026-05-25T05:00:10,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/04_EXPIRED_MARKET_PROOF.csv,37101,06b61ecc,2026-05-25T05:00:10,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/05_AWARD_RECEIPTS.jsonl,31321,29c5ee19,2026-05-25T05:00:10,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/06_AGENCY_BUYER_MAP.md,39068,8dc813a0,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/07_NAICS_PSC_EVIDENCE_MAP.csv,13199,69a5569c,2026-05-25T05:00:10,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/08_CAPABILITY_STATEMENT_BLUEPRINT.md,15116,f2a316e8,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md,50053,6d3900de,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md,62890,1ea6e67a,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/11_PARTNER_AND_PRIME_MAP.md,46072,512eaa40,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json,10294,973cc5a4,2026-05-25T05:00:10,.json,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/13_REJECTION_AND_QUARANTINE_LOG.jsonl,939,fc104409,2026-05-25T05:00:10,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md,72146,4bd623bf,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/README.md,3688,160c79d6,2026-05-25T05:00:40,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod04_ai_tevv_results.md,27719,764da0ef,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod05_cyber_results.md,33278,0c367635,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod06_data_governance_results.md,26094,67643594,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod07_08_fraud_compute_results.md,27508,f9b42ce8,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod09_award_history_results.md,49758,658e0b4f,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable Swarm Research Repo (3).zip,DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod10_11_smallbusiness_naics_results.md,32170,bdf83005,2026-05-25T05:00:10,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:39:48,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable sam.zip,01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:03:16,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T02:59:50,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable sam.zip,03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:04:36,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable sam.zip,04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T02:52:08,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:35:44,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:04:54,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:29:58,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:30:00,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:10:14,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:40:32,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:16:14,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:19:52,.md,strategy_planning,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,PUSH_GUIDE.md,3141,8125cb25,2026-05-25T03:53:54,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable sam.zip,README.md,18564,9add1b3b,2026-05-25T03:49:24,.md,meta_readme,draft_report,REVIEW
+Kimi_Agent_Defendable sam.zip,defendableos-swarm-research-v2.bundle,777640,e1c280b2,2026-05-25T04:49:10,.bundle,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable sam.zip,defendableos-swarm-research.bundle,554233,dc58adc3,2026-05-25T03:53:54,.bundle,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable sam.zip,defendableos-swarm-research.tar.gz,1237674,9d43eba7,2026-05-25T03:53:54,.gz,repo_bundle,archive_or_bundle,ARCHIVE
+Kimi_Agent_Defendable sam.zip,research/defendable_dim01_consumer_financial.md,55110,5d9a4274,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,research/defendable_dim02_fraud_digital.md,49882,9246f86e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,research/defendable_dim03_cyber_ai_risk.md,45575,0b397859,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,research/defendable_dim04_property_contractor.md,37690,e701b4dc,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,research/defendable_dim05_asset_compute.md,40021,2eb8f4dd,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,research/defendable_dim06_ai_agent_trust.md,44132,9abcf30e,2026-05-25T03:49:24,.md,dimension_research,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/00_EXECUTIVE_VERDICT.md,34127,b6db3af3,2026-05-25T04:29:34,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/01_FEDERAL_VOCABULARY_ADDENDUM.md,46832,5e67b435,2026-05-25T04:33:20,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl,118004,9771bbd3,2026-05-25T04:33:16,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,federal/03_ACTIVE_TARGETS.csv,2428,6c9b00ea,2026-05-25T04:33:50,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,federal/04_EXPIRED_MARKET_PROOF.csv,37101,06b61ecc,2026-05-25T04:30:38,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,federal/05_AWARD_RECEIPTS.jsonl,31321,29c5ee19,2026-05-25T04:34:12,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,federal/06_AGENCY_BUYER_MAP.md,39068,8dc813a0,2026-05-25T04:29:04,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/07_NAICS_PSC_EVIDENCE_MAP.csv,13199,69a5569c,2026-05-25T04:30:20,.csv,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,federal/08_CAPABILITY_STATEMENT_BLUEPRINT.md,15116,f2a316e8,2026-05-25T04:32:46,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md,50053,6d3900de,2026-05-25T04:36:48,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md,62890,1ea6e67a,2026-05-25T04:39:52,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/11_PARTNER_AND_PRIME_MAP.md,46072,512eaa40,2026-05-25T04:44:04,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json,10294,973cc5a4,2026-05-25T04:38:08,.json,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,federal/13_REJECTION_AND_QUARANTINE_LOG.jsonl,939,fc104409,2026-05-25T04:37:40,.jsonl,federal_procurement,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,federal/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md,72146,4bd623bf,2026-05-25T04:41:32,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/pod04_ai_tevv_results.md,27719,764da0ef,2026-05-25T04:16:34,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/pod05_cyber_results.md,33278,0c367635,2026-05-25T04:19:54,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/pod06_data_governance_results.md,26094,67643594,2026-05-25T04:15:50,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/pod07_08_fraud_compute_results.md,27508,f9b42ce8,2026-05-25T04:16:26,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/pod09_award_history_results.md,49758,658e0b4f,2026-05-25T04:22:58,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,federal/pod10_11_smallbusiness_naics_results.md,32170,bdf83005,2026-05-25T04:22:22,.md,federal_procurement,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,docs/VERDICT.md,4113,87295838,2026-05-25T03:49:24,.md,tribunal_verdict,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/00_EXECUTIVE_MEMO.md,11924,2745d273,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable sam.zip,deliverables/01_DEFENDABLE_ONTOLOGY.md,125332,87f76982,2026-05-25T03:49:24,.md,ontology_vocab,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/02_SOURCE_REGISTRY.csv,68307,ba507c12,2026-05-25T03:49:24,.csv,misc,structured_data,REVIEW
+Kimi_Agent_Defendable sam.zip,deliverables/03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md,34015,4471c070,2026-05-25T03:49:24,.md,misc,draft_report,REVIEW
+Kimi_Agent_Defendable sam.zip,deliverables/04_CORPUS_SCHEMA.json,22742,b75ac0fe,2026-05-25T03:49:24,.json,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/05_REAL_SEED_CORPUS.jsonl,631152,4d5cb2ea,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/06_DEFENSE_FIXER_LIBRARY.jsonl,175803,7cd6aa57,2026-05-25T03:49:24,.jsonl,fixer_repair,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/07_SWARMCURATOR_EVAL_PACK.jsonl,362343,e99b13c5,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/08_SWARMJELLY_FAILURE_PACK.jsonl,299860,a7678da1,2026-05-25T03:49:24,.jsonl,corpus_seed,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/09_STREETCHAT_SIGNAL_POLICY.md,62995,a3c7a73a,2026-05-25T03:49:24,.md,streetchat_signal,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/10_DEFENDABLE_LEDGER_MANIFEST.json,14488,c8c6f84b,2026-05-25T03:49:24,.json,manifest_ledger,structured_data,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md,65764,5c7e361a,2026-05-25T03:49:24,.md,product_strategy,draft_report,INGEST
+Kimi_Agent_Defendable sam.zip,deliverables/12_RESEARCH_GAPS_AND_NEXT_RUN.md,38931,17331444,2026-05-25T03:49:24,.md,strategy_planning,draft_report,INGEST

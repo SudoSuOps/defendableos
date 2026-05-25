@@ -1,0 +1,269 @@
+
+--- Kimi_Agent_Defendable Swarm Research Repo.zip ---
+    11924  2026-05-24 23:39   00_EXECUTIVE_MEMO.md
+   125332  2026-05-24 23:03   01_DEFENDABLE_ONTOLOGY.md
+    68307  2026-05-24 22:59   02_SOURCE_REGISTRY.csv
+    34015  2026-05-24 23:04   03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md
+    22742  2026-05-24 22:52   04_CORPUS_SCHEMA.json
+   631152  2026-05-24 23:35   05_REAL_SEED_CORPUS.jsonl
+   175803  2026-05-24 23:04   06_DEFENSE_FIXER_LIBRARY.jsonl
+   362343  2026-05-24 23:29   07_SWARMCURATOR_EVAL_PACK.jsonl
+   299860  2026-05-24 23:30   08_SWARMJELLY_FAILURE_PACK.jsonl
+    62995  2026-05-24 23:10   09_STREETCHAT_SIGNAL_POLICY.md
+    14488  2026-05-24 23:40   10_DEFENDABLE_LEDGER_MANIFEST.json
+    65764  2026-05-24 23:16   11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md
+    38931  2026-05-24 23:19   12_RESEARCH_GAPS_AND_NEXT_RUN.md
+     3141  2026-05-24 23:53   PUSH_GUIDE.md
+    18564  2026-05-24 23:49   README.md
+   554233  2026-05-24 23:53   defendableos-swarm-research.bundle
+  1237674  2026-05-24 23:53   defendableos-swarm-research.tar.gz
+    55110  2026-05-24 23:49   research/defendable_dim01_consumer_financial.md
+    49882  2026-05-24 23:49   research/defendable_dim02_fraud_digital.md
+    45575  2026-05-24 23:49   research/defendable_dim03_cyber_ai_risk.md
+    37690  2026-05-24 23:49   research/defendable_dim04_property_contractor.md
+    40021  2026-05-24 23:49   research/defendable_dim05_asset_compute.md
+    44132  2026-05-24 23:49   research/defendable_dim06_ai_agent_trust.md
+     4113  2026-05-24 23:49   docs/VERDICT.md
+    11924  2026-05-24 23:49   deliverables/00_EXECUTIVE_MEMO.md
+   125332  2026-05-24 23:49   deliverables/01_DEFENDABLE_ONTOLOGY.md
+    68307  2026-05-24 23:49   deliverables/02_SOURCE_REGISTRY.csv
+    34015  2026-05-24 23:49   deliverables/03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md
+    22742  2026-05-24 23:49   deliverables/04_CORPUS_SCHEMA.json
+   631152  2026-05-24 23:49   deliverables/05_REAL_SEED_CORPUS.jsonl
+   175803  2026-05-24 23:49   deliverables/06_DEFENSE_FIXER_LIBRARY.jsonl
+   362343  2026-05-24 23:49   deliverables/07_SWARMCURATOR_EVAL_PACK.jsonl
+   299860  2026-05-24 23:49   deliverables/08_SWARMJELLY_FAILURE_PACK.jsonl
+    62995  2026-05-24 23:49   deliverables/09_STREETCHAT_SIGNAL_POLICY.md
+    14488  2026-05-24 23:49   deliverables/10_DEFENDABLE_LEDGER_MANIFEST.json
+    65764  2026-05-24 23:49   deliverables/11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md
+    38931  2026-05-24 23:49   deliverables/12_RESEARCH_GAPS_AND_NEXT_RUN.md
+---------                     -------
+  5917447                     37 files
+  ...
+    38931  2026-05-24 23:49   deliverables/12_RESEARCH_GAPS_AND_NEXT_RUN.md
+---------                     -------
+  5917447                     37 files
+
+--- Kimi_Agent_Defendable Swarm Research Repo (1).zip ---
+    11924  2026-05-24 23:39   00_EXECUTIVE_MEMO.md
+   125332  2026-05-24 23:03   01_DEFENDABLE_ONTOLOGY.md
+    68307  2026-05-24 22:59   02_SOURCE_REGISTRY.csv
+    34015  2026-05-24 23:04   03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md
+    22742  2026-05-24 22:52   04_CORPUS_SCHEMA.json
+   631152  2026-05-24 23:35   05_REAL_SEED_CORPUS.jsonl
+   175803  2026-05-24 23:04   06_DEFENSE_FIXER_LIBRARY.jsonl
+   362343  2026-05-24 23:29   07_SWARMCURATOR_EVAL_PACK.jsonl
+   299860  2026-05-24 23:30   08_SWARMJELLY_FAILURE_PACK.jsonl
+    62995  2026-05-24 23:10   09_STREETCHAT_SIGNAL_POLICY.md
+    14488  2026-05-24 23:40   10_DEFENDABLE_LEDGER_MANIFEST.json
+    65764  2026-05-24 23:16   11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md
+    38931  2026-05-24 23:19   12_RESEARCH_GAPS_AND_NEXT_RUN.md
+     3141  2026-05-24 23:53   PUSH_GUIDE.md
+    18564  2026-05-24 23:49   README.md
+   777640  2026-05-25 00:49   defendableos-swarm-research-v2.bundle
+   554233  2026-05-24 23:53   defendableos-swarm-research.bundle
+  1237674  2026-05-24 23:53   defendableos-swarm-research.tar.gz
+    55110  2026-05-24 23:49   research/defendable_dim01_consumer_financial.md
+    49882  2026-05-24 23:49   research/defendable_dim02_fraud_digital.md
+    45575  2026-05-24 23:49   research/defendable_dim03_cyber_ai_risk.md
+    37690  2026-05-24 23:49   research/defendable_dim04_property_contractor.md
+    40021  2026-05-24 23:49   research/defendable_dim05_asset_compute.md
+    44132  2026-05-24 23:49   research/defendable_dim06_ai_agent_trust.md
+    34127  2026-05-25 00:29   federal/00_EXECUTIVE_VERDICT.md
+    46832  2026-05-25 00:33   federal/01_FEDERAL_VOCABULARY_ADDENDUM.md
+   118004  2026-05-25 00:33   federal/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl
+     2428  2026-05-25 00:33   federal/03_ACTIVE_TARGETS.csv
+    37101  2026-05-25 00:30   federal/04_EXPIRED_MARKET_PROOF.csv
+    31321  2026-05-25 00:34   federal/05_AWARD_RECEIPTS.jsonl
+    39068  2026-05-25 00:29   federal/06_AGENCY_BUYER_MAP.md
+    13199  2026-05-25 00:30   federal/07_NAICS_PSC_EVIDENCE_MAP.csv
+    15116  2026-05-25 00:32   federal/08_CAPABILITY_STATEMENT_BLUEPRINT.md
+    50053  2026-05-25 00:36   federal/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md
+    62890  2026-05-25 00:39   federal/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md
+    46072  2026-05-25 00:44   federal/11_PARTNER_AND_PRIME_MAP.md
+    10294  2026-05-25 00:38   federal/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json
+      939  2026-05-25 00:37   federal/13_REJECTION_AND_QUARANTINE_LOG.jsonl
+    72146  2026-05-25 00:41   federal/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md
+    27719  2026-05-25 00:16   federal/pod04_ai_tevv_results.md
+    33278  2026-05-25 00:19   federal/pod05_cyber_results.md
+    26094  2026-05-25 00:15   federal/pod06_data_governance_results.md
+    27508  2026-05-25 00:16   federal/pod07_08_fraud_compute_results.md
+    49758  2026-05-25 00:22   federal/pod09_award_history_results.md
+    32170  2026-05-25 00:22   federal/pod10_11_smallbusiness_naics_results.md
+     4113  2026-05-24 23:49   docs/VERDICT.md
+    11924  2026-05-24 23:49   deliverables/00_EXECUTIVE_MEMO.md
+   125332  2026-05-24 23:49   deliverables/01_DEFENDABLE_ONTOLOGY.md
+    68307  2026-05-24 23:49   deliverables/02_SOURCE_REGISTRY.csv
+    34015  2026-05-24 23:49   deliverables/03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md
+  ...
+    38931  2026-05-24 23:49   deliverables/12_RESEARCH_GAPS_AND_NEXT_RUN.md
+---------                     -------
+  7471204                     59 files
+
+--- Kimi_Agent_Defendable Swarm Research Repo (2).zip ---
+    11924  2026-05-24 23:39   00_EXECUTIVE_MEMO.md
+   125332  2026-05-24 23:03   01_DEFENDABLE_ONTOLOGY.md
+    68307  2026-05-24 22:59   02_SOURCE_REGISTRY.csv
+    34015  2026-05-24 23:04   03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md
+    22742  2026-05-24 22:52   04_CORPUS_SCHEMA.json
+   631152  2026-05-24 23:35   05_REAL_SEED_CORPUS.jsonl
+   175803  2026-05-24 23:04   06_DEFENSE_FIXER_LIBRARY.jsonl
+   362343  2026-05-24 23:29   07_SWARMCURATOR_EVAL_PACK.jsonl
+   299860  2026-05-24 23:30   08_SWARMJELLY_FAILURE_PACK.jsonl
+    62995  2026-05-24 23:10   09_STREETCHAT_SIGNAL_POLICY.md
+    14488  2026-05-24 23:40   10_DEFENDABLE_LEDGER_MANIFEST.json
+    65764  2026-05-24 23:16   11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md
+    38931  2026-05-24 23:19   12_RESEARCH_GAPS_AND_NEXT_RUN.md
+   228222  2026-05-25 01:00   DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM-v0.1.zip
+     3141  2026-05-24 23:53   PUSH_GUIDE.md
+    18564  2026-05-24 23:49   README.md
+   777640  2026-05-25 00:49   defendableos-swarm-research-v2.bundle
+   554233  2026-05-24 23:53   defendableos-swarm-research.bundle
+  1237674  2026-05-24 23:53   defendableos-swarm-research.tar.gz
+    55110  2026-05-24 23:49   research/defendable_dim01_consumer_financial.md
+    49882  2026-05-24 23:49   research/defendable_dim02_fraud_digital.md
+    45575  2026-05-24 23:49   research/defendable_dim03_cyber_ai_risk.md
+    37690  2026-05-24 23:49   research/defendable_dim04_property_contractor.md
+    40021  2026-05-24 23:49   research/defendable_dim05_asset_compute.md
+    44132  2026-05-24 23:49   research/defendable_dim06_ai_agent_trust.md
+    34127  2026-05-25 00:29   federal/00_EXECUTIVE_VERDICT.md
+    46832  2026-05-25 00:33   federal/01_FEDERAL_VOCABULARY_ADDENDUM.md
+   118004  2026-05-25 00:33   federal/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl
+     2428  2026-05-25 00:33   federal/03_ACTIVE_TARGETS.csv
+    37101  2026-05-25 00:30   federal/04_EXPIRED_MARKET_PROOF.csv
+    31321  2026-05-25 00:34   federal/05_AWARD_RECEIPTS.jsonl
+    39068  2026-05-25 00:29   federal/06_AGENCY_BUYER_MAP.md
+    13199  2026-05-25 00:30   federal/07_NAICS_PSC_EVIDENCE_MAP.csv
+    15116  2026-05-25 00:32   federal/08_CAPABILITY_STATEMENT_BLUEPRINT.md
+    50053  2026-05-25 00:36   federal/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md
+    62890  2026-05-25 00:39   federal/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md
+    46072  2026-05-25 00:44   federal/11_PARTNER_AND_PRIME_MAP.md
+    10294  2026-05-25 00:38   federal/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json
+      939  2026-05-25 00:37   federal/13_REJECTION_AND_QUARANTINE_LOG.jsonl
+    72146  2026-05-25 00:41   federal/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md
+    27719  2026-05-25 00:16   federal/pod04_ai_tevv_results.md
+    33278  2026-05-25 00:19   federal/pod05_cyber_results.md
+    26094  2026-05-25 00:15   federal/pod06_data_governance_results.md
+    27508  2026-05-25 00:16   federal/pod07_08_fraud_compute_results.md
+    49758  2026-05-25 00:22   federal/pod09_award_history_results.md
+    32170  2026-05-25 00:22   federal/pod10_11_smallbusiness_naics_results.md
+    34127  2026-05-25 00:58   federal-repo/00_EXECUTIVE_VERDICT.md
+    46832  2026-05-25 00:58   federal-repo/01_FEDERAL_VOCABULARY_ADDENDUM.md
+   118004  2026-05-25 00:58   federal-repo/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl
+     2428  2026-05-25 00:58   federal-repo/03_ACTIVE_TARGETS.csv
+  ...
+    32170  2026-05-25 01:00   DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod10_11_smallbusiness_naics_results.md
+---------                     -------
+  9255348                     103 files
+
+--- Kimi_Agent_Defendable Swarm Research Repo (3).zip ---
+    11924  2026-05-24 23:39   00_EXECUTIVE_MEMO.md
+   125332  2026-05-24 23:03   01_DEFENDABLE_ONTOLOGY.md
+    68307  2026-05-24 22:59   02_SOURCE_REGISTRY.csv
+    34015  2026-05-24 23:04   03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md
+    22742  2026-05-24 22:52   04_CORPUS_SCHEMA.json
+   631152  2026-05-24 23:35   05_REAL_SEED_CORPUS.jsonl
+   175803  2026-05-24 23:04   06_DEFENSE_FIXER_LIBRARY.jsonl
+   362343  2026-05-24 23:29   07_SWARMCURATOR_EVAL_PACK.jsonl
+   299860  2026-05-24 23:30   08_SWARMJELLY_FAILURE_PACK.jsonl
+    62995  2026-05-24 23:10   09_STREETCHAT_SIGNAL_POLICY.md
+    14488  2026-05-24 23:40   10_DEFENDABLE_LEDGER_MANIFEST.json
+    65764  2026-05-24 23:16   11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md
+    38931  2026-05-24 23:19   12_RESEARCH_GAPS_AND_NEXT_RUN.md
+   228222  2026-05-25 01:00   DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM-v0.1.zip
+     3141  2026-05-24 23:53   PUSH_GUIDE.md
+    18564  2026-05-24 23:49   README.md
+   167227  2026-05-25 01:08   defendable-federal-v0.1.zip
+   777640  2026-05-25 00:49   defendableos-swarm-research-v2.bundle
+   554233  2026-05-24 23:53   defendableos-swarm-research.bundle
+  1237674  2026-05-24 23:53   defendableos-swarm-research.tar.gz
+    55110  2026-05-24 23:49   research/defendable_dim01_consumer_financial.md
+    49882  2026-05-24 23:49   research/defendable_dim02_fraud_digital.md
+    45575  2026-05-24 23:49   research/defendable_dim03_cyber_ai_risk.md
+    37690  2026-05-24 23:49   research/defendable_dim04_property_contractor.md
+    40021  2026-05-24 23:49   research/defendable_dim05_asset_compute.md
+    44132  2026-05-24 23:49   research/defendable_dim06_ai_agent_trust.md
+    34127  2026-05-25 00:29   federal/00_EXECUTIVE_VERDICT.md
+    46832  2026-05-25 00:33   federal/01_FEDERAL_VOCABULARY_ADDENDUM.md
+   118004  2026-05-25 00:33   federal/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl
+     2428  2026-05-25 00:33   federal/03_ACTIVE_TARGETS.csv
+    37101  2026-05-25 00:30   federal/04_EXPIRED_MARKET_PROOF.csv
+    31321  2026-05-25 00:34   federal/05_AWARD_RECEIPTS.jsonl
+    39068  2026-05-25 00:29   federal/06_AGENCY_BUYER_MAP.md
+    13199  2026-05-25 00:30   federal/07_NAICS_PSC_EVIDENCE_MAP.csv
+    15116  2026-05-25 00:32   federal/08_CAPABILITY_STATEMENT_BLUEPRINT.md
+    50053  2026-05-25 00:36   federal/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md
+    62890  2026-05-25 00:39   federal/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md
+    46072  2026-05-25 00:44   federal/11_PARTNER_AND_PRIME_MAP.md
+    10294  2026-05-25 00:38   federal/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json
+      939  2026-05-25 00:37   federal/13_REJECTION_AND_QUARANTINE_LOG.jsonl
+    72146  2026-05-25 00:41   federal/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md
+    27719  2026-05-25 00:16   federal/pod04_ai_tevv_results.md
+    33278  2026-05-25 00:19   federal/pod05_cyber_results.md
+    26094  2026-05-25 00:15   federal/pod06_data_governance_results.md
+    27508  2026-05-25 00:16   federal/pod07_08_fraud_compute_results.md
+    49758  2026-05-25 00:22   federal/pod09_award_history_results.md
+    32170  2026-05-25 00:22   federal/pod10_11_smallbusiness_naics_results.md
+    34127  2026-05-25 00:58   federal-repo/00_EXECUTIVE_VERDICT.md
+    46832  2026-05-25 00:58   federal-repo/01_FEDERAL_VOCABULARY_ADDENDUM.md
+   118004  2026-05-25 00:58   federal-repo/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl
+  ...
+    32170  2026-05-25 01:00   DEFENDABLEOS-FEDERAL-DEMAND-INTELLIGENCE-SWARM/pod10_11_smallbusiness_naics_results.md
+---------                     -------
+ 10004005                     120 files
+
+--- Kimi_Agent_Defendable sam.zip ---
+    11924  2026-05-24 23:39   00_EXECUTIVE_MEMO.md
+   125332  2026-05-24 23:03   01_DEFENDABLE_ONTOLOGY.md
+    68307  2026-05-24 22:59   02_SOURCE_REGISTRY.csv
+    34015  2026-05-24 23:04   03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md
+    22742  2026-05-24 22:52   04_CORPUS_SCHEMA.json
+   631152  2026-05-24 23:35   05_REAL_SEED_CORPUS.jsonl
+   175803  2026-05-24 23:04   06_DEFENSE_FIXER_LIBRARY.jsonl
+   362343  2026-05-24 23:29   07_SWARMCURATOR_EVAL_PACK.jsonl
+   299860  2026-05-24 23:30   08_SWARMJELLY_FAILURE_PACK.jsonl
+    62995  2026-05-24 23:10   09_STREETCHAT_SIGNAL_POLICY.md
+    14488  2026-05-24 23:40   10_DEFENDABLE_LEDGER_MANIFEST.json
+    65764  2026-05-24 23:16   11_PRODUCT_AND_AGENT_OPPORTUNITY_MAP.md
+    38931  2026-05-24 23:19   12_RESEARCH_GAPS_AND_NEXT_RUN.md
+     3141  2026-05-24 23:53   PUSH_GUIDE.md
+    18564  2026-05-24 23:49   README.md
+   777640  2026-05-25 00:49   defendableos-swarm-research-v2.bundle
+   554233  2026-05-24 23:53   defendableos-swarm-research.bundle
+  1237674  2026-05-24 23:53   defendableos-swarm-research.tar.gz
+    55110  2026-05-24 23:49   research/defendable_dim01_consumer_financial.md
+    49882  2026-05-24 23:49   research/defendable_dim02_fraud_digital.md
+    45575  2026-05-24 23:49   research/defendable_dim03_cyber_ai_risk.md
+    37690  2026-05-24 23:49   research/defendable_dim04_property_contractor.md
+    40021  2026-05-24 23:49   research/defendable_dim05_asset_compute.md
+    44132  2026-05-24 23:49   research/defendable_dim06_ai_agent_trust.md
+    34127  2026-05-25 00:29   federal/00_EXECUTIVE_VERDICT.md
+    46832  2026-05-25 00:33   federal/01_FEDERAL_VOCABULARY_ADDENDUM.md
+   118004  2026-05-25 00:33   federal/02_RAW_SAM_OPPORTUNITY_REGISTRY.jsonl
+     2428  2026-05-25 00:33   federal/03_ACTIVE_TARGETS.csv
+    37101  2026-05-25 00:30   federal/04_EXPIRED_MARKET_PROOF.csv
+    31321  2026-05-25 00:34   federal/05_AWARD_RECEIPTS.jsonl
+    39068  2026-05-25 00:29   federal/06_AGENCY_BUYER_MAP.md
+    13199  2026-05-25 00:30   federal/07_NAICS_PSC_EVIDENCE_MAP.csv
+    15116  2026-05-25 00:32   federal/08_CAPABILITY_STATEMENT_BLUEPRINT.md
+    50053  2026-05-25 00:36   federal/09_PRODUCT_PACKAGE_TO_CONTRACT_MAP.md
+    62890  2026-05-25 00:39   federal/10_RFI_AND_SOURCES_SOUGHT_RESPONSE_TARGETS.md
+    46072  2026-05-25 00:44   federal/11_PARTNER_AND_PRIME_MAP.md
+    10294  2026-05-25 00:38   federal/12_DEFENDABLE_FEDERAL_LEDGER_MANIFEST.json
+      939  2026-05-25 00:37   federal/13_REJECTION_AND_QUARANTINE_LOG.jsonl
+    72146  2026-05-25 00:41   federal/14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md
+    27719  2026-05-25 00:16   federal/pod04_ai_tevv_results.md
+    33278  2026-05-25 00:19   federal/pod05_cyber_results.md
+    26094  2026-05-25 00:15   federal/pod06_data_governance_results.md
+    27508  2026-05-25 00:16   federal/pod07_08_fraud_compute_results.md
+    49758  2026-05-25 00:22   federal/pod09_award_history_results.md
+    32170  2026-05-25 00:22   federal/pod10_11_smallbusiness_naics_results.md
+     4113  2026-05-24 23:49   docs/VERDICT.md
+    11924  2026-05-24 23:49   deliverables/00_EXECUTIVE_MEMO.md
+   125332  2026-05-24 23:49   deliverables/01_DEFENDABLE_ONTOLOGY.md
+    68307  2026-05-24 23:49   deliverables/02_SOURCE_REGISTRY.csv
+    34015  2026-05-24 23:49   deliverables/03_SOURCE_RANKING_AND_ACQUISITION_PLAN.md
+  ...
+    38931  2026-05-24 23:49   deliverables/12_RESEARCH_GAPS_AND_NEXT_RUN.md
+---------                     -------
+  7471204                     59 files
