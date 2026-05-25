@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import APIRouter, Depends, HTTPException
+import logging
+
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.core.deps import get_current_membership, get_current_user
@@ -19,7 +21,10 @@ from app.services.deed import (
     filter_public_payload,
     publish_public,
 )
+from app.services.ledger_publisher import get_ledger_publisher
 from app.services.storage import get_object_store, public_verify_key
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -93,6 +98,7 @@ def get_deed(
 @router.post("/deeds/{deed_id}/publish", response_model=DeedOut)
 def publish(
     deed_id: uuid.UUID,
+    background_tasks: BackgroundTasks,
     _body: PublishDeedRequest | None = None,
     membership: OrganizationMembership = Depends(get_current_membership),
     user: User = Depends(get_current_user),
@@ -120,6 +126,22 @@ def publish(
         # Object-storage write is best-effort · DB row is source of truth.
         pass
 
+    # DefendableLedger public publisher · single canonical surface at
+    # defendableledger.com. Runs as a background task so the publish endpoint
+    # returns immediately. Best-effort · the DB row is the source of truth ·
+    # publish failures don't block the response.
+    publisher = get_ledger_publisher()
+    if publisher.is_configured():
+        background_tasks.add_task(
+            _publish_to_defendable_ledger,
+            slug=slug,
+            deed_reference=deed.deed_reference,
+            deed_json=deed.deed_json,
+            public_payload=public_payload,
+            record_hash=deed.record_hash,
+            deed_version=deed.version,
+        )
+
     audit_record(
         db,
         organization_id=deed.organization_id,
@@ -128,8 +150,50 @@ def publish(
         action="deed.publish",
         entity_type="DefendableDeed",
         entity_id=str(deed.id),
-        metadata={"asset_id": str(deed.asset_id), "public_slug": slug},
+        metadata={
+            "asset_id": str(deed.asset_id),
+            "public_slug": slug,
+            "defendable_ledger_queued": publisher.is_configured(),
+        },
     )
     db.commit()
     db.refresh(deed)
     return DeedOut.model_validate(deed)
+
+
+def _publish_to_defendable_ledger(
+    *,
+    slug: str,
+    deed_reference: str,
+    deed_json: dict,
+    public_payload: dict,
+    record_hash: str | None,
+    deed_version: int,
+) -> None:
+    """Background task wrapper · isolates exceptions so they never bubble up to
+    request handling. Logs but never raises."""
+    publisher = get_ledger_publisher()
+    try:
+        result = publisher.publish_deed(
+            slug=slug,
+            deed_reference=deed_reference,
+            deed_json=deed_json,
+            public_payload=public_payload,
+            record_hash=record_hash,
+            deed_version=deed_version,
+        )
+        if result.ok:
+            logger.info(
+                "defendable-ledger publish ok · slug=%s · public_url=%s · commit=%s",
+                slug,
+                result.public_url,
+                result.commit_sha,
+            )
+        else:
+            logger.warning(
+                "defendable-ledger publish failed · slug=%s · error=%s",
+                slug,
+                result.error,
+            )
+    except Exception:  # noqa: BLE001
+        logger.exception("defendable-ledger publish · unexpected exception · slug=%s", slug)

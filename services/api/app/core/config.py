@@ -155,6 +155,16 @@ class Settings(BaseSettings):
     swarmcurator_api_key: str = ""
     swarmcurator_thinking_default: Literal["enabled", "disabled"] = "disabled"
 
+    # ── DefendableLedger public publisher ──
+    # When a deed is publicly published (POST /deeds/{id}/publish), the API
+    # writes the public payload to the defendable-ledger GH repo via the
+    # GitHub Contents API. Result · the deed appears at defendableledger.com.
+    # Fine-grained PAT scoped to contents:write on the publish repo.
+    github_publish_token: str = ""
+    github_publish_repo: str = "SudoSuOps/defendable-ledger"
+    github_publish_branch: str = "main"
+    defendable_ledger_public_url: str = "https://defendableledger.com"
+
     # ENS · defendable.eth
     ens_parent_name: str = "defendable.eth"
     ens_mode: Literal["mock", "offchain_ccip", "onchain_wrapped"] = "mock"
@@ -224,6 +234,10 @@ class Settings(BaseSettings):
     @property
     def swarmcurator_configured(self) -> bool:
         return bool(self.swarmcurator_base_url)
+
+    @property
+    def defendable_ledger_publisher_configured(self) -> bool:
+        return bool(self.github_publish_token) and bool(self.github_publish_repo)
 
     @property
     def ebay_configured(self) -> bool:
