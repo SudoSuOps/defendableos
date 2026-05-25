@@ -71,3 +71,8 @@ secrets/
 *.tsbuildinfo
 .swc/
 .eslintcache
+
+# Federal SAM registration evidence · LOCAL ONLY (privacy treatment)
+federal/sam_registration/*/evidence/*
+!federal/sam_registration/*/evidence/README.md
+!federal/sam_registration/*/evidence/.gitkeep
