@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <title>Offense to the Shed · Operator Doctrine for AI Defense</title>
+    <meta name="description" content="Late-night war-room notes from the DefendableOS shed. Operator-grade. CRE-broker cadence. We take offense to the shed." />
+    <meta name="author" content="DefendableOS · Swarm and Bee LLC" />
+    <link rel="canonical" href="https://offensetotheshed.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://offensetotheshed.com" />
+    <meta property="og:title" content="Offense to the Shed · Operator Doctrine for AI Defense" />
+    <meta property="og:description" content="Most AI blogs teach how to use AI. This teaches how to trust AI under real operational pressure." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="module" crossorigin src="/assets/index-J3MVahY1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CiMgHfYr.css">
+  </head>
+  <body class="bg-ink-900 text-cream-100 antialiased">
+    <div id="root"></div>
+  </body>
+</html>

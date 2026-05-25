@@ -1,0 +1,36 @@
+# Pain in the Shed
+
+> MEDIA layer of the DefendableOS ecosystem · the cost-of-intelligence podcast.
+> Every episode answers one question: what did it cost to mint this truth?
+
+## Surface
+- painintheshed.com (CF Pages · auto-deploy from git push)
+- /rss.xml (canonical RSS · all platforms pull from here)
+
+## 8 Episode Lanes
+- cost-to-mint              what one trusted AI artifact actually costs
+- hyperscaler-pain           why big AI is expensive · fragile · power-hungry
+- gpu-street-prices          5090s · 3090s · RTX 6000s · Blackwell · used compute
+- vast-ai-field-notes        what renters do · what breaks · what earns
+- edge-appliance-economics   why not every job needs a hyperscaler
+- energy-is-the-receipt      power draw · thermal · cost per deed
+- false-honey                when AI looks smart but fails the assignment
+- repair-lift                the economics of fixing AI
+
+## Signature segment
+Every episode closes with the Cost-to-Mint readout · 8-line breakdown plus
+hyperscaler-equivalent and human-only-equivalent comparisons. Cumulative ledger
+lives at /cost-to-mint.
+
+## Voice
+Operator-grade · CRE-broker cadence · NO sponsored content · NO paywalls ·
+NO platform exclusives · NO "subscribe and like" outros.
+Ring ring · to the shed.
+
+## Cross-rail
+- mrdefendable.com (FACE)
+- defendableos.com (SYSTEM)
+- ledger.mrdefendable.com (LEDGER)
+- chat.mrdefendable.com (CHAT)
+- offensetotheshed.com (CULTURE · written sibling)
+- defendabledocs.com (DOCS)

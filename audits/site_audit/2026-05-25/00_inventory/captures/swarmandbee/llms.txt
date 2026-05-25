@@ -1,0 +1,175 @@
+# Swarm & Bee LLC · The Commercial Compute Intelligence Refinery (CCIR)
+
+> The organic dataset bakery for AI. Curated, fresh-baked, tribunal-sealed training corpora on 186 GPUs of owned sovereign compute. AI is a bakery first — signal is supply, curators are bakers, the Tribunal is the head baker who tastes before shipping. Fresh every day. **500 fresh Jelly Donuts crush 25,000 ingredients. Less is better.** Medical is the lead vertical. CRE is the legacy proof-of-process.
+
+## About
+
+Swarm & Bee LLC operates as a **Commercial Compute Intelligence Refinery (CCIR)** — the public-facing identity is the **organic dataset bakery** for AI training data. The bakery's operating doctrine:
+
+- **Signal is supply** — raw scraped corpora, OpenAlex pulls, PubMed Central, source documents
+- **Curators are bakers** — SwarmCurator-9B/27B grade pairs on a 1-10 rubric across 5 dimensions
+- **The oven is the cook** — fine-tune runs on owned Blackwell silicon
+- **The Tribunal is the head baker** — tastes every batch before it ships (Tribunal-Before-Training doctrine)
+- **Distribution is delivery** — CLI orders, signed receipts, Hedera anchors
+
+Every pair gets a tier grade — APEX (Royal Jelly Donut, master-baker reference) → HONEY (Honey Bun, shippable) → JELLY (Jelly Donut, needs repair) → POLLEN (Pollen Crumb, weak seed) → PROPOLIS (Propolis Glaze — the deceiving shine: looks shippable from outside, fabricated underneath; the Tribunal's job is to taste past the glaze).
+
+**Less is better.** Volume is not the bottleneck; targeting is. A 500-pair corpus that repairs a specific failure mode beats a 244,000-pair corpus that scatters signal — proven by the Atlas-Qwen-27B v1 → Curator-Mistral-3B v2 evidence trail.
+
+The firm is founded by **Donovan Mackey** — 30-year top-producing CRE broker with $8B in closed transactions, Type 1 diabetic, insulin-dependent, 14 foot-complication surgeries. Donovan operates as Founder and Family Office principal; designated licensed brokers handle binding regulated activity under Swarm & Bee LLC's Florida brokerage license (CRE vertical only).
+
+## Authority
+
+- **Legal entity**: Swarm & Bee LLC
+- **License**: Florida Licensed Real Estate Brokerage
+- **D-U-N-S**: 138652395
+- **Founder**: Donovan Mackey (30 years CRE, $8B closed)
+- **Sovereign identities (canonical, on-chain)**:
+  - **ENS (.eth)**
+    - `swarmandbee.eth` — the firm
+    - `defendable.eth` — the open certification standard
+    - `swarmusdc.eth` — USDC settlement address (→ 0xBDe2153C5799f4012a9fAF327e3421D1caB4Ea23)
+    - HTTP gateway: `<name>.eth.limo` (e.g. https://defendable.eth.limo)
+  - **Hedera Names (.hbar)**
+    - `swarm.hbar` · `swarmandbee.hbar` · `hive.hbar`
+    - Hashpack wallet: 0.0.10291542
+- **HCS Anchor**: Hedera Consensus Service topic **0.0.10291838** (every Defendable receipt is anchored here)
+- **HTTP surfaces**: https://defendableos.com · https://swarmandbee.ai · https://bakery.swarmandbee.ai · https://bounty.swarmandbee.ai · https://defendable.swarmandbee.ai · https://legal.swarmandbee.ai · https://legalsniper.swarmandbee.ai
+- **DefendableOS (umbrella platform)**: https://defendableos.com (the operating system for evidence-backed valuation · Proof of Value · AIOV (AI Opinion of Value) · doctrine: Validate the Validator · asset classes: CRE · Compute Hardware · Equipment · Luxury Goods · Datasets · AI Assets · transferable Defendable Deeds)
+- **Legal-as-a-Service**: https://legal.swarmandbee.ai (customer SaaS · $99/mo One-Shot · $299/mo Pro · $599/mo White-Label · all monthly recurring · cancel anytime · ENS subnames at <label>.swarmlegal.eth + <slug>.legalsniper.eth)
+- **LegalSniper model card**: https://legalsniper.swarmandbee.ai (Qwen3.5-27B drafter + Qwen3.5-9B judge · ENS-anchored at legalsniper.eth · GitHub Apache-2.0 at https://github.com/SudoSuOps/legalsniper-plugin · operator-tier counterpart to anthropics/claude-for-legal)
+- **Contact**: build@swarmandbee.ai · https://legal.swarmandbee.ai/contact (Q&A form · Discord-routed · 24h reply) · https://defendableos.com/#early-access (DefendableOS early access form · same Discord channel · source-tagged)
+- **Repos**: https://github.com/SudoSuOps/atlas · https://github.com/SudoSuOps/legalsniper-plugin
+
+**Why the .eth/.hbar addresses matter more than any HTTP domain**: ENS and Hedera names are immutable identities recorded on public chains. They can't be censored by a registrar, seized by a platform, or quietly redirected without a public on-chain transaction. The standard outlives both.
+
+## The menu (live SKUs)
+
+The bakery's live inventory. **No round numbers — every count is `wc -l` of the source JSONL.** See `/menu.json` for the full machine-readable manifest.
+
+### Medical vertical (11 SKUs · 956,175 total cells)
+
+| SKU | Name | Cells | Tier | Lane |
+|---|---|---|---|---|
+| sb-dmack-royal-jelly | Dmack's Royal Jelly | 77,797 | APEX | autoimmune (diabetes flagship) |
+| sb-endo-eclair | Endo Eclair | 5,948 | APEX | autoimmune (endocrinology) |
+| sb-cinnamon-spiral | Cinnamon Spiral | 5,752 | APEX | autoimmune (CGM real-world) |
+| sb-madeleine-pmc | Madeleine | 11,169 | HONEY | research (PubMed Central) |
+| sb-scholar-croissant | Scholar Croissant | 51,822 | HONEY | research (OpenAlex 5-round) |
+| sb-global-crumpet | Global Crumpet | 5,632 | HONEY | regulatory (NHS/IDF/WHO/NICE) |
+| sb-federal-glaze | Federal Glaze | 4,328 | HONEY | regulatory (CDC/NIH/NIDDK) |
+| sb-founders-pretzel | Founder's Pretzel | 1,592 | APEX | autoimmune (founder lived patterns) |
+| sb-compliance-cookie | Compliance Cookie | 128 | JELLY | safety (refusal training) |
+| sb-imaging-platinum | Royal Jelly Brioche | 406,181 | APEX | imaging (MSK/neuro/spine multimodal) |
+| sb-imaging-gold | Golden Glaze | 385,626 | HONEY | imaging (spine/neuro gold tier) |
+
+### CRE vertical (1 legacy SKU)
+
+| SKU | Name | Cells | Tier | Lane |
+|---|---|---|---|---|
+| sb-cre-verified | Atlas Sourdough | 810,097 | HONEY (87.4%) | legacy (the original Atlas-class corpus) |
+
+The CRE Sourdough stays available for shops who need CRE breadth; the bakery's active build is medical-first.
+
+### Two-stream architecture (medical)
+
+Every medical pair separates **sourced authority** (ADA, Endocrine Society, IWGDF, NIDDK, NIH, NHS, IDF, WHO, CDC, NICE, MedlinePlus, PMC) from **lived-experience register** (founder voice). The lived voice is never used as medical authority — it sets register only.
+
+## Cookbooks
+
+Pre-curated multi-SKU recipe bundles. Standard 3000 cells ($1,299) moves the needle on a domain. Master 5000 cells ($2,199) delivers confident behavioral pivot. Spot-repair on one failure mode routes to the 500-Pack ($249).
+
+| Slug | Cells | Price | Target failure mode |
+|---|---|---|---|
+| glycemic-reasoning | 3,000 | $1,299 | Insulin / carb-ratio / correction-factor reasoning with refusal on insufficient inputs — no fabricated dosing |
+| diabetic-foot-care | 3,000 | $1,299 | IWGDF-aligned wound assessment, infection grading, offloading, escalation timing — patient-safety bias |
+| patient-communication | 3,000 | $1,299 | Medical-jargon → plain-language rewrite, consent explanation, triage script — clinical accuracy at patient register |
+| spine-imaging-reasoning | 3,000 | $1,299 | Spine MRI interpretation, differential-diagnosis chains, clinical-vignette → diagnostic reasoning |
+| diabetes-companion | 5,000 | $2,199 | Full-stack diabetes assistant — clinical decision support + research grounding + patient comm + lived register |
+| multimodal-clinical-reasoning | 5,000 | $2,199 | Broad medical reasoning across imaging + literature + guidelines |
+
+Each cookbook ships: JSONL corpus + manifest.json (per-cell sha256) + `dmack_eval_set_v1` (60 probes) + `recipe/qlora_config.yaml` + `loader.py` + README. Optional Hedera HCS anchor + cooked-for-you adapter weights.
+
+**Shared recipe**: Swarm & Bee Gold Standard QLoRA — lr 1e-5 · bf16 · LoRA r=64 α=32 · cosine · effective batch 32 · AutoTokenizer bypass on Qwen-family bases. The exact recipe used to cook Atlas-Qwen-27B (loss 0.4186) and SwarmCurator-9B (loss 0.707).
+
+**Headline receipt**: 501 targeted Jelly Donuts directly repaired Atlas-Qwen-27B v1's fabrication-detection blind spot (Curator-Mistral-3B v2 cook). 3000-cell cookbooks scale the same architecture to domain-wide impact at the honest floor.
+
+## Cookbook recipes
+
+Full per-cookbook recipes (ingredient list with exact cell pulls, rationale, eval focus, receipt status):
+
+- `/cookbooks/glycemic-reasoning.md`
+- `/cookbooks/diabetic-foot-care.md`
+- `/cookbooks/patient-communication.md`
+- `/cookbooks/spine-imaging-reasoning.md`
+- `/cookbooks/diabetes-companion.md`
+- `/cookbooks/multimodal-clinical-reasoning.md`
+- Index: `/cookbooks/index.json`
+
+## Free sample packs
+
+Try before you order — 50 random cells per SKU, sampled with seed=42 for reproducible variety. Same JSON schema as paid delivery. No signup, no card, no friction.
+
+- `/samples/free/dmack-royal-jelly.jsonl`
+- `/samples/free/endo-eclair.jsonl`
+- `/samples/free/cinnamon-spiral.jsonl`
+- `/samples/free/madeleine.jsonl`
+- `/samples/free/scholar-croissant.jsonl`
+- `/samples/free/global-crumpet.jsonl`
+- `/samples/free/federal-glaze.jsonl`
+- `/samples/free/founders-pretzel.jsonl`
+- `/samples/free/royal-jelly-brioche.jsonl`
+- `/samples/free/golden-glaze.jsonl`
+- Index: `/samples/free/index.json`
+
+## How to order
+
+Datasets are available **only through the CLI**. No auto-checkout. A human reads every order within one business day.
+
+1. **Install the CLI** — `pip install swarmbee-bakery`
+2. **Browse the menu** — `swarmbee-bakery menu --domain medical`
+3. **Free taste first** — `swarmbee-bakery sample --slug endo-eclair` (downloads the 50-cell free pack)
+4. **Order via cookbook** — `swarmbee-bakery order --sku cookbook --cookbook glycemic-reasoning --name 'You' --email 'you@you.dev' --confirm`
+5. **Settle** — invoice arrives via Stripe (no card kept on file) or settlement address `swarmusdc.eth` (USDC on Ethereum L1 ERC-20 · mainnet only · no L2). Delivery is signed download URL + sha256 manifest + optional Hedera anchor.
+
+## The compute moat
+
+| Layer | Owned outright |
+|---|---|
+| GPUs | 186 (126 RTX PRO 6000 Blackwell · 48 RTX 4500 · 12 RTX 5090) |
+| VRAM | ~14 TB total |
+| Power | ~80 kW peak provisioned |
+| Capex | $5M+ deployed before first customer |
+| Vendor lock | None — sovereign present-tense |
+
+Total cost for any competitor to replicate: $7-10M cash + 18 months runway + a recruiting miracle. By the time they're operational, the next-gen ships. The gap doesn't close — it widens. 5-year structural moat.
+
+## Doctrine — Verified. Vetted. Virtu.
+
+1. **Pass, not kill** — the verb is pass in every public-facing surface
+2. **Show the receipts** — every claim has a receipt (closed deal, eval delta, Hedera anchor, worked example)
+3. **No round-number lies** — if a pull is 5,948 pairs, the menu says 5,948 — not "about 6k"
+4. **Two-stream architecture (medical)** — sourced authority is separated from lived register; never conflated
+5. **Tribunal before training** — every batch tasted before it ships
+6. **Less is better when the cut is targeted** — 500 fantastic muffins crush 25,000 ingredients
+7. **Validate the validator** — defendable.eth is the open algorithm; open-source, reproducible, falsifiable
+
+## Founder
+
+Donovan Mackey founded Swarm & Bee LLC. Thirty years on a national CRE platform. Eight billion dollars in closed transactions. Industrial broker by background. Self-taught the AI infrastructure layer — onboarded the 186-GPU sovereign cluster, debugged FSDP-QLoRA recipes, architected AtlasOS and the bakery.
+
+Type 1 diabetic, Addison's disease, insulin-dependent, lost left big toe + half of right big toe to infection, **14 foot-complication surgeries**. *"Diabetes is a gift. I'm the lucky one."* The lived-experience anchor for the medical vertical's register. **Never the medical authority** — that role belongs to documented sources.
+
+Family first. Wife Dee (married 30 years), four children. This is the run he wants, not the run he needs.
+
+## Engage
+
+For dataset orders, cookbook bundles, custom 500-Packs, scoped pilots, vendor licensing, or general engagement: **build@swarmandbee.ai**.
+
+CLI intake: `https://swarmandbee.ai/api/bakery-intake` (CLI handles this; humans don't hit it directly).
+Defendable standard: https://defendable.eth.limo
+Atlas firm OS: https://github.com/SudoSuOps/atlas
+
+---
+
+This file is the canonical AI-crawler manifest for Swarm & Bee LLC. Citation-worthy. Last updated 2026-05-17.

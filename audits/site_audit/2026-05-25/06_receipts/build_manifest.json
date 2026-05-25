@@ -1,0 +1,64 @@
+{
+  "audit_id": "SITE-AUDIT-2026-05-25",
+  "audit_kind": "defendableos_ecosystem_full_site_audit",
+  "audit_lanes": [
+    "seo",
+    "geo",
+    "code_layer",
+    "docs_sync"
+  ],
+  "critical_findings": [
+    "HEDERA_DOCTRINE_CONTRADICTION across swarmandbee + offensetotheshed llms.txt vs defendableledger"
+  ],
+  "cross_reference": {
+    "dcpr_v0_1": "../../../products/defendable_compute_proof_receipt/v0.1/",
+    "kimi_intake": "../../../research/kimi_intake/2026-05-25/"
+  },
+  "doctrine": "Tribunal begins before training; no proof, no honey.",
+  "endpoints_captured_per_site": 7,
+  "generated_at": "2026-05-25T13:34:50Z",
+  "headline_findings_count": 5,
+  "high_priority_findings": [
+    "BRAND_STACK_DEFINITION_FRAGMENTED across 5 surfaces",
+    "AI_BOT_POLICY_STRATIFIED across 3 tiers",
+    "7_OF_9_SPA_SITES_LACK_JSON_LD_AND_HEADINGS",
+    "NO_SHARED_SEO_CORE_LIBRARY"
+  ],
+  "host_repo": "/home/swarm/Desktop/defendableos",
+  "host_repo_branch_pre_commit": "main",
+  "host_repo_head_pre_commit": "9aad5d050874970b662bb753c258dcb6435d9d48",
+  "live_domains_audited": 9,
+  "live_domains_passed_baseline": 9,
+  "local_repos_surveyed": 12,
+  "master_report_path": "07_reports/SITE_AUDIT_MASTER_REPORT.md",
+  "operator": "Claude Code \u00b7 Senior Research-Ops + Product Systems",
+  "per_site_verdicts": {
+    "defendablecloud.com": "HONEY",
+    "defendableledger.com": "JELLY",
+    "defendableos.com": "HONEY",
+    "defendablerouter.com": "HONEY",
+    "mrdefendable.com": "JELLY",
+    "offensetotheshed.com": "JELLY",
+    "opendefendable.com": "HONEY",
+    "painintheshed.com": "JELLY",
+    "swarmandbee.ai": "HONEY"
+  },
+  "prioritized_fixes_count": 20,
+  "safety_attestation": {
+    "cpu_filesystem_documentation_only": true,
+    "no_apt_installs": true,
+    "no_dcpr_product_artifacts_modified": true,
+    "no_github_push": true,
+    "no_gpu_workload": true,
+    "no_kimi_intake_artifacts_modified": true,
+    "no_source_code_changes_to_brand_repos": true,
+    "no_system_service_changes": true
+  },
+  "specialist_reports_lines": {
+    "code_layer_audit.md": 514,
+    "docs_sync_audit.md": 237,
+    "geo_audit_report.md": 202,
+    "seo_audit_report.md": 197
+  },
+  "workspace_path": "/home/swarm/Desktop/defendableos/audits/site_audit/2026-05-25"
+}

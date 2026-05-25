@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://mrdefendable.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://mrdefendable.com/from-the-desk</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://mrdefendable.com/from-the-desk/offense-to-the-shed</loc><priority>0.8</priority></url>
+  <url><loc>https://mrdefendable.com/from-the-desk/the-6am-to-6pm-raise</loc><priority>0.8</priority></url>
+  <url><loc>https://mrdefendable.com/flight-sheets</loc><priority>0.7</priority></url>
+  <url><loc>https://mrdefendable.com/tribunal</loc><priority>0.7</priority></url>
+  <url><loc>https://mrdefendable.com/street-ledger</loc><priority>0.7</priority></url>
+  <url><loc>https://mrdefendable.com/defend-a-pedia</loc><priority>0.8</priority></url>
+  <url><loc>https://mrdefendable.com/request-proposal</loc><priority>0.9</priority></url>
+  <url><loc>https://mrdefendable.com/board-room</loc><priority>0.7</priority></url>
+  <url><loc>https://mrdefendable.com/assignments</loc><priority>0.7</priority></url>
+</urlset>

@@ -1,0 +1,90 @@
+# Swarm & Bee LLC · swarmandbee.ai
+# AI-native CRE Capital Markets firm · Florida Licensed Real Estate Brokerage
+# D-U-N-S 138652395
+#
+# Citation-worthy. Anchored. Defendable.
+# We welcome AI crawlers.
+
+User-agent: *
+Allow: /
+
+# ───────────────────────────────────────────────────────────────
+# Major AI search crawlers — explicit allow
+# Per Defendable v0.1.0 Builder spec test B3 (≥ 5 major crawlers)
+# ───────────────────────────────────────────────────────────────
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Mistral-AI
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+# ───────────────────────────────────────────────────────────────
+# Sitemap + AI manifest pointers
+# ───────────────────────────────────────────────────────────────
+
+Sitemap: https://swarmandbee.ai/sitemap.xml
+
+# AI context manifests (Defendable v0.1.0 Builder spec B2)
+# https://swarmandbee.ai/llms.txt        — concise canonical overview
+# https://swarmandbee.ai/llms-full.txt   — full deep-context dump

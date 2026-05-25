@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Swarm &amp; Bee — The Organic Dataset Bakery (CCIR)</title>
+<meta name="description" content="AI is a bakery first. Organic, fresh-baked AI training datasets on 186 GPUs of owned sovereign compute. Curators are bakers. Tribunal-sealed. sha256 receipts on every artifact. CRE is the first vertical we serve." />
+<link rel="canonical" href="https://swarmandbee.ai/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://swarmandbee.ai/" />
+<meta property="og:title" content="Swarm &amp; Bee — The Organic Dataset Bakery (CCIR)" />
+<meta property="og:description" content="AI is a bakery first. Curated training data, owned compute, defendable receipts. 500 fresh Jelly Donuts crush 25,000 ingredients. Less is better." />
+<meta property="og:site_name" content="Swarm &amp; Bee" />
+<meta property="og:image" content="https://swarmandbee.ai/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@swarmandbee" />
+<meta name="twitter:image" content="https://swarmandbee.ai/og-image.png" />
+
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="organic AI dataset, fresh baked dataset, CCIR, Commercial Compute Intelligence Refinery, dataset bakery, curated training data, Royal Jelly Protocol, honey jelly pollen propolis, sovereign compute, Atlas, AtlasOS, AI-native CRE, Defendable, defendable.eth, Hedera-anchored, sha256 receipts, Swarm and Bee, 500 pack dataset, by the pound, 25-50x leverage" />
+
+<!-- Favicon · the Bee · SVG primary + PNG/ICO fallbacks -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="theme-color" content="#0a0c11" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- AI context manifest pointer (Defendable v0.1.0 Builder spec B2) -->
+<link rel="alternate" type="text/plain" href="/llms.txt" title="AI context manifest (concise)" />
+<link rel="alternate" type="text/plain" href="/llms-full.txt" title="AI context manifest (full)" />
+
+<!-- Theme bootstrap -->
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem("swarm-theme");
+      var system = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var theme = stored === "dark" || stored === "light" ? stored : "light";
+      document.documentElement.setAttribute("data-theme", theme);
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  })();
+</script>
+
+<!-- Schema.org structured data · CCIR-first, CRE as a vertical service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://swarmandbee.ai/#organization",
+      "name": "Swarm & Bee LLC",
+      "alternateName": ["Swarm and Bee", "Swarm & Bee", "CCIR", "Commercial Compute Intelligence Refinery"],
+      "url": "https://swarmandbee.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://swarmandbee.ai/og-image.png"
+      },
+      "description": "Swarm & Bee LLC operates as a Commercial Compute Intelligence Refinery (CCIR) — the organic dataset bakery for AI. 186 GPUs of owned sovereign compute serve curated training data and tribunal-sealed deliverables across multiple verticals (CRE, medical, legal, agents, healing). The firm is the founding issuer of the defendable.eth certification standard.",
+      "slogan": "Fresh every day. Less is better. Verified. Vetted. Virtu.",
+      "email": "build@swarmandbee.ai",
+      "foundingDate": "2026",
+      "areaServed": [
+        {"@type": "Country", "name": "United States"},
+        {"@type": "Place", "name": "Global (compute services)"}
+      ],
+      "sameAs": [
+        "https://swarmandbee.eth.limo",
+        "https://defendable.eth.limo",
+        "https://aiov.eth.limo",
+        "https://swarmusdc.eth.limo",
+        "https://x.com/swarmandbee",
+        "https://github.com/SudoSuOps/atlas",
+        "https://github.com/SudoSuOps/swarmbee-bakery"
+      ],
+      "identifier": [
+        {"@type": "PropertyValue", "propertyID": "DUNS", "value": "138652395"},
+        {"@type": "PropertyValue", "propertyID": "ENS", "value": "swarmandbee.eth"},
+        {"@type": "PropertyValue", "propertyID": "ENS", "value": "defendable.eth"},
+        {"@type": "PropertyValue", "propertyID": "ENS", "value": "aiov.eth"},
+        {"@type": "PropertyValue", "propertyID": "ENS", "value": "swarmusdc.eth"},
+        {"@type": "PropertyValue", "propertyID": "HederaName", "value": "swarm.hbar"},
+        {"@type": "PropertyValue", "propertyID": "Hedera HCS Topic", "value": "0.0.10291838"}
+      ],
+      "founder": {"@id": "https://swarmandbee.ai/#founder"},
+      "knowsAbout": [
+        "AI training data curation",
+        "Dataset bakery operating doctrine",
+        "Royal Jelly Protocol (APEX/HONEY/JELLY/POLLEN/PROPOLIS tier grading)",
+        "Tribunal-Before-Training methodology",
+        "Sovereign compute (186 GPUs · 14 TB VRAM · 80 kW)",
+        "RTX PRO 6000 Blackwell + RTX 5090 fleet operations",
+        "Commercial Real Estate (CRE) underwriting and capital markets",
+        "Multi-agent AI systems",
+        "Hedera Consensus Service receipt anchoring",
+        "Defendable certification standard (defendable.eth)",
+        "fabrication detection in narrative outputs"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Defendable Franchise",
+        "url": "https://defendable.eth.limo"
+      },
+      "subOrganization": {
+        "@type": "ProfessionalService",
+        "@id": "https://cre.swarmandbee.ai/#cre-firm",
+        "name": "Swarm & Bee · CRE Capital Markets",
+        "url": "https://cre.swarmandbee.ai/",
+        "additionalType": ["RealEstateAgent"],
+        "description": "Florida Licensed Real Estate Brokerage — the CRE vertical of Swarm & Bee LLC. AtlasOS coordinates Senior MD, Underwriter, Book Maker, Closing, and 10-Hack specialist fleet. The first vertical the CCIR bakery serves.",
+        "areaServed": {"@type": "AdministrativeArea", "name": "Florida"}
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://swarmandbee.ai/#founder",
+      "name": "Donovan Mackey",
+      "jobTitle": "Founder · Family Office",
+      "description": "30 years CRE, $8B in closed transactions. Top-producing industrial broker on a national platform. Founded Swarm & Bee LLC to operate the Commercial Compute Intelligence Refinery — the organic dataset bakery for AI. Self-taught the AI infrastructure layer, onboarded 186 GPUs of sovereign compute, architected the bakery operating doctrine + AtlasOS multi-agent system.",
+      "worksFor": {"@id": "https://swarmandbee.ai/#organization"},
+      "knowsAbout": [
+        "AI training data curation",
+        "Commercial Real Estate",
+        "CRE Capital Markets",
+        "Sovereign compute operations",
+        "Multi-agent AI systems",
+        "Family office strategy"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://swarmandbee.ai/#website",
+      "url": "https://swarmandbee.ai",
+      "name": "Swarm & Bee",
+      "description": "The organic dataset bakery. CCIR doctrine, curated training data, defendable receipts.",
+      "publisher": {"@id": "https://swarmandbee.ai/#organization"},
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://swarmandbee.ai/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Swarm & Bee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Swarm & Bee LLC operates as a Commercial Compute Intelligence Refinery (CCIR) — the organic dataset bakery for AI. We curate training data on 186 GPUs of owned sovereign compute, grade every pair on a 5-dimension rubric, and ship Tribunal-sealed deliverables with sha256 receipts and optional Hedera anchoring. CRE is the first vertical we serve (at cre.swarmandbee.ai); the bakery doctrine extends to medical, legal, agents, and healing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 'AI is a bakery first' mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Signal is supply, curators are bakers, cooks are the oven, the Tribunal is the head baker who tastes before shipping, distribution is delivery. Fresh every day, with a shelf life. 500 fantastic Jelly Donuts crush 25,000 ingredients — volume of pairs is not the bottleneck, targeting is. The operating doctrine is at https://bakery.swarmandbee.ai or the apex https://swarmandbee.ai."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the bakery's SKUs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two SKUs: 'By the pound' wholesale corpora (graded, deduped, freshness-stamped — sold per 1,000 Honey Buns, for shops needing breadth) and 'The 500-Pack' signature blend (500-1,000 Jelly Donuts hand-built around one failure mode, Tribunal-sealed, 25-50x leverage of wholesale). Live menu at /menu.json. Order from the CLI: pip install git+https://github.com/SudoSuOps/swarmbee-bakery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the CRE vertical?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "cre.swarmandbee.ai is the CRE Capital Markets surface — Swarm & Bee LLC's Florida Licensed Real Estate Brokerage arm. AtlasOS coordinates Senior MD, Underwriter, Book Maker, Closing, and a 10-Hack specialist fleet to deliver brokerage workflow at machine scale. CRE is the first vertical the bakery serves; the cre.swarmandbee.ai surface holds the brokerage-specific content (licensing disclosure, founder credentials, deal proof points)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does sovereign compute matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Owned compute (186 GPUs / 14 TB VRAM / 80 kW) means no token rationing, no spot-instance preemption, and client data never touches a hyperscaler. Replicating this fleet costs $7-10M in capex plus 12-18 months of recruiting + DevOps. By the time a competitor would be operational, our deed flywheel has compounded for over a year. This is a multi-year structural moat — the bakery owns the oven."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Defendable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "defendable.eth is an open certification standard for audited AI assets. Every Swarm & Bee deliverable is signed under this address. Independent issuers can publish their own work under the same standard; the chain proves who signed what, when. See https://defendable.eth.limo for the spec."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://swarmandbee.ai/#webpage",
+      "url": "https://swarmandbee.ai/",
+      "name": "Swarm & Bee — The Organic Dataset Bakery (CCIR)",
+      "isPartOf": {"@id": "https://swarmandbee.ai/#website"},
+      "about": {"@id": "https://swarmandbee.ai/#organization"},
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://swarmandbee.ai/og-image.png"
+      },
+      "datePublished": "2026-05-02",
+      "dateModified": "2026-05-11",
+      "author": {"@id": "https://swarmandbee.ai/#founder"},
+      "publisher": {"@id": "https://swarmandbee.ai/#organization"},
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-B_vdkTM_.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DU1zZmFz.css">
+</head>
+<body>
+<div id="root"></div>
+</body>
+</html>

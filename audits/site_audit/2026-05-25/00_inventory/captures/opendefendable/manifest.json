@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>OpenDefendable · The Open Standards Body for AI Agent Defense</title>
+    <meta
+      name="description"
+      content="OpenDefendable is the open standards body for AI agent defense. Doctrine pack registry · cross-vendor specifications · contributor SDKs · public Defendable Deeds. Open weights forever. MIT-licensed."
+    />
+    <link rel="canonical" href="https://opendefendable.com/" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OpenDefendable" />
+    <meta property="og:url" content="https://opendefendable.com/" />
+    <meta property="og:title" content="OpenDefendable · Open Standards Body for AI Agent Defense" />
+    <meta
+      property="og:description"
+      content="The open standards body for AI agent defense. Doctrine packs · contributor SDKs · cross-vendor specifications · public deeds. Open weights forever."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OpenDefendable · Open Standards Body for AI Agent Defense" />
+    <meta
+      name="twitter:description"
+      content="Cisco grades the agent. We publish the open standards. Doctrine packs · contributor SDKs · public Defendable Deeds."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="AI agent defense, open standards, doctrine pack registry, AI agent attestation, OpenSSF AI, AI agent SDK, Defendable Deed, cross-vendor AI safety standards" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="AI context manifest" />
+    <script type="module" crossorigin src="/assets/index-B0wh3KGV.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D_S6085O.css">
+  </head>
+  <body class="bg-neutral-950">
+    <div id="root"></div>
+  </body>
+</html>

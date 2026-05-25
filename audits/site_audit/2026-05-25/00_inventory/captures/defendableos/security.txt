@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>DefendableOS · Defense for AI Operators</title>
+    <meta
+      name="description"
+      content="The third-party defense layer for AI operators and asset owners. Agent does the assignment · we validate the Project. Every assignment receipted · graded · reconciled into a daily Project deed your CFO, compliance team, and insurance carrier can read."
+    />
+    <link rel="canonical" href="https://defendableos.com/" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DefendableOS" />
+    <meta property="og:url" content="https://defendableos.com/" />
+    <meta property="og:title" content="DefendableOS · Defense for AI Operators" />
+    <meta
+      property="og:description"
+      content="Agent does the assignment. We validate the Project. Third-party defense rail · receipted · audit-grade · KPMG-equivalent. The deed is only as good as the fix it delivers."
+    />
+    <meta property="og:image" content="https://defendableos.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DefendableOS · third-party defense rail for AI operators" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DefendableOS · Defense for AI Operators" />
+    <meta
+      name="twitter:description"
+      content="Agent does the assignment. We validate the Project. Third-party defense rail · 128 RTX 6000s paid in full · 6-domain brand stack · CRE due-diligence vocabulary for the CFO."
+    />
+    <meta name="twitter:image" content="https://defendableos.com/og-image.png" />
+    <meta name="twitter:image:alt" content="DefendableOS · third-party defense rail for AI operators" />
+    <meta name="keywords" content="AI agent defense, AI agent audit, AI agent receipt, Defendable Agent Deed, AgentGrade, ClawCheck, HoneyBox, DefendableCloud, third-party AI audit, AI agent compliance, HIPAA AI agent, AI agent insurance" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Swarm and Bee LLC · DBA Swarm & Bee AI · Florida · D-U-N-S 138652395" />
+    <meta name="twitter:site" content="@swarmandbee" />
+    <meta name="twitter:creator" content="@swarmandbee" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="AI context manifest" />
+    <script type="module" crossorigin src="/assets/index-PEyM8Oom.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-jKj39vKn.css">
+  </head>
+  <body class="bg-neutral-950">
+    <div id="root"></div>
+  </body>
+</html>

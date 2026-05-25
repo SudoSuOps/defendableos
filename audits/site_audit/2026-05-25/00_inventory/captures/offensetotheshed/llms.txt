@@ -1,0 +1,27 @@
+# Offense to the Shed
+
+> CULTURE layer of the DefendableOS ecosystem. Operator doctrine + war stories.
+> Where real builders talk · late-night war-room notes · books and records.
+
+## Surface
+- offensetotheshed.com (CF Pages · auto-deploy from git push)
+
+## 5 Pillars
+- offense-vs-defense       Why defense outlasts offense
+- tribunal-reports          Adjudication in public · False Honey incidents
+- street-ledger             Operator vocabulary as infrastructure
+- compute-from-the-shed     Field reports from real ops
+- founder-memos             From the desk of Mr. Defendable
+
+## Voice
+Operator-grade · CRE-broker cadence · NOT generic AI SaaS · NOT influencer content.
+Every post deeded on Hedera HCS topic 0.0.10291838.
+Ring ring · to the shed.
+
+## Cross-rail
+- mrdefendable.com (FACE)
+- defendableos.com (SYSTEM)
+- ledger.mrdefendable.com (LEDGER)
+- chat.mrdefendable.com (CHAT)
+- painintheshed.com (MEDIA · podcast)
+- defendabledocs.com (DOCS)

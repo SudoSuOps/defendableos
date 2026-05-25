@@ -1,0 +1,12 @@
+brand,domain,local_repo,tier,role,live_status
+defendableos,defendableos.com,defendableos,FACE_SYSTEM,SYSTEM,200
+mrdefendable,mrdefendable.com,mrdefendable,FACE,PRINCIPAL_VOICE,200
+defendablerouter,defendablerouter.com,defendable-router,SPINE,INTAKE,200
+defendableledger,defendableledger.com,defendable-ledger,LEDGER,BOOKS_AND_RECORDS,200
+defendablecloud,defendablecloud.com,defendable-cloud,COMPUTE,RENTAL_LEASE,200
+defendablehack,defendablehack.com,,DEV,HACKER_TIER,000
+painintheshed,painintheshed.com,pain-in-the-shed,MEDIA,PODCAST,200
+offensetotheshed,offensetotheshed.com,offense-to-the-shed,CULTURE,BLOG,200
+swarmandbee,swarmandbee.ai,swarmandbee-app,UMBRELLA,APP_DASHBOARD,200
+opendefendable,opendefendable.com,open-defendable,OPEN,COMMUNITY,200
+defendable_landing,defendable.eth,defendable,LANDING,SHOWCASE,200

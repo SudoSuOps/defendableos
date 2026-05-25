@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <title>DefendableLedger · The Cracked Ledger of the DefendableOS Ecosystem</title>
+    <meta name="description" content="Receipts. Verdicts. Deeds. Training pairs. Books and records. The sovereign in-house ledger for DefendableOS. Every record hashed. Every deed verifiable. The language lives in the blocks." />
+    <meta name="author" content="DefendableOS · Swarm and Bee LLC" />
+
+    <link rel="canonical" href="https://defendableledger.com" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://defendableledger.com" />
+    <meta property="og:title" content="DefendableLedger · The Cracked Ledger" />
+    <meta property="og:description" content="Receipts. Verdicts. Deeds. Training pairs. The sovereign books-and-records layer of the DefendableOS ecosystem." />
+    <meta property="og:site_name" content="DefendableLedger" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DefendableLedger · The Cracked Ledger" />
+    <meta name="twitter:description" content="Sovereign in-house ledger. Every record hashed. Every deed verifiable. To the shed." />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="module" crossorigin src="/assets/index-_hpEDHUM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CORqOMGa.css">
+  </head>
+  <body class="bg-ink-900 text-cream-100 antialiased">
+    <div id="root"></div>
+  </body>
+</html>

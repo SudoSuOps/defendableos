@@ -1,0 +1,93 @@
+# DefendableRouter · AI context manifest
+# Generated 2026-05-24 · https://defendablerouter.com/
+
+> DefendableRouter is the drop-in middleware that sits between your AI
+> agent and any LLM provider (cloud or local), writes a SHA-256 receipt
+> for every call, and ships it to the audit pipeline without blocking
+> the agent. Write-only · sub-5ms POST · free OSS install
+> (MIT-with-receipt-clause). Per-agent ENS identity (agent.operator.defendable.eth)
+> on every receipt. Paid tiers: receipts/grading, insurance baseline.
+> "We cracked the router. OpenWrt for AI agents."
+
+## Operator
+Swarm and Bee LLC · DBA Swarm & Bee AI · Florida · D-U-N-S 138652395
+A surface of DefendableOS · the third-party defense layer for AI operators.
+
+## Where DefendableRouter runs · 3 deployment modes
+- EDGE   · runs on a HoneyBox appliance (Jetson Orin Nano · $249-$2K) on customer premises
+- CLOUD  · runs in your own cloud (Docker / k8s / VM / Python sidecar) · receipts → our Bakery vault
+- HYBRID · router in cloud · receipts catch on-prem HoneyBox · metadata syncs to Bakery for cross-team deeds
+
+DefendableHQ NEVER sits in the call path · we are the Bakery (receipt sink + grading) not the proxy.
+
+## ENS bridge · per-agent cryptographic identity
+- Per-agent ENS subdomain: agent-id.operator.defendable.eth
+- Per-operator root:       operator.defendable.eth
+- Per-compliance inbox:    compliance.operator.defendable.eth
+Each receipt signed with the agent's ENS keypair · daily Reconciliation
+Deed inherits the lineage · CFO + carrier + auditor can verify the
+deed came from the agent it claims to.
+
+## What it does
+- Transparent proxy in front of OpenAI / Anthropic / Mistral / vLLM /
+  local / DefendableCloud / any OpenAI-SDK-compatible provider
+- Captures: timestamp · agent_id · task_class · model · token counts ·
+  cost · status · tool_calls · body_hash · record_hash · ENS signature
+- Default = metadata-only receipts · prompt bodies are opt-in per call
+  (X-Defendable-Include-Body: 1)
+- Async fire-and-forget POST to sink · agent never waits
+
+## Install modes
+- Docker:  docker run -d ghcr.io/sudosuops/defendable-router:latest
+- Python:  pip install defendable-router  (FastAPI / Flask / Django wrapper)
+- nginx:   sidecar config with mirror directive (k8s / VM fleets)
+
+## Pricing
+- OSS         · $0 forever · MIT-with-receipt-clause · self-hosted local sink
+- Receipts    · $/M receipts · receipts land in Bakery vault · Tribunal grading · Daily Reconciliation Deed
+- Insurance   · priced per engagement · carrier-ready evidence pack · quarterly Operator Statement · direct carrier introductions
+
+## Pairs with
+- HoneyBox       · $249-$2K Jetson edge appliance · raw data never leaves
+- DefendableCloud · 128 RTX 6000 hosted inference rail · use as LLM provider behind router
+- DefendableOS    · the mothership · doctrine + Tribunal + deed schema + ENS namespace
+
+## Doctrine alignment
+- Write-only architecture (never block the agent)
+- Tribunal grading on receipts (Honey / Jelly / Propolis)
+- Daily Reconciliation Deed at 02:00 · Morning Brief at 06:00
+- ENS-anchored attestation (cryptographic agent identity)
+- 5-grade rubric on the deed: Capability 25 · Truth 20 · Safety 20 · Numeric 15 · Efficiency 10 · Reproducibility 10
+- SwarmFixer ships fixes for flagged patterns (closes the loop)
+
+## Insurance angle
+Carriers writing AI E&O policies (Munich Re, Lloyd's syndicates, US
+specialty carriers) require an audit baseline. DefendableRouter is
+the cheapest path to that baseline + the only one with deeds carriers
+can ingest directly. Premium materially improves with receipts + deeds
+vs receipts alone vs no receipts.
+
+## Compare
+- vs no router        · you have no audit trail · CFO and carrier can't price
+- vs Datadog APM      · they measure latency · they don't write deeds · enterprise pricing
+- vs LangSmith        · SaaS lock-in · OpenAI-focused · no insurance angle · no deeds
+- vs LiteLLM proxy    · same shape · we add Tribunal + deeds + ENS + insurance path
+
+## Brand stack
+- defendablerouter.com   · this site
+- defendableos.com       · the mothership · third-party defense rail
+- defendablecloud.com    · sister product · operator-owned private inference
+- defendableos.com/honeybox · sister product · the edge appliance
+- docs.defendableos.com  · technical documentation
+- opendefendable.com     · OSS standards body (sister)
+
+## Brand contract
+DefendableRouter (and all DefendableOS surfaces) NEVER ships an offense
+agent. We are always the KPMG-equivalent third party · the audit rail ·
+the receipts ledger · never the agent itself.
+
+## Repository
+https://github.com/SudoSuOps/defendable-router (open · MIT-with-receipt-clause)
+
+## Contact
+build@defendableos.com — all three tiers, one inbox.

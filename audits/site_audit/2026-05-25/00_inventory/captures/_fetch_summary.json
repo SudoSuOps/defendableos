@@ -1,0 +1,290 @@
+[
+  {
+    "brand": "defendableos",
+    "base_url": "https://defendableos.com",
+    "/": {
+      "http": "200",
+      "bytes": 14681
+    },
+    "/robots.txt": {
+      "http": "200",
+      "bytes": 1326
+    },
+    "/sitemap.xml": {
+      "http": "200",
+      "bytes": 8867
+    },
+    "/llms.txt": {
+      "http": "200",
+      "bytes": 18633
+    },
+    "/.well-known/security.txt": {
+      "http": "200",
+      "bytes": 2919
+    },
+    "/manifest.json": {
+      "http": "200",
+      "bytes": 2919
+    },
+    "/manifest.webmanifest": {
+      "http": "200",
+      "bytes": 4125
+    }
+  },
+  {
+    "brand": "mrdefendable",
+    "base_url": "https://mrdefendable.com",
+    "/": {
+      "http": "200",
+      "bytes": 1670
+    },
+    "/robots.txt": {
+      "http": "200",
+      "bytes": 70
+    },
+    "/sitemap.xml": {
+      "http": "200",
+      "bytes": 1151
+    },
+    "/llms.txt": {
+      "http": "200",
+      "bytes": 1955
+    },
+    "/.well-known/security.txt": {
+      "http": "200",
+      "bytes": 1670
+    },
+    "/manifest.json": {
+      "http": "200",
+      "bytes": 1670
+    },
+    "/manifest.webmanifest": {
+      "http": "200",
+      "bytes": 1670
+    }
+  },
+  {
+    "brand": "defendablerouter",
+    "base_url": "https://defendablerouter.com",
+    "/": {
+      "http": "200",
+      "bytes": 3084
+    },
+    "/robots.txt": {
+      "http": "200",
+      "bytes": 243
+    },
+    "/sitemap.xml": {
+      "http": "200",
+      "bytes": 1445
+    },
+    "/llms.txt": {
+      "http": "200",
+      "bytes": 4800
+    },
+    "/.well-known/security.txt": {
+      "http": "200",
+      "bytes": 3084
+    },
+    "/manifest.json": {
+      "http": "200",
+      "bytes": 3084
+    },
+    "/manifest.webmanifest": {
+      "http": "200",
+      "bytes": 3084
+    }
+  },
+  {
+    "brand": "defendableledger",
+    "base_url": "https://defendableledger.com",
+    "/": {
+      "http": "200",
+      "bytes": 1692
+    },
+    "/robots.txt": {
+      "http": "200",
+      "bytes": 74
+    },
+    "/sitemap.xml": {
+      "http": "200",
+      "bytes": 357
+    },
+    "/llms.txt": {
+      "http": "200",
+      "bytes": 1644
+    },
+    "/.well-known/security.txt": {
+      "http": "200",
+      "bytes": 1692
+    },
+    "/manifest.json": {
+      "http": "200",
+      "bytes": 1692
+    },
+    "/manifest.webmanifest": {
+      "http": "200",
+      "bytes": 1692
+    }
+  },
+  {
+    "brand": "defendablecloud",
+    "base_url": "https://defendablecloud.com",
+    "/": {
+      "http": "200",
+      "bytes": 3141
+    },
+    "/robots.txt": {
+      "http": "200",
+      "bytes": 242
+    },
+    "/sitemap.xml": {
+      "http": "200",
+      "bytes": 1281
+    },
+    "/llms.txt": {
+      "http": "200",
+      "bytes": 4757
+    },
+    "/.well-known/security.txt": {
+      "http": "200",
+      "bytes": 3141
+    },
+    "/manifest.json": {
+      "http": "200",
+      "bytes": 3141
+    },
+    "/manifest.webmanifest": {
+      "http": "200",
+      "bytes": 3141
+    }
+  },
+  {
+    "brand": "painintheshed",
+    "base_url": "https://painintheshed.com",
+    "/": {
+      "http": "200",
+      "bytes": 1421
+    },
+    "/robots.txt": {
+      "http": "200",
+      "bytes": 71
+    },
+    "/sitemap.xml": {
+      "http": "200",
+      "bytes": 599
+    },
+    "/llms.txt": {
+      "http": "200",
+      "bytes": 1494
+    },
+    "/.well-known/security.txt": {
+      "http": "200",
+      "bytes": 1421
+    },
+    "/manifest.json": {
+      "http": "200",
+      "bytes": 1421
+    },
+    "/manifest.webmanifest": {
+      "http": "200",
+      "bytes": 1421
+    }
+  },
+  {
+    "brand": "offensetotheshed",
+    "base_url": "https://offensetotheshed.com",
+    "/": {
+      "http": "200",
+      "bytes": 1326
+    },
+    "/robots.txt": {
+      "http": "200",
+      "bytes": 74
+    },
+    "/sitemap.xml": {
+      "http": "200",
+      "bytes": 1068
+    },
+    "/llms.txt": {
+      "http": "200",
+      "bytes": 961
+    },
+    "/.well-known/security.txt": {
+      "http": "200",
+      "bytes": 1326
+    },
+    "/manifest.json": {
+      "http": "200",
+      "bytes": 1326
+    },
+    "/manifest.webmanifest": {
+      "http": "200",
+      "bytes": 1326
+    }
+  },
+  {
+    "brand": "swarmandbee",
+    "base_url": "https://swarmandbee.ai",
+    "/": {
+      "http": "200",
+      "bytes": 30053
+    },
+    "/robots.txt": {
+      "http": "200",
+      "bytes": 2144
+    },
+    "/sitemap.xml": {
+      "http": "200",
+      "bytes": 6575
+    },
+    "/llms.txt": {
+      "http": "200",
+      "bytes": 12611
+    },
+    "/.well-known/security.txt": {
+      "http": "200",
+      "bytes": 12555
+    },
+    "/manifest.json": {
+      "http": "200",
+      "bytes": 12555
+    },
+    "/manifest.webmanifest": {
+      "http": "200",
+      "bytes": 12555
+    }
+  },
+  {
+    "brand": "opendefendable",
+    "base_url": "https://opendefendable.com",
+    "/": {
+      "http": "200",
+      "bytes": 2096
+    },
+    "/robots.txt": {
+      "http": "200",
+      "bytes": 72
+    },
+    "/sitemap.xml": {
+      "http": "200",
+      "bytes": 436
+    },
+    "/llms.txt": {
+      "http": "200",
+      "bytes": 2609
+    },
+    "/.well-known/security.txt": {
+      "http": "200",
+      "bytes": 2096
+    },
+    "/manifest.json": {
+      "http": "200",
+      "bytes": 2096
+    },
+    "/manifest.webmanifest": {
+      "http": "200",
+      "bytes": 2096
+    }
+  }
+]

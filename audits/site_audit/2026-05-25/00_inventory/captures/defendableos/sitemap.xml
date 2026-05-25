@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ─── Apex landing ─────────────────────────────────────────── -->
+  <url>
+    <loc>https://defendableos.com/</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ─── HoneyBox · edge defense appliance ────────────────────── -->
+  <url>
+    <loc>https://defendableos.com/honeybox</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ─── DefendableCloud · privacy-native hosted inference ────── -->
+  <url>
+    <loc>https://defendableos.com/cloud</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ─── Pricing · transparent · lease + tokens ───────────────── -->
+  <url>
+    <loc>https://defendableos.com/pricing</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- ─── The Doctrine · 12-article canonical reference ─────────── -->
+  <url>
+    <loc>https://defendableos.com/doctrine</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- ─── About / Operator thesis ──────────────────────────────── -->
+  <url>
+    <loc>https://defendableos.com/about</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ─── DefendableHack · builder rail · cracked LLM ──────────── -->
+  <url>
+    <loc>https://defendableos.com/hack</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- ─── How It Works · depth page · deed JSON + math + drift ── -->
+  <url>
+    <loc>https://defendableos.com/how-it-works</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- ─── OpenDefense · open-source market intelligence OM ────── -->
+  <url>
+    <loc>https://defendableos.com/opendefense</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ─── Contact form · Resend-backed ────────────────────────── -->
+  <url>
+    <loc>https://defendableos.com/contact</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ─── Defendable Compute · static demo (archived to /showcase) ─ -->
+  <url>
+    <loc>https://defendableos.com/compute</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ─── Defendable Ledger · paste-a-hash lookup ──────────────── -->
+  <url>
+    <loc>https://defendableos.com/ledger</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ─── Defendable Open · models + connectors + guardrails ───── -->
+  <url>
+    <loc>https://defendableos.com/open</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- ─── Pair Factory · educational doctrine page ─────────────── -->
+  <url>
+    <loc>https://defendableos.com/pair-factory</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ─── Defendable AgentGrade™ · educational doctrine ────────── -->
+  <url>
+    <loc>https://defendableos.com/agent-grade</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ─── DEFEND THE CLAW™ · ClawCheck free intake ─────────────── -->
+  <url>
+    <loc>https://defendableos.com/defend-the-claw</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ─── Defendable Reports · index ───────────────────────────── -->
+  <url>
+    <loc>https://defendableos.com/reports</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ─── Report · Vast.ai Utilization Signal Rail ─────────────── -->
+  <url>
+    <loc>https://defendableos.com/reports/vast-ai-utilization-signal-rail</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ─── Defendable CRE MarketReady · Palm Grove Marketplace ──── -->
+  <url>
+    <loc>https://defendableos.com/showcase/cre/palm-grove-marketplace</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/showcase/cre/palm-grove-marketplace/teaser</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/showcase/cre/palm-grove-marketplace/om</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/showcase/cre/palm-grove-marketplace/buyer-room</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/showcase/cre/palm-grove-marketplace/proof-record</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ─── Defendable Compute · live deeds (showcase) ───────────── -->
+  <url>
+    <loc>https://defendableos.com/showcase/ddeed-dov-compute-000001-v3</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/showcase/ddeed-dov-compute-000002-v3</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/showcase/ddeed-dov-compute-000003-v3</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ─── Defendable CRE STNL · operator-stated deeds (showcase) ── -->
+  <url>
+    <loc>https://defendableos.com/showcase/ddeed-dov-cre-stnl-wawa-000001-v1</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/showcase/ddeed-dov-cre-stnl-amazon-000001-v1</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ─── Defendable Compute · live deeds (verify · canonical proof) ─ -->
+  <url>
+    <loc>https://defendableos.com/verify/ddeed-dov-compute-000001-v3</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/verify/ddeed-dov-compute-000002-v3</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/verify/ddeed-dov-compute-000003-v3</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ─── Defendable CRE STNL · operator-stated deeds (verify) ──── -->
+  <url>
+    <loc>https://defendableos.com/verify/ddeed-dov-cre-stnl-wawa-000001-v1</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://defendableos.com/verify/ddeed-dov-cre-stnl-amazon-000001-v1</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ─── AI context manifest ──────────────────────────────────── -->
+  <url>
+    <loc>https://defendableos.com/llms.txt</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

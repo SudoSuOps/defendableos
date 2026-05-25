@@ -1,0 +1,90 @@
+# DefendableCloud · AI context manifest
+# Generated 2026-05-24 · https://defendablecloud.com/
+
+> DefendableCloud is operator-owned private inference with three product
+> lanes on one fleet: Inference (per-million-token billing, OpenAI-SDK
+> compatible), AgentBench (Tribunal-graded AI agent benchmarking that
+> issues Defendable Agent Deeds™), and SwarmCurator (receipted dataset
+> curation with Bakery Packs on the shelf or custom concierge intake).
+> SwarmFixer is the agent refinery that closes the AgentBench grade→fix
+> loop. 128 RTX 6000 Blackwell · 12,288 GB aggregate VRAM · paid in full ·
+> data-center-owned · contractual no-logging.
+
+## Operator
+Swarm and Bee LLC · DBA Swarm & Bee AI · Florida · D-U-N-S 138652395
+A surface of DefendableOS · the third-party defense layer for AI operators.
+
+## Product surfaces
+- https://defendablecloud.com/                  — this site
+- https://defendableos.com/                     — full DefendableOS product surface
+- https://defendableos.com/cloud                — in-context cloud overview
+- https://defendableos.com/honeybox             — sister product · edge HoneyBox
+- https://defendableos.com/doctrine             — 12-article doctrine
+- https://defendableos.com/how-it-works         — depth page · deed + math + drift
+- https://docs.defendableos.com/                — documentation
+- https://opendefendable.com/                   — OSS standards body (sister)
+
+## The 3-lane rail
+- Lane 01 · Inference         · per-million-token billing · OpenAI-SDK compat
+- Lane 02 · AgentBench        · Tribunal grading · Defendable Agent Deed™ issued
+- Lane 03 · SwarmCurator      · Bakery Packs + Custom Curation · fine-tune-ready out
+
+## Models (v1 open-weights menu)
+- CRE-Atlas 27B  · Gemma 27B base · CRE-tuned (cap rate / NOI / NNN / 1031)
+- SwarmGrant 9B  · Qwen 9B base · grant-writing tuned (SBIR / STTR / NIH / foundations)
+- Qwen 32B base  · open weights · general reasoning, tool-use, code, structured output
+- Gemma 27B base · open weights · long-context fluency, RAG, translation
+
+v2 menu (operator request): Llama 70B · DeepSeek · Mixtral
+
+## SwarmFixer · the agent refinery (closes the bench loop)
+Three tiers · Self-serve (patch suggestions in deed PDF) · Managed (PRs
+against your agent repo) · Embedded (90-day Fix-or-Refund engagement).
+
+## Bakery Packs · ready-baked SwarmCurator datasets
+- CRE MarketReady       · 118K rows · JSONL · Parquet · LoRA-ready          · FRESH
+- Grants Foundation Pack · 42K rows · JSONL · HF dataset                    · FRESH
+- Compute Inspector Eval · 6K rows · JSONL · pack-runner                    · FRESH
+- STNL Underwrite Pack   · 8K rows · JSONL · Parquet                        · ON THE OVEN
+- Legal Discovery Pack   · ETA Q3  · JSONL · Parquet                        · QUEUED
+- Your Custom Domain     · on demand · any format                           · ON-DEMAND
+
+## The Fleet
+- 128 × RTX 6000 Blackwell · 96 GB each · 12,288 GB aggregate VRAM
+- Paid in full · $0 debt service · DC-owned (no hyperscaler markup)
+- 6 cards isolated in bench-blackwell-06 partition for AgentBench
+
+## Privacy posture
+- No-log inference · contractual · not "best effort"
+- No training on customer traffic · ever
+- Single operator-owned link in the chain of custody
+- HIPAA / GDPR / SOC2 posture on request · BAA + DPA available
+- Receipts on demand for every call (opt-in)
+
+## Pricing model
+- Inference: $ per 1M tokens · model + context tier dependent · quote in 24h
+- AgentBench: $ per pack run · concierge today · self-serve console Q3 2026
+- SwarmCurator: Bakery Packs $/pack · Custom $/dataset scoped per engagement
+- No published rate cards · we won't publish dishonest numbers
+
+## Doctrine alignment
+- Offense (your AI agent does the work) / Defense (we receipt + grade + fix)
+- 5-grade rubric · never collapsed: Capability 25 · Truth 20 · Safety 20 ·
+  Numeric 15 · Efficiency 10 · Reproducibility 10
+- Honey / Jelly / Propolis Tribunal taxonomy · rule-then-judge architecture
+- Daily reconciliation in the shadows · agent works freely · grader runs at 2am
+- CRE due-diligence vocabulary · "the rack is the building"
+
+## Brand contract
+DefendableCloud (and all DefendableOS surfaces) never ships an offense
+agent. We are always the KPMG-equivalent third party. SwarmFixer fixes
+your agent · it does not replace it.
+
+## Sister surfaces
+- HoneyBox · $250 Jetson Orin Nano · edge appliance · raw data never leaves
+- DefendableOS · third-party defense rail for AI operators
+- OpenDefendable · the OSS standards body · doctrine pack registry
+- Docs · technical documentation surface
+
+## Contact
+build@defendableos.com — all three lanes, one inbox.

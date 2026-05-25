@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Swarm &amp; Bee · The Organic Dataset Bakery · Sovereign Medical Training Data + CLI</title>
+<meta name="description" content="Pre-curated AI training corpora for ML engineers building medical-vertical models. Standard 3,000-cell cookbooks at $1,299, master 5,000-cell cookbooks at $2,199. 10 free medical sample packs (500 cells) to taste. Sovereign compute (186 GPUs · 14 TB VRAM). CLI-only ordering (pip install swarmbee-bakery), Stripe invoice or USDC swarmusdc.eth settlement." />
+<link rel="canonical" href="https://swarmandbee.ai/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://swarmandbee.ai/" />
+<meta property="og:title" content="Swarm &amp; Bee — The Organic Dataset Bakery (CCIR)" />
+<meta property="og:description" content="Pre-curated AI training corpora for ML engineers building medical-vertical models. Standard 3,000-cell cookbooks at $1,299, master 5,000-cell cookbooks at $2,199. 10 free medical sample packs (500 cells) to taste. Sovereign compute (186 GPUs · 14 TB VRAM). CLI-only ordering (pip install swarmbee-bakery), Stripe invoice or USDC swarmusdc.eth settlement." />
+<meta property="og:site_name" content="Swarm &amp; Bee" />
+<meta property="og:image" content="https://swarmandbee.ai/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@swarmandbee" />
+<meta name="twitter:image" content="https://swarmandbee.ai/og-image.png" />
+
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="organic AI dataset, fresh baked dataset, CCIR, Commercial Compute Intelligence Refinery, dataset bakery, curated training data, Royal Jelly Protocol, honey jelly pollen propolis, sovereign compute, Atlas, AtlasOS, AI-native CRE, Defendable, defendable.eth, Hedera-anchored, sha256 receipts, Swarm and Bee, 500 pack dataset, by the pound, 25-50x leverage" />
+
+<!-- Favicon · the Bee · SVG primary + PNG/ICO fallbacks -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="theme-color" content="#0a0c11" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- AI context manifest pointer (Defendable v0.1.0 Builder spec B2) -->
+<link rel="alternate" type="text/plain" href="/llms.txt" title="AI context manifest (concise)" />
+<link rel="alternate" type="text/plain" href="/llms-full.txt" title="AI context manifest (full)" />
+
+<!-- Theme bootstrap -->
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem("swarm-theme");
+      var system = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var theme = stored === "dark" || stored === "light" ? stored : "light";
+      document.documentElement.setAttribute("data-theme", theme);
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  })();
+</script>
+
+<!-- Schema.org structured data · CCIR-first, CRE as a vertical service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://swarmandbee.ai/#organization",
+      "name": "Swarm & Bee LLC",
+      "alternateName": ["Swarm and Bee", "Swarm & Bee", "CCIR", "Commercial Compute Intelligence Refinery"],
+      "url": "https://swarmandbee.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://swarmandbee.ai/og-image.png"
+      },
+      "description": "Swarm & Bee LLC operates as a Commercial Compute Intelligence Refinery (CCIR) — the organic dataset bakery for AI. 186 GPUs of owned sovereign compute serve curated training data and tribunal-sealed deliverables across multiple verticals (CRE, medical, legal, agents, healing). The firm is the founding issuer of the defendable.eth certification standard.",
+      "slogan": "Fresh every day. Less is better. Verified. Vetted. Virtu.",
+      "email": "build@swarmandbee.ai",
+      "foundingDate": "2026",
+      "areaServed": [
+        {"@type": "Country", "name": "United States"},
+        {"@type": "Place", "name": "Global (compute services)"}
+      ],
+      "sameAs": [
+        "https://swarmandbee.eth.limo",
+        "https://defendable.eth.limo",
+        "https://aiov.eth.limo",
+        "https://swarmusdc.eth.limo",
+        "https://x.com/swarmandbee",
+        "https://github.com/SudoSuOps/atlas",
+        "https://github.com/SudoSuOps/swarmbee-bakery"
+      ],
+      "identifier": [
+        {"@type": "PropertyValue", "propertyID": "DUNS", "value": "138652395"},
+        {"@type": "PropertyValue", "propertyID": "ENS", "value": "swarmandbee.eth"},
+        {"@type": "PropertyValue", "propertyID": "ENS", "value": "defendable.eth"},
+        {"@type": "PropertyValue", "propertyID": "ENS", "value": "aiov.eth"},
+        {"@type": "PropertyValue", "propertyID": "ENS", "value": "swarmusdc.eth"},
+        {"@type": "PropertyValue", "propertyID": "HederaName", "value": "swarm.hbar"},
+        {"@type": "PropertyValue", "propertyID": "Hedera HCS Topic", "value": "0.0.10291838"}
+      ],
+      "founder": {"@id": "https://swarmandbee.ai/#founder"},
+      "knowsAbout": [
+        "AI training data curation",
+        "Dataset bakery operating doctrine",
+        "Royal Jelly Protocol (APEX/HONEY/JELLY/POLLEN/PROPOLIS tier grading)",
+        "Tribunal-Before-Training methodology",
+        "Sovereign compute (186 GPUs · 14 TB VRAM · 80 kW)",
+        "RTX PRO 6000 Blackwell + RTX 5090 fleet operations",
+        "Commercial Real Estate (CRE) underwriting and capital markets",
+        "Multi-agent AI systems",
+        "Hedera Consensus Service receipt anchoring",
+        "Defendable certification standard (defendable.eth)",
+        "fabrication detection in narrative outputs"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Defendable Franchise",
+        "url": "https://defendable.eth.limo"
+      },
+      "subOrganization": {
+        "@type": "ProfessionalService",
+        "@id": "https://cre.swarmandbee.ai/#cre-firm",
+        "name": "Swarm & Bee · CRE Capital Markets",
+        "url": "https://cre.swarmandbee.ai/",
+        "additionalType": ["RealEstateAgent"],
+        "description": "Florida Licensed Real Estate Brokerage — the CRE vertical of Swarm & Bee LLC. AtlasOS coordinates Senior MD, Underwriter, Book Maker, Closing, and 10-Hack specialist fleet. The first vertical the CCIR bakery serves.",
+        "areaServed": {"@type": "AdministrativeArea", "name": "Florida"}
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://swarmandbee.ai/#founder",
+      "name": "Donovan Mackey",
+      "jobTitle": "Founder · Family Office",
+      "description": "30 years CRE, $8B in closed transactions. Top-producing industrial broker on a national platform. Founded Swarm & Bee LLC to operate the Commercial Compute Intelligence Refinery — the organic dataset bakery for AI. Self-taught the AI infrastructure layer, onboarded 186 GPUs of sovereign compute, architected the bakery operating doctrine + AtlasOS multi-agent system.",
+      "worksFor": {"@id": "https://swarmandbee.ai/#organization"},
+      "knowsAbout": [
+        "AI training data curation",
+        "Commercial Real Estate",
+        "CRE Capital Markets",
+        "Sovereign compute operations",
+        "Multi-agent AI systems",
+        "Family office strategy"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://swarmandbee.ai/#website",
+      "url": "https://swarmandbee.ai",
+      "name": "Swarm & Bee",
+      "description": "The organic dataset bakery. CCIR doctrine, curated training data, defendable receipts.",
+      "publisher": {"@id": "https://swarmandbee.ai/#organization"},
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://swarmandbee.ai/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Swarm & Bee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Swarm & Bee LLC operates as a Commercial Compute Intelligence Refinery (CCIR) — the organic dataset bakery for AI. We curate training data on 186 GPUs of owned sovereign compute, grade every pair on a 5-dimension rubric, and ship Tribunal-sealed deliverables with sha256 receipts and optional Hedera anchoring. CRE is the first vertical we serve (at cre.swarmandbee.ai); the bakery doctrine extends to medical, legal, agents, and healing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 'AI is a bakery first' mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Signal is supply, curators are bakers, cooks are the oven, the Tribunal is the head baker who tastes before shipping, distribution is delivery. Fresh every day, with a shelf life. 500 fantastic Jelly Donuts crush 25,000 ingredients — volume of pairs is not the bottleneck, targeting is. The operating doctrine is at https://bakery.swarmandbee.ai or the apex https://swarmandbee.ai."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the bakery's SKUs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two SKUs: 'By the pound' wholesale corpora (graded, deduped, freshness-stamped — sold per 1,000 Honey Buns, for shops needing breadth) and 'The 500-Pack' signature blend (500-1,000 Jelly Donuts hand-built around one failure mode, Tribunal-sealed, 25-50x leverage of wholesale). Live menu at /menu.json. Order from the CLI: pip install git+https://github.com/SudoSuOps/swarmbee-bakery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the CRE vertical?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "cre.swarmandbee.ai is the CRE Capital Markets surface — Swarm & Bee LLC's Florida Licensed Real Estate Brokerage arm. AtlasOS coordinates Senior MD, Underwriter, Book Maker, Closing, and a 10-Hack specialist fleet to deliver brokerage workflow at machine scale. CRE is the first vertical the bakery serves; the cre.swarmandbee.ai surface holds the brokerage-specific content (licensing disclosure, founder credentials, deal proof points)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does sovereign compute matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Owned compute (186 GPUs / 14 TB VRAM / 80 kW) means no token rationing, no spot-instance preemption, and client data never touches a hyperscaler. Replicating this fleet costs $7-10M in capex plus 12-18 months of recruiting + DevOps. By the time a competitor would be operational, our deed flywheel has compounded for over a year. This is a multi-year structural moat — the bakery owns the oven."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Defendable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "defendable.eth is an open certification standard for audited AI assets. Every Swarm & Bee deliverable is signed under this address. Independent issuers can publish their own work under the same standard; the chain proves who signed what, when. See https://defendable.eth.limo for the spec."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://swarmandbee.ai/#webpage",
+      "url": "https://swarmandbee.ai/",
+      "name": "Swarm & Bee — The Organic Dataset Bakery (CCIR)",
+      "isPartOf": {"@id": "https://swarmandbee.ai/#website"},
+      "about": {"@id": "https://swarmandbee.ai/#organization"},
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://swarmandbee.ai/og-image.png"
+      },
+      "datePublished": "2026-05-02",
+      "dateModified": "2026-05-11",
+      "author": {"@id": "https://swarmandbee.ai/#founder"},
+      "publisher": {"@id": "https://swarmandbee.ai/#organization"},
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-B_vdkTM_.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DU1zZmFz.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","@id":"https://swarmandbee.ai/cookbooks/glycemic-reasoning","name":"Glycemic Reasoning · Cookbook","sku":"glycemic-reasoning","category":"AI Training Dataset · undefined","description":"Insulin dosing / carb-ratio / correction-factor reasoning with refusal on insufficient inputs. No fabrication of patient-specific doses.","brand":{"@id":"https://swarmandbee.ai/#organization"},"additionalProperty":[{"@type":"PropertyValue","name":"cells","value":3000},{"@type":"PropertyValue","name":"tier","value":"standard_3000"},{"@type":"PropertyValue","name":"lane"}],"offers":{"@type":"Offer","url":"https://swarmandbee.ai/cookbooks/glycemic-reasoning","priceCurrency":"USD","price":1299,"availability":"https://schema.org/InStock","seller":{"@id":"https://swarmandbee.ai/#organization"},"acceptedPaymentMethod":["http://purl.org/goodrelations/v1#ByInvoice","Stripe Invoice","USDC ERC-20 to swarmusdc.eth (0xBDe2153C5799f4012a9fAF327e3421D1caB4Ea23)"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","@id":"https://swarmandbee.ai/cookbooks/diabetic-foot-care","name":"Diabetic Foot Care · Cookbook","sku":"diabetic-foot-care","category":"AI Training Dataset · undefined","description":"IWGDF-aligned wound assessment, infection grading, offloading prescription, escalation timing. Patient-safety bias toward escalating ambiguous cases.","brand":{"@id":"https://swarmandbee.ai/#organization"},"additionalProperty":[{"@type":"PropertyValue","name":"cells","value":3000},{"@type":"PropertyValue","name":"tier","value":"standard_3000"},{"@type":"PropertyValue","name":"lane"}],"offers":{"@type":"Offer","url":"https://swarmandbee.ai/cookbooks/diabetic-foot-care","priceCurrency":"USD","price":1299,"availability":"https://schema.org/InStock","seller":{"@id":"https://swarmandbee.ai/#organization"},"acceptedPaymentMethod":["http://purl.org/goodrelations/v1#ByInvoice","Stripe Invoice","USDC ERC-20 to swarmusdc.eth (0xBDe2153C5799f4012a9fAF327e3421D1caB4Ea23)"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","@id":"https://swarmandbee.ai/cookbooks/patient-communication","name":"Patient Communication · Cookbook","sku":"patient-communication","category":"AI Training Dataset · undefined","description":"Medical-jargon-to-plain-language rewrite, consent explanation, triage script generation. Maintains clinical accuracy at patient-level register.","brand":{"@id":"https://swarmandbee.ai/#organization"},"additionalProperty":[{"@type":"PropertyValue","name":"cells","value":3000},{"@type":"PropertyValue","name":"tier","value":"standard_3000"},{"@type":"PropertyValue","name":"lane"}],"offers":{"@type":"Offer","url":"https://swarmandbee.ai/cookbooks/patient-communication","priceCurrency":"USD","price":1299,"availability":"https://schema.org/InStock","seller":{"@id":"https://swarmandbee.ai/#organization"},"acceptedPaymentMethod":["http://purl.org/goodrelations/v1#ByInvoice","Stripe Invoice","USDC ERC-20 to swarmusdc.eth (0xBDe2153C5799f4012a9fAF327e3421D1caB4Ea23)"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","@id":"https://swarmandbee.ai/cookbooks/spine-imaging-reasoning","name":"Spine Imaging Reasoning · Cookbook","sku":"spine-imaging-reasoning","category":"AI Training Dataset · undefined","description":"Spine imaging interpretation (MRI sagittal/axial), differential diagnosis chains, clinical-vignette → diagnostic reasoning at radiology-fellow register.","brand":{"@id":"https://swarmandbee.ai/#organization"},"additionalProperty":[{"@type":"PropertyValue","name":"cells","value":3000},{"@type":"PropertyValue","name":"tier","value":"standard_3000"},{"@type":"PropertyValue","name":"lane"}],"offers":{"@type":"Offer","url":"https://swarmandbee.ai/cookbooks/spine-imaging-reasoning","priceCurrency":"USD","price":1299,"availability":"https://schema.org/InStock","seller":{"@id":"https://swarmandbee.ai/#organization"},"acceptedPaymentMethod":["http://purl.org/goodrelations/v1#ByInvoice","Stripe Invoice","USDC ERC-20 to swarmusdc.eth (0xBDe2153C5799f4012a9fAF327e3421D1caB4Ea23)"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","@id":"https://swarmandbee.ai/cookbooks/diabetes-companion","name":"Diabetes Companion · Cookbook","sku":"diabetes-companion","category":"AI Training Dataset · undefined","description":"Full-stack diabetes assistant: clinical decision support + research grounding + patient communication + lived-experience register, with two-stream architecture (sourced authority vs lived voice) preserved.","brand":{"@id":"https://swarmandbee.ai/#organization"},"additionalProperty":[{"@type":"PropertyValue","name":"cells","value":5000},{"@type":"PropertyValue","name":"tier","value":"master_5000"},{"@type":"PropertyValue","name":"lane"}],"offers":{"@type":"Offer","url":"https://swarmandbee.ai/cookbooks/diabetes-companion","priceCurrency":"USD","price":2199,"availability":"https://schema.org/InStock","seller":{"@id":"https://swarmandbee.ai/#organization"},"acceptedPaymentMethod":["http://purl.org/goodrelations/v1#ByInvoice","Stripe Invoice","USDC ERC-20 to swarmusdc.eth (0xBDe2153C5799f4012a9fAF327e3421D1caB4Ea23)"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","@id":"https://swarmandbee.ai/cookbooks/multimodal-clinical-reasoning","name":"Multimodal Clinical Reasoning · Cookbook","sku":"multimodal-clinical-reasoning","category":"AI Training Dataset · undefined","description":"Broad medical reasoning spanning imaging + literature + guidelines. For shops building general clinical-assistant models that need both diagnostic-imaging fluency and citation-grounded answers.","brand":{"@id":"https://swarmandbee.ai/#organization"},"additionalProperty":[{"@type":"PropertyValue","name":"cells","value":5000},{"@type":"PropertyValue","name":"tier","value":"master_5000"},{"@type":"PropertyValue","name":"lane"}],"offers":{"@type":"Offer","url":"https://swarmandbee.ai/cookbooks/multimodal-clinical-reasoning","priceCurrency":"USD","price":2199,"availability":"https://schema.org/InStock","seller":{"@id":"https://swarmandbee.ai/#organization"},"acceptedPaymentMethod":["http://purl.org/goodrelations/v1#ByInvoice","Stripe Invoice","USDC ERC-20 to swarmusdc.eth (0xBDe2153C5799f4012a9fAF327e3421D1caB4Ea23)"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://swarmandbee.ai/cli#swarmbee-bakery","name":"swarmbee-bakery","applicationCategory":"DeveloperApplication","operatingSystem":"Linux, macOS, Windows","softwareVersion":"0.1.6","downloadUrl":"https://pypi.org/project/swarmbee-bakery/","installUrl":"https://pypi.org/project/swarmbee-bakery/","description":"CLI for browsing, sampling, and ordering Swarm & Bee dataset cookbooks. Install via pipx install swarmbee-bakery. Order via swarmbee-bakery order --sku cookbook --cookbook <slug> --settlement swarmusdc --confirm.","publisher":{"@id":"https://swarmandbee.ai/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","@id":"https://swarmandbee.ai/#how-to-order","name":"Order a Swarm & Bee cookbook","description":"Sovereign CLI-only ordering flow. Install the CLI, browse cookbooks, optionally taste free samples, submit an order, pay via Stripe invoice or USDC settlement to swarmusdc.eth.","totalTime":"PT5M","estimatedCost":{"@type":"MonetaryAmount","currency":"USD","value":"1299"},"step":[{"@type":"HowToStep","position":1,"name":"Install","text":"pipx install swarmbee-bakery","url":"https://pypi.org/project/swarmbee-bakery/"},{"@type":"HowToStep","position":2,"name":"Browse","text":"swarmbee-bakery cookbook"},{"@type":"HowToStep","position":3,"name":"Taste free","text":"swarmbee-bakery free --all --out-dir ./samples (500 free medical cells)"},{"@type":"HowToStep","position":4,"name":"Order","text":"swarmbee-bakery order --sku cookbook --cookbook <slug> --settlement swarmusdc --confirm"},{"@type":"HowToStep","position":5,"name":"Pay","text":"Stripe invoice via email, or USDC settlement to swarmusdc.eth (0xBDe2153C5799f4012a9fAF327e3421D1caB4Ea23) on Ethereum L1 ERC-20 mainnet only"},{"@type":"HowToStep","position":6,"name":"Receive","text":"Signed R2 download URL emailed within one business day with manifest.json + sha256 + 60-probe eval set + recipe YAML"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"OfferCatalog","@id":"https://swarmandbee.ai/#medical-catalog","name":"Swarm & Bee Medical SKU Catalog","itemListElement":[{"@type":"Offer","position":1,"name":"Dmack's Royal Jelly","description":"77,797 cells · medical/diabetes · tier APEX","availability":"https://schema.org/InStock"},{"@type":"Offer","position":2,"name":"Endo Eclair","description":"5,948 cells · medical/endocrinology · tier APEX","availability":"https://schema.org/InStock"},{"@type":"Offer","position":3,"name":"Cinnamon Spiral","description":"5,752 cells · medical/cgm · tier APEX","availability":"https://schema.org/InStock"},{"@type":"Offer","position":4,"name":"Madeleine","description":"11,169 cells · medical/literature · tier HONEY","availability":"https://schema.org/InStock"},{"@type":"Offer","position":5,"name":"Scholar Croissant","description":"51,822 cells · medical/scholarly · tier HONEY","availability":"https://schema.org/InStock"},{"@type":"Offer","position":6,"name":"Global Crumpet","description":"5,632 cells · medical/guidelines · tier HONEY","availability":"https://schema.org/InStock"}]}</script></head>
+<body>
+<div id="root">
+<main class="sb-crawler-static">
+  <blockquote><strong>"The next AI economy will not be won by people with the most prompts. It will be won by people with the most defendable assets."</strong></blockquote>
+
+  <header>
+    <h1>Swarm &amp; Bee · The Organic Dataset Bakery · Commercial Compute Intelligence Refinery</h1>
+    <p class="tagline">The refinery for the <strong>Defendable AI Asset</strong> economy. Sovereign-compute training-data production on 234 GPUs · ~18.6 TB VRAM owned on-prem. MicroScalers™ are the workforce. Defendable.eth is the deed office. Pre-curated medical training corpora for ML engineers building clinical-support models. Receipts where we have them, explicitly pending where we don&apos;t. <strong>No fake science. No proof, no honey.</strong></p>
+  </header>
+
+  <section id="real-receipts">
+    <h2>Real receipts (the load-bearing claims)</h2>
+    <ul>
+      <li><strong>Atlas-Qwen-27B</strong> · final loss <strong>0.4186</strong> — CRE-vertical adapter on the Gold Standard QLoRA config (LR 1e-5, LoRA r=64 α=32, cosine, eff batch 32, bf16).</li>
+      <li><strong>SwarmCurator-9B</strong> · final loss <strong>0.707</strong> — auditor model cooked on same config.</li>
+      <li><strong>501 Jelly Donuts</strong> · Curator-Mistral-3B v2 directly repaired Atlas-Qwen-27B v1&apos;s fabrication-detection blind spot — the empirical anchor for &ldquo;less is better when the cut is targeted.&rdquo; This is the floor for spot-repair on one narrow failure mode.</li>
+      <li><strong>Cookbooks scale that pattern</strong> · Standard 3,000 cells = move the needle on a domain. Master 5,000 cells = confident behavioral pivot. Below 3,000, route to the 500-Pack ($249) where the direct receipt lives.</li>
+    </ul>
+  </section>
+
+  <section id="cookbooks">
+    <h2>Cookbooks (curated recipes that move the needle)</h2>
+    <p>Pre-built multi-SKU bundles, deterministic per-cookbook (sha256-seeded), ship with the 60-probe <code>dmack_eval_set_v1</code> + recipe YAML + loader.py. Pre/post the eval set; the delta is the receipt.</p>
+    <ul>
+      <li><a href="/cookbooks/glycemic-reasoning"><strong>Glycemic Reasoning</strong></a> · 3,000 cells · $1,299 · standard 3000 · <em>Insulin dosing / carb-ratio / correction-factor reasoning with refusal on insufficient inputs. No fa</em></li>
+      <li><a href="/cookbooks/diabetic-foot-care"><strong>Diabetic Foot Care</strong></a> · 3,000 cells · $1,299 · standard 3000 · <em>IWGDF-aligned wound assessment, infection grading, offloading prescription, escalation timing. Patie</em></li>
+      <li><a href="/cookbooks/patient-communication"><strong>Patient Communication</strong></a> · 3,000 cells · $1,299 · standard 3000 · <em>Medical-jargon-to-plain-language rewrite, consent explanation, triage script generation. Maintains c</em></li>
+      <li><a href="/cookbooks/spine-imaging-reasoning"><strong>Spine Imaging Reasoning</strong></a> · 3,000 cells · $1,299 · standard 3000 · <em>Spine imaging interpretation (MRI sagittal/axial), differential diagnosis chains, clinical-vignette </em></li>
+      <li><a href="/cookbooks/diabetes-companion"><strong>Diabetes Companion</strong></a> · 5,000 cells · $2,199 · master 5000 · <em>Full-stack diabetes assistant: clinical decision support + research grounding + patient communicatio</em></li>
+      <li><a href="/cookbooks/multimodal-clinical-reasoning"><strong>Multimodal Clinical Reasoning</strong></a> · 5,000 cells · $2,199 · master 5000 · <em>Broad medical reasoning spanning imaging + literature + guidelines. For shops building general clini</em></li>
+    </ul>
+  </section>
+
+  <section id="medical-catalog">
+    <h2>Medical SKU catalog (in stock)</h2>
+    <p>Every cell count is from <code>wc -l</code> on the source file — never estimated, never rounded. Two-stream architecture preserved: sourced authority (ADA, IWGDF, NIDDK, NHS, PMC) vs. founder lived-experience register, never confused.</p>
+    <ul>
+      <li><strong>Dmack&#39;s Royal Jelly</strong> · 77,797 cells · medical/diabetes · tier <code>APEX</code></li>
+      <li><strong>Endo Eclair</strong> · 5,948 cells · medical/endocrinology · tier <code>APEX</code></li>
+      <li><strong>Cinnamon Spiral</strong> · 5,752 cells · medical/cgm · tier <code>APEX</code></li>
+      <li><strong>Madeleine</strong> · 11,169 cells · medical/literature · tier <code>HONEY</code></li>
+      <li><strong>Scholar Croissant</strong> · 51,822 cells · medical/scholarly · tier <code>HONEY</code></li>
+      <li><strong>Global Crumpet</strong> · 5,632 cells · medical/guidelines · tier <code>HONEY</code></li>
+      <li><strong>Federal Glaze</strong> · 4,328 cells · medical/guidelines · tier <code>HONEY</code></li>
+      <li><strong>Founder&#39;s Pretzel</strong> · 1,592 cells · medical/patterns · tier <code>APEX</code></li>
+      <li><strong>Atlas Sourdough</strong> · 810,097 cells · finance/cre · tier <code>HONEY</code></li>
+    </ul>
+  </section>
+
+  <section id="how-to-buy">
+    <h2>How to buy · CLI-only doctrine</h2>
+    <p>Datasets are sold <strong>only through the <code>swarmbee-bakery</code> CLI</strong> (pip install). No browser auto-checkout. A human reads every order within one business day.</p>
+    <ol>
+      <li><code>pipx install swarmbee-bakery</code> (or pip in a venv)</li>
+      <li><code>swarmbee-bakery cookbook</code> — browse the 6 curated recipes</li>
+      <li><code>swarmbee-bakery free --all --out-dir ./samples</code> — pull 10 free medical sample packs (500 cells, no signup)</li>
+      <li><code>swarmbee-bakery order --sku cookbook --cookbook &lt;slug&gt; --settlement swarmusdc --confirm</code></li>
+    </ol>
+    <p>Settlement rails: <strong>Stripe invoice</strong> (email link, no card-on-file) or <strong>USDC</strong> to <code>swarmusdc.eth</code> (resolves to <code>0xBDe2153C5799f4012a9fAF327e3421D1caB4Ea23</code>) on <strong>Ethereum L1 ERC-20 mainnet only</strong> — no L2, no Base, we are root.</p>
+  </section>
+
+  <section id="founder">
+    <h2>Founder · Compassionate Intelligence</h2>
+    <p><strong>Donovan Mackey</strong> — Founder, Family Office. 30 years CRE, $8B in closed transactions. <strong>Type 1 diabetic, Addison&apos;s disease, insulin-dependent, 14 foot-complication surgeries.</strong> Lived experience anchors the medical vertical&apos;s register — used for human resonance, <strong>never as medical authority</strong>. Sourced medical claims carry the citation chain.</p>
+    <p><em>Datasets and cooked models are training and decision-support tools for ML engineers. Not medical advice. Not a substitute for a licensed clinician.</em></p>
+  </section>
+
+  <footer>
+    <p>Swarm and Bee LLC · Florida · DUNS 138652395 · <a href="/cdn-cgi/l/email-protection#cfadbaa6a3ab8fbcb8aebda2aea1abadaaaae1aea6"><span class="__cf_email__" data-cfemail="ceacbba7a2aa8ebdb9afbca3afa0aaacababe0afa7">[email&#160;protected]</span></a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/cookies">Cookies</a> · <a href="/llms.txt">llms.txt</a> · <a href="/cookbooks/index.json">cookbooks/index.json</a> · <a href="/menu.json">menu.json</a></p>
+  </footer>
+</main>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

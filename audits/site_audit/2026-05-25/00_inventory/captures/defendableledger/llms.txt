@@ -1,0 +1,38 @@
+# DefendableLedger
+
+> The cracked ledger of the DefendableOS ecosystem.
+> Sovereign · in-house · hash-verifiable.
+> Receipts. Verdicts. Training Pairs. Deeds. Books and records.
+> The language lives in the blocks.
+
+## Canonical surfaces
+- defendableledger.com — primary (Cloudflare Pages · CI-built from git push)
+
+## Legacy / secondary
+- ledger.mrdefendable.com — earlier subdomain pointer to the streetledger display
+- streetledger.eth.limo — ENS-resolved IPFS gateway · vocabulary ledger
+
+## Source
+- repo: github.com/SudoSuOps/defendable-ledger
+
+## Pages
+- / — Home · the doctrine · the four rails · royal jelly tiers
+- /records — Public records · receipts · verdicts · training pairs · deeds
+- /verify — Client-side SHA-256 verification (paste any record or hash · WebCrypto · nothing sent to a server)
+
+## Doctrine
+Operator-grade. Books and records. Class A 5-cap. No fluff. No startup-speak. No AI hype.
+Sovereign compute. In-house cooks. No external chain anchoring. Receipts first. Ring ring. To the shed.
+
+## The five tiers (Royal Jelly)
+- Apex · operator-grade ground truth
+- Honey · production-ready
+- Jelly · solid corpus material
+- Pollen · breadth coverage
+- Propolis · edge cases · repair lift
+
+## The four rails per receipt
+1. Receipt issued by DefendableRouter (deterministic · hashed · provenance-stamped)
+2. Verdict issued by Tribunal · SwarmCurator-9B (4-dim rubric: accuracy · CRE judgment · format · score)
+3. Training pair extracted by SwarmJelly (Royal Jelly tier routing · in-house corpus)
+4. Deed recorded on DefendableLedger (append-only · hash-chained · publication batched)

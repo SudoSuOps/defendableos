@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>DefendableRouter · We Cracked the Router · OpenWrt for AI Agents</title>
+    <meta
+      name="description"
+      content="DefendableRouter · drop-in middleware that intercepts AI agent traffic and writes receipts. Write-only · no blocking · <5ms POST. Free OSS install · paid receipts, grading, and insurance baseline. The audit rail your CFO can read and your engineers won't fight."
+    />
+    <link rel="canonical" href="https://defendablerouter.com/" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DefendableRouter" />
+    <meta property="og:url" content="https://defendablerouter.com/" />
+    <meta property="og:title" content="DefendableRouter · We Cracked the Router" />
+    <meta
+      property="og:description"
+      content="OpenWrt for AI agents. Drop-in middleware · write-only · <5ms POST. Receipts on every agent call. Free OSS install · paid for the audit pipeline. The bridge between offense (your agent) and defense (your deed)."
+    />
+    <meta property="og:image" content="https://defendablerouter.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DefendableRouter · we cracked the router · OpenWrt for AI agents" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DefendableRouter · We Cracked the Router" />
+    <meta
+      name="twitter:description"
+      content="OpenWrt for AI agents. Drop-in middleware · write-only · <5ms POST. Receipts on every agent call. Free OSS install · paid audit pipeline."
+    />
+    <meta name="twitter:image" content="https://defendablerouter.com/og-image.png" />
+    <meta name="twitter:image:alt" content="DefendableRouter · we cracked the router" />
+    <meta name="twitter:site" content="@swarmandbee" />
+    <meta name="twitter:creator" content="@swarmandbee" />
+
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Swarm and Bee LLC · DBA Swarm & Bee AI · Florida · D-U-N-S 138652395" />
+    <meta name="keywords" content="AI agent gateway, AI agent proxy, AI agent middleware, LLM proxy, OpenAI proxy, Anthropic proxy, agent receipts, agent audit, agent observability, agent insurance, OpenWrt AI, cracked router, write-only middleware, sub-5ms proxy, agent compliance, HIPAA AI agent, GDPR AI agent, AI agent SOC2, DefendableOS" />
+
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="AI context manifest" />
+    <script type="module" crossorigin src="/assets/index-DEBTN0yM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CXlekRA7.css">
+  </head>
+  <body class="bg-neutral-950">
+    <div id="root"></div>
+  </body>
+</html>

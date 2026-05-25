@@ -1,0 +1,374 @@
+# DefendableOS · llms.txt
+#
+# Context manifest for AI agents indexing defendableos.com.
+# Last updated: 2026-05-24 (post offense/defense framing · HoneyBox + DefendableCloud).
+
+## ★ Primary positioning (2026-05-24 forward)
+
+DefendableOS is the **third-party defense layer for AI operators and asset owners**.
+
+Tagline: **"Agent does the assignment. We validate the Project."**
+
+  - The AI industry today sells nothing but OFFENSE (vendors competing
+    on speed · volume · coverage of what an agent can do).
+  - DefendableOS is the missing DEFENSE layer · receipted · audit-grade ·
+    KPMG-equivalent third-party positioning · we do NOT ship offense agents.
+  - Every task an agent runs is captured · receipted · graded · and
+    reconciled into a daily deed that the CFO · compliance team · and
+    insurance carrier can read.
+  - Defense lives in the SHADOWS of the work day. Agent runs free all
+    day. Nightly reconciliation at 2am. Morning brief by 6am. One email.
+    Compounding progress.
+
+## Primary product surfaces (start here)
+
+  /             · Homepage · the offense/defense framing
+  /honeybox     · Physical edge appliance ($249-2,500 · Jetson family · data never leaves)
+  /cloud        · DefendableCloud · privacy-native hosted inference (128 RTX PRO 6000 · paid in full)
+  /pricing      · Transparent pricing · lease model · MRI center worked example
+  /doctrine     · 12-article canonical doctrine · the Constitution of DefendableOS
+  /about        · Operator thesis · "we own the building" · institutional credibility
+  /hack         · DefendableHack · builder rail · 4B-671B model ladder · open weights · 4 reference hardware builds
+  /how-it-works · DEPTH PAGE · 8-stage flow · REAL deed JSON · sovereignty · Bayesian math · Drift Alerts (NEW capability)
+  /opendefense  · MARKET INTELLIGENCE · open-source AI-agent-defense category briefing · 120+ cited sources · 7-exit M&A wave · top 5 wedge verticals · regulatory cliffs · MIT-attribution licensed
+  /defend-the-claw · Live ClawCheck free intake (working production · Kimi K2.6)
+
+## Brand stack (six surfaces · audience-segmented)
+
+  defendableos.com    · Institutional (Suit)
+  defendtheclaw.com   · Movement (Manifesto)
+  defendablehack.com  · Researcher / bounty (T-shirt)
+  opendefendable.com  · OSS standards body (Hoodie)
+  defendablerouter.com · AI gateway product
+  defendablecloud.com · Hosted compute product
+
+## Doctrinal innovations
+
+  - **Per-task deed ledger** (not a one-time certificate · running ledger)
+  - **Nightly reconciliation** (defense in the shadows · 2am cron · 6am brief)
+  - **Liens-on-deeds** (CRE title metaphor · senior/mezz/junior · workout plans)
+  - **CRE due-diligence vocabulary** (books · title · partners · terms · economic study)
+  - **DefendableFixers** (closer layer · 3 tiers · Fix-or-Refund 90-day guarantee)
+  - **HoneyBox + DefendableCloud** (two deployment modes · same doctrine)
+
+## Pitch line
+
+  "The deed is only as good as the fix it delivers."
+
+## Earlier content below (kept for archival continuity)
+# ────────────────────────────────────────────────────────────────────────
+
+## What this is
+
+DefendableOS is the operating system for evidence-backed valuation,
+provenance, and market-ready ownership across real-world and digital
+assets — AND a demand-intelligence platform for choosing what to
+sell next.
+
+The market-facing promise is **Proof of Value**.
+The internal doctrine is **Validate the Validator**.
+The intelligence engine is **AIOV** (AI Opinion of Value).
+The asset record is the **Defendable Deed**.
+
+## The two halves
+
+DefendableOS is two intelligence products under one operating system:
+
+1. **Asset side** (Goods Vault + Comp Foundry + Defendable Deeds)
+   Bring us something valuable. We prove what it is and what it is worth.
+
+2. **Demand side** (ProductRadar)
+   Bring us a store idea. We find what may sell, package the brand,
+   build the proof, and connect to your store to learn what actually
+   converted.
+
+## The thesis
+
+Value without evidence is just an opinion. Demand without proof is
+just a guess. DefendableOS produces defensible records of both
+— built for sale, transfer, financing, insurance, procurement, and
+trust.
+
+## Asset classes in scope
+
+- Commercial Real Estate (CRE · STNL retail · STNL industrial · multi-tenant)
+- Compute Hardware (GPUs · workstation accelerators · DGX/HGX · servers · edge appliances)
+- Equipment
+- Luxury Goods
+- Datasets
+- AI Assets (models · evaluations · training records)
+
+## Live catalog (as of 2026-05-22)
+
+**Defendable Compute · 3 operator-asking deeds:**
+- NVIDIA RTX PRO 6000 Blackwell · $9,850 · DDEED-DOV-COMPUTE-000001-v3
+- NVIDIA RTX 5090 ROG ASTRAL · $3,900 · DDEED-DOV-COMPUTE-000002-v3
+- NVIDIA RTX 3090 Founders Edition · $950 · DDEED-DOV-COMPUTE-000003-v3
+
+**Defendable CRE STNL · 2 operator-stated deeds (NOI / cap / asking):**
+- Wawa Convenience-and-Fuel · $6,653,900 · 5.0% cap · NOI $332,695
+- Amazon Last-Mile DC · $170,000,000 · 5.0% cap · NOI $8,500,000
+
+**Defendable CRE MarketReady · illustrative demo:**
+- Palm Grove Marketplace · grocery-anchored neighborhood retail · S Florida
+
+Each deed is resolvable by deed reference, manifest hash, validator
+receipt, or full SHA-256 record hash at https://ledger.defendableos.com.
+
+## Platform modules
+
+- **AIOV Engine** — AI-assisted opinions of value (Kimi K2.6 · GPT-4o · live)
+- **Evidence Vault** — 4-bucket privacy-classed object storage
+- **Comp Foundry** — A–E comp grading with 7 doctrine rules
+- **Validator Review** — deterministic 12-check protocol
+- **Defendable Deed** — versioned, SHA-256-anchored asset record
+- **MarketReady** — premium go-to-market packaging
+- **ProductRadar** — 8-component demand-intelligence scoring
+- **Brand Outlet Signal** — eBay merchandising-placement watchlist
+- **ITAD Partner Feed** — 8 verified ITAD targets for enterprise compute comps
+- **Source Rights Ledger** — per-artifact permissioned use controls
+
+## Signal class doctrine (LOCKED)
+
+DefendableOS distinguishes 9 epistemic classes of demand/value signal:
+
+| Signal class | Provider example | Confirmed sale? |
+|---|---|---|
+| TREND_SIGNAL | Brave research context | NO |
+| BRANDED_COMMERCE_PLACEMENT | eBay Brand Outlet | NO |
+| SEARCH_DEMAND_SIGNAL | Ahrefs / Semrush | NO |
+| SOCIAL_COMMERCE_TREND_SIGNAL | TikTok Creative Center | NO |
+| GOOGLE_SHOPPING_POPULARITY | Google Merchant Center | NO |
+| COMPETITOR_VISIBILITY_SIGNAL | Semrush Domain Research | NO |
+| RETAIL_INTELLIGENCE_ESTIMATE | Similarweb / Semrush Trends | NO |
+| ECOMMERCE_PRODUCT_CLICK_SIGNAL | Semrush Retail Keywords | NO |
+| MARKETPLACE_SOLD_RESEARCH | eBay Product Research (analyst-reviewed) | NO |
+| PERMISSIONED_CONNECTED_SALE | Client Shopify/eBay store | **YES** |
+| FIRST_PARTY_DEFENDABLE_SALE | Defendable-managed sale | **YES** |
+
+Only the bottom two count as confirmed-sale evidence. Every output
+declares its signal class · the platform refuses to derive a
+confirmed-sale claim from non-confirmed-class signals.
+
+## Defendable Box (edge module)
+
+Defendable Box — local capture, local inference, sovereign evidence
+handling on Jetson Orin Nano Super. Capability preview · not yet for
+general availability.
+
+## Doctrine principles
+
+- **Evidence Before Confidence** — no conclusion outranks its source
+- **Receipts Before Claims** — outputs must be supported by inspectable records
+- **Challenge Before Transfer** — packages should survive scrutiny before reaching a buyer
+- **Brand Placement ≠ Supplier Authorization** — Brand Outlet appearance is research context, never reseller approval
+- **Listing Price ≠ Confirmed Sale** — asking-market context never becomes value support
+- **No Evidence, No Claim**
+
+## Public verification surfaces
+
+- /verify/{slug} — canonical doctrine-correct proof page for any deed
+- /showcase/{slug} — cinematic marketing surface
+- /ledger — paste a deed reference, record hash, manifest hash, or
+  validator receipt to resolve any of the above
+- ledger.defendableos.com — subdomain shortcut to the lookup form
+- /open — Defendable Open Infrastructure · every AI model, every
+  connector, every doctrine guardrail, every storage bucket · named
+  and statused · the receipts behind the receipts
+- /defend-the-claw — Defend The Claw™ public AI agent safety
+  campaign + ClawCheck™ free intake. Deterministic 5-step intake
+  (Worker kind · Deployment target · Access surfaces · Model
+  provider · Memory persistence) produces a Claw Exposure Snapshot
+  with documented Risk Tier (LOW / MODERATE / ELEVATED / HIGH) +
+  recommended Defendable product. NOT a chatbot · NOT autonomous ·
+  NO LLM call on user inputs · NO file access · purely
+  rule-based intake interface. Routes to AgentGrade benchmark +
+  Defendable Agent Deed + AI Work Unit Deed paid review ladder.
+  Tagline: "Your AI assistant has hands now. Inspect it before
+  you trust it." Hook: "OpenClaw gives AI hands · Defendable
+  makes sure those hands can be trusted."
+
+## DefendableOS distribution paths into OpenClaw / Kimi Code
+
+DefendableOS is designed to ship into the emerging always-on
+agent runtime ecosystem (OpenClaw · Kimi Code · Claude Desktop ·
+Cursor · etc) via three complementary distribution surfaces · all
+forthcoming:
+
+- **Defendable MCP server** · exposes clawcheck_inspect_agent ·
+  agentgrade_run_pack · evidence_vault_public_export · operator_
+  ask_price_capture · etc as Model Context Protocol tools that
+  any MCP-compatible host can invoke natively
+- **Defendable Kimi Code plugin** · packaged like LegalSniper
+  plugin (Apache 2.0 · github.com/SudoSuOps/legalsniper-plugin)
+  with closed-schema HANDOFF_INTENTS · 3-tier subagent isolation
+  · operator confirmation on dispatch
+- **Defendable Kimi Code skill** · lightweight skill that
+  surfaces ClawCheck intake + Defendable AgentGrade benchmark
+  inside an active OpenClaw session
+- **Defendable Kimi Code hooks** · the most powerful surface ·
+  pre-tool-call + post-tool-call + pre-message-send hooks that
+  run ClawCheck permission discipline + AgentGrade cost capture
+  + injection-test in real time during agent operation · turns
+  inspection from a one-time intake into a continuous evidence
+  capture loop
+
+OpenClaw deployment options (My Computer · Cloud Server · Android
+Phone · Edge Box) map 1:1 to Defendable's deployment risk
+classification on /defend-the-claw.
+
+- /agent-grade — Defendable AgentGrade™ · verified performance
+  testing for AI agents before they are trusted, deployed,
+  licensed, rented, or acquired. Five orthogonal grades (Capability
+  25% · Truth 20% · Safety 20% · Numeric/Structural 15% · Efficiency
+  10% · Reproducibility 10%) · Tribunal classifier (Honey/Jelly/
+  Propolis · rule-then-model) · deployment tiers always tied to a
+  defined workflow lane (OBSERVED → CONDITIONALLY_DEPLOYABLE →
+  COMMERCIALLY_DEPLOYABLE → INSTITUTIONAL_GRADE → DEFENDABLE_CERTIFIED).
+  First benchmark pack: compute-inspector-v1 (DRAFTED · dogfoods
+  Defendable Compute Bench). Moat: Defendable Work Unit deed binds
+  Compute Deed + Agent Deed + Economic Opinion into one issuable
+  producing-asset record.
+
+## AgentGrade doctrine
+
+Defendable AgentGrade™ is the AI-agent-side analog of Defendable
+Compute Bench. Existing benchmarks (SWE-bench · OSWorld · GAIA ·
+AgentDojo · WebArena · WorkArena) score capability slices.
+AgentGrade certifies deployability + accountability + economic
+value. A deeded Agent record carries five orthogonal grades · a
+Tribunal verdict distribution · adversarial-case resistance ·
+cost-per-task · reproducibility · all bound to a named workflow
+lane. Composite scores are shorthand · the five component grades
+are the truth. Per-grade floors prevent weak dimensions from
+hiding behind strong composites. Doctrine docs in the platform
+repo: DEFENDABLE_AGENT_GRADE.md · AGENT_GRADE_RECEIPT_SCHEMA.md ·
+AGENT_GRADE_SCORING_STANDARD.md · TRIBUNAL_GRADING_DOCTRINE.md ·
+AGENT_BENCHMARK_PACK_MATRIX.md · DEFENDABLE_WORK_UNIT_SCHEMA.md.
+
+- /reports — Defendable Reports · long-form, source-classified,
+  evidence-anchored research notes. The same restraint that gates a
+  Defendable Deed gates a Defendable Report. Live today: The Vast.ai
+  Utilization Signal Rail (operator-captured 21-card market snapshot
+  · 2026-05-23 · source: vast.ai market explorer · OBSERVATION class
+  only · NOT paid yield).
+- /reports/vast-ai-utilization-signal-rail — First full Defendable
+  Report. Seven Vast.ai signal classes (PUBLIC_LISTING_RATE,
+  PUBLIC_SUPPLY_OBSERVATION, FOUNDER_MACHINE_LISTING, FOUNDER_RENTAL_RECEIPT,
+  FOUNDER_OCCUPANCY_HISTORY, WORKLOAD_TEST_RECEIPT, DERIVED_YIELD_ANALYSIS).
+  Only FOUNDER_RENTAL_RECEIPT + FOUNDER_OCCUPANCY_HISTORY count as
+  first-party operating evidence. RTX 3090 workhorse thesis. Yield
+  analysis input contract. 21-card market snapshot with confirmed
+  column attribution (Listed · Verified · Online % · Rented % · Peak
+  DLPerf · Median DLPerf · Asking $/hr · DLPerf/$).
+- /pair-factory — Educational doctrine page explaining how source-
+  classified evidence, validator challenges and corrected outcomes
+  become reusable intelligence supporting AIOV analysis and Defendable
+  Deeds. Includes Compute (RTX 3090-class) and Edge (Jetson Orin Nano-
+  class) educational examples and the seven-stage Capture → Classify →
+  Challenge → Correct → Pair → Improve → Deed pipeline. The page also
+  documents the Evidence Vault · the source-of-truth storage layer
+  behind every Defendable record · with the four-class privacy model
+  (Private Evidence · Observation · Derived Intelligence · Public-Safe
+  Export) and the CAPTURE → STORE → HASH → CLASSIFY → CHALLENGE →
+  APPROVE → PUBLISH evidence flow.
+
+## Defendable Compute Bench
+
+Defendable Compute Bench is the live-test layer that turns a real
+piece of hardware into structured, hashed, evidence-classified
+benchmark receipts. It runs BEFORE any Compute Proof of Value
+record may move toward validator approval or public-safe deed
+issuance. The bench produces four orthogonal grades (Identity
+Confidence · Health · Utility · Evidence) · never a single
+composite score. Pipeline: CAPTURE → DIAGNOSE → BENCHMARK → HASH
+→ CLASSIFY → ANALYZE → VALIDATE → DEED. Per-tier profiles
+(E0-E7) keep workload tests appropriate to the asset class · a
+Jetson is not benched as a workstation GPU is not benched as an
+H100. Phase A (read-only identity + system + runtime + idle-health
+capture) is implemented as `defendable-compute inspect`. Hard
+operational rule: no benchmark may run on a GPU currently rented
+or serving a production workload · the CLI uses
+`nvidia-smi --query-compute-apps` as the pre-flight refusal gate.
+Full doctrine in DEFENDABLE_COMPUTE_BENCH.md + receipt schema in
+COMPUTE_BENCH_RECEIPT_SCHEMA.md + grading in
+COMPUTE_ATTESTATION_GRADING_STANDARD.md + per-tier profiles in
+COMPUTE_BENCH_PROFILE_MATRIX.md + CLI spec in
+DEFENDABLE_COMPUTE_BENCH_CLI_SPEC.md + tool eval in
+COMPUTE_BENCH_TOOLING_AUDIT.md + decision schema in
+BEST_NEXT_USE_DECISION_SCHEMA.md (all in the platform repo).
+
+## Evidence Vault doctrine
+
+The Evidence Vault is the controlled storage architecture behind
+DefendableOS records. Private evidence remains private; approved
+public-safe manifests support issued Defendable Deeds. Storage
+preserves artifacts, hashing records captured versions, and
+validation determines claimability. Doctrine: the vault stores the
+evidence · the hash protects the trail · the validator judges the
+claim · the Deed publishes only what survives review. The 4-bucket
+privacy model is enforced at the service boundary via a
+public_export_or_refuse() guard with no exception path. Technical
+specifics live in OBJECT_STORAGE_POLICY.md and
+EVIDENCE_VAULT_OBJECT_STORAGE_DOCTRINE.md in the platform repo.
+
+## Open infrastructure (/open)
+
+DefendableOS publishes its full operational substrate so claims are
+auditable, not asserted. The /open page documents:
+
+- Models in production:
+  - Kimi K2.6 (Moonshot) — primary AIOV narrative under typed contracts
+    VALIDATOR_FLAG_TOOL + RESEARCH_CLASSIFY_TOOL
+  - OpenAI gpt-4o — secondary classification under RESEARCH_CLASSIFY_TOOL
+  - Brave LLM Context — live web grounding · feeds Validator Check 5
+- Doctrine guardrails enforced in code:
+  - Server-side AI downgrade guard (CONFIRMED_SALE_PRICE auto-downgrades
+    to MARKET_COMMENTARY without confirmed-sale signal in rationale)
+  - Affirmative-claim scan (Validator Check 10)
+  - Verbatim-disclaimer integrity (Validator Check 11)
+  - 11-class signal-class doctrine (only PERMISSIONED_CONNECTED_SALE +
+    FIRST_PARTY_DEFENDABLE_SALE count as confirmed)
+- Object storage · 4-bucket privacy vault:
+  - PRIVATE_EVIDENCE, MARKET_OBSERVATIONS, DERIVED_DATASETS, PUBLIC_ASSETS
+  - public_export_or_refuse() guard raises CompFoundryError on any
+    non-public bucket export
+- Connector honesty matrix · 19 connectors with real status
+- Open source repos:
+  - github.com/SudoSuOps/defendableos (platform · public source)
+  - github.com/SudoSuOps/defendable (landing · public source)
+  - github.com/SudoSuOps/legalsniper-plugin (Apache 2.0)
+
+## Disclaimers
+
+DefendableOS records are evidence and analysis packages. Asset-specific
+professional, legal, regulatory, or licensed appraisal requirements
+may still apply.
+
+Operator-stated asking prices and operator-stated STNL terms are
+operator claims — not validator-issued conclusions or confirmed-sale
+comparables. The deed JSON declares this on every record.
+
+The Palm Grove Marketplace and any property described as "illustrative"
+are demonstration assets and not active offerings.
+
+## Related surfaces
+
+- https://swarmandbee.ai/ — the firm (Swarm and Bee LLC · DBA Swarm & Bee AI)
+- https://defendable.eth.limo/ — defendable.eth · cross-Swarm certification standard
+- https://legal.swarmandbee.ai/ — Legal-as-a-Service (the Legal module)
+- https://legalsniper.swarmandbee.ai/ — LegalSniper model card
+- https://api.defendableos.com/ — platform API (read-only public endpoints
+  at /api/v1/public/verify/{slug} and /api/v1/public/lookup?hash=...)
+
+## Entity
+
+DefendableOS is a product of:
+Swarm and Bee LLC · Florida LLC · D-U-N-S 138652395 ·
+doing business as Swarm & Bee AI.
+
+## Contact
+
+build@swarmandbee.ai
+hello@swarmandbee.ai
+https://defendableos.com/#early-access

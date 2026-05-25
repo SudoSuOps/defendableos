@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>DefendableCloud · Operator-Owned Private Inference</title>
+    <meta
+      name="description"
+      content="DefendableCloud · operator-owned private inference, AI Agent benchmarking, and dataset curation. 128 RTX 6000 Blackwell · 12,288 GB VRAM · paid in full · DC-owned. Open-weights models including CRE-Atlas 27B and SwarmGrant 9B. OpenAI-SDK compatible."
+    />
+    <link rel="canonical" href="https://defendablecloud.com/" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DefendableCloud" />
+    <meta property="og:url" content="https://defendablecloud.com/" />
+    <meta property="og:title" content="DefendableCloud · Operator-Owned Private Inference" />
+    <meta
+      property="og:description"
+      content="128 RTX 6000 Blackwell · paid in full · DC-owned. Inference · AgentBench · SwarmCurator. Open-weights models. OpenAI-SDK compatible. Private by contract, not by promise."
+    />
+    <meta property="og:image" content="https://defendablecloud.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DefendableCloud · operator-owned private inference rail" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DefendableCloud · Operator-Owned Private Inference" />
+    <meta
+      name="twitter:description"
+      content="128 RTX 6000 Blackwell · paid in full · DC-owned. Inference · AgentBench · SwarmCurator. OpenAI-SDK compatible. Private by contract."
+    />
+    <meta name="twitter:image" content="https://defendablecloud.com/og-image.png" />
+    <meta name="twitter:image:alt" content="DefendableCloud · operator-owned private inference rail" />
+    <meta name="twitter:site" content="@swarmandbee" />
+    <meta name="twitter:creator" content="@swarmandbee" />
+
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Swarm and Bee LLC · DBA Swarm & Bee AI · Florida · D-U-N-S 138652395" />
+    <meta name="keywords" content="private AI inference, operator-owned compute, RTX 6000 Blackwell, OpenAI SDK alternative, private LLM hosting, AI agent benchmarking, AgentBench, SwarmFixer, AI agent refinery, dataset curation, SwarmCurator, Bakery Packs, ready-baked datasets, CRE-Atlas, SwarmGrant, Qwen hosting, Gemma hosting, no-log inference, HIPAA AI inference, GDPR AI inference, open weights inference, fix-or-refund AI agent, DefendableOS" />
+
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="AI context manifest" />
+    <script type="module" crossorigin src="/assets/index-4MdYgLJw.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BIDvU-1h.css">
+  </head>
+  <body class="bg-neutral-950">
+    <div id="root"></div>
+  </body>
+</html>

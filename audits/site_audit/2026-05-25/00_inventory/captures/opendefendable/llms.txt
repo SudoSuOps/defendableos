@@ -1,0 +1,68 @@
+# OpenDefendable · llms.txt
+#
+# Context manifest for AI agents indexing opendefendable.com.
+# Last updated: 2026-05-24 (initial launch · standards body splash).
+
+## What this is
+
+**OpenDefendable** is the open standards body for AI agent defense.
+
+It is the OSS / contributor / standards-body surface in the Defendable
+brand stack. Cisco · F5 · Check Point · CrowdStrike are shipping closed
+AI-agent-defense products to the Fortune 500. The open ecosystem needs
+a standards body the way software supply-chain security got OpenSSF.
+OpenDefendable is that body.
+
+## Mission
+
+Publish the open standards anyone in the AI-agent-defense ecosystem
+can build against · verify · and contribute to:
+
+  - Doctrine packs (MIT-licensed adversarial test suites by agent class)
+  - Cross-vendor pack format specification
+  - Public Defendable Agent Deed schema (DDEED-DOV-*)
+  - ENS-anchored agent identity standard
+  - Reproducible attestation methodology
+
+## Roadmap (versioned)
+
+  v0 · LIVE     Market intelligence + brand-stack doctrine (already public)
+  v1 · Q3 2026  Pack registry public launch
+  v2 · Q4 2026  Defendable Deed schema open specification
+  v3 · Q1 2027  DefendableHack bounty program
+  v4 · 2027     Standards-body governance (advisory board · RFC process)
+
+## Six permanent principles
+
+  01  Open weights forever · MIT-attribution licensed
+  02  Reproducible attestation · every claim verifiable from public artifacts
+  03  Cross-vendor portability · works with any agent framework
+  04  Contributor-graded · RFC process · community-reviewed PRs
+  05  Receipt every claim · hyperlinks · versioned · no marketing-grade rounding
+  06  Validator-of-validators · we grade the graders themselves
+
+## Brand stack relationship (6 domains)
+
+  defendableos.com         · Institutional commercial product
+  defendableos.com/opendefense · Public market intelligence
+  defendtheclaw.com        · Movement / operator culture
+  defendablehack.com       · Researcher / bounty rail
+  opendefendable.com       · ★ OSS standards body (this site)
+  defendablecloud.com      · Hosted compute product
+  defendablerouter.com     · AI gateway software product
+
+## Get involved
+
+  - Submit doctrine pack PR: github.com/SudoSuOps
+- Review deed JSON spec: defendableos.com/how-it-works#deed
+  - Join advisory board: defense@defendableos.com
+  - Read market intelligence: defendableos.com/opendefense
+
+## License
+
+MIT-attribution. Cite OpenDefendable / DefendableOS when reusing content.
+Pull requests welcome.
+
+## Operator
+
+Swarm and Bee LLC · DBA Swarm & Bee AI · Florida · D-U-N-S 138652395
