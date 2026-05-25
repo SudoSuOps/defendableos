@@ -20,10 +20,10 @@ Under the Defendable Tribunal v0.1 rubric (`audit/03_TRUST_TIER_POLICY.md` in th
 
 ## What this verdict authorizes
 
-- ✅ Caballerz Network LLC may be publicly cited as the federal-contracting entity
-- ✅ The SAM-registration milestone may be referenced in capability statements, board memos, and federal RFI responses
-- ✅ DefendableOS federal corpus v0.3 may flip the registration table from NOT VERIFIED → VERIFIED for: UEI · NAICS · SAM registration · small business status
-- ✅ DOT SBIR FY2026 (May 29) and NRC SB set-aside (May 26) prime-bid lanes are now operationally open (pending separate SBIR-eligibility confirmation for SBIR)
+- ✅ Caballerz Network LLC may be publicly cited as the legal federal-facing entity (Swarm & Bee is the operating brand / DBA)
+- ✅ The SAM-registration **submission** milestone may be referenced in capability statements, board memos, and federal RFI responses (described as submitted/activation-pending, not active)
+- ✅ Once SAM confirms activation, the DefendableOS federal corpus v0.3 registration table may be updated to reflect active status for: UEI · NAICS · SAM registration · small business status
+- ⏳ DOT SBIR FY2026 (May 29) and NRC SB set-aside (May 26) are candidate opportunities — pursuable only after SAM activation **and** confirmation of solicitation-specific eligibility
 
 ## What this verdict does NOT authorize
 
@@ -58,7 +58,7 @@ This verdict was issued under the Defendable Tribunal doctrine:
 ---
 
 **Tribunal seat:** Mr. Defendable · principal voice of the DefendableOS ecosystem
-**Co-attested by:** Donovan Mackey · founder · Swarm and Bee LLC
+**Co-attested by:** Donovan Mackey · founder · CABALLERZ NETWORK LLC (operating brand: Swarm & Bee)
 **Date:** 2026-05-25
 **Operator inbox:** [build@swarmandbee.ai](mailto:build@swarmandbee.ai)
 

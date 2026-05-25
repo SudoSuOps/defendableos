@@ -1,0 +1,96 @@
+{
+  "record_type": "PUBLICATION-REMEDIATION",
+  "date": "2026-05-25",
+  "pass_type": "public-correction (not new product development)",
+  "scope": [
+    "research status accuracy",
+    "federal registration status",
+    "legal entity / DBA identity",
+    "claim-boundary discipline",
+    "source-document publication safety"
+  ],
+  "repositories_examined": [
+    {
+      "name": "defendable-compute-wedge",
+      "remote": "github.com/SudoSuOps/defendable-compute-wedge",
+      "pre_pass_head": "78db387",
+      "corrective_commit": "78bd10b",
+      "commit_message": "docs: downgrade unverified market claims pending source-promotion audit",
+      "pushed": true,
+      "branch": "main"
+    },
+    {
+      "name": "defendableos",
+      "remote": "github.com/SudoSuOps/defendableos",
+      "pre_pass_head": "3b73916",
+      "corrective_commit": "see git log (this remediation commit)",
+      "commit_message": "docs: correct federal entity status and public claim boundaries",
+      "pushed": true,
+      "branch": "main"
+    }
+  ],
+  "claims_downgraded": {
+    "package_relabel": "Research Corpus · Source-Promotion Audit Pending",
+    "tiers_applied": {
+      "DIRECT_EVIDENCE": "DefendableOS smash-rig operational proof only",
+      "RESEARCH_SUPPORTED_VERIFICATION_PENDING": "market-structure findings awaiting primary-source promotion",
+      "JELLY": "pricing, market-size, willingness-to-pay, funding/valuation, competitor-gap"
+    },
+    "specific_claims": [
+      "$20B+ GPU-collateralized lending",
+      "$11.7B ITAD market",
+      "$12.95B -> $19.94B AI GPU decommissioning market",
+      "15-25% refurbished-condition premium",
+      "Barkr funding/valuation/Munich Re",
+      "neocloud share and entrant counts",
+      "rental tightness / sold-out capacity",
+      "no-competitor-combines-all-five-layers (rewritten to bounded language)"
+    ],
+    "product_recommendation": "PRESERVED: Defendable Compute Proof Receipt is the recommended first build",
+    "research_artifacts": "PRESERVED with corrected status labeling"
+  },
+  "federal_identity_corrections": {
+    "legal_entity": "CABALLERZ NETWORK LLC",
+    "operating_brand_dba": "Swarm & Bee",
+    "sam_status": "All Awards registration submitted 2026-05-25; UEI assigned; activation pending",
+    "primary_naics": "541511",
+    "cage_code": "pending / not yet assigned",
+    "active_contract_award": "none",
+    "eligibility_framing": "Positioned to pursue applicable federal opportunities after SAM registration becomes active and solicitation-specific eligibility requirements are confirmed",
+    "duns_reference": "removed from federal folder and root README footer (value not published; out-of-scope live-site mirrors left untouched)"
+  },
+  "sensitive_scan": {
+    "scope": "current tree + full git history, both repos",
+    "uei_value": "absent",
+    "ein": "absent",
+    "bank_routing_account": "absent",
+    "bank_letter": "absent",
+    "residential_address": "absent",
+    "sam_pdfs_or_screenshots": "absent",
+    "confirmation_email_file": "absent",
+    "secrets_keys_tokens": "absent (.env gitignored and untracked)",
+    "evidence_folder_history": "only .gitkeep + placeholder README ever committed",
+    "history_purge_required": false,
+    "credential_rotation_required": false,
+    "publication_halted_on_exposure": false
+  },
+  "source_docx_review": {
+    "files": 3,
+    "distinct_artifacts": 2,
+    "origin": "Kimi (third-party model) generated report drafts",
+    "rights_status": "republication permission not clearly established",
+    "disposition": "removed from public tree; hashes preserved in receipts/SHA256SUMS.txt + local archive; local archival copies retained at ~/Desktop/_private_audit_archive/compute-wedge-source-docx-2026-05-25/",
+    "license_narrowed_to": "Swarm-authored original/derived artifacts only"
+  },
+  "running_shells": {
+    "claude_processes": 1,
+    "claude_pid": 21930,
+    "mcp_child_pid": 22084,
+    "second_claude_shell_found": false,
+    "rogue_git_push_found": false,
+    "processes_stopped": 0,
+    "note": "Only this authorized session wrote to the repositories"
+  },
+  "sensitive_values_printed_in_report": false,
+  "doctrine": "Tribunal begins before training. No proof, no honey."
+}

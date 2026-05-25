@@ -2,6 +2,8 @@
 
 > Once Caballerz Network LLC SAM registration moves from **submitted** → **active**, the federal corpus needs a v0.3 update to reflect the new federal-contracting capability.
 
+> ⚠️ **Claim boundary (forward-looking planning doc).** Every "VERIFIED", "eligible", "bid-eligible", and federal-lane statement below describes a **target state contingent on SAM activation and per-solicitation eligibility confirmation** — not a current capability. As of 2026-05-25 the registration is **submitted, activation pending**; CAGE is not assigned; no contract is awarded; and no prime/sub or DoD eligibility is established. Do not cite this document as evidence of present eligibility.
+
 ## Files that need to flip from NOT VERIFIED → VERIFIED
 
 ### `SMALL_CONTRACT_OPPORTUNITIES.md` · Required Registrations table
@@ -47,7 +49,7 @@ Add this top-level field to the manifest:
   "operating_brand": "Swarm & Bee",
   "primary_naics": "541511",
   "registration_purpose": "All Awards",
-  "federal_lane": "Prime Contractor · DoD-capable",
+  "federal_lane": "TBD per solicitation after activation (no prime/sub or DoD eligibility asserted)",
   "small_business_under_primary_naics": true,
   "registration_submitted_at": "2026-05-25",
   "registration_status": "submitted_pending_activation",
@@ -73,7 +75,7 @@ Submitted 2026-05-25:
 - Operating brand: Swarm & Bee
 - Primary NAICS: 541511 — Custom Computer Programming Services
 - Registration purpose: All Awards
-- Federal lane: Prime Contractor · DoD-capable
+- Federal lane: TBD per solicitation after activation (no prime/sub or DoD eligibility asserted)
 - Confirmation routed to: build@swarmandbee.ai
 - Tribunal verdict on the milestone: HONEY
 - Status: submitted · pending SAM activation
@@ -87,7 +89,7 @@ This flips the corpus from "no federal-contracting entity registered" to "federa
 Add a new row to the prime contractor map:
 
 ```markdown
-| Caballerz Network LLC | NEW · this firm | Florida LLC | 541511 | Software prime · DoD-capable lane | Submitted 2026-05-25 · pending SAM activation |
+| Caballerz Network LLC | NEW · this firm | Florida LLC | 541511 | Software · federal lane TBD per solicitation | Submitted 2026-05-25 · pending SAM activation |
 ```
 
 ### `14_NEXT_30_DAY_FEDERAL_ATTACK_PLAN.md` · revise priorities
@@ -97,9 +99,9 @@ Now that registration is submitted, the 30-day plan should shift:
 | priority before (v0.2) | priority after (v0.3) |
 | --- | --- |
 | Get UEI / SAM registration submitted | ✅ DONE 2026-05-25 |
-| Identify small-business set-aside targets | ✅ DONE (3 active targets · DOT SBIR · NRC · Army 8(a) subcontract path) |
-| Wait for SBIR Phase I bid eligibility | DOT SBIR FY2026 Edge AI-V2X · May 29 · bid-eligible pending SBIR-specific check |
-| Wait for prime-eligible SB set-asides | NRC Cybersecurity Novel Tech AI/ML · May 26 · prime-bid eligible |
+| Identify small-business set-aside targets | ✅ DONE (3 candidate targets · DOT SBIR · NRC · Army 8(a) subcontract path) |
+| Wait for SBIR Phase I bid eligibility | DOT SBIR FY2026 Edge AI-V2X · May 29 · candidate — pursuable only after activation + SBIR-specific eligibility check |
+| Wait for prime-eligible SB set-asides | NRC Cybersecurity Novel Tech AI/ML · May 26 · candidate — eligibility to be confirmed per solicitation |
 | Subcontract path for 8(a) | Army RMF · May 29 · partner with 8(a) prime (unchanged) |
 
 ## Recommended sequencing

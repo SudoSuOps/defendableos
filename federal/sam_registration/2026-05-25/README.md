@@ -19,22 +19,25 @@
 
 ## Key facts
 
-- **Legal entity:** CABALLERZ NETWORK LLC (Florida)
-- **Operating brand:** Swarm & Bee
+- **Legal federal-facing entity:** CABALLERZ NETWORK LLC (Florida)
+- **Operating brand / DBA:** Swarm & Bee
 - **Primary NAICS:** 541511 — Custom Computer Programming Services
-- **Federal lane:** Prime Contractor · DoD-capable
-- **Small business under primary NAICS:** Yes
 - **Registration purpose:** All Awards
+- **Small business under primary NAICS:** Yes
 - **Submission date:** 2026-05-25
+- **Registration status:** SAM.gov All Awards registration submitted; UEI assigned; **activation pending**
+- **CAGE code:** Pending / not yet assigned
+- **Active contract award:** None
 - **Confirmation routed to:** `build@swarmandbee.ai`
-- **Status:** Submitted · pending SAM activation
 - **Action required now:** None
 
-## What unlocks once SAM activates
+> **Claim boundary:** Positioned to pursue applicable federal opportunities **after** SAM registration becomes active and solicitation-specific eligibility requirements are confirmed. No prime/sub eligibility, DoD capability, or bid-eligibility is asserted as established at submission.
 
-- DOT SBIR FY2026 Edge AI-V2X · May 29 · prime-bid eligible (pending SBIR-specific eligibility)
-- NRC Cybersecurity Novel Tech AI/ML · May 26 · prime-bid eligible (SB set-aside)
-- Army RMF · May 29 · still 8(a) sole source · partner-with-prime path unchanged
+## What may become pursuable once SAM activates (eligibility to be confirmed per solicitation)
+
+- DOT SBIR FY2026 Edge AI-V2X · May 29 · candidate opportunity (pursuable only after activation **and** SBIR-specific eligibility is confirmed)
+- NRC Cybersecurity Novel Tech AI/ML · May 26 · candidate SB set-aside opportunity (eligibility to be confirmed per solicitation)
+- Army RMF · May 29 · 8(a) sole source · partner-with-prime path unchanged
 - Federal corpus v0.3 update unlocked (see `downstream_implications/`)
 
 ## What this does NOT establish

@@ -5,9 +5,11 @@
 - Brand / DBA Path: Swarm & Bee
 - State of Incorporation: Florida
 - Registration Purpose: All Awards
-- Federal Opportunity Lane: Prime Contractor / DoD-capable opportunities
+- Federal Opportunity Lane: To be determined per solicitation after activation (no prime/sub or DoD eligibility asserted at submission)
 - Primary NAICS: 541511 — Custom Computer Programming Services
 - Small Business Determination: Yes under selected NAICS
+- CAGE Code: Pending / not yet assigned
+- Active Contract Award: None
 
 ## Submission
 - Submission Date: 2026-05-25

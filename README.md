@@ -170,4 +170,4 @@ Public verification pages contain only approved non-sensitive proof data. Privat
 
 Proprietary. © 2026 Swarm and Bee LLC. All rights reserved.
 
-DefendableOS™, Proof of Value™, Validate the Validator™, AIOV™, and Defendable Deed™ are unregistered trademarks of Swarm and Bee LLC (Florida LLC · D-U-N-S 138652395 · doing business as Swarm & Bee AI).
+DefendableOS™, Proof of Value™, Validate the Validator™, AIOV™, and Defendable Deed™ are unregistered trademarks of Swarm and Bee LLC (Florida LLC · doing business as Swarm & Bee AI).

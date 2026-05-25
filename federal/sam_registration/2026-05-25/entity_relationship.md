@@ -6,8 +6,8 @@
 
 | LLC | Role | Surface |
 | --- | --- | --- |
-| **CABALLERZ NETWORK LLC** | Federal-facing legal entity · SAM-registered (submitted 2026-05-25) · prime-contractor capable · DoD-capable lane | **NEW** — federal procurement vehicle |
-| **Swarm and Bee LLC** | Public-facing operating firm · D-U-N-S 138652395 · DBA Swarm & Bee AI · Florida Licensed Real Estate Brokerage (CRE vertical only) | Existing — ecosystem operator |
+| **CABALLERZ NETWORK LLC** | Legal federal-facing entity · SAM.gov registration submitted 2026-05-25 (UEI assigned; activation pending) · federal-contracting vehicle | **NEW** — federal procurement vehicle |
+| **Swarm and Bee LLC** | Public-facing operating firm · DBA Swarm & Bee AI · Florida Licensed Real Estate Brokerage (CRE vertical only) | Existing — ecosystem operator |
 
 Both LLCs are operated by the same founder (Donovan Mackey) and serve the same brand stack publicly. The split is intentional:
 
@@ -37,10 +37,10 @@ The federal-facing surfaces (DefendableOS, defendableos.com, defendablecloud.com
 
 ## What lives under Caballerz Network LLC
 
-- **Federal SAM.gov registration** (UEI assigned · NAICS 541511 · submitted 2026-05-25)
-- **Future federal prime contracts**
+- **Federal SAM.gov registration** (UEI assigned · NAICS 541511 · submitted 2026-05-25 · activation pending)
+- **Future federal prime contracts** (after activation and award)
 - **Future federal subcontracts** under partner primes
-- **DoD-capable opportunity bidding** (DOT SBIR · NRC SB set-aside · etc.)
+- **Federal opportunity pursuit** once SAM registration is active and solicitation-specific eligibility is confirmed (e.g., DOT SBIR · NRC SB set-aside)
 - **DefendableOS federal product positioning** (the SYSTEM layer in a federal-facing context)
 - **Compute Proof Receipt** when sold to a federal customer (the DCPR v0.1 product line)
 - **Federal RFI / Sources Sought responses**
@@ -51,7 +51,6 @@ The federal-facing surfaces (DefendableOS, defendableos.com, defendablecloud.com
 - **Public-facing dataset bakery** (the 107-dataset HF surface · CCIR firm identity)
 - **Commercial CRE brokerage activity** (Florida licensed)
 - **Bakery cookbook commerce** (Stripe · USDC settlement at swarmusdc.eth)
-- **D-U-N-S 138652395** business identity
 - **Commercial DefendableOS sales** to non-federal customers
 - **Brand operations** (websites · HF org · X · LinkedIn · GitHub · email)
 
