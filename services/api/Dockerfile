@@ -9,11 +9,20 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # Build-time toolchain (psycopg, bcrypt, pymupdf wheels are mostly precompiled
-# but build-essential covers the edge cases) + curl for healthcheck.
+# but build-essential covers the edge cases) + curl for healthcheck + tailscale
+# so the Fly machine can reach in-house model servers (smash · rails · whale)
+# on the tailnet without exposing them to the public internet.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
     libpq5 \
+    iptables \
+    iproute2 \
+ && curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg \
+      | tee /usr/share/keyrings/tailscale-archive-keyring.gpg > /dev/null \
+ && curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list \
+      | tee /etc/apt/sources.list.d/tailscale.list > /dev/null \
+ && apt-get update && apt-get install -y --no-install-recommends tailscale \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -30,6 +39,7 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
 
 EXPOSE 8000
 
-# release.sh runs alembic + the idempotent demo seed on every deploy.
-# Then exec's into uvicorn so the container PID 1 is the API process.
-CMD ["bash", "deploy/release.sh"]
+# tailscale-start.sh is a no-op when TS_AUTHKEY is unset · safe to keep in
+# the boot path even before the secret is provisioned. release.sh then runs
+# alembic + the idempotent demo seed · execs into uvicorn as PID 1.
+CMD ["bash", "-lc", "deploy/tailscale-start.sh && exec bash deploy/release.sh"]

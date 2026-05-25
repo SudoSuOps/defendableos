@@ -132,7 +132,7 @@ class Settings(BaseSettings):
     # v1 simple shared-token · migrates to JWT admin pattern when wired.
     ebay_admin_token: str = ""
 
-    # Model gateway · provider-agnostic. Switch with MODEL_PROVIDER=kimi|openai.
+    # Model gateway · provider-agnostic. Switch with MODEL_PROVIDER=kimi|openai|swarmcurator.
     model_provider: str = "kimi"
 
     # ── Kimi K2.6 (Moonshot · OpenAI-compatible) ──
@@ -146,6 +146,14 @@ class Settings(BaseSettings):
     openai_base_url: str = "https://api.openai.com/v1"
     openai_model: str = "gpt-4o"
     openai_organization: str = ""
+
+    # ── SwarmCurator-9B · in-house Qwen3.5 fine-tune · sovereign hot path ──
+    # Served via vLLM on smash (or any tailnet host). OpenAI-compatible.
+    # Default base_url is the tailscale IP for smash · override via env in prod.
+    swarmcurator_base_url: str = ""
+    swarmcurator_model: str = "swarmcurator-9b"
+    swarmcurator_api_key: str = ""
+    swarmcurator_thinking_default: Literal["enabled", "disabled"] = "disabled"
 
     # ENS · defendable.eth
     ens_parent_name: str = "defendable.eth"
@@ -212,6 +220,10 @@ class Settings(BaseSettings):
     @property
     def openai_configured(self) -> bool:
         return bool(self.openai_api_key)
+
+    @property
+    def swarmcurator_configured(self) -> bool:
+        return bool(self.swarmcurator_base_url)
 
     @property
     def ebay_configured(self) -> bool:
