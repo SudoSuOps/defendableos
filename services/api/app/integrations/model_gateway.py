@@ -138,6 +138,10 @@ def get_model_gateway() -> ModelGateway:
             from app.integrations.providers.openai import OpenAIProvider
 
             provider = OpenAIProvider()
+        elif provider_name in ("swarmcurator", "swarm_curator"):
+            from app.integrations.providers.swarmcurator import SwarmCuratorProvider
+
+            provider = SwarmCuratorProvider()
         else:
             provider = ModelProvider()  # type: ignore[abstract]
         _gateway = ModelGateway(provider)

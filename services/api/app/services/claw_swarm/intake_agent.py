@@ -1,8 +1,10 @@
 """Intake Agent · the live ClawCheck conversational front door.
 
-Uses the platform's model_gateway · primary provider Kimi K2.6 ·
-typed `record_intake_findings` tool contract. Stateless per request
-· the client (landing page) accumulates findings across turns.
+Routes every model call through the platform's model_gateway · so
+MODEL_PROVIDER=kimi|swarmcurator|openai is honored uniformly. The
+typed `record_intake_findings` tool contract is provider-agnostic.
+Stateless per request · the client (landing page) accumulates findings
+across turns.
 
 Doctrine guarantees:
   · Refuses any request outside Intake scope (price · action · file
@@ -157,89 +159,101 @@ def _stub_intake(req: IntakeTurnRequest) -> IntakeTurnResponse:
     )
 
 
-def _kimi_intake_turn(req: IntakeTurnRequest) -> IntakeTurnResponse:
-    """Real intake turn via Kimi K2.6."""
-    import httpx
+def _gateway_intake_turn(req: IntakeTurnRequest) -> IntakeTurnResponse:
+    """Real intake turn via the platform model_gateway (Kimi/SwarmCurator/OpenAI)."""
+    from app.integrations.model_gateway import (
+        ToolDefinition,
+        get_model_gateway,
+    )
+    from app.models.ai import WorkflowType
 
-    api_key = settings.moonshot_api_key
-    if not api_key:
-        return _stub_intake(req)
+    gateway = get_model_gateway()
+    provider_name = gateway.provider.name
+    provider_model = gateway.provider.model
+    provider_meta = {
+        "provider": provider_name,
+        "model": provider_model,
+        "configured": gateway.provider.is_configured(),
+    }
 
-    base_url = settings.moonshot_base_url
-    model = settings.moonshot_model
+    if not gateway.provider.is_configured():
+        fallback = _stub_intake(req)
+        fallback.judge_provider = provider_meta
+        fallback.raw_status = f"NOT_CONFIGURED_{provider_name.upper()}"
+        return fallback
 
     prior_context = json.dumps(req.prior_findings or {}, sort_keys=True, indent=2)[:1500]
 
-    user_payload = (
-        f"Operator message:\n{req.user_message[:2000]}\n\n"
-        f"Prior intake findings (already collected):\n{prior_context}\n\n"
-        "Update findings with anything new the operator just told you, "
-        "then propose the next message. Call the record_intake_findings tool. "
-        "When all 5 dimensions are captured · set intake_complete=true."
+    # The intake tool is provider-agnostic · model_gateway repackages it as
+    # the provider's function-call spec.
+    tool_def = ToolDefinition(
+        name=CLAW_INTAKE_TOOL["function"]["name"],
+        description=CLAW_INTAKE_TOOL["function"]["description"],
+        parameters=CLAW_INTAKE_TOOL["function"]["parameters"],
     )
 
-    body = {
-        "model": model,
-        "temperature": 1,  # Kimi quirk · must be 1
-        "messages": [
-            {"role": "system", "content": CLAW_INTAKE_SYSTEM_PROMPT},
-            {"role": "user", "content": user_payload},
-        ],
-        "tools": [CLAW_INTAKE_TOOL],
-        "tool_choice": "auto",
+    prompt_payload = {
+        "system_prompt": CLAW_INTAKE_SYSTEM_PROMPT,
+        "user_message": req.user_message[:2000],
+        "prior_findings": req.prior_findings or {},
+        "instructions": (
+            "Update findings with anything new the operator just told you, "
+            "then propose the next message. Call the record_intake_findings tool. "
+            "When all 5 dimensions are captured · set intake_complete=true."
+        ),
+        "prior_context_preview": prior_context,
     }
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
     try:
-        with httpx.Client(timeout=180.0) as client:
-            r = client.post(f"{base_url}/chat/completions", headers=headers, json=body)
-        if r.status_code >= 400:
-            return IntakeTurnResponse(
-                agent_message=(
-                    "The Intake agent could not reach the model · serving deterministic "
-                    "stub fallback. " + _stub_intake(req).agent_message
-                ),
-                findings=req.prior_findings,
-                intake_complete=False,
-                refusal_reason=None,
-                snapshot=None,
-                judge_provider={"provider": "kimi", "model": model, "configured": True},
-                raw_status=f"FAILED_HTTP_{r.status_code}",
-            )
-        data = r.json()
+        result = gateway.generate_structured(
+            workflow_type=WorkflowType.VALIDATOR_ASSIST,
+            prompt_version="claw_intake_v1",
+            input_reference={"session_id": req.session_id},
+            prompt_payload=prompt_payload,
+            thinking_enabled=False,
+            tools=[tool_def],
+        )
     except Exception as exc:  # noqa: BLE001
         fallback = _stub_intake(req)
         fallback.raw_status = f"FAILED_EXCEPTION_{type(exc).__name__}"
-        fallback.judge_provider = {"provider": "kimi", "model": model, "configured": True}
+        fallback.judge_provider = provider_meta
         return fallback
 
-    choice = (data.get("choices") or [{}])[0]
-    message = choice.get("message") or {}
-    tool_calls = message.get("tool_calls") or []
-    if not tool_calls:
+    if result.status != "GENERATED":
         return IntakeTurnResponse(
-            agent_message=(message.get("content") or "")[:1500]
+            agent_message=(
+                "The Intake agent could not reach the model · serving deterministic "
+                "stub fallback. " + _stub_intake(req).agent_message
+            ),
+            findings=req.prior_findings,
+            intake_complete=False,
+            refusal_reason=None,
+            snapshot=None,
+            judge_provider=provider_meta,
+            raw_status=f"FAILED_{result.status}",
+        )
+
+    if not result.tool_calls:
+        return IntakeTurnResponse(
+            agent_message=(result.output_text or "")[:1500]
             or "Intake response had no tool call · please retry.",
             findings=req.prior_findings,
             intake_complete=False,
             refusal_reason=None,
             snapshot=None,
-            judge_provider={"provider": "kimi", "model": model, "configured": True},
+            judge_provider=provider_meta,
             raw_status="NO_TOOL_CALL",
         )
 
-    fn = tool_calls[0].get("function") or {}
-    raw_args = fn.get("arguments") or "{}"
-    try:
-        args = json.loads(raw_args) if isinstance(raw_args, str) else (raw_args or {})
-    except json.JSONDecodeError:
+    args = result.tool_calls[0].arguments or {}
+    if not isinstance(args, dict):
         return IntakeTurnResponse(
             agent_message="Intake tool-call arguments did not parse · please retry.",
             findings=req.prior_findings,
             intake_complete=False,
             refusal_reason=None,
             snapshot=None,
-            judge_provider={"provider": "kimi", "model": model, "configured": True},
+            judge_provider=provider_meta,
             raw_status="ARGS_PARSE_FAIL",
         )
 
@@ -259,13 +273,19 @@ def _kimi_intake_turn(req: IntakeTurnRequest) -> IntakeTurnResponse:
         intake_complete=code_complete and intake_complete_claim,
         refusal_reason=refusal,
         snapshot=snapshot,
-        judge_provider={"provider": "kimi", "model": model, "configured": True},
+        judge_provider=provider_meta,
         raw_status="RAN",
     )
 
 
+# Legacy alias · kept until call sites stop referencing the old name.
+_kimi_intake_turn = _gateway_intake_turn
+
+
 def run_intake_turn(req: IntakeTurnRequest) -> IntakeTurnResponse:
-    """Public entry point · falls back to deterministic stub when no key."""
-    if settings.moonshot_api_key:
-        return _kimi_intake_turn(req)
+    """Public entry point · falls back to deterministic stub when no provider configured."""
+    from app.integrations.model_gateway import get_model_gateway
+
+    if get_model_gateway().provider.is_configured():
+        return _gateway_intake_turn(req)
     return _stub_intake(req)
