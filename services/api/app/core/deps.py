@@ -3,10 +3,11 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, Header, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
+from app.core.config import get_settings
 from app.core.security import decode_access_token, decode_edge_token
 from app.db.session import get_db
 from app.models.edge import EdgeNode
@@ -77,6 +78,27 @@ def require_platform_admin(user: User = Depends(get_current_user)) -> User:
     if not user.is_platform_admin:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="platform admin required")
     return user
+
+
+def require_ebay_admin(
+    x_ebay_admin_token: str | None = Header(default=None, alias="X-Ebay-Admin-Token"),
+) -> None:
+    """Boundary-level admin-token gate for admin-adjacent routes (eBay / ComputeClaw admin).
+
+    Declared as a route/router dependency so it short-circuits BEFORE request param validation —
+    unauthenticated calls return 401/503, never a 422 that would reveal the route shape.
+    """
+    expected = get_settings().ebay_admin_token
+    if not expected:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="admin token not configured on server",
+        )
+    if not x_ebay_admin_token or x_ebay_admin_token != expected:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="invalid or missing X-Ebay-Admin-Token header",
+        )
 
 
 def get_current_edge_node(

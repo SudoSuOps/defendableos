@@ -390,8 +390,14 @@ def _client() -> TestClient:
     return TestClient(app)
 
 
-def test_admin_readiness_is_public_and_safe() -> None:
-    resp = _client().get("/api/v1/admin/ebay/oauth/readiness")
+def test_admin_readiness_is_gated_and_safe() -> None:
+    # Codex exposure repair: readiness is now admin-gated (was public) and no longer leaks
+    # integration readiness to anonymous callers.
+    assert _client().get("/api/v1/admin/ebay/oauth/readiness").status_code == 401
+    resp = _client().get(
+        "/api/v1/admin/ebay/oauth/readiness",
+        headers={"X-Ebay-Admin-Token": FIXTURE_ADMIN_TOKEN},
+    )
     assert resp.status_code == 200
     body = resp.json()
     assert body["integration"] == "ebay_oauth_client_credentials"

@@ -20,10 +20,11 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from fastapi import APIRouter, Header, HTTPException, status
+from fastapi import APIRouter, Depends, Header, HTTPException, status
 from pydantic import BaseModel, Field
 
 from app.core.config import get_settings
+from app.core.deps import require_ebay_admin
 from app.services.compute_claw.bench_inspector import (
     BenchmarkAttachError,
     attach_benchmark_evidence,
@@ -138,7 +139,7 @@ def computeclaw_readiness_statuses() -> dict[str, Any]:
     }
 
 
-@router.get("/admin/readiness")
+@router.get("/admin/readiness", dependencies=[Depends(require_ebay_admin)])
 def computeclaw_admin_readiness() -> dict[str, Any]:
     """Booleans only · safe for an unauthenticated probe.
 
@@ -204,7 +205,7 @@ class MarketScoutSearchIn(BaseModel):
     limit: int = Field(default=10, ge=1, le=20)
 
 
-@router.post("/admin/market-observations/ebay/search")
+@router.post("/admin/market-observations/ebay/search", dependencies=[Depends(require_ebay_admin)])
 def admin_marketscout_search(
     payload: MarketScoutSearchIn,
     x_ebay_admin_token: str | None = Header(default=None),
@@ -248,7 +249,7 @@ class BenchmarkAttachIn(BaseModel):
     verified: bool = Field(default=False)
 
 
-@router.post("/admin/benchmark-evidence/attach")
+@router.post("/admin/benchmark-evidence/attach", dependencies=[Depends(require_ebay_admin)])
 def admin_attach_benchmark(
     payload: BenchmarkAttachIn,
     x_ebay_admin_token: str | None = Header(default=None),
@@ -283,7 +284,7 @@ class UtilityAttachIn(BaseModel):
     fleet_verified: bool = Field(default=False)
 
 
-@router.post("/admin/utility-evidence/attach")
+@router.post("/admin/utility-evidence/attach", dependencies=[Depends(require_ebay_admin)])
 def admin_attach_utility(
     payload: UtilityAttachIn,
     x_ebay_admin_token: str | None = Header(default=None),
@@ -314,7 +315,7 @@ class AIOVDraftComposeIn(BaseModel):
     utility_evidence: dict[str, Any] | None = Field(default=None)
 
 
-@router.post("/admin/aiov-draft/compose")
+@router.post("/admin/aiov-draft/compose", dependencies=[Depends(require_ebay_admin)])
 def admin_compose_aiov_draft(
     payload: AIOVDraftComposeIn,
     x_ebay_admin_token: str | None = Header(default=None),

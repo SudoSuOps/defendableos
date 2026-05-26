@@ -7,6 +7,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.router import api_router
 from app.core.config import settings
 
+# Codex exposure repair: public OpenAPI/docs are disabled in production-like deployments so the
+# full operational API (78 paths) is not anonymously browsable. Docs remain on in dev/test.
+_docs_enabled = settings.app_env != "production"
+
 app = FastAPI(
     title="DefendableOS API",
     description=(
@@ -15,6 +19,9 @@ app = FastAPI(
         "Defendable Deeds, ENS reservation, and Defendable Box edge enrollment."
     ),
     version="0.1.0",
+    docs_url="/docs" if _docs_enabled else None,
+    redoc_url="/redoc" if _docs_enabled else None,
+    openapi_url="/openapi.json" if _docs_enabled else None,
 )
 
 app.add_middleware(
@@ -42,21 +49,13 @@ app.add_middleware(
 
 @app.get("/healthz")
 def healthz() -> dict:
+    # Codex exposure repair: liveness only. No integration booleans, provider names, storage
+    # driver, eBay environment, or ENS mode are exposed to anonymous callers. Detailed readiness
+    # lives behind the admin gate.
     return {
         "status": "ok",
         "service": "defendableos-api",
         "version": "0.1.0",
-        "integrations": {
-            "model_provider": settings.model_provider,
-            "brave_configured": settings.brave_configured,
-            "kimi_configured": settings.kimi_configured,
-            "openai_configured": settings.openai_configured,
-            "swarmcurator_configured": settings.swarmcurator_configured,
-            "defendable_ledger_publisher_configured": settings.defendable_ledger_publisher_configured,
-            "ebay_configured": settings.ebay_configured,
-            "ens_mode": settings.ens_mode,
-            "ens_live_writes_enabled": settings.ens_live_writes_enabled,
-        },
     }
 
 

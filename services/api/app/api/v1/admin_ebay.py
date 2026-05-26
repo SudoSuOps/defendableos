@@ -13,9 +13,10 @@ from __future__ import annotations
 
 import logging
 
-from fastapi import APIRouter, Header, HTTPException, Query, status
+from fastapi import APIRouter, Depends, Header, HTTPException, Query, status
 
 from app.core.config import get_settings
+from app.core.deps import require_ebay_admin
 from app.integrations.ebay.browse_api import (
     EbayBrowseAPIError,
     safe_summarize_results,
@@ -38,7 +39,10 @@ from app.integrations.ebay.oauth import (
 
 _log = logging.getLogger("api.admin.ebay")
 
-router = APIRouter(prefix="/admin/ebay", tags=["admin-ebay"])
+# Boundary-level admin gate on the whole router (Codex exposure repair): every admin/ebay route
+# — including oauth/readiness — now requires X-Ebay-Admin-Token and returns 401/503 (never 422)
+# when unauthenticated, and no longer leaks integration readiness to anonymous callers.
+router = APIRouter(prefix="/admin/ebay", tags=["admin-ebay"], dependencies=[Depends(require_ebay_admin)])
 
 
 def _require_admin_token(x_ebay_admin_token: str | None) -> None:

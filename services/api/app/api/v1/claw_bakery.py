@@ -67,8 +67,7 @@ def bakery_healthcheck() -> dict[str, Any]:
     forge = clawforge_status_summary(store)
     return {
         "service": "claw-bakery",
-        "driver": store.driver.name,
-        "bakery_dirs": list(BAKERY_DIRS),
+        # Codex exposure repair: storage driver + internal dir tree removed from public probe.
         "clawforge": {
             "enabled": forge.enabled,
             "generated_total": forge.generated_total,

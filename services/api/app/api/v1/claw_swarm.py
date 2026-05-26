@@ -106,9 +106,9 @@ def clawcheck_intake(payload: IntakeTurnIn) -> IntakeTurnOut:
 def healthcheck() -> dict[str, Any]:
     return {
         "service": "claw-swarm",
-        "kimi_configured": bool(settings.moonshot_api_key),
-        "kimi_model": settings.moonshot_model if settings.moonshot_api_key else None,
-        "intake_status": "LIVE" if settings.moonshot_api_key else "STUB_DETERMINISTIC_FALLBACK",
+        # Codex exposure repair: provider-configured booleans + model name removed from the
+        # public probe. Detailed readiness (provider/model) lives behind the admin gate.
+        "intake": "available",
         "team": roles_summary(),
         "doctrine_disclaimer": _DISCLAIMER,
     }

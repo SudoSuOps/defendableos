@@ -460,9 +460,13 @@ def test_public_endpoints_contain_no_credentials() -> None:
 def test_computeclaw_admin_readiness_returns_safe_booleans_no_secret(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """The /admin/readiness probe is safe to expose · booleans only ·
-    no token values · no secret bits."""
-    resp = _client().get("/api/v1/compute-claw/admin/readiness")
+    """Codex exposure repair: /admin/readiness is now admin-gated (was public). Without the
+    admin token it is blocked at the boundary; with it, it returns safe booleans only."""
+    assert _client().get("/api/v1/compute-claw/admin/readiness").status_code == 401
+    resp = _client().get(
+        "/api/v1/compute-claw/admin/readiness",
+        headers={"X-Ebay-Admin-Token": FIXTURE_ADMIN_TOKEN},
+    )
     assert resp.status_code == 200
     body = resp.json()
     assert body["integration"] == "compute_claw"
